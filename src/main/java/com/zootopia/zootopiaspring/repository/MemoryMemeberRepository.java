@@ -1,8 +1,10 @@
 package com.zootopia.zootopiaspring.repository;
 
 import com.zootopia.zootopiaspring.domain.Member;
+import org.springframework.stereotype.Repository;
 
 import java.util.*;
+
 
 public class MemoryMemeberRepository implements MemberRepository{
     private static Map<Long, Member> store = new HashMap<>();
