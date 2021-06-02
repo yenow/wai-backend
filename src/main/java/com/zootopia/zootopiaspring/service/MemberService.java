@@ -12,7 +12,7 @@ public class MemberService {
     //@Autowired   필드 주입은 별로 좋지 않다고함, 이 객체를 바꿀수 있는 방법이 없기때문
     private final MemberRepository memberRepository;
 
-    //@Autowired  요즘에는 생성자 주입이 많이 사용된다고 한다. 
+    //@Autowired  요즘에는 생성자 주입이 많이 사용된다고 한다.
     public MemberService(MemberRepository memberRepository) {
         this.memberRepository = memberRepository;
     }
