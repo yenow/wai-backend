@@ -1,6 +1,7 @@
 package com.zootopia.zootopiaspring;
 
 import com.zootopia.zootopiaspring.repository.JdbcMemberRepository;
+import com.zootopia.zootopiaspring.repository.JdbcTemplateMemberRepository;
 import com.zootopia.zootopiaspring.repository.MemberRepository;
 import com.zootopia.zootopiaspring.repository.MemoryMemeberRepository;
 import com.zootopia.zootopiaspring.service.MemberService;
@@ -27,7 +28,7 @@ public class SpringConfig {
 
     @Bean
     public MemberRepository memberRepository() {
-        return new JdbcMemberRepository(dataSource);
+        return new JdbcTemplateMemberRepository(dataSource);
     }
     
     /*
