@@ -3,10 +3,12 @@ package com.zootopia.zootopiaspring.service;
 import com.zootopia.zootopiaspring.domain.Member;
 import com.zootopia.zootopiaspring.repository.MemberRepository;
 
+import javax.transaction.Transactional;
 import java.util.List;
 import java.util.Optional;
 
 
+@Transactional
 public class MemberService {
     
     //@Autowired   필드 주입은 별로 좋지 않다고함, 이 객체를 바꿀수 있는 방법이 없기때문
