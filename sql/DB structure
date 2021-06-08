@@ -1,149 +1,302 @@
-<mxfile host="app.diagrams.net" modified="2021-06-08T02:17:41.270Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.272 Whale/2.9.118.16 Safari/537.36" etag="1w4i34br-jLwB-Bwaz_n" version="14.7.3" type="github">
+<mxfile host="app.diagrams.net" modified="2021-06-08T07:59:32.112Z" agent="5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/86.0.4240.272 Whale/2.9.118.16 Safari/537.36" etag="ZMXfiijld2JWcNQQ6gJg" version="14.7.3" type="github">
   <diagram id="R2lEEEUBdFMjLlhIrx00" name="Page-1">
-    <mxGraphModel dx="2012" dy="640" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
+    <mxGraphModel dx="2012" dy="1740" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" math="0" shadow="0" extFonts="Permanent Marker^https://fonts.googleapis.com/css?family=Permanent+Marker">
       <root>
         <mxCell id="0" />
         <mxCell id="1" parent="0" />
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-12" value="" style="edgeStyle=entityRelationEdgeStyle;endArrow=ERzeroToMany;startArrow=ERone;endFill=1;startFill=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="1" source="C-vyLk0tnHw3VtMMgP7b-3" target="C-vyLk0tnHw3VtMMgP7b-17" edge="1">
-          <mxGeometry width="100" height="100" relative="1" as="geometry">
-            <mxPoint x="400" y="180" as="sourcePoint" />
-            <mxPoint x="460" y="205" as="targetPoint" />
-          </mxGeometry>
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-2" value="MEMBER" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" parent="1" vertex="1">
-          <mxGeometry x="290" y="160" width="290" height="190" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-3" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-2" vertex="1">
-          <mxGeometry y="30" width="290" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-4" value="PK" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-3" vertex="1">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-5" value="MEM_NUM int NOT NULL " style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-3" vertex="1">
-          <mxGeometry x="30" width="260" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-9" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-2" vertex="1">
-          <mxGeometry y="60" width="290" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-10" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-9" vertex="1">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-11" value="EAMIL VARCAHR2(100) NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-9" vertex="1">
-          <mxGeometry x="30" width="260" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-4" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="C-vyLk0tnHw3VtMMgP7b-2">
-          <mxGeometry y="90" width="290" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-5" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-4">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-6" value="PASSWORD VARCHAR2(100) " style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-4">
-          <mxGeometry x="30" width="260" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-62" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="C-vyLk0tnHw3VtMMgP7b-2">
-          <mxGeometry y="120" width="290" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-63" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-62">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-64" value="NICKNAME VARCHAR2(100) " style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-62">
-          <mxGeometry x="30" width="260" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-65" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="C-vyLk0tnHw3VtMMgP7b-2">
-          <mxGeometry y="150" width="290" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-66" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-65">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-67" value="A_TYPE VARCHAR2(3) " style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-65">
-          <mxGeometry x="30" width="260" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-13" value="BOARD" style="shape=table;startSize=30;container=1;collapsible=1;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;resizeLast=1;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" parent="1" vertex="1">
-          <mxGeometry x="670" y="170" width="250" height="200" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-14" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=1;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-13" vertex="1">
-          <mxGeometry y="30" width="250" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-15" value="PK" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontStyle=1;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-14" vertex="1">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-16" value="BOARD_NUM int NOT NULL " style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontStyle=5;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-14" vertex="1">
-          <mxGeometry x="30" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-17" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-13" vertex="1">
-          <mxGeometry y="60" width="250" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-18" value="FK" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-17" vertex="1">
-          <mxGeometry width="30" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-19" value="MEM_NUM int NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-17" vertex="1">
-          <mxGeometry x="30" width="220" height="40" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-20" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-13" vertex="1">
-          <mxGeometry y="100" width="250" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-21" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-20" vertex="1">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="C-vyLk0tnHw3VtMMgP7b-22" value="TITLE VARCHAR2(100) NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" parent="C-vyLk0tnHw3VtMMgP7b-20" vertex="1">
-          <mxGeometry x="30" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-52" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="C-vyLk0tnHw3VtMMgP7b-13">
-          <mxGeometry y="130" width="250" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-53" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-52">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-54" value="INS_DT DATE NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-52">
-          <mxGeometry x="30" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-55" value="" style="shape=partialRectangle;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;top=0;left=0;right=0;bottom=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="C-vyLk0tnHw3VtMMgP7b-13">
-          <mxGeometry y="160" width="250" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-56" value="" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-55">
-          <mxGeometry width="30" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-57" value="UPT_DT DATE NOT NULL" style="shape=partialRectangle;overflow=hidden;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-55">
-          <mxGeometry x="30" width="220" height="30" as="geometry" />
-        </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-36" value="TEST_HISTORY" style="shape=table;html=1;whiteSpace=wrap;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=1;align=center;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" vertex="1" parent="1">
-          <mxGeometry x="-10" y="160" width="230" height="180" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-36" value="TEST_RESULT" style="shape=table;html=1;whiteSpace=wrap;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;align=center;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="160" width="280" height="300" as="geometry" />
         </mxCell>
         <mxCell id="Eq1-og-ArBct_io5G_lh-37" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
-          <mxGeometry y="30" width="230" height="30" as="geometry" />
+          <mxGeometry y="30" width="280" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-38" value="1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-37">
-          <mxGeometry width="51" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-38" value="PK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-37">
+          <mxGeometry width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-39" value="Value 1" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-37">
-          <mxGeometry x="51" width="179" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-39" value="&lt;font style=&quot;font-size: 12px&quot; color=&quot;#6666ff&quot;&gt;SEQ&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;INT&lt;/font&gt; NOT NULL&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-37">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Eq1-og-ArBct_io5G_lh-40" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
-          <mxGeometry y="60" width="230" height="30" as="geometry" />
+          <mxGeometry y="60" width="280" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-41" value="2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-40">
-          <mxGeometry width="51" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-41" value="FK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-40">
+          <mxGeometry width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-42" value="Value 2" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-40">
-          <mxGeometry x="51" width="179" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-42" value="&lt;font color=&quot;#6666ff&quot;&gt;MEM_NUM&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;&lt;font&gt;INT&lt;/font&gt; &lt;/font&gt;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-40">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-88" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
+          <mxGeometry y="90" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-89" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-88">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-90" value="&lt;font color=&quot;#6666ff&quot;&gt;A_TYPE&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(1)&lt;/font&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-88">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-91" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
+          <mxGeometry y="120" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-92" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-91">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-93" value="&lt;font color=&quot;#6666ff&quot;&gt;SCORE&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;INT&lt;/font&gt;&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-91">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
         </mxCell>
         <mxCell id="Eq1-og-ArBct_io5G_lh-43" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
-          <mxGeometry y="90" width="230" height="30" as="geometry" />
+          <mxGeometry y="150" width="280" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-44" value="3" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-43">
-          <mxGeometry width="51" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-44" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-43">
+          <mxGeometry width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-45" value="Value 3" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-43">
-          <mxGeometry x="51" width="179" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-45" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_DT&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-43">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-46" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
-          <mxGeometry y="120" width="230" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-128" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
+          <mxGeometry y="180" width="280" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-47" value="3" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-46">
-          <mxGeometry width="51" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-129" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-128">
+          <mxGeometry width="40" height="30" as="geometry" />
         </mxCell>
-        <mxCell id="Eq1-og-ArBct_io5G_lh-48" value="Value 3" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-46">
-          <mxGeometry x="51" width="179" height="30" as="geometry" />
+        <mxCell id="Eq1-og-ArBct_io5G_lh-130" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_IP &lt;/font&gt;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-128">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-131" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
+          <mxGeometry y="210" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-132" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-131">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-133" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_DT&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-131">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-134" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-36">
+          <mxGeometry y="240" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-135" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-134">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-136" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_IP&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-134">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-137" value="A_TYPE" style="shape=table;html=1;whiteSpace=wrap;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;align=center;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" vertex="1" parent="1">
+          <mxGeometry x="-40" y="-180" width="320" height="240" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-138" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-137">
+          <mxGeometry y="30" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-139" value="PK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-138">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-140" value="&lt;font color=&quot;#6666ff&quot;&gt;SEQ&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;INT&lt;/font&gt;&amp;nbsp;NOT NULL&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-138">
+          <mxGeometry x="40" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-141" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-137">
+          <mxGeometry y="60" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-142" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-141">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-143" value="&lt;font color=&quot;#6666ff&quot;&gt;A_TYPE&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(1)&lt;/font&gt;&amp;nbsp;UNIQUE, NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-141">
+          <mxGeometry x="40" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-150" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-137">
+          <mxGeometry y="90" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-151" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-150">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-152" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_DT&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt;&amp;nbsp;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-150">
+          <mxGeometry x="40" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-153" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-137">
+          <mxGeometry y="120" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-154" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-153">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-155" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_IP&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt;&amp;nbsp;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-153">
+          <mxGeometry x="40" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-156" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-137">
+          <mxGeometry y="150" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-157" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-156">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-158" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_DT&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt;&amp;nbsp;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-156">
+          <mxGeometry x="40" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-159" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-137">
+          <mxGeometry y="180" width="320" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-160" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-159">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-161" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_IP&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt;&amp;nbsp;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-159">
+          <mxGeometry x="40" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-169" value="MEMBER" style="shape=table;html=1;whiteSpace=wrap;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;align=center;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" vertex="1" parent="1">
+          <mxGeometry x="320" y="160" width="280" height="330" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-170" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="30" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-171" value="PK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-170">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-172" value="&lt;font style=&quot;font-size: 12px&quot; color=&quot;#6666ff&quot;&gt;MEM_NUM&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;INT&lt;/font&gt; NOT NULL&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-170">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-173" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="60" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-174" value="FK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-173">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-175" value="&lt;font color=&quot;#6666ff&quot;&gt;EMAIL&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&amp;nbsp;&lt;/font&gt;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-173">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-176" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="90" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-177" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-176">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-178" value="&lt;font color=&quot;#6666ff&quot;&gt;PASSWORD&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-176">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-179" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="120" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-180" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-179">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-181" value="&lt;font color=&quot;#6666ff&quot;&gt;NICKNAME&lt;/font&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(255 , 102 , 102)&quot;&gt;VARCHAR2(100)&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-179">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-219" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="150" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-220" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-219">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-221" value="&lt;font color=&quot;#6666ff&quot;&gt;A_TYPE&amp;nbsp;&lt;/font&gt;&lt;span style=&quot;color: rgb(255 , 102 , 102)&quot;&gt;VARCHAR2(3)&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-219">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-182" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="180" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-183" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-182">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-184" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_DT&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-182">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-185" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="210" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-186" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-185">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-187" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_IP &lt;/font&gt;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-185">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-188" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="240" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-189" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-188">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-190" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_DT&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-188">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-191" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-169">
+          <mxGeometry y="270" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-192" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-191">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-193" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_IP&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-191">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-223" style="edgeStyle=orthogonalEdgeStyle;rounded=1;orthogonalLoop=1;jettySize=auto;html=1;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;fontColor=#000000;startArrow=ERone;startFill=0;endArrow=ERoneToMany;endFill=0;" edge="1" parent="1" source="Eq1-og-ArBct_io5G_lh-170" target="Eq1-og-ArBct_io5G_lh-40">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-224" value="MEMBER" style="shape=table;html=1;whiteSpace=wrap;startSize=30;container=1;collapsible=0;childLayout=tableLayout;fixedRows=1;rowLines=0;fontStyle=0;align=center;fontFamily=MaplestoryOTFBold;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFBold.woff;" vertex="1" parent="1">
+          <mxGeometry x="680" y="160" width="280" height="300" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-225" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=1;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="30" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-226" value="PK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-225">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-227" value="&lt;font color=&quot;#6666ff&quot;&gt;BOARD_NUM&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;INT&lt;/font&gt; NOT NULL&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-225">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-228" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="60" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-229" value="FK" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-228">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-230" value="&lt;font color=&quot;#6666ff&quot;&gt;MEM_NUM&lt;/font&gt;&amp;nbsp;&lt;font color=&quot;#ff6666&quot;&gt;INT&lt;/font&gt;&amp;nbsp;NOT NULL&amp;nbsp;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-228">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-231" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="90" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-232" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-231">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-233" value="&lt;font color=&quot;#6666ff&quot;&gt;TITLE&amp;nbsp;&lt;/font&gt;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&amp;nbsp;&lt;/font&gt;NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-231">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-234" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="120" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-235" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-234">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-236" value="&lt;font color=&quot;#6666ff&quot;&gt;NICKNAME&lt;/font&gt;&amp;nbsp;&lt;span style=&quot;color: rgb(255 , 102 , 102)&quot;&gt;VARCHAR2(100)&lt;/span&gt;" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-234">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-240" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="150" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-241" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-240">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-242" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_DT&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-240">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-243" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="180" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-244" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-243">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-245" value="&lt;font color=&quot;#6666ff&quot;&gt;INS_IP &lt;/font&gt;&lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-243">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-246" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="210" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-247" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-246">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-248" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_DT&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;DATE&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-246">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-249" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;collapsible=0;dropTarget=0;pointerEvents=0;fillColor=none;top=0;left=0;bottom=0;right=0;points=[[0,0.5],[1,0.5]];portConstraint=eastwest;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-224">
+          <mxGeometry y="240" width="280" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-250" value="" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-249">
+          <mxGeometry width="40" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="Eq1-og-ArBct_io5G_lh-251" value="&lt;font color=&quot;#6666ff&quot;&gt;UPT_IP&lt;/font&gt; &lt;font color=&quot;#ff6666&quot;&gt;VARCHAR2(100)&lt;/font&gt; NOT NULL" style="shape=partialRectangle;html=1;whiteSpace=wrap;connectable=0;fillColor=none;top=0;left=0;bottom=0;right=0;align=left;spacingLeft=6;overflow=hidden;fontFamily=MaplestoryOTFLight;fontSource=https%3A%2F%2Fcdn.jsdelivr.net%2Fgh%2Fprojectnoonnu%2Fnoonfonts_20-04%402.1%2FMaplestoryOTFLight.woff;" vertex="1" parent="Eq1-og-ArBct_io5G_lh-249">
+          <mxGeometry x="40" width="240" height="30" as="geometry" />
         </mxCell>
       </root>
     </mxGraphModel>
