@@ -18,22 +18,29 @@ public class SpringConfig {
 //    public SpringConfig(DataSource dataSource) {
 //        this.dataSource = dataSource;
 //    }
-    private EntityManager em;
+//    private EntityManager em;
 
-    @Autowired
-    public SpringConfig(EntityManager em) {
-        this.em = em;
+    private final MemberRepository memberRepository;
+
+    @Autowired   /* 생성자가 하나면 생략가능 */
+    public SpringConfig(MemberRepository memberRepository) {
+        this.memberRepository = memberRepository;
     }
+
+//    @Autowired
+//    public SpringConfig(EntityManager em) {
+//        this.em = em;
+//    }
 
     @Bean
     public MemberService memberService() {
-        return new MemberService(memberRepository());
+        return new MemberService(memberRepository);
     }
 
-    @Bean
-    public MemberRepository memberRepository() {
-        return new JpaMemberRepository(em);
-    }
+//    @Bean
+//    public MemberRepository memberRepository() {
+//        return new JpaMemberRepository(em);
+//    }
     
     /*
     * 과거에는 XML, 하지만 요즘은 자바코드로 많이 한다고함
