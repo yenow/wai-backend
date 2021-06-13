@@ -15,8 +15,12 @@ import java.util.List;
 @Controller
 public class HomeController {
 
-    @Autowired
     private MemberService memberService;
+
+    @Autowired
+    public HomeController(MemberService memberService) {
+        this.memberService = memberService;
+    }
 
     @GetMapping("/")
     public String home() {

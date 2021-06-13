@@ -2,6 +2,7 @@ package com.zootopia.zootopiaspring.service;
 
 import com.zootopia.zootopiaspring.domain.Member;
 import com.zootopia.zootopiaspring.repository.MemberRepository;
+import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.List;
