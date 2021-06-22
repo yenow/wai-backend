@@ -1,19 +1,25 @@
 package com.zootopia.zootopiaspring.controller;
 
+import com.zootopia.zootopiaspring.domain.Member;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.RestController;
 
-@Controller
+@RestController
 public class HelloController {
 
     @GetMapping("/hello")
-    public String Hello(Model model) {
+    public Member Hello(@RequestParam(name = "name") String name,Model model) {
         System.out.println("hello");
-        model.addAttribute("data","hello!!");
-        return "hello";
+        System.out.println(name);
+
+        // model.addAttribute("data","hello!!");
+        Member member = new Member();
+        member.setName(name);
+        return member;
     }
 
     @GetMapping("hello-mvc")
