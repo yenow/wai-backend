@@ -1,6 +1,6 @@
-package com.zootopia.zootopiaspring.repository;
+package com.zootopia.zootopiaspring.member.repository;
 
-import com.zootopia.zootopiaspring.domain.Member;
+import com.zootopia.zootopiaspring.member.domain.Member;
 
 import java.util.List;
 import java.util.Optional;

@@ -1,7 +1,6 @@
-package com.zootopia.zootopiaspring.controller;
+package com.zootopia.zootopiaspring.home.controller;
 
-import com.zootopia.zootopiaspring.domain.Member;
-import org.springframework.stereotype.Controller;
+import com.zootopia.zootopiaspring.member.domain.Member;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestParam;
