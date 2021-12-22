@@ -1,12 +1,12 @@
 package com.wai.domain.tag;
 
+import com.wai.common.BaseEntity;
+import com.wai.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * packageName : com.wai.domain.tag
@@ -23,21 +23,23 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @Entity
-public class Tag {
+public class Tag extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long tagId;
 
-    @Column
-    private Long postId;
+    @ManyToOne
+    @JoinColumn(name = "post_id")
+    private Post post;
 
     @Column
     private String tagName;
 
     @Builder
-    public Tag(Long tagId, Long postId, String tagName) {
+    public Tag(Long tagId, Post post, String tagName) {
         this.tagId = tagId;
-        this.postId = postId;
+        this.post = post;
         this.tagName = tagName;
     }
 }

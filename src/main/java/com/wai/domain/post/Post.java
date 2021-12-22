@@ -1,13 +1,15 @@
 package com.wai.domain.post;
 
+import com.wai.common.BaseEntity;
+import com.wai.domain.tag.Tag;
+import com.wai.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName : com.wai.domain.posts
@@ -24,19 +26,27 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @Entity
-public class Post {
+public class Post extends BaseEntity {
 
     @Id
-    @GeneratedValue
-    @Column(name = "post_id")
-    private Long id;
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
+    private Long postId;
+
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    private User user;
+
+    @OneToMany(mappedBy = "post")
+    private List<Tag> tags = new ArrayList<Tag>();
 
     @Column(length = 4000, nullable = false)
     private String content;
 
     @Builder
-    public Post(Long id, String content) {
-        this.id = id;
+    public Post(Long postId, User user, List<Tag> tags, String content) {
+        this.postId = postId;
+        this.user = user;
+        this.tags = tags;
         this.content = content;
     }
 }

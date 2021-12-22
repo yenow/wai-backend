@@ -1,13 +1,13 @@
 package com.wai.domain.follow;
 
+import com.wai.common.BaseEntity;
+import com.wai.domain.user.User;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.extern.apachecommons.CommonsLog;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
 
 /**
  * packageName : com.wai.domain.follow
@@ -24,21 +24,24 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @Entity
-public class Follow {
+public class Follow extends BaseEntity {
 
     @Id
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     public Long id;
 
-    @Column
-    public Long followeeID;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public User followee;
 
-    @Column
-    public Long followerID;
+    @ManyToOne
+    @JoinColumn(name = "user_id")
+    public User follower;
 
     @Builder
-    public Follow(Long id, Long followeeID, Long followerID) {
+    public Follow(Long id, User followee, User follower) {
         this.id = id;
-        this.followeeID = followeeID;
-        this.followerID = followerID;
+        this.followee = followee;
+        this.follower = follower;
     }
 }

@@ -12,4 +12,6 @@ package com.wai.service.logout;
  * 2021-12-22   윤신영     최초 생성
  */
 public interface LogoutService {
+
+    void test();
 }

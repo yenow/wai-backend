@@ -1,13 +1,14 @@
 package com.wai.domain.user;
 
+import com.wai.common.BaseEntity;
+import com.wai.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName : com.wai.domain.user
@@ -24,30 +25,34 @@ import javax.persistence.Id;
 @Builder
 @NoArgsConstructor
 @Entity
-public class User {
+public class User extends BaseEntity {
 
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Column
+    @OneToMany(mappedBy = "user")
+    private List<Post> posts = new ArrayList<Post>();;
+
+    @Column(nullable = false, length = 200)
     private String password;
 
-    @Column
+    @Column(length = 200)
     private String email;
 
-    @Column
+    @Column(length = 13)
     private String phoneNumber;
 
-    @Column
+    @Column(nullable = false, length = 50)
     private String nickname;
 
-    @Column
+    @Column(length = 50)
     private String birthDay;
 
     @Builder
-    public User(Long userId, String password, String email, String phoneNumber, String nickname, String birthDay) {
+    public User(Long userId, List<Post> posts, String password, String email, String phoneNumber, String nickname, String birthDay) {
         this.userId = userId;
+        this.posts = posts;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;

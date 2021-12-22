@@ -1,5 +1,7 @@
 package com.wai.service.logout;
 
+import org.springframework.stereotype.Service;
+
 /**
  * packageName : com.wai.service.login
  * fileName : LogoutServiceImpl
@@ -11,5 +13,11 @@ package com.wai.service.logout;
  * -----------------------------------------------------------
  * 2021-12-22   윤신영     최초 생성
  */
+@Service
 public class LogoutServiceImpl implements LogoutService {
+
+    @Override
+    public void test() {
+        System.out.println("test");
+    }
 }
