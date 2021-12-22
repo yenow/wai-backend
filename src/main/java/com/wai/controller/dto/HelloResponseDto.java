@@ -1,9 +1,8 @@
-package com.wai.web.dto;
+package com.wai.controller.dto;
 
-import lombok.Builder;
 import lombok.Getter;
-import lombok.NoArgsConstructor;
 import lombok.RequiredArgsConstructor;
+import lombok.ToString;
 
 /**
  * packageName : com.wai.home.dto
@@ -17,6 +16,7 @@ import lombok.RequiredArgsConstructor;
  * 2021-12-02   윤신영     최초 생성
  */
 @Getter
+@ToString
 @RequiredArgsConstructor
 public class HelloResponseDto {
 

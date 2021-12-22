@@ -15,6 +15,6 @@ import org.springframework.data.querydsl.QuerydslPredicateExecutor;
  * -----------------------------------------------------------
  * 2021-12-20   윤신영     최초 생성
  */
-public interface UserRepository extends JpaRepository<User, Long>, QuerydslPredicateExecutor<User> {
+public interface UserRepository extends JpaRepository<User, Long>, UserCustomRepository {
 
 }

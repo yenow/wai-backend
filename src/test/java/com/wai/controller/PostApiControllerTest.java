@@ -1,25 +1,21 @@
-package com.wai.web;
+package com.wai.controller;
 
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
-import com.wai.web.dto.PostSaveRequestDto;
+import com.wai.controller.dto.PostSaveRequestDto;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.web.servlet.WebMvcTest;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.http.*;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.net.URI;
 import java.util.List;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
-import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.status;
 
 /**
  * packageName : com.wai.web

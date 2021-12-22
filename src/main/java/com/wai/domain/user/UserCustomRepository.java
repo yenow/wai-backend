@@ -1,5 +1,7 @@
 package com.wai.domain.user;
 
+import com.wai.controller.dto.LoginRequestDto;
+
 import java.util.List;
 
 /**
@@ -13,6 +15,9 @@ import java.util.List;
  * -----------------------------------------------------------
  * 2021-12-21   윤신영     최초 생성
  */
-public class CustomUserRepository {
+public interface UserCustomRepository {
 
+    User findByEmail(String id);
+
+    User findByPhoneNumber(String id);
 }

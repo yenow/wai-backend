@@ -1,6 +1,7 @@
 package com.wai.domain.post;
 
 import org.junit.After;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -55,6 +56,7 @@ class PostRepositoryTest {
         assertThat(post.getContent()).isEqualTo(content);
     }
 
+    @DisplayName("QueryDsl을 통해 Post 조회시 Comment를 Fetch Join한다.")
     @Test
     public void findByContent() {
 
@@ -71,6 +73,7 @@ class PostRepositoryTest {
         assertThat(post.getContent()).isEqualTo(content);
     }
 
+    @DisplayName("QueryDsl을 통해 Post를 조회한다.")
     @Test
     public void search() {
         String content = "name";

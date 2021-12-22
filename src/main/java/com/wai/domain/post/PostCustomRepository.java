@@ -16,4 +16,9 @@ import java.util.List;
 public interface PostCustomRepository {
 
     List<Post> search();
+
+    List<Post> paging();
+
+    List<Post> join();
 }
+

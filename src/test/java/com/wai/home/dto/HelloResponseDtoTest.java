@@ -1,6 +1,6 @@
 package com.wai.home.dto;
 
-import com.wai.web.dto.HelloResponseDto;
+import com.wai.controller.dto.HelloResponseDto;
 import org.junit.jupiter.api.Test;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;

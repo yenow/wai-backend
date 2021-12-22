@@ -1,9 +1,10 @@
-package com.wai.web.dto;
+package com.wai.controller.dto;
 
 import com.wai.domain.post.Post;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
+import lombok.ToString;
 
 /**
  * packageName : com.wai.web.dto
@@ -18,6 +19,7 @@ import lombok.NoArgsConstructor;
  */
 @Getter
 @Builder
+@ToString
 @NoArgsConstructor
 public class PostSaveRequestDto {
 

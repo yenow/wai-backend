@@ -1,6 +1,8 @@
 package com.wai.domain.post;
 
+import com.querydsl.core.QueryModifiers;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import static com.wai.domain.user.QUser.user;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -28,7 +30,29 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> search() {
-        return jpaQueryFactory.selectFrom(post).
-                fetch();
+        return jpaQueryFactory.selectFrom(post)
+                .where(post.content.contains("abc"))
+                .orderBy(post.content.desc())
+                .fetch();
+    }
+
+    @Override
+    public List<Post> paging() {
+        QueryModifiers queryModifiers = new QueryModifiers(20L, 10L);
+        return jpaQueryFactory.selectFrom(post)
+                .where(post.content.contains("abc"))
+                .orderBy(post.content.desc())
+                .offset(10).limit(20)
+                .fetch();
+    }
+
+    @Override
+    public List<Post> join() {
+        return jpaQueryFactory.selectFrom(post)
+                .join(user, user)
+                .where(post.content.contains("abc"))
+                .orderBy(post.content.desc())
+                .offset(10).limit(20)
+                .fetch();
     }
 }
