@@ -51,7 +51,7 @@ class PostRepositoryTest {
 
         //then (결과 검증)
         Post post = posts.get(0);
-        System.out.println(post.getId());
+        System.out.println(post.getPostId());
         System.out.println(post.getContent());
         assertThat(post.getContent()).isEqualTo(content);
     }
@@ -68,7 +68,7 @@ class PostRepositoryTest {
 
         //when
         Post post = postRepository.findByContent("name");
-        System.out.println(post.getId());
+        System.out.println(post.getPostId());
         System.out.println(post.getContent());
         assertThat(post.getContent()).isEqualTo(content);
     }
@@ -88,7 +88,7 @@ class PostRepositoryTest {
         //then (결과 검증)
         Post post = posts.get(0);
         System.out.println("size = " + posts.size());
-        System.out.println(post.getId());
+        System.out.println(post.getPostId());
         System.out.println(post.getContent());
     }
 }

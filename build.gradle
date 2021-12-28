@@ -33,6 +33,10 @@ dependencies {
 	/* QueryDSL */
 	implementation 'com.querydsl:querydsl-jpa'
 
+	/* logback */
+	implementation('org.slf4j:jcl-over-slf4j')
+	implementation('ch.qos.logback:logback-classic')
+
 	annotationProcessor "com.querydsl:querydsl-apt:${dependencyManagement.importedProperties['querydsl.version']}:jpa"
 	annotationProcessor "jakarta.persistence:jakarta.persistence-api"
 	annotationProcessor "jakarta.annotation:jakarta.annotation-api"

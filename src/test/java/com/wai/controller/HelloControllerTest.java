@@ -1,6 +1,9 @@
-package com.wai.home.controller;
+package com.wai.controller;
 
 import com.wai.controller.HelloController;
+import com.wai.controller.dto.HelloEnum;
+import com.wai.controller.dto.HelloRequestDto;
+import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -58,5 +61,30 @@ class HelloControllerTest {
                 .andExpect(status().isOk())
                 .andExpect(jsonPath("$.name", equalTo(name)))
                 .andExpect(jsonPath("$.amount", equalTo(amount)));
+    }
+    
+    @DisplayName("enum 테스트")
+    @Test
+    public void testEnum() throws Exception {
+        HelloEnum helloEnum = HelloEnum.hi;
+        // HelloEnum.sout();
+        HelloRequestDto helloRequestDto = new HelloRequestDto("hi",helloEnum);
+
+        mvc.perform(get("/hello/enumTest")
+                .param("name","hi")
+                .param("helloEnum","hi"))
+                .andExpect(status().isOk());
+    }
+
+    @DisplayName("enum 테스트2")
+    @Test
+    public void testEnum2() throws Exception {
+        HelloEnum helloEnum = HelloEnum.hi;
+//        HelloEnum.sout();
+        HelloRequestDto helloRequestDto = new HelloRequestDto("hi",helloEnum);
+
+        mvc.perform(get("/hello/enumTest")
+                .param("name","hi"))
+                .andExpect(status().isOk());
     }
 }

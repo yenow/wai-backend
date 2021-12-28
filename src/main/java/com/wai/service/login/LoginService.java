@@ -3,6 +3,7 @@ package com.wai.service.login;
 import com.wai.controller.dto.LoginRequestDto;
 import com.wai.controller.dto.LoginResponseDto;
 import com.wai.controller.dto.SessionDto;
+import com.wai.controller.dto.SimpleLoginRequestDto;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -24,4 +25,6 @@ import javax.transaction.Transactional;
  */
 public interface LoginService {
     public void checkLogin(LoginRequestDto loginRequestDto, LoginResponseDto loginResponseDto, HttpSession session);
+
+    LoginResponseDto simpleLogin(SimpleLoginRequestDto simpleLoginRequestDto, HttpSession httpSession);
 }

@@ -42,4 +42,13 @@ public class UserCustromRepositoryImpl implements UserCustomRepository {
                 .where(user.phoneNumber.eq(id))
                 .fetchOne();
     }
+
+    @Override
+    public User findByLoginKey(String loginKey) {
+        QUser user = new QUser("u");
+
+        return jpaQueryFactory.selectFrom(user)
+                .where(user.loginKey.eq(loginKey))
+                .fetchOne();
+    }
 }

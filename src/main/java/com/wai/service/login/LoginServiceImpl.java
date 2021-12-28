@@ -3,6 +3,7 @@ package com.wai.service.login;
 import com.wai.controller.dto.LoginRequestDto;
 import com.wai.controller.dto.LoginResponseDto;
 import com.wai.controller.dto.SessionDto;
+import com.wai.controller.dto.SimpleLoginRequestDto;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
@@ -76,5 +77,35 @@ public class LoginServiceImpl implements LoginService {
             loginSession.setSessionByUser(user);
             session.setAttribute("loginSession", loginSession);
         }
+    }
+
+    @Override
+    public LoginResponseDto simpleLogin(SimpleLoginRequestDto simpleLoginRequestDto, HttpSession httpSession) {
+        LoginResponseDto loginResponseDto = new LoginResponseDto();
+        
+        User user = User.builder()
+                .loginKey(simpleLoginRequestDto.getLoginKey())
+                .nickname(simpleLoginRequestDto.getNickname())
+                .birthDay(simpleLoginRequestDto.getBirthday())
+                .gender(simpleLoginRequestDto.getGender())
+                .build();
+
+        try {
+            userRepository.save(user);
+            
+        } catch (Exception e) {
+            e.printStackTrace();
+            loginResponseDto.setIsLoginSuccess(false);
+            loginResponseDto.setIsErrorMessage(true);
+            loginResponseDto.setErrorMessage("error 발생");
+            
+        } finally {
+            // 세션을 넣어야함
+
+            loginResponseDto.setIsLoginSuccess(true);
+            loginResponseDto.setIsErrorMessage(false);
+            loginResponseDto.setErrorMessage("");
+        }
+        return loginResponseDto;
     }
 }

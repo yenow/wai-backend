@@ -2,11 +2,9 @@ package com.wai.controller;
 
 import com.wai.controller.dto.LoginRequestDto;
 import com.wai.controller.dto.LoginResponseDto;
-import com.wai.controller.dto.SessionDto;
+import com.wai.controller.dto.SimpleLoginRequestDto;
 import com.wai.service.login.LoginService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.http.HttpRequest;
-import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
@@ -38,25 +36,16 @@ public class LoginApiController {
 
         HttpSession session = request.getSession();
 
-//        SessionDto sessionDto = (SessionDto) session.getAttribute("loginSession");
-//
-//        // 세션을 가지고 있을 경우
-//        if (sessionDto != null &&
-//                (sessionDto.getEmail() == loginRequestDto.getId() || sessionDto.getPhoneNumber() == loginRequestDto.getId())) {
-//            loginResponseDto.setIsLoginSuccess(false);
-//            loginResponseDto.setIsErrorMessage(false);
-//            loginResponseDto.setErrorMessage("");
-//        }
-
         loginService.checkLogin(loginRequestDto, loginResponseDto, session);
 
-        // service
-        /* 0. 세션검증
-        *  1. id검증
-        *  2. 비밀번호검증
-        *  3. 세션 넣기
-        *  4.  */
+        return loginResponseDto;
+    }
 
+    @PostMapping(value = "/api/simpleLogin")
+    public LoginResponseDto simpleLogin(@RequestBody SimpleLoginRequestDto SimpleLoginRequestDto, HttpServletRequest request) {
+        HttpSession httpSession = request.getSession();
+        System.out.println(SimpleLoginRequestDto.toString());
+        LoginResponseDto loginResponseDto = loginService.simpleLogin(SimpleLoginRequestDto, httpSession);
         return loginResponseDto;
     }
 }

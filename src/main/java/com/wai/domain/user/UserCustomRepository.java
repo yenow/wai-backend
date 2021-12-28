@@ -20,4 +20,6 @@ public interface UserCustomRepository {
     User findByEmail(String id);
 
     User findByPhoneNumber(String id);
+
+    User findByLoginKey(String loginKey);
 }

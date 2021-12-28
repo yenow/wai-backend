@@ -1,4 +1,4 @@
-package com.wai.home.controller;
+package com.wai.controller;
 
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
