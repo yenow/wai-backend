@@ -54,7 +54,7 @@ class UserRepositoryTest {
 
         User user = User.builder()
                 .nickname("nickname")
-                .loginKey(UUID.randomUUID().toString())
+                .userKey(UUID.randomUUID().toString())
                 .password("password")
                 .phoneNumber("01021245690")
                 .birthDay("birthDay")
@@ -82,7 +82,7 @@ class UserRepositoryTest {
     public void findAllByEmail() {
         // given
         User user = User.builder()
-                .loginKey(UUID.randomUUID().toString())
+                .userKey(UUID.randomUUID().toString())
                 .nickname("nickname")
                 .password("password")
                 .email("email")
@@ -109,7 +109,7 @@ class UserRepositoryTest {
         // given
         User user = User.builder()
                 .nickname("nickname")
-                .loginKey(UUID.randomUUID().toString())
+                .userKey(UUID.randomUUID().toString())
                 .password("password")
                 .email("email")
                 .birthDay("birthDay")
@@ -121,6 +121,6 @@ class UserRepositoryTest {
 
         // then
         assertNotNull(findUser);
-        assertThat(findUser.getLoginKey(), is(user.getLoginKey()));
+        assertThat(findUser.getUserKey(), is(user.getUserKey()));
     }
 }

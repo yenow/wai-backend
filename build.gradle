@@ -2,6 +2,7 @@ plugins {
 	id 'org.springframework.boot' version '2.3.11.RELEASE'
 	id 'io.spring.dependency-management' version '1.0.11.RELEASE'
 	id 'java'
+	id 'com.ewerk.gradle.plugins.querydsl' version '1.0.10'
 }
 
 group = 'com.wai'
@@ -16,7 +17,7 @@ repositories {
 dependencies {
 	implementation 'org.springframework.boot:spring-boot-starter-thymeleaf'
 	implementation 'org.springframework.boot:spring-boot-starter-web'
-	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'
+	//implementation 'org.springframework.boot:spring-boot-starter-jdbc'	// jdbc
 	implementation 'org.springframework.boot:spring-boot-starter-data-jpa'
     implementation 'junit:junit:4.13.1'
 
@@ -32,6 +33,7 @@ dependencies {
 
 	/* QueryDSL */
 	implementation 'com.querydsl:querydsl-jpa'
+	implementation 'com.querydsl:querydsl-apt'
 
 	/* logback */
 	implementation('org.slf4j:jcl-over-slf4j')
@@ -43,14 +45,42 @@ dependencies {
 }
 
 // QueryDSL
-sourceSets {
-	main {
-		java {
-			srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
-		}
-	}
-}
+//sourceSets {
+//	main {
+//		java {
+//			srcDirs = ["$projectDir/src/main/java", "$projectDir/build/generated"]
+//		}
+//	}
+//}
 
 test {
 	useJUnitPlatform()
+}
+
+
+def generated = "src/main/generated"
+
+sourceSets {
+	main.java.srcDirs += [ generated ]
+}
+
+tasks.withType(JavaCompile) {
+	options.annotationProcessorGeneratedSourcesDirectory = file(generated)
+}
+
+clean.doLast {
+	file(generated).deleteDir()
+}
+
+querydsl {
+	querydslDefault = true
+	jpa = true
+}
+
+configurations {
+	querydsl.extendsFrom implementation
+}
+
+compileQuerydsl {
+	options.annotationProcessorPath = configurations.querydsl
 }

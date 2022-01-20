@@ -1,0 +1,70 @@
+package com.wai.domain.user;
+
+import static com.querydsl.core.types.PathMetadataFactory.*;
+
+import com.querydsl.core.types.dsl.*;
+
+import com.querydsl.core.types.PathMetadata;
+import javax.annotation.Generated;
+import com.querydsl.core.types.Path;
+import com.querydsl.core.types.dsl.PathInits;
+
+
+/**
+ * QUser is a Querydsl query type for User
+ */
+@Generated("com.querydsl.codegen.EntitySerializer")
+public class QUser extends EntityPathBase<User> {
+
+    private static final long serialVersionUID = -1716522752L;
+
+    public static final QUser user = new QUser("user");
+
+    public final com.wai.common.QBaseEntity _super = new com.wai.common.QBaseEntity(this);
+
+    public final StringPath birthDay = createString("birthDay");
+
+    public final StringPath email = createString("email");
+
+    public final EnumPath<Gender> gender = createEnum("gender", Gender.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+
+    //inherited
+    public final StringPath insert_id = _super.insert_id;
+
+    public final StringPath nickname = createString("nickname");
+
+    public final StringPath password = createString("password");
+
+    public final StringPath phoneNumber = createString("phoneNumber");
+
+    public final ListPath<com.wai.domain.post.Post, com.wai.domain.post.QPost> posts = this.<com.wai.domain.post.Post, com.wai.domain.post.QPost>createList("posts", com.wai.domain.post.Post.class, com.wai.domain.post.QPost.class, PathInits.DIRECT2);
+
+    public final ListPath<com.wai.domain.reply.Reply, com.wai.domain.reply.QReply> replys = this.<com.wai.domain.reply.Reply, com.wai.domain.reply.QReply>createList("replys", com.wai.domain.reply.Reply.class, com.wai.domain.reply.QReply.class, PathInits.DIRECT2);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+
+    //inherited
+    public final StringPath update_id = _super.update_id;
+
+    public final NumberPath<Long> userId = createNumber("userId", Long.class);
+
+    public final StringPath userKey = createString("userKey");
+
+    public QUser(String variable) {
+        super(User.class, forVariable(variable));
+    }
+
+    public QUser(Path<? extends User> path) {
+        super(path.getType(), path.getMetadata());
+    }
+
+    public QUser(PathMetadata metadata) {
+        super(User.class, metadata);
+    }
+
+}
+

@@ -21,14 +21,14 @@ import lombok.*;
 @NoArgsConstructor
 public class SimpleLoginRequestDto {
 
-    private String loginKey;
+    private String userKey;
     private String nickname;
     private String birthday;
     private Gender gender;
 
     @Builder
-    public SimpleLoginRequestDto(String loginKey, String nickname, String birthday, Gender gender) {
-        this.loginKey = loginKey;
+    public SimpleLoginRequestDto(String userKey, String nickname, String birthday, Gender gender) {
+        this.userKey = userKey;
         this.nickname = nickname;
         this.birthday = birthday;
         this.gender = gender;

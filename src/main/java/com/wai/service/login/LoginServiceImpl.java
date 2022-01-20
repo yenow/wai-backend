@@ -84,7 +84,7 @@ public class LoginServiceImpl implements LoginService {
         LoginResponseDto loginResponseDto = new LoginResponseDto();
         
         User user = User.builder()
-                .loginKey(simpleLoginRequestDto.getLoginKey())
+                .userKey(simpleLoginRequestDto.getUserKey())
                 .nickname(simpleLoginRequestDto.getNickname())
                 .birthDay(simpleLoginRequestDto.getBirthday())
                 .gender(simpleLoginRequestDto.getGender())

@@ -44,11 +44,20 @@ public class UserCustromRepositoryImpl implements UserCustomRepository {
     }
 
     @Override
-    public User findByLoginKey(String loginKey) {
+    public User findByUserKey(String userKey) {
         QUser user = new QUser("u");
 
         return jpaQueryFactory.selectFrom(user)
-                .where(user.loginKey.eq(loginKey))
+                .where(user.userKey.eq(userKey))
                 .fetchOne();
+    }
+
+    @Override
+    public void deleteByUserKey(String userKey) {
+        QUser user = new QUser("u");
+
+        jpaQueryFactory.delete(user)
+                .where(user.userKey.eq(userKey))
+                .execute();;
     }
 }

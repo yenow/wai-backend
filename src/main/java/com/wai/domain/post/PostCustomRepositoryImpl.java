@@ -2,12 +2,15 @@ package com.wai.domain.post;
 
 import com.querydsl.core.QueryModifiers;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+
+import static com.querydsl.jpa.JPAExpressions.select;
 import static com.wai.domain.user.QUser.user;
+
+import com.wai.domain.user.QUser;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-import static com.wai.domain.post.QPost.post;
 /**
  * packageName : com.wai.domain.post
  * fileName : PostCustomRepositoryImpl
@@ -30,6 +33,8 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> search() {
+        QPost post = new QPost("p");
+
         return jpaQueryFactory.selectFrom(post)
                 .where(post.content.contains("abc"))
                 .orderBy(post.content.desc())
@@ -38,6 +43,8 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> paging() {
+        QPost post = new QPost("p");
+
         QueryModifiers queryModifiers = new QueryModifiers(20L, 10L);
         return jpaQueryFactory.selectFrom(post)
                 .where(post.content.contains("abc"))
@@ -48,11 +55,25 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> join() {
+        QPost post = new QPost("p");
+
         return jpaQueryFactory.selectFrom(post)
                 .join(user, user)
                 .where(post.content.contains("abc"))
                 .orderBy(post.content.desc())
                 .offset(10).limit(20)
                 .fetch();
+    }
+
+    @Override
+    public void deleteAllByUserKey(String userKey) {
+        QPost post = new QPost("p");
+        QUser subUser = new QUser("u");
+
+        jpaQueryFactory.delete(post)
+                .where(post.user.userId.in(select(subUser.userId)
+                                            .from(subUser)
+                                            .where(subUser.userKey.eq(userKey))))
+                .execute();
     }
 }

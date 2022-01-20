@@ -2,6 +2,7 @@ package com.wai.domain.user;
 
 import com.wai.controller.dto.LoginRequestDto;
 
+import javax.transaction.Transactional;
 import java.util.List;
 
 /**
@@ -21,5 +22,8 @@ public interface UserCustomRepository {
 
     User findByPhoneNumber(String id);
 
-    User findByLoginKey(String loginKey);
+    User findByUserKey(String userKey);
+
+    @Transactional
+    void deleteByUserKey(String userKey);
 }

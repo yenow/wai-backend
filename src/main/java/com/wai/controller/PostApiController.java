@@ -1,6 +1,7 @@
 package com.wai.controller;
 
-import com.wai.controller.dto.PostSaveRequestDto;
+import com.wai.controller.dto.post.PostSaveRequestDto;
+import com.wai.controller.dto.post.PostSaveResponseDto;
 import com.wai.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -24,6 +25,14 @@ public class PostApiController {
 
     private final PostService postService;
 
+    @PostMapping(value = "/api/post/")
+    public PostSaveResponseDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
+        PostSaveResponseDto postResponseDto = new PostSaveResponseDto();
+
+        postService.save(postSaveRequestDto);
+
+        return postResponseDto;
+    }
 
     @PostMapping(value = "/api/v1/post")
     public Long save(@RequestBody PostSaveRequestDto requestDto) {

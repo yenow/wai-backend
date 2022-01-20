@@ -1,8 +1,8 @@
 package com.wai.controller;
 
+import com.wai.controller.dto.post.PostSaveRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
-import com.wai.controller.dto.PostSaveRequestDto;
 import org.junit.After;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -45,6 +45,7 @@ class PostApiControllerTest {
     public void tearDown() throws Exception {
         postRepository.deleteAll();
     }
+
     @Test
     public void Posts_등록된다() throws Exception {
         //given

@@ -2,6 +2,7 @@ package com.wai.domain.user;
 
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
+import com.wai.domain.reply.Reply;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -33,34 +34,31 @@ public class User extends BaseEntity {
 
     @OneToMany(mappedBy = "user")
     private List<Post> posts = new ArrayList<Post>();;
+    @OneToMany(mappedBy = "user")
+    private List<Reply> replys = new ArrayList<Reply>();;
 
     @Column(unique = true, nullable = false, length = 200)
-    private String loginKey;
-
+    private String userKey;
     @Column(length = 200)
     private String password;
-
     @Column(length = 200)
     private String email;
-
     @Column(length = 13)
     private String phoneNumber;
-
-    @Column(nullable = false, length = 50)
+    @Column(length = 50)
     private String nickname;
-
     @Column(length = 50)
     private String birthDay;
-
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
     private Gender gender;
 
     @Builder
-    public User(Long userId, List<Post> posts, String loginKey, String password, String email, String phoneNumber, String nickname, String birthDay, Gender gender) {
+    public User(Long userId, List<Post> posts, List<Reply> replys, String userKey, String password, String email, String phoneNumber, String nickname, String birthDay, Gender gender) {
         this.userId = userId;
         this.posts = posts;
-        this.loginKey = loginKey;
+        this.replys = replys;
+        this.userKey = userKey;
         this.password = password;
         this.email = email;
         this.phoneNumber = phoneNumber;

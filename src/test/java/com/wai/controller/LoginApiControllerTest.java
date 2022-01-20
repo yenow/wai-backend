@@ -66,7 +66,7 @@ class LoginApiControllerTest {
         //given
         String baseUrl = "http://localhost:" + port + "/api/simpleLogin";
         SimpleLoginRequestDto simpleLoginRequestDto = SimpleLoginRequestDto.builder()
-                .loginKey(UUID.randomUUID().toString())
+                .userKey(UUID.randomUUID().toString())
                 .nickname("nickname")
                 .birthday("19941129")
                 .gender(Gender.man)
@@ -76,7 +76,7 @@ class LoginApiControllerTest {
         // SimpleLoginRequestDto responseEntity = restTemplate.getForObject(baseUrl,loginRequestDto,SimpleLoginRequestDto.class);
         ResponseEntity<SimpleLoginRequestDto> responseEntity = restTemplate.postForEntity(baseUrl, simpleLoginRequestDto, SimpleLoginRequestDto.class);
 
-        User user = userRepository.findByLoginKey(simpleLoginRequestDto.getLoginKey());
+        User user = userRepository.findByUserKey(simpleLoginRequestDto.getUserKey());
 
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);

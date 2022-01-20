@@ -1,6 +1,6 @@
 package com.wai.service.post;
 
-import com.wai.controller.dto.PostSaveRequestDto;
+import com.wai.controller.dto.post.PostSaveRequestDto;
 import com.wai.domain.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
