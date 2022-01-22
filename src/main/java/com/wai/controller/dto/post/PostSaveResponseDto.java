@@ -21,12 +21,12 @@ import lombok.*;
 @NoArgsConstructor
 public class PostSaveResponseDto {
 
-    private Boolean isSuccess;
+    private boolean isSuccess;
     private String errorMessage;
     private Long postId;
 
     @Builder
-    public PostSaveResponseDto(Boolean isSuccess, String errorMessage, Long postId) {
+    public PostSaveResponseDto(boolean isSuccess, String errorMessage, Long postId) {
         this.isSuccess = isSuccess;
         this.errorMessage = errorMessage;
         this.postId = postId;

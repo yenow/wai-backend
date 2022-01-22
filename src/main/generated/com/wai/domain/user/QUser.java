@@ -50,6 +50,8 @@ public class QUser extends EntityPathBase<User> {
     //inherited
     public final StringPath update_id = _super.update_id;
 
+    public final ListPath<com.wai.domain.userEnneagramTest.UserEnneagramTest, com.wai.domain.userEnneagramTest.QUserEnneagramTest> userEnneagramTests = this.<com.wai.domain.userEnneagramTest.UserEnneagramTest, com.wai.domain.userEnneagramTest.QUserEnneagramTest>createList("userEnneagramTests", com.wai.domain.userEnneagramTest.UserEnneagramTest.class, com.wai.domain.userEnneagramTest.QUserEnneagramTest.class, PathInits.DIRECT2);
+
     public final NumberPath<Long> userId = createNumber("userId", Long.class);
 
     public final StringPath userKey = createString("userKey");

@@ -27,4 +27,6 @@ public interface LoginService {
     public void checkLogin(LoginRequestDto loginRequestDto, LoginResponseDto loginResponseDto, HttpSession session);
 
     LoginResponseDto simpleLogin(SimpleLoginRequestDto simpleLoginRequestDto, HttpSession httpSession);
+
+    Long saveUserKey(String userKey);
 }

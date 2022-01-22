@@ -25,12 +25,11 @@ public class PostApiController {
 
     private final PostService postService;
 
-    @PostMapping(value = "/api/post/")
+    @PostMapping(value = "/api/savePost")
     public PostSaveResponseDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
         PostSaveResponseDto postResponseDto = new PostSaveResponseDto();
-
-        postService.save(postSaveRequestDto);
-
+        Long postId = postService.save(postSaveRequestDto);
+        postResponseDto.setPostId(postId);
         return postResponseDto;
     }
 

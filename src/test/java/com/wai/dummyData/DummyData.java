@@ -36,5 +36,6 @@ public class DummyData {
         User user = User.builder().userKey(userKey).build();
 
         userRepository.save(user);
+        System.out.println(user.getUserId());
     }
 }

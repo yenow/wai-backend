@@ -3,6 +3,7 @@ package com.wai.domain.user;
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
+import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -36,6 +37,8 @@ public class User extends BaseEntity {
     private List<Post> posts = new ArrayList<Post>();;
     @OneToMany(mappedBy = "user")
     private List<Reply> replys = new ArrayList<Reply>();;
+    @OneToMany(mappedBy = "user")
+    private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
 
     @Column(unique = true, nullable = false, length = 200)
     private String userKey;
@@ -54,10 +57,11 @@ public class User extends BaseEntity {
     private Gender gender;
 
     @Builder
-    public User(Long userId, List<Post> posts, List<Reply> replys, String userKey, String password, String email, String phoneNumber, String nickname, String birthDay, Gender gender) {
+    public User(Long userId, List<Post> posts, List<Reply> replys, List<UserEnneagramTest> userEnneagramTests, String userKey, String password, String email, String phoneNumber, String nickname, String birthDay, Gender gender) {
         this.userId = userId;
         this.posts = posts;
         this.replys = replys;
+        this.userEnneagramTests = userEnneagramTests;
         this.userKey = userKey;
         this.password = password;
         this.email = email;

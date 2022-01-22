@@ -33,12 +33,16 @@ public class LoginApiController {
     public LoginResponseDto login(@RequestBody LoginRequestDto loginRequestDto
             , HttpServletRequest request) {
         LoginResponseDto loginResponseDto = new LoginResponseDto();
-
         HttpSession session = request.getSession();
-
         loginService.checkLogin(loginRequestDto, loginResponseDto, session);
-
         return loginResponseDto;
+    }
+
+    @PostMapping(value = "/api/saveUserKey")
+    public Long saveUserKey(@RequestBody String userKey) {
+        Long userId = loginService.saveUserKey(userKey);
+        System.out.println(userId);
+        return userId;
     }
 
     @PostMapping(value = "/api/simpleLogin")

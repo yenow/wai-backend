@@ -20,8 +20,10 @@ public interface PostRepository extends JpaRepository<Post, Long>, PostCustomRep
     @Query("select b from Post b where b.content = :content")
     Post findByContent(@Param("content") String content);   // 순서를 기반으로
 
-//    @Query("select b from Post b where b.content = ?1"
-//    nativeQuery = true
-//    )
-//    Post findByContent(String content);
+    /* 네이티브 쿼리
+    @Query("select b from Post b where b.content = ?1"
+    nativeQuery = true
+    )
+    Post findByContent(String content);
+    */
 }

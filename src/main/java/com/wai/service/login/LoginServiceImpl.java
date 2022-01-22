@@ -108,4 +108,9 @@ public class LoginServiceImpl implements LoginService {
         }
         return loginResponseDto;
     }
+
+    @Override
+    public Long saveUserKey(String userKey) {
+        return userRepository.save(User.builder().userKey(userKey).build()).getUserId();
+    }
 }
