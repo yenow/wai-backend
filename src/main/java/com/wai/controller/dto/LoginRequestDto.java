@@ -15,19 +15,13 @@ import lombok.*;
  */
 @Getter
 @Setter
-@Builder
 @ToString
+@Builder
 @NoArgsConstructor
+@AllArgsConstructor
 public class LoginRequestDto {
 
     private String userKey;
     private String id;
     private String password;
-
-    @Builder
-    public LoginRequestDto(String userKey, String id, String password) {
-        this.userKey = userKey;
-        this.id = id;
-        this.password = password;
-    }
 }

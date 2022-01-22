@@ -1,12 +1,12 @@
 package com.wai.domain.user;
 
+import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,6 +26,7 @@ import java.util.List;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class User extends BaseEntity {
 
@@ -33,7 +34,9 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @OneToMany(mappedBy = "user")
+    @OneToMany(mappedBy = "user"/*, fetch = FetchType.EAGER*/)
+    /*@JsonIgnoreProperties({"user"})*/
+    @JsonManagedReference
     private List<Post> posts = new ArrayList<Post>();;
     @OneToMany(mappedBy = "user")
     private List<Reply> replys = new ArrayList<Reply>();;
@@ -55,19 +58,4 @@ public class User extends BaseEntity {
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
     private Gender gender;
-
-    @Builder
-    public User(Long userId, List<Post> posts, List<Reply> replys, List<UserEnneagramTest> userEnneagramTests, String userKey, String password, String email, String phoneNumber, String nickname, String birthDay, Gender gender) {
-        this.userId = userId;
-        this.posts = posts;
-        this.replys = replys;
-        this.userEnneagramTests = userEnneagramTests;
-        this.userKey = userKey;
-        this.password = password;
-        this.email = email;
-        this.phoneNumber = phoneNumber;
-        this.nickname = nickname;
-        this.birthDay = birthDay;
-        this.gender = gender;
-    }
 }

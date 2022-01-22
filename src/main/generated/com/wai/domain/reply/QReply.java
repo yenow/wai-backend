@@ -28,7 +28,7 @@ public class QReply extends EntityPathBase<Reply> {
     public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
 
     //inherited
-    public final StringPath insert_id = _super.insert_id;
+    public final NumberPath<Long> insert_id = _super.insert_id;
 
     public final com.wai.domain.post.QPost post;
 
@@ -40,7 +40,7 @@ public class QReply extends EntityPathBase<Reply> {
     public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
 
     //inherited
-    public final StringPath update_id = _super.update_id;
+    public final NumberPath<Long> update_id = _super.update_id;
 
     public final com.wai.domain.user.QUser user;
 

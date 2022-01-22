@@ -1,12 +1,13 @@
 package com.wai.domain.post;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;
 import com.wai.domain.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
@@ -26,6 +27,9 @@ import java.util.List;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
+@DynamicInsert
+@DynamicUpdate
 @Entity
 public class Post extends BaseEntity {
 
@@ -35,6 +39,7 @@ public class Post extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     @OneToMany(mappedBy = "post")
@@ -46,21 +51,10 @@ public class Post extends BaseEntity {
     private String title;
     @Column(length = 4000, nullable = false)
     private String content;
-    @Column
+    @Column(length = 200)
+    private String author;
+    @Column(columnDefinition = "int default 0")
     private int clickCount;
     @Column
     private boolean isDelete;
-
-    @Builder
-
-    public Post(Long postId, User user, List<Reply> replys, List<Tag> tags, String title, String content, int clickCount, boolean isDelete) {
-        this.postId = postId;
-        this.user = user;
-        this.replys = replys;
-        this.tags = tags;
-        this.title = title;
-        this.content = content;
-        this.clickCount = clickCount;
-        this.isDelete = isDelete;
-    }
 }

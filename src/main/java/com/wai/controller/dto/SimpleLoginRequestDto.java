@@ -19,18 +19,11 @@ import lombok.*;
 @Builder
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class SimpleLoginRequestDto {
 
     private String userKey;
     private String nickname;
     private String birthday;
     private Gender gender;
-
-    @Builder
-    public SimpleLoginRequestDto(String userKey, String nickname, String birthday, Gender gender) {
-        this.userKey = userKey;
-        this.nickname = nickname;
-        this.birthday = birthday;
-        this.gender = gender;
-    }
 }

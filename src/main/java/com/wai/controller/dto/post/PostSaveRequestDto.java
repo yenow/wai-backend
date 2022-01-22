@@ -16,25 +16,17 @@ import lombok.*;
  * 2022-01-20   윤신영     최초 생성
  */
 @Getter
-@Setter
+@Data
 @Builder
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class PostSaveRequestDto {
 
     private Long userId;
     private String userKey;
     private String title;
     private String content;
-
-    @Builder
-    public PostSaveRequestDto(Long userId, String userKey, String title, String content) {
-        this.userId = userId;
-        this.userKey = userKey;
-        this.title = title;
-        this.content = content;
-    }
-
 
     public Post toEntity() {
         return Post.builder()

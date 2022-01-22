@@ -18,16 +18,10 @@ import lombok.*;
 @Builder
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class LogoutResponseDto {
 
     private Boolean isLogoutSuccess;
     private Boolean isErrorMessage;
     private String errorMessage;
-
-    @Builder
-    public LogoutResponseDto(Boolean isLoginSuccess, Boolean isErrorMessage, String errorMessage) {
-        this.isLogoutSuccess = isLoginSuccess;
-        this.isErrorMessage = isErrorMessage;
-        this.errorMessage = errorMessage;
-    }
 }

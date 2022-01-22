@@ -1,11 +1,14 @@
 package com.wai.service.post;
 
+import com.wai.controller.dto.post.PostRequestDto;
 import com.wai.controller.dto.post.PostSaveRequestDto;
+import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
+import java.util.List;
 
 /**
  * packageName : com.wai.service.post
@@ -27,5 +30,10 @@ public class PostService {
     @Transactional
     public Long save(PostSaveRequestDto requestDto) {
         return postRepository.save(requestDto.toEntity()).getPostId();
+    }
+
+    public List<Post> readInitPosts(PostRequestDto postRequestDto) {
+        List<Post> posts =  postRepository.readPostsInit(postRequestDto);
+        return posts;
     }
 }

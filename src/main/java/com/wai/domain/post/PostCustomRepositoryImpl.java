@@ -6,6 +6,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import static com.querydsl.jpa.JPAExpressions.select;
 import static com.wai.domain.user.QUser.user;
 
+import com.wai.controller.dto.post.PostRequestDto;
+import com.wai.domain.reply.QReply;
 import com.wai.domain.user.QUser;
 import org.springframework.stereotype.Repository;
 
@@ -62,6 +64,20 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                 .where(post.content.contains("abc"))
                 .orderBy(post.content.desc())
                 .offset(10).limit(20)
+                .fetch();
+    }
+
+    @Override
+    public List<Post> readPostsInit(PostRequestDto postRequestDto) {
+        QPost post = QPost.post;
+        QUser user = QUser.user;
+        QReply reply = QReply.reply;
+
+        return jpaQueryFactory.selectFrom(post)
+                .innerJoin(post.user, user)
+                /*.innerJoin(post.replys, reply)*/
+                .orderBy(post.postId.desc())
+                .limit(postRequestDto.getPostsCount())
                 .fetch();
     }
 

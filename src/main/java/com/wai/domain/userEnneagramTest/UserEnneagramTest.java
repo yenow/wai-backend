@@ -2,6 +2,7 @@ package com.wai.domain.userEnneagramTest;
 
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.user.User;
+import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
@@ -22,6 +23,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class UserEnneagramTest {
 
@@ -36,11 +38,4 @@ public class UserEnneagramTest {
     @ManyToOne
     @JoinColumn(name = "test_id")
     private EnneagramTest enneagramTest;
-
-    @Builder
-    public UserEnneagramTest(Long id, User user, EnneagramTest enneagramTest) {
-        this.id = id;
-        this.user = user;
-        this.enneagramTest = enneagramTest;
-    }
 }

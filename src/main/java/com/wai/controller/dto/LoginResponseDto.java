@@ -15,19 +15,14 @@ import lombok.*;
  */
 @Getter
 @Setter
+@Data
 @Builder
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class LoginResponseDto {
 
     private Boolean isLoginSuccess;
     private Boolean isErrorMessage;
     private String errorMessage;
-
-    @Builder
-    public LoginResponseDto(Boolean isLoginSuccess, Boolean isErrorMessage, String errorMessage) {
-        this.isLoginSuccess = isLoginSuccess;
-        this.isErrorMessage = isErrorMessage;
-        this.errorMessage = errorMessage;
-    }
 }

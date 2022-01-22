@@ -1,5 +1,17 @@
 package com.wai.common;
 
+import lombok.Builder;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+import org.springframework.data.annotation.CreatedBy;
+import org.springframework.data.annotation.CreatedDate;
+import org.springframework.data.annotation.LastModifiedBy;
+import org.springframework.data.annotation.LastModifiedDate;
+import org.springframework.data.jpa.domain.support.AuditingEntityListener;
+
+import javax.persistence.Column;
+import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
@@ -14,11 +26,23 @@ import java.time.LocalDateTime;
  * -----------------------------------------------------------
  * 2021-12-23   윤신영     최초 생성
  */
+@Getter
+@Setter
+@NoArgsConstructor
 @MappedSuperclass
+@EntityListeners(AuditingEntityListener.class)
 public abstract class BaseEntity {
 
-    private String insert_id;
+    @CreatedBy
+    @Column(updatable = false)
+    private Long insert_id;
+
+    @CreatedDate
     private LocalDateTime insert_date;
-    private String update_id;
+
+    @LastModifiedBy
+    private Long update_id;
+
+    @LastModifiedDate
     private LocalDateTime update_date;
 }

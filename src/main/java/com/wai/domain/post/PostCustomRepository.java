@@ -1,5 +1,7 @@
 package com.wai.domain.post;
 
+import com.wai.controller.dto.post.PostRequestDto;
+
 import javax.transaction.Transactional;
 import java.util.List;
 
@@ -21,6 +23,8 @@ public interface PostCustomRepository {
     List<Post> paging();
 
     List<Post> join();
+
+    List<Post> readPostsInit(PostRequestDto postRequestDto);
 
     @Transactional
     void deleteAllByUserKey(String userKey) ;

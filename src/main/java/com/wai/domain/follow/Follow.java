@@ -2,9 +2,7 @@ package com.wai.domain.follow;
 
 import com.wai.common.BaseEntity;
 import com.wai.domain.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 import lombok.extern.apachecommons.CommonsLog;
 
 import javax.persistence.*;
@@ -23,6 +21,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Follow extends BaseEntity {
 
@@ -37,11 +36,4 @@ public class Follow extends BaseEntity {
     @ManyToOne
     @JoinColumn
     public User follower;
-
-    @Builder
-    public Follow(Long id, User followee, User follower) {
-        this.id = id;
-        this.followee = followee;
-        this.follower = follower;
-    }
 }

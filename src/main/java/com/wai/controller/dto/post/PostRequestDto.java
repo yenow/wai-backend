@@ -1,10 +1,10 @@
-package com.wai.controller.dto;
+package com.wai.controller.dto.post;
 
 import lombok.*;
 
 /**
- * packageName : com.wai.controller.dto
- * fileName : ResponseDto
+ * packageName : com.wai.controller.dto.post
+ * fileName : PostRequestDto
  * author : 윤신영
  * date : 2022-01-22
  * description :
@@ -19,7 +19,9 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDto {
-    boolean isSuccess;
-    String errorMessage;
+public class PostRequestDto {
+
+    private int postsCount;
+    private Long startPostId;
+    private Long LastPostId;
 }

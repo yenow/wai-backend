@@ -19,18 +19,12 @@ import lombok.*;
 @Builder
 @ToString
 @NoArgsConstructor
+@AllArgsConstructor
 public class PostSaveResponseDto {
 
     private boolean isSuccess;
     private String errorMessage;
     private Long postId;
-
-    @Builder
-    public PostSaveResponseDto(boolean isSuccess, String errorMessage, Long postId) {
-        this.isSuccess = isSuccess;
-        this.errorMessage = errorMessage;
-        this.postId = postId;
-    }
 
     public Post toEntity() {
         Post post = new Post();

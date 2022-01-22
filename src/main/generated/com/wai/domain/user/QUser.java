@@ -32,7 +32,7 @@ public class QUser extends EntityPathBase<User> {
     public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
 
     //inherited
-    public final StringPath insert_id = _super.insert_id;
+    public final NumberPath<Long> insert_id = _super.insert_id;
 
     public final StringPath nickname = createString("nickname");
 
@@ -48,7 +48,7 @@ public class QUser extends EntityPathBase<User> {
     public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
 
     //inherited
-    public final StringPath update_id = _super.update_id;
+    public final NumberPath<Long> update_id = _super.update_id;
 
     public final ListPath<com.wai.domain.userEnneagramTest.UserEnneagramTest, com.wai.domain.userEnneagramTest.QUserEnneagramTest> userEnneagramTests = this.<com.wai.domain.userEnneagramTest.UserEnneagramTest, com.wai.domain.userEnneagramTest.QUserEnneagramTest>createList("userEnneagramTests", com.wai.domain.userEnneagramTest.UserEnneagramTest.class, com.wai.domain.userEnneagramTest.QUserEnneagramTest.class, PathInits.DIRECT2);
 

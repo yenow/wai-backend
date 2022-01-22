@@ -1,5 +1,6 @@
 package com.wai.service.post;
 
+import com.wai.controller.dto.post.PostRequestDto;
 import com.wai.controller.dto.post.PostSaveRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
@@ -15,8 +16,11 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 import static org.junit.jupiter.api.Assertions.*;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.Optional;
 import java.util.UUID;
+import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -54,12 +58,12 @@ class PostServiceTest {
 
         user = User.builder().userKey(userKey).build();
         userRepository.save(user);
+        System.out.println("==== end before ====");
     }
 
     @DisplayName("post 저장 테스트")
     @Test
     void savePost() {
-        System.out.println("테스트 시작");
         PostSaveRequestDto postSaveRequestDto = PostSaveRequestDto.builder()
                 .title("title")
                 .content("content")
@@ -75,11 +79,37 @@ class PostServiceTest {
 
         assertEquals(postSaveRequestDto.getTitle(), post.get().getTitle());
         assertEquals(postSaveRequestDto.getContent(), post.get().getContent());
-        System.out.println("테스트 끝");
+    }
+
+    @DisplayName("read posts")
+    @Test
+    void readPostsInit() {
+        List<Post> postList = new ArrayList<>();
+        IntStream.range(1,16).forEach(value -> {
+            Post post = Post.builder()
+                    .user(user)
+                    .title("제목" + value + "입니다.")
+                    .content("내용" + value + "입니다.")
+                    .build();
+
+            postList.add(post);
+            postRepository.save(post);
+        });
+
+        PostRequestDto postRequestDto = PostRequestDto.builder().postsCount(5).build();
+        List<Post> posts = postService.readInitPosts(postRequestDto);
+
+        assertEquals(postList.get(14).getPostId(), posts.get(0).getPostId());
+        assertEquals(postList.get(13).getPostId(), posts.get(1).getPostId());
+        System.out.println(posts.get(0).getUser().getUserId());
+        // System.out.println(posts.get(0).getUser().getPosts().get(0).getPostId());
+        System.out.println(posts.get(0).getTitle());
+        System.out.println(posts.get(0).getContent());
     }
 
     @AfterEach
     void after () {
+        System.out.println("==== start after ====");
         postRepository.deleteAllByUserKey(userKey);
         userRepository.deleteByUserKey(userKey);
     }

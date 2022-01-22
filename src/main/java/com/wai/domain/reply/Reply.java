@@ -3,9 +3,7 @@ package com.wai.domain.reply;
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -23,6 +21,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Reply extends BaseEntity {
 
@@ -39,12 +38,4 @@ public class Reply extends BaseEntity {
 
     @Column
     private String replyContent;
-
-    @Builder
-    public Reply(Long replyId, User user, Post post, String replyContent) {
-        this.replyId = replyId;
-        this.user = user;
-        this.post = post;
-        this.replyContent = replyContent;
-    }
 }

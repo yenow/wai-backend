@@ -2,9 +2,7 @@ package com.wai.domain.tag;
 
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -22,6 +20,7 @@ import javax.persistence.*;
 @Getter
 @Builder
 @NoArgsConstructor
+@AllArgsConstructor
 @Entity
 public class Tag extends BaseEntity {
 
@@ -35,11 +34,4 @@ public class Tag extends BaseEntity {
 
     @Column
     private String tagName;
-
-    @Builder
-    public Tag(Long tagId, Post post, String tagName) {
-        this.tagId = tagId;
-        this.post = post;
-        this.tagName = tagName;
-    }
 }

@@ -24,6 +24,8 @@ public class QPost extends EntityPathBase<Post> {
 
     public final com.wai.common.QBaseEntity _super = new com.wai.common.QBaseEntity(this);
 
+    public final StringPath author = createString("author");
+
     public final NumberPath<Integer> clickCount = createNumber("clickCount", Integer.class);
 
     public final StringPath content = createString("content");
@@ -32,7 +34,7 @@ public class QPost extends EntityPathBase<Post> {
     public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
 
     //inherited
-    public final StringPath insert_id = _super.insert_id;
+    public final NumberPath<Long> insert_id = _super.insert_id;
 
     public final BooleanPath isDelete = createBoolean("isDelete");
 
@@ -48,7 +50,7 @@ public class QPost extends EntityPathBase<Post> {
     public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
 
     //inherited
-    public final StringPath update_id = _super.update_id;
+    public final NumberPath<Long> update_id = _super.update_id;
 
     public final com.wai.domain.user.QUser user;
 

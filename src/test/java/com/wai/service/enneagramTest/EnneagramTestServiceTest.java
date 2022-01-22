@@ -2,7 +2,6 @@ package com.wai.service.enneagramTest;
 
 import com.wai.WaiSpringApplication;
 import com.wai.controller.dto.enneagramTest.EnneagramTestRequestDto;
-import com.wai.domain.enneagramTest.EnneagramTestRepository;
 import com.wai.domain.enneagramTest.TestType;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
