@@ -1,5 +1,6 @@
 package com.wai.domain.reply;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
@@ -31,9 +32,11 @@ public class Reply extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
     @ManyToOne
     @JoinColumn(name = "post_id")
+    @JsonBackReference
     private Post post;
 
     @Column

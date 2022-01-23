@@ -19,7 +19,8 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDto {
+public class ResponseDto<T> {
     boolean isSuccess;
     String errorMessage;
+    T result;
 }

@@ -1,5 +1,6 @@
 package com.wai.domain.enneagramTest;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import lombok.*;
@@ -32,6 +33,7 @@ public class EnneagramTest extends BaseEntity {
     private Long testId;
 
     @OneToMany(mappedBy = "enneagramTest")
+    @JsonManagedReference
     private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
 
     @Column

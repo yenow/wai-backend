@@ -76,6 +76,39 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
                 /*.innerJoin(post.replys, reply)*/
+                .where(post.isDelete.ne(true))
+                .orderBy(post.postId.desc())
+                .limit(postRequestDto.getPostsCount())
+                .fetch();
+    }
+
+    @Override
+    public List<Post> readMoreNewPosts(PostRequestDto postRequestDto) {
+        QPost post = QPost.post;
+        QUser user = QUser.user;
+        QReply reply = QReply.reply;
+
+        return jpaQueryFactory.selectFrom(post)
+                .innerJoin(post.user, user)
+                /*.innerJoin(post.replys, reply)*/
+                .where(post.isDelete.ne(true)
+                        .and(post.postId.goe(postRequestDto.getStartPostId())))
+                .orderBy(post.postId.desc())
+                .limit(postRequestDto.getPostsCount())
+                .fetch();
+    }
+
+    @Override
+    public List<Post> readMoreOldPosts(PostRequestDto postRequestDto) {
+        QPost post = QPost.post;
+        QUser user = QUser.user;
+        QReply reply = QReply.reply;
+
+        return jpaQueryFactory.selectFrom(post)
+                .innerJoin(post.user, user)
+                /*.innerJoin(post.replys, reply)*/
+                .where(post.isDelete.ne(true)
+                        .and(post.postId.loe(postRequestDto.getLastPostId())))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
                 .fetch();

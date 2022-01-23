@@ -48,7 +48,9 @@ public class DummyData {
                     .user(user)
                     .title("제목" + value + "입니다.")
                     .content("내용" + value +"입니다.")
+                    .isDelete(value == 15 ? true : false)
                     .build();
+
 
             post.setInsert_id(user.getUserId());
             post.setUpdate_id(user.getUserId());

@@ -1,16 +1,10 @@
 package com.wai.service.login;
 
-import com.wai.controller.dto.LoginRequestDto;
-import com.wai.controller.dto.LoginResponseDto;
-import com.wai.controller.dto.SessionDto;
+import com.wai.controller.dto.login.LoginRequestDto;
+import com.wai.controller.dto.login.LoginResponseDto;
 import com.wai.controller.dto.SimpleLoginRequestDto;
-import com.wai.domain.user.User;
-import com.wai.domain.user.UserRepository;
-import lombok.RequiredArgsConstructor;
-import org.springframework.stereotype.Service;
 
 import javax.servlet.http.HttpSession;
-import javax.transaction.Transactional;
 
 /**
  * packageName : com.wai.service.login

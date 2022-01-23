@@ -1,5 +1,6 @@
 package com.wai.domain.tag;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.post.Post;
 import lombok.*;
@@ -30,6 +31,7 @@ public class Tag extends BaseEntity {
 
     @ManyToOne
     @JoinColumn(name = "post_id")
+    @JsonBackReference
     private Post post;
 
     @Column

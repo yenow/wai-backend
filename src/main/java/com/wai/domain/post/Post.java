@@ -1,6 +1,7 @@
 package com.wai.domain.post;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;
@@ -43,8 +44,10 @@ public class Post extends BaseEntity {
     private User user;
 
     @OneToMany(mappedBy = "post")
+    @JsonManagedReference
     private List<Reply> replys = new ArrayList<Reply>();;
     @OneToMany(mappedBy = "post")
+    @JsonManagedReference
     private List<Tag> tags = new ArrayList<Tag>();
 
     @Column(length = 300, nullable = false)

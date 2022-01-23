@@ -1,9 +1,6 @@
 package com.wai.domain.user;
 
-import com.wai.controller.dto.LoginRequestDto;
-
 import javax.transaction.Transactional;
-import java.util.List;
 
 /**
  * packageName : com.wai.domain.user

@@ -26,6 +26,10 @@ public interface PostCustomRepository {
 
     List<Post> readPostsInit(PostRequestDto postRequestDto);
 
+    List<Post> readMoreNewPosts(PostRequestDto postRequestDto);
+
+    List<Post> readMoreOldPosts(PostRequestDto postRequestDto);
+
     @Transactional
     void deleteAllByUserKey(String userKey) ;
 }

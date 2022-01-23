@@ -1,5 +1,6 @@
 package com.wai.domain.userEnneagramTest;
 
+import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -33,9 +34,11 @@ public class UserEnneagramTest {
 
     @ManyToOne
     @JoinColumn(name = "user_id")
+    @JsonBackReference
     private User user;
 
     @ManyToOne
     @JoinColumn(name = "test_id")
+    @JsonBackReference
     private EnneagramTest enneagramTest;
 }

@@ -39,8 +39,10 @@ public class User extends BaseEntity {
     @JsonManagedReference
     private List<Post> posts = new ArrayList<Post>();;
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<Reply> replys = new ArrayList<Reply>();;
     @OneToMany(mappedBy = "user")
+    @JsonManagedReference
     private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
 
     @Column(unique = true, nullable = false, length = 200)
@@ -58,4 +60,19 @@ public class User extends BaseEntity {
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    public void removeEntityReference() {
+        removePosts();
+        removeReplys();
+        removeUserEnneagramTests();
+    }
+    public void removePosts() {
+        this.posts = null;
+    }
+    public void removeReplys() {
+        this.replys = null;
+    }
+    public void removeUserEnneagramTests() {
+        this.userEnneagramTests = null;
+    }
 }

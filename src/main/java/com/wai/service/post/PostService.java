@@ -28,12 +28,26 @@ public class PostService {
     private final PostRepository postRepository;
 
     @Transactional
-    public Long save(PostSaveRequestDto requestDto) {
-        return postRepository.save(requestDto.toEntity()).getPostId();
+    public Post save(PostSaveRequestDto requestDto) {
+        return postRepository.save(requestDto.toEntity());
+    }
+
+    public Post readPost(Long postId) {
+        return postRepository.findById(postId).get();
     }
 
     public List<Post> readInitPosts(PostRequestDto postRequestDto) {
         List<Post> posts =  postRepository.readPostsInit(postRequestDto);
+        return posts;
+    }
+
+    public List<Post> readMoreNewPosts(PostRequestDto postRequestDto) {
+        List<Post> posts =  postRepository.readMoreNewPosts(postRequestDto);
+        return posts;
+    }
+
+    public List<Post> readMoreOldPosts(PostRequestDto postRequestDto) {
+        List<Post> posts =  postRepository.readMoreOldPosts(postRequestDto);
         return posts;
     }
 }

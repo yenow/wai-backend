@@ -71,14 +71,10 @@ class PostServiceTest {
                 .userKey(userKey)
                 .build();
 
-        Long postId = postService.save(postSaveRequestDto);
+        Post post = postService.save(postSaveRequestDto);
 
-        System.out.println(postId);
-
-        Optional<Post> post = postRepository.findById(postId);
-
-        assertEquals(postSaveRequestDto.getTitle(), post.get().getTitle());
-        assertEquals(postSaveRequestDto.getContent(), post.get().getContent());
+        assertEquals(postSaveRequestDto.getTitle(), post.getTitle());
+        assertEquals(postSaveRequestDto.getContent(), post.getContent());
     }
 
     @DisplayName("read posts")
@@ -90,6 +86,7 @@ class PostServiceTest {
                     .user(user)
                     .title("제목" + value + "입니다.")
                     .content("내용" + value + "입니다.")
+                    .isDelete(value == 15 ? true : false)
                     .build();
 
             postList.add(post);
@@ -99,12 +96,8 @@ class PostServiceTest {
         PostRequestDto postRequestDto = PostRequestDto.builder().postsCount(5).build();
         List<Post> posts = postService.readInitPosts(postRequestDto);
 
-        assertEquals(postList.get(14).getPostId(), posts.get(0).getPostId());
-        assertEquals(postList.get(13).getPostId(), posts.get(1).getPostId());
-        System.out.println(posts.get(0).getUser().getUserId());
-        // System.out.println(posts.get(0).getUser().getPosts().get(0).getPostId());
-        System.out.println(posts.get(0).getTitle());
-        System.out.println(posts.get(0).getContent());
+        // postID : 14
+        assertEquals(postList.get(13).getPostId(), posts.get(0).getPostId());
     }
 
     @AfterEach
