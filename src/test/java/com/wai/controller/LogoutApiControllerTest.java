@@ -1,6 +1,6 @@
 package com.wai.controller;
 
-import com.wai.controller.dto.LogoutResponseDto;
+import com.wai.controller.logout.dto.LogoutResponseDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

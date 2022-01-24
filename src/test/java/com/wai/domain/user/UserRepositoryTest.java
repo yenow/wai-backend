@@ -1,6 +1,6 @@
 package com.wai.domain.user;
 
-import com.wai.controller.dto.login.LoginRequestDto;
+import com.wai.controller.login.dto.LoginRequestDto;
 import org.junit.jupiter.api.*;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;

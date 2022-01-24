@@ -2,6 +2,7 @@ package com.wai.domain.reply;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.reply.dto.ReplyResponseDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
 import lombok.*;
@@ -29,6 +30,8 @@ public class Reply extends BaseEntity {
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long replyId;
+    @Column
+    private Long parentReplyId;
 
     @ManyToOne
     @JoinColumn(name = "user_id")
@@ -41,4 +44,12 @@ public class Reply extends BaseEntity {
 
     @Column
     private String replyContent;
+
+    public ReplyResponseDto toDto() {
+        return ReplyResponseDto.builder()
+                .replyId(replyId)
+                .parentReplyId(parentReplyId)
+                .replyContent(replyContent)
+                .build();
+    }
 }

@@ -1,11 +1,15 @@
-package com.wai.service.post;
+package com.wai.service.reply;
 
 import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
+import com.wai.controller.reply.dto.ReplyRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
+import com.wai.domain.reply.Reply;
+import com.wai.domain.reply.ReplyRepository;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
+import com.wai.service.post.PostService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -14,37 +18,42 @@ import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
-import static org.junit.jupiter.api.Assertions.*;
 
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
+import static org.junit.jupiter.api.Assertions.*;
+
 /**
- * packageName : com.wai.service.post
- * fileName : PostServiceTest
+ * packageName : com.wai.service.reply
+ * fileName : ReplyServiceTest
  * author : 윤신영
- * date : 2022-01-20
+ * date : 2022-01-24
  * description :
  * ===========================================================
  * DATE      AUTHOR      NOTE
  * -----------------------------------------------------------
- * 2022-01-20   윤신영     최초 생성
+ * 2022-01-24   윤신영     최초 생성
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class PostServiceTest {
+class ReplyServiceTest {
 
     @Autowired
-    private PostService postService;
+    private ReplyService replyService;
     @Autowired
-    UserRepository userRepository;
+    private UserRepository userRepository;
     @Autowired
-    PostRepository postRepository;
+    private PostRepository postRepository;
+    @Autowired
+    private ReplyRepository replyRepository;
 
     String userKey;
     User user;
+    Post post;
+    List<Reply> replies = new ArrayList<>();
 
     @BeforeEach
     void before() {
@@ -55,12 +64,7 @@ class PostServiceTest {
 
         user = User.builder().userKey(userKey).build();
         userRepository.save(user);
-        System.out.println("==== end before ====");
-    }
 
-    @DisplayName("post 저장 테스트")
-    @Test
-    void savePost() {
         PostSaveRequestDto postSaveRequestDto = PostSaveRequestDto.builder()
                 .title("title")
                 .content("content")
@@ -68,40 +72,34 @@ class PostServiceTest {
                 .userKey(userKey)
                 .build();
 
-        Post post = postService.save(postSaveRequestDto);
+        post = postRepository.save(postSaveRequestDto.toEntity());
 
-        assertEquals(postSaveRequestDto.getTitle(), post.getTitle());
-        assertEquals(postSaveRequestDto.getContent(), post.getContent());
+        System.out.println("==== end before() ====");
     }
 
-    @DisplayName("read posts")
+    @DisplayName("reply 저장 테스트")
     @Test
-    void readPostsInit() {
-        List<Post> postList = new ArrayList<>();
-        IntStream.range(1,16).forEach(value -> {
-            Post post = Post.builder()
-                    .user(user)
-                    .title("제목" + value + "입니다.")
-                    .content("내용" + value + "입니다.")
-                    .isDelete(value == 15 ? true : false)
-                    .build();
+    void saveReply() {
+        ReplyRequestDto replyRequestDto = ReplyRequestDto.builder()
+                .userId(user.getUserId())
+                .postId(post.getPostId())
+                .replyContent("댓글내용입니다.")
+                .build();
 
-            postList.add(post);
-            postRepository.save(post);
-        });
+        Reply reply = replyService.saveReply(replyRequestDto);
+        replies.add(reply);
 
-        PostRequestDto postRequestDto = PostRequestDto.builder().postsCount(5).build();
-        List<Post> posts = postService.readInitPosts(postRequestDto);
-
-        // postID : 14
-        assertEquals(postList.get(13).getPostId(), posts.get(0).getPostId());
+        assertEquals(replyRequestDto.getReplyContent(), reply.getReplyContent());
     }
+
 
     @AfterEach
     void after () {
-        System.out.println("==== start after ====");
+        System.out.println("==== start after() ====");
+        replies.forEach(reply -> {
+            replyRepository.deleteById(reply.getReplyId());
+        });
         postRepository.deleteAllByUserKey(userKey);
         userRepository.deleteByUserKey(userKey);
     }
-
 }

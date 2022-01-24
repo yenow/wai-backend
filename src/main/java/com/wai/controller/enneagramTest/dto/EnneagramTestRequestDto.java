@@ -1,4 +1,4 @@
-package com.wai.controller.dto.enneagramTest;
+package com.wai.controller.enneagramTest.dto;
 
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.enneagramTest.TestType;

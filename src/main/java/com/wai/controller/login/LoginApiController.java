@@ -1,7 +1,7 @@
-package com.wai.controller;
+package com.wai.controller.login;
 
-import com.wai.controller.dto.login.LoginRequestDto;
-import com.wai.controller.dto.login.LoginResponseDto;
+import com.wai.controller.login.dto.LoginRequestDto;
+import com.wai.controller.login.dto.LoginResponseDto;
 import com.wai.controller.dto.SimpleLoginRequestDto;
 import com.wai.service.login.LoginService;
 import lombok.RequiredArgsConstructor;

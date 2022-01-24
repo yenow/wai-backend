@@ -1,4 +1,4 @@
-package com.wai.controller.dto;
+package com.wai.controller.logout.dto;
 
 import lombok.*;
 

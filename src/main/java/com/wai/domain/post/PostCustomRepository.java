@@ -1,6 +1,6 @@
 package com.wai.domain.post;
 
-import com.wai.controller.dto.post.PostRequestDto;
+import com.wai.controller.post.dto.PostRequestDto;
 
 import javax.transaction.Transactional;
 import java.util.List;

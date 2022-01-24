@@ -1,7 +1,7 @@
 package com.wai.service.enneagramTest;
 
 import com.wai.WaiSpringApplication;
-import com.wai.controller.dto.enneagramTest.EnneagramTestRequestDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.TestType;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
@@ -13,8 +13,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * packageName : com.wai.service.enneagramTest

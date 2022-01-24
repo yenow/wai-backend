@@ -1,6 +1,7 @@
 package com.wai.domain.userEnneagramTest;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
+import com.wai.common.BaseEntity;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -26,7 +27,7 @@ import javax.persistence.*;
 @NoArgsConstructor
 @AllArgsConstructor
 @Entity
-public class UserEnneagramTest {
+public class UserEnneagramTest extends BaseEntity {
 
     @Id
     @GeneratedValue(strategy = GenerationType.IDENTITY)

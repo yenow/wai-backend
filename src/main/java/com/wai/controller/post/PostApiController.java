@@ -1,10 +1,8 @@
-package com.wai.controller;
+package com.wai.controller.post;
 
-import com.wai.controller.dto.ResponseDto;
-import com.wai.controller.dto.post.PostRequestDto;
-import com.wai.controller.dto.post.PostResponseDto;
-import com.wai.controller.dto.post.PostSaveRequestDto;
-import com.wai.controller.dto.post.PostSaveResponseDto;
+import com.wai.controller.post.dto.PostRequestDto;
+import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.service.post.PostService;
 import lombok.RequiredArgsConstructor;
@@ -32,30 +30,26 @@ public class PostApiController {
 
     @PostMapping(value = "/api/savePost")
     public PostResponseDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
-        PostResponseDto postResponseDto = PostResponseDto.builder().build();
         Post post = postService.save(postSaveRequestDto);
-        postResponseDto.setByPost(post);
-        return postResponseDto;
+        return post.toDto()
+                .setUser(post.getUser().toDto());
     }
 
     @GetMapping(value = "/api/readPost/{postId}")
     public PostResponseDto readPost(@PathVariable("postId") Long postId) {
-        // @RequestBody PostRequestDto postRequestDto
         Post post = postService.readPost(postId);
-
-        PostResponseDto postResponseDto = PostResponseDto.builder().build();
-        postResponseDto.setByPost(post);
-        return postResponseDto;
+        return post.toDto()
+                .setUser(post.getUser().toDto());
     }
 
     @PostMapping(value = "/api/readInitPosts")
     public List<PostResponseDto> readInitPosts(@RequestBody PostRequestDto postRequestDto) {
         List<PostResponseDto> posts = new ArrayList<PostResponseDto>();
+
         List<Post> findPosts = postService.readInitPosts(postRequestDto);
         findPosts.forEach((post) -> {
-            PostResponseDto postResponseDto = new PostResponseDto();
-            postResponseDto.setByPost(post);
-            posts.add(postResponseDto);
+            posts.add(post.toDto()
+                    .setUser(post.getUser().toDto()));
         });
         return posts;
     }
@@ -63,23 +57,23 @@ public class PostApiController {
     @PostMapping(value = "/api/readMoreNewPosts")
     public List<PostResponseDto> readMoreNewPosts(@RequestBody PostRequestDto postRequestDto) {
         List<PostResponseDto> posts = new ArrayList<PostResponseDto>();
+
         List<Post> findPosts = postService.readMoreNewPosts(postRequestDto);
         findPosts.forEach((post) -> {
-            PostResponseDto postResponseDto = new PostResponseDto();
-            postResponseDto.setByPost(post);
-            posts.add(postResponseDto);
+            posts.add(post.toDto()
+                    .setUser(post.getUser().toDto()));
         });
         return posts;
-    }//readMoreOldPosts
+    }
 
     @PostMapping(value = "/api/readMoreOldPosts")
     public List<PostResponseDto> readMoreOldPosts(@RequestBody PostRequestDto postRequestDto) {
         List<PostResponseDto> posts = new ArrayList<PostResponseDto>();
+
         List<Post> findPosts = postService.readMoreOldPosts(postRequestDto);
         findPosts.forEach((post) -> {
-            PostResponseDto postResponseDto = new PostResponseDto();
-            postResponseDto.setByPost(post);
-            posts.add(postResponseDto);
+            posts.add(post.toDto()
+                    .setUser(post.getUser().toDto()));
         });
         return posts;
     }

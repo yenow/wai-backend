@@ -30,6 +30,8 @@ public class QReply extends EntityPathBase<Reply> {
     //inherited
     public final NumberPath<Long> insert_id = _super.insert_id;
 
+    public final NumberPath<Long> parentReplyId = createNumber("parentReplyId", Long.class);
+
     public final com.wai.domain.post.QPost post;
 
     public final StringPath replyContent = createString("replyContent");

@@ -3,6 +3,7 @@ package com.wai.domain.user;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
@@ -60,6 +61,19 @@ public class User extends BaseEntity {
     @Column(length = 10)
     @Enumerated(EnumType.STRING)
     private Gender gender;
+
+    public UserResponseDto toDto() {
+        return UserResponseDto.builder()
+                .userId(userId)
+                .userKey(userKey)
+                .password(password)
+                .email(email)
+                .phoneNumber(phoneNumber)
+                .nickname(nickname)
+                .birthDay(birthDay)
+                .gender(gender)
+                .build();
+    }
 
     public void removeEntityReference() {
         removePosts();

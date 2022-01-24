@@ -1,6 +1,6 @@
-package com.wai.controller;
+package com.wai.controller.logout;
 
-import com.wai.controller.dto.LogoutResponseDto;
+import com.wai.controller.logout.dto.LogoutResponseDto;
 import com.wai.controller.dto.SessionDto;
 import com.wai.service.logout.LogoutService;
 import lombok.RequiredArgsConstructor;

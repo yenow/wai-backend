@@ -3,6 +3,7 @@ package com.wai.domain.post;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;
 import com.wai.domain.user.User;
@@ -60,4 +61,16 @@ public class Post extends BaseEntity {
     private int clickCount;
     @Column
     private boolean isDelete;
+
+    public PostResponseDto toDto() {
+        return PostResponseDto.builder()
+                .postId(postId)
+                .user(user.toDto())
+                .title(title)
+                .content(content)
+                .author(author)
+                .clickCount(clickCount)
+                .isDelete(isDelete)
+                .build();
+    }
 }

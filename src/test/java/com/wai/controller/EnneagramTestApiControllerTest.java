@@ -1,9 +1,8 @@
 package com.wai.controller;
 
-import com.wai.controller.dto.enneagramTest.EnneagramTestRequestDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.EnneagramTestRepository;
 import com.wai.domain.enneagramTest.TestType;
-import com.wai.domain.post.PostRepository;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -12,8 +11,6 @@ import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * packageName : com.wai.controller

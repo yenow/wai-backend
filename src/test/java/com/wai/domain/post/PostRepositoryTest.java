@@ -31,10 +31,17 @@ class PostRepositoryTest {
     @Autowired
     PostRepository postRepository;
 
-    @After
-    public void cleanup() {
-        postRepository.deleteAll();
-    }
+
+
+
+
+
+
+
+
+
+
+
 
     @Test
     public void 게시글저장_불러오기() {

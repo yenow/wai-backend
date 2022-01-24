@@ -1,6 +1,6 @@
 package com.wai.controller;
 
-import com.wai.controller.dto.LogoutResponseDto;
+import com.wai.controller.logout.dto.LogoutResponseDto;
 import com.wai.controller.dto.SimpleLoginRequestDto;
 import com.wai.domain.user.Gender;
 import com.wai.domain.user.User;
@@ -16,11 +16,9 @@ import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.test.context.junit4.SpringRunner;
 
-import java.util.List;
 import java.util.UUID;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
-import static org.junit.jupiter.api.Assertions.*;
 
 /**
  * packageName : com.wai.controller

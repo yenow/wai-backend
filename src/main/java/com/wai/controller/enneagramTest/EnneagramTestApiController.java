@@ -1,8 +1,7 @@
-package com.wai.controller;
+package com.wai.controller.enneagramTest;
 
 import com.wai.controller.dto.ResponseDto;
-import com.wai.controller.dto.enneagramTest.EnneagramTestRequestDto;
-import com.wai.controller.dto.enneagramTest.EnneagramTestResponseDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
 import com.wai.service.enneagramTest.EnneagramTestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.PostMapping;

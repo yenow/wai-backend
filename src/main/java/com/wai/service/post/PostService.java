@@ -1,7 +1,7 @@
 package com.wai.service.post;
 
-import com.wai.controller.dto.post.PostRequestDto;
-import com.wai.controller.dto.post.PostSaveRequestDto;
+import com.wai.controller.post.dto.PostRequestDto;
+import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import lombok.RequiredArgsConstructor;

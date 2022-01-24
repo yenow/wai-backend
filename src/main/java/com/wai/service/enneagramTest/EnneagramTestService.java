@@ -1,16 +1,13 @@
 package com.wai.service.enneagramTest;
 
-import com.wai.controller.dto.enneagramTest.EnneagramTestRequestDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.enneagramTest.EnneagramTestRepository;
-import com.wai.domain.enneagramTest.TestType;
 import com.wai.domain.user.User;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import com.wai.domain.userEnneagramTest.UserEnneagramTestRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
-
-import javax.persistence.Column;
 
 /**
  * packageName : com.wai.service.enneagramTest

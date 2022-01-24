@@ -1,4 +1,4 @@
-package com.wai.controller.dto.post;
+package com.wai.controller.post.dto;
 
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;

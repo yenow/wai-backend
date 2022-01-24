@@ -3,6 +3,8 @@ package com.wai.dummyData;
 import com.wai.WaiSpringApplication;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
+import com.wai.domain.reply.Reply;
+import com.wai.domain.reply.ReplyRepository;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
 import org.junit.jupiter.api.Test;
@@ -34,6 +36,9 @@ public class DummyData {
     @Autowired
     PostRepository postRepository;
 
+    @Autowired
+    ReplyRepository replyRepository;
+
     @Test
     void insertTestData() {
         String userKey = "8707b210-78f2-11ec-931d-65194c540f17";
@@ -56,6 +61,15 @@ public class DummyData {
             post.setUpdate_id(user.getUserId());
 
             postRepository.save(post);
+
+            Reply reply = Reply
+                    .builder()
+                    .user(user)
+                    .post(post)
+                    .replyContent("작성자의 댓글입니다.")
+                    .build();
+
+            replyRepository.save(reply);
         });
     }
 

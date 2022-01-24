@@ -22,6 +22,7 @@
 //@Getter
 //@Builder
 //@NoArgsConstructor
+//@AllArgsConstructor
 //@Entity
 //public class Enneagram {
 //

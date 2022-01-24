@@ -6,7 +6,7 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import static com.querydsl.jpa.JPAExpressions.select;
 import static com.wai.domain.user.QUser.user;
 
-import com.wai.controller.dto.post.PostRequestDto;
+import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.domain.reply.QReply;
 import com.wai.domain.user.QUser;
 import org.springframework.stereotype.Repository;
@@ -75,7 +75,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                /*.innerJoin(post.replys, reply)*/
+                .innerJoin(post.replys, reply)
                 .where(post.isDelete.ne(true))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
@@ -90,9 +90,9 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                /*.innerJoin(post.replys, reply)*/
+                .innerJoin(post.replys, reply)
                 .where(post.isDelete.ne(true)
-                        .and(post.postId.goe(postRequestDto.getStartPostId())))
+                        .and(post.postId.gt(postRequestDto.getStartPostId())))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
                 .fetch();
@@ -106,9 +106,9 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                /*.innerJoin(post.replys, reply)*/
+                .innerJoin(post.replys, reply)
                 .where(post.isDelete.ne(true)
-                        .and(post.postId.loe(postRequestDto.getLastPostId())))
+                        .and(post.postId.lt(postRequestDto.getLastPostId())))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
                 .fetch();

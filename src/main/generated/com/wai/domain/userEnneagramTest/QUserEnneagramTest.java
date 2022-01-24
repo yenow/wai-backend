@@ -22,9 +22,23 @@ public class QUserEnneagramTest extends EntityPathBase<UserEnneagramTest> {
 
     public static final QUserEnneagramTest userEnneagramTest = new QUserEnneagramTest("userEnneagramTest");
 
+    public final com.wai.common.QBaseEntity _super = new com.wai.common.QBaseEntity(this);
+
     public final com.wai.domain.enneagramTest.QEnneagramTest enneagramTest;
 
     public final NumberPath<Long> id = createNumber("id", Long.class);
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+
+    //inherited
+    public final NumberPath<Long> insert_id = _super.insert_id;
+
+    //inherited
+    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+
+    //inherited
+    public final NumberPath<Long> update_id = _super.update_id;
 
     public final com.wai.domain.user.QUser user;
 

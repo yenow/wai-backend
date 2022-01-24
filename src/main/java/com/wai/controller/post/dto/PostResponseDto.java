@@ -1,6 +1,8 @@
-package com.wai.controller.dto.post;
+package com.wai.controller.post.dto;
 
 import com.wai.controller.dto.ResponseDto;
+import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;
@@ -33,20 +35,22 @@ import java.util.List;
 @AllArgsConstructor
 public class PostResponseDto {
     private Long postId;
-    private User user;
-    private List<Reply> replys;
+    private UserResponseDto user;
+    private List<ReplyResponseDto> replys;
     private List<Tag> tags;
     private String title;
     private String content;
+    private String author;
     private int clickCount;
+    private boolean isDelete;
 
-    public void setByPost(Post post) {
-        post.getUser().removeEntityReference();
+    public PostResponseDto setUser(UserResponseDto user) {
+        this.user = user;
+        return this;
+    }
 
-        this.postId = post.getPostId();
-        this.user = post.getUser();
-        this.title = post.getTitle();
-        this.content = post.getContent();
-        this.clickCount = post.getClickCount();
+    public PostResponseDto setReplys(List<ReplyResponseDto> replys) {
+        this.replys = replys;
+        return this;
     }
 }
