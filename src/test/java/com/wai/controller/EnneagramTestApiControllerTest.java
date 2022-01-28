@@ -41,7 +41,7 @@ class EnneagramTestApiControllerTest {
     void saveEnneagramTest () {
         EnneagramTestRequestDto enneagramTestRequestDto = EnneagramTestRequestDto.builder()
                 .testType(TestType.select)
-                .selectedEnneagramType(1)
+                .myEnneagramType(1)
                 .build();
 
     }

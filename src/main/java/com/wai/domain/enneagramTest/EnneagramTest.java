@@ -40,7 +40,9 @@ public class EnneagramTest extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private TestType testType;
     @Column
-    private int selectedEnneagramType;
+    private int myEnneagramType;
+    @Column
+    private int myWingType;
     @Column
     private int type1Score;
     @Column

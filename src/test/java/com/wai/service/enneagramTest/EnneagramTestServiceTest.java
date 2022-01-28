@@ -53,7 +53,7 @@ class EnneagramTestServiceTest {
     void saveEnneagramTestResult() {
         EnneagramTestRequestDto enneagramTestRequestDto = EnneagramTestRequestDto.builder()
                 .testType(TestType.select)
-                .selectedEnneagramType(1)
+                .myEnneagramType(1)
                 .userId(user.getUserId())
                 .build();
 

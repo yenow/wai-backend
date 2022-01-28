@@ -27,7 +27,7 @@ public class EnneagramTestRequestDto {
     private Long testId;
     private Long userId;
     private TestType testType;
-    private int selectedEnneagramType;
+    private int myEnneagramType;
     private int type1Score;
     private int type2Score;
     private int type3Score;
@@ -42,7 +42,7 @@ public class EnneagramTestRequestDto {
         return EnneagramTest.builder()
                 .testId(testId)
                 .testType(testType)
-                .selectedEnneagramType(selectedEnneagramType)
+                .myEnneagramType(myEnneagramType)
                 .type1Score(type1Score)
                 .type2Score(type2Score)
                 .type3Score(type3Score)

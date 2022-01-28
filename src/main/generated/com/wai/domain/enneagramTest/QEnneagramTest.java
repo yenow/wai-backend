@@ -28,7 +28,9 @@ public class QEnneagramTest extends EntityPathBase<EnneagramTest> {
     //inherited
     public final NumberPath<Long> insert_id = _super.insert_id;
 
-    public final NumberPath<Integer> selectedEnneagramType = createNumber("selectedEnneagramType", Integer.class);
+    public final NumberPath<Integer> myEnneagramType = createNumber("myEnneagramType", Integer.class);
+
+    public final NumberPath<Integer> myWingType = createNumber("myWingType", Integer.class);
 
     public final NumberPath<Long> testId = createNumber("testId", Long.class);
 

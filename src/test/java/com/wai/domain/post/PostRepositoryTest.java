@@ -31,18 +31,6 @@ class PostRepositoryTest {
     @Autowired
     PostRepository postRepository;
 
-
-
-
-
-
-
-
-
-
-
-
-
     @Test
     public void 게시글저장_불러오기() {
         //given (테스트 상황 설정)
