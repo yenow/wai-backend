@@ -26,7 +26,9 @@ public class QWiseSaying extends EntityPathBase<WiseSaying> {
 
     public final StringPath author = createString("author");
 
-    public final NumberPath<Long> Id = createNumber("Id", Long.class);
+    public final com.wai.domain.enneagram.QEnneagram enneagram;
+
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
@@ -62,6 +64,7 @@ public class QWiseSaying extends EntityPathBase<WiseSaying> {
 
     public QWiseSaying(Class<? extends WiseSaying> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
+        this.enneagram = inits.isInitialized("enneagram") ? new com.wai.domain.enneagram.QEnneagram(forProperty("enneagram")) : null;
         this.user = inits.isInitialized("user") ? new com.wai.domain.user.QUser(forProperty("user")) : null;
     }
 

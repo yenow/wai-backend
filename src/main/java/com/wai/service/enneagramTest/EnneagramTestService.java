@@ -27,7 +27,7 @@ public class EnneagramTestService {
     private final EnneagramTestRepository enneagramTestRepository;
     private final UserEnneagramTestRepository userEnneagramTestRepository;
 
-    public void enneagramTest (EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTest saveSelectEnneagramTestResult (EnneagramTestRequestDto enneagramTestRequestDto) {
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
 
         UserEnneagramTest userEnneagramTest = UserEnneagramTest.builder()
@@ -35,9 +35,34 @@ public class EnneagramTestService {
                 .enneagramTest(enneagramTest)
                 .build();
 
-        System.out.println(userEnneagramTest.getEnneagramTest().getTestId());
-        System.out.println(userEnneagramTest.getUser().getUserId());
+        userEnneagramTestRepository.save(userEnneagramTest);
+        return enneagramTest;
+    }
+
+    public EnneagramTest saveSimpleEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
+        enneagramTestRequestDto.CalculateSimpleEnneagramTest();
+        EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
+
+        UserEnneagramTest userEnneagramTest = UserEnneagramTest.builder()
+                .user(User.builder().userId(enneagramTestRequestDto.getUserId()).build())
+                .enneagramTest(enneagramTest)
+                .build();
 
         userEnneagramTestRepository.save(userEnneagramTest);
+        return enneagramTest;
+    }
+
+    public EnneagramTest saveHardEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
+        // 타입을 결정하는 로직필요
+        
+        EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
+
+        UserEnneagramTest userEnneagramTest = UserEnneagramTest.builder()
+                .user(User.builder().userId(enneagramTestRequestDto.getUserId()).build())
+                .enneagramTest(enneagramTest)
+                .build();
+
+        userEnneagramTestRepository.save(userEnneagramTest);
+        return enneagramTest;
     }
 }

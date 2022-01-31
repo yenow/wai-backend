@@ -27,7 +27,9 @@ public class EnneagramTestResponseDto {
     private Long testId;
     private Long userId;
     private TestType testType;
-    private int selectedEnneagramType;
+    private int myEnneagramType;
+    private int myWingType;
+    private String uniqueString;
     private int type1Score;
     private int type2Score;
     private int type3Score;

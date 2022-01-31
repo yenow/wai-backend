@@ -44,12 +44,12 @@ public class PostResponseDto {
     private int clickCount;
     private boolean isDelete;
 
-    public PostResponseDto setUser(UserResponseDto user) {
+    public PostResponseDto setUserDto(UserResponseDto user) {
         this.user = user;
         return this;
     }
 
-    public PostResponseDto setReplys(List<ReplyResponseDto> replys) {
+    public PostResponseDto setReplyDtos(List<ReplyResponseDto> replys) {
         this.replys = replys;
         return this;
     }

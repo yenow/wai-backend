@@ -32,14 +32,14 @@ public class PostApiController {
     public PostResponseDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
         Post post = postService.save(postSaveRequestDto);
         return post.toDto()
-                .setUser(post.getUser().toDto());
+                .setUserDto(post.getUser().toDto());
     }
 
     @GetMapping(value = "/api/readPost/{postId}")
     public PostResponseDto readPost(@PathVariable("postId") Long postId) {
         Post post = postService.readPost(postId);
         return post.toDto()
-                .setUser(post.getUser().toDto());
+                .setUserDto(post.getUser().toDto());
     }
 
     @PostMapping(value = "/api/readInitPosts")
@@ -49,7 +49,7 @@ public class PostApiController {
         List<Post> findPosts = postService.readInitPosts(postRequestDto);
         findPosts.forEach((post) -> {
             posts.add(post.toDto()
-                    .setUser(post.getUser().toDto()));
+                    .setUserDto(post.getUser().toDto()));
         });
         return posts;
     }
@@ -61,7 +61,7 @@ public class PostApiController {
         List<Post> findPosts = postService.readMoreNewPosts(postRequestDto);
         findPosts.forEach((post) -> {
             posts.add(post.toDto()
-                    .setUser(post.getUser().toDto()));
+                    .setUserDto(post.getUser().toDto()));
         });
         return posts;
     }
@@ -73,7 +73,7 @@ public class PostApiController {
         List<Post> findPosts = postService.readMoreOldPosts(postRequestDto);
         findPosts.forEach((post) -> {
             posts.add(post.toDto()
-                    .setUser(post.getUser().toDto()));
+                    .setUserDto(post.getUser().toDto()));
         });
         return posts;
     }

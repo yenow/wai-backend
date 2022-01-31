@@ -33,14 +33,25 @@ class EnneagramQuestionRepositoryTest {
     @Autowired
     private EnneagramQuestionRepository enneagramQuestionRepository;
 
-    @BeforeEach
-    public void beforeEach() {
-        enneagramQuestionRepository.deleteAll();
+//    @BeforeEach
+//    public void beforeEach() {
+//        enneagramQuestionRepository.deleteAll();
+//    }
+
+    @DisplayName("에니어그램 테스트 가져오기")
+    @Test
+    void getTest() {
+
+        List<EnneagramQuestion> list = enneagramQuestionRepository.findByTestType(TestType.hard);
+        System.out.println(list.get(0).getTestType());
+
     }
 
     @DisplayName("에니어그램 테스트 질문 저장하기")
     @Test
     void insertData() {
+        enneagramQuestionRepository.deleteAll();
+
         List<EnneagramQuestion> enneagramQuestions = new ArrayList<>();
 
         /* testType : simple */

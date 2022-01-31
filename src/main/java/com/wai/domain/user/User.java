@@ -3,6 +3,7 @@ package com.wai.domain.user;
 import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
@@ -75,18 +76,8 @@ public class User extends BaseEntity {
                 .build();
     }
 
-    public void removeEntityReference() {
-        removePosts();
-        removeReplys();
-        removeUserEnneagramTests();
-    }
-    public void removePosts() {
-        this.posts = null;
-    }
-    public void removeReplys() {
-        this.replys = null;
-    }
-    public void removeUserEnneagramTests() {
-        this.userEnneagramTests = null;
-    }
+//    public List<PostResponseDto> getPostResponseDtos() {
+//        posts.forEach();
+//    }
+
 }

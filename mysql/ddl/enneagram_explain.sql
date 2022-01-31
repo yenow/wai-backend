@@ -1,7 +1,7 @@
 create table enneagram_explain
 (
     enneagram_type               int not null,
-    basic_explains               varchar(100),
+    basic_explains               MEDIUMTEXT,
     merits                       MEDIUMTEXT,
     demerits                     MEDIUMTEXT,
     human_relations              MEDIUMTEXT,

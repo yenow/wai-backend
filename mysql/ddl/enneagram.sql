@@ -8,5 +8,3 @@ create table enneagram
     simple_explain2          varchar(1000),
     primary key (enneagram_type)
 ) engine = InnoDB;
-
-

@@ -28,6 +28,8 @@ public class EnneagramTestRequestDto {
     private Long userId;
     private TestType testType;
     private int myEnneagramType;
+    private int myWingType;
+    private String uniqueString;
     private int type1Score;
     private int type2Score;
     private int type3Score;
@@ -38,11 +40,44 @@ public class EnneagramTestRequestDto {
     private int type8Score;
     private int type9Score;
 
+    public void CalculateSimpleEnneagramTest() {
+        switch (uniqueString) {
+            case "AX" :
+                myEnneagramType = 7;
+                break;
+            case "AY" :
+                myEnneagramType = 8;
+                break;
+            case "AZ" :
+                myEnneagramType = 3;
+                break;
+            case "BX" :
+                myEnneagramType = 9;
+                break;
+            case "BY" :
+                myEnneagramType = 4;
+                break;
+            case "BZ" :
+                myEnneagramType = 5;
+                break;
+            case "CX" :
+                myEnneagramType = 2;
+                break;
+            case "CY" :
+                myEnneagramType = 6;
+                break;
+            case "CZ" :
+                myEnneagramType = 1;
+                break;
+        }
+    }
+
     public EnneagramTest toEntity() {
         return EnneagramTest.builder()
                 .testId(testId)
                 .testType(testType)
                 .myEnneagramType(myEnneagramType)
+                .myWingType(myWingType)
                 .type1Score(type1Score)
                 .type2Score(type2Score)
                 .type3Score(type3Score)

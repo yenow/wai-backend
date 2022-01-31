@@ -32,7 +32,7 @@ public class ReplyApiController {
         Reply reply = replyService.saveReply(replyRequestDto);
 
         return reply.toDto()
-                .setUser(reply.getUser().toDto())
-                .setPost(reply.getPost().toDto());
+                .setUserDto(reply.getUser().toDto())
+                .setPostDto(reply.getPost().toDto());
     }
 }

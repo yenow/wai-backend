@@ -1,11 +1,16 @@
 package com.wai.domain.enneagram;
 
+import com.wai.domain.wiseSaying.WiseSaying;
+import com.wai.domain.wiseSaying.WiseSayingRepository;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
+
+import java.util.ArrayList;
+import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -26,22 +31,42 @@ class EnneagramRepositoryTest {
 
     @Autowired
     private EnneagramRepository enneagramRepository;
+    @Autowired
+    private WiseSayingRepository wiseSayingRepository;
 
     @BeforeEach
     void beforeEach() {
         enneagramRepository.deleteAll();
+        wiseSayingRepository.deleteAll();
     }
 
     @Test
     void insertData() {
-        enneagramRepository.save(Enneagram.builder()
+        Enneagram type1 = Enneagram.builder()
                 .enneagramType(1)
                 .animalName("소")
                 .imagePath("assets/images/enneagram/cow.png")
                 .subName("개혁가")
                 .simpleExplain("이상적이고 이상적인 유형")
                 .simpleExplain2("원칙적이고, 목표가 분명하며, 자신을 잘 통제하고, 완벽주의 기질이 있다.")
+                .build();
+        enneagramRepository.save(type1);
+
+        List<WiseSaying> type1_list = new ArrayList<>();
+        type1_list.add(WiseSaying.builder()
+                .author("간디")
+                .wiseSaying("나는 고통스러운 경험을 통해서 한가지 교훈을 얻었다. 즉 분노를 억제하면 그것은 에너지로 바뀌고, 그 에너지는 힘으로 변환되어서 세상을 움직일 수 있다는 것이다.")
+                .enneagram(type1)
                 .build());
+        type1_list.add(WiseSaying.builder()
+                .author("잭 콘필드")
+                .wiseSaying("깨어나지 않은 마음은 만물을 그대로 내버려 두지 않고 사사건건 저항한다.")
+                .enneagram(type1)
+                .build());
+
+        type1_list.forEach((wiseSaying) -> {
+            wiseSayingRepository.save(wiseSaying);
+        });
 
         enneagramRepository.save(Enneagram.builder()
                 .enneagramType(2)

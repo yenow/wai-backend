@@ -39,7 +39,7 @@ public class UserResponseDto {
 
     private Long userId;
     private List<PostResponseDto> posts;
-    private List<ReplyResponseDto> reply;
+    private List<ReplyResponseDto> replys;
     private EnneagramTestResponseDto enneagramTest;
     private String userKey;
     private String password;
@@ -49,5 +49,13 @@ public class UserResponseDto {
     private String birthDay;
     private Gender gender;
 
+    public UserResponseDto setPostDtos(List<PostResponseDto> posts) {
+        this.posts = posts;
+        return this;
+    }
 
+    public UserResponseDto setReplyDtos(List<ReplyResponseDto> replys) {
+        this.replys = replys;
+        return this;
+    }
 }

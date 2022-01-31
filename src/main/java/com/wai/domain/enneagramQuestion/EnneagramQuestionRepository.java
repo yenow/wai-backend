@@ -13,5 +13,5 @@ import org.springframework.data.jpa.repository.JpaRepository;
  * -----------------------------------------------------------
  * 2022-01-24   윤신영     최초 생성
  */
-public interface EnneagramQuestionRepository extends JpaRepository<EnneagramQuestion, Long> {
+public interface EnneagramQuestionRepository extends JpaRepository<EnneagramQuestion, Long>, EnneagramQuestionCustomRepository {
 }

@@ -42,4 +42,8 @@ public class EnneagramQuestion {
     @Column(length = 1)
     private String uniqueString;
 
+    public void setQuestionNumberForHardTest(int questionNumber) {
+        this.questionNumber = questionNumber;
+    }
+
 }

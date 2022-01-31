@@ -5,6 +5,7 @@ import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.TestType;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
+import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
@@ -57,6 +58,22 @@ class EnneagramTestServiceTest {
                 .userId(user.getUserId())
                 .build();
 
-        enneagramTestService.enneagramTest(enneagramTestRequestDto);
+        enneagramTestService.saveSelectEnneagramTestResult(enneagramTestRequestDto);
+    }
+
+    @Test
+    void saveSimpleEnneagramTestResult() {
+        EnneagramTestRequestDto enneagramTestRequestDto = EnneagramTestRequestDto.builder()
+                .testType(TestType.simple)
+                .uniqueString("AX")
+                .userId(user.getUserId())
+                .build();
+
+        enneagramTestService.saveSimpleEnneagramTestResult(enneagramTestRequestDto);
+    }
+
+    @AfterEach
+    @Test
+    void afterEach() {
     }
 }

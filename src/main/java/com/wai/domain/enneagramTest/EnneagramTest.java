@@ -2,6 +2,7 @@ package com.wai.domain.enneagramTest;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import lombok.*;
 
@@ -61,4 +62,22 @@ public class EnneagramTest extends BaseEntity {
     private int type8Score;
     @Column
     private int type9Score;
+
+    public EnneagramTestResponseDto toDto() {
+        return EnneagramTestResponseDto.builder()
+                .isSuccess(true)
+                .testType(testType)
+                .myEnneagramType(myEnneagramType)
+                .myWingType(myWingType)
+                .type1Score(type1Score)
+                .type2Score(type2Score)
+                .type3Score(type3Score)
+                .type4Score(type4Score)
+                .type5Score(type5Score)
+                .type6Score(type6Score)
+                .type7Score(type7Score)
+                .type8Score(type8Score)
+                .type9Score(type9Score)
+                .build();
+    }
 }

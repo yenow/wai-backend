@@ -1,9 +1,12 @@
 package com.wai.controller.enneagram.dto;
 
 import com.wai.domain.enneagramTest.TestType;
+import com.wai.domain.wiseSaying.WiseSaying;
 import lombok.*;
 
 import javax.persistence.Column;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName : com.wai.controller.dto.enneagramTest
@@ -24,6 +27,7 @@ import javax.persistence.Column;
 @AllArgsConstructor
 public class EnneagramResponseDto {
     private boolean isSuccess;
+    private List<WiseSaying> wiseSayings =  new ArrayList<>();
     private Integer enneagramType;
     private String animalName;
     private String imagePath;

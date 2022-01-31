@@ -17,13 +17,12 @@ import lombok.Getter;
  * 2021-12-23   윤신영     최초 생성
  */
 @Getter
-@JsonFormat(shape = JsonFormat.Shape.OBJECT)
+@JsonFormat(shape = JsonFormat.Shape.STRING)
 public enum TestType {
-    select("직접선택"), simple("간단테스트"), hard("정밀테스트");
+    select, simple, hard;
 
-    final private String name;
-
-    TestType(String name){
-        this.name = name;
+    @JsonCreator
+    public static TestType from(String s) {
+        return TestType.valueOf(s.toLowerCase());
     }
 }

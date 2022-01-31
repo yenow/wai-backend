@@ -65,7 +65,6 @@ public class Post extends BaseEntity {
     public PostResponseDto toDto() {
         return PostResponseDto.builder()
                 .postId(postId)
-                .user(user.toDto())
                 .title(title)
                 .content(content)
                 .author(author)

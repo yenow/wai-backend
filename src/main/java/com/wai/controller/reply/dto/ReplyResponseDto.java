@@ -29,12 +29,12 @@ public class ReplyResponseDto {
     private PostResponseDto post;
     private String replyContent;
 
-    public ReplyResponseDto setUser(UserResponseDto user) {
+    public ReplyResponseDto setUserDto(UserResponseDto user) {
         this.user = user;
         return this;
     }
 
-    public ReplyResponseDto setPost(PostResponseDto post) {
+    public ReplyResponseDto setPostDto(PostResponseDto post) {
         this.post = post;
         return this;
     }

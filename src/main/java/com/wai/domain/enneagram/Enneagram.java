@@ -1,14 +1,16 @@
 package com.wai.domain.enneagram;
 
+import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.controller.enneagram.dto.EnneagramResponseDto;
+import com.wai.domain.wiseSaying.WiseSaying;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.persistence.Column;
-import javax.persistence.Entity;
-import javax.persistence.Id;
+import javax.persistence.*;
+import java.util.ArrayList;
+import java.util.List;
 
 /**
  * packageName : com.wai.domain.enneagram
@@ -31,6 +33,10 @@ public class Enneagram {
     @Id
     private Integer enneagramType;
 
+    @OneToMany(mappedBy = "enneagram")
+    @JsonManagedReference
+    private List<WiseSaying> wiseSayings = new ArrayList<>();
+
     @Column
     private String animalName;
     @Column
@@ -45,6 +51,7 @@ public class Enneagram {
     public EnneagramResponseDto toDto() {
         return EnneagramResponseDto.builder()
                 .enneagramType(enneagramType)
+                .wiseSayings(wiseSayings)
                 .animalName(animalName)
                 .imagePath(imagePath)
                 .simpleExplain(simpleExplain)
