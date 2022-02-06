@@ -113,4 +113,9 @@ public class LoginServiceImpl implements LoginService {
     public Long saveUserKey(String userKey) {
         return userRepository.save(User.builder().userKey(userKey).build()).getUserId();
     }
+
+    @Override
+    public void registerSession(LoginRequestDto loginRequestDto, HttpSession session) {
+
+    }
 }

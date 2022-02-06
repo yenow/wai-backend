@@ -57,8 +57,8 @@ public class DummyData {
                     .build();
 
 
-            post.setInsert_id(user.getUserId());
-            post.setUpdate_id(user.getUserId());
+            post.setInsertId(user.getUserId());
+            post.setUpdateId(user.getUserId());
 
             postRepository.save(post);
 

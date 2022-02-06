@@ -1,10 +1,9 @@
 package com.wai.domain.user;
 
-import com.fasterxml.jackson.annotation.JsonIgnoreProperties;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
-import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.user.dto.UserResponseDto;
+import com.wai.domain.likey.Likey;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
@@ -46,6 +45,9 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Likey> likeys = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 200)
     private String userKey;
@@ -73,11 +75,19 @@ public class User extends BaseEntity {
                 .nickname(nickname)
                 .birthDay(birthDay)
                 .gender(gender)
+                .myEnneagramType(findLastMyEnneagramType())
                 .build();
     }
 
-//    public List<PostResponseDto> getPostResponseDtos() {
-//        posts.forEach();
-//    }
+    public Integer findLastMyEnneagramType() {
+        if (userEnneagramTests != null) {
+            return userEnneagramTests.size() > 0 ? userEnneagramTests.get(userEnneagramTests.size()-1).getEnneagramTest().getMyEnneagramType() : null;
+        } else {
+            return null;
+        }
+    }
 
+    public void saveNickname(String nickname) {
+        this.nickname = nickname;
+    }
 }

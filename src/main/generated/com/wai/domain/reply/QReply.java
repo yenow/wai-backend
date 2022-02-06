@@ -25,10 +25,10 @@ public class QReply extends EntityPathBase<Reply> {
     public final com.wai.common.QBaseEntity _super = new com.wai.common.QBaseEntity(this);
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
 
     //inherited
-    public final NumberPath<Long> insert_id = _super.insert_id;
+    public final NumberPath<Long> insertId = _super.insertId;
 
     public final NumberPath<Long> parentReplyId = createNumber("parentReplyId", Long.class);
 
@@ -39,10 +39,10 @@ public class QReply extends EntityPathBase<Reply> {
     public final NumberPath<Long> replyId = createNumber("replyId", Long.class);
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     //inherited
-    public final NumberPath<Long> update_id = _super.update_id;
+    public final NumberPath<Long> updateId = _super.updateId;
 
     public final com.wai.domain.user.QUser user;
 

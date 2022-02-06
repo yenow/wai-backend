@@ -22,4 +22,5 @@ import lombok.*;
 public class UserRequestDto {
     private Long userId;
     private String userKey;
+    private String nickname;
 }

@@ -2,7 +2,7 @@ create table enneagram_test
 (
     test_id                 bigint not null auto_increment,
     my_enneagram_type       integer,
-    my_wing_type        integer,
+    my_wing_type            integer,
     test_type               varchar(255),
     type1score              integer,
     type2score              integer,

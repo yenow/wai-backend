@@ -5,6 +5,8 @@ import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.enneagramTest.TestType;
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 /**
  * packageName : com.wai.controller.dto.enneagramTest
  * fileName : EnneagramTestResponseDto
@@ -27,16 +29,17 @@ public class EnneagramTestResponseDto {
     private Long testId;
     private Long userId;
     private TestType testType;
-    private int myEnneagramType;
-    private int myWingType;
+    private Integer myEnneagramType;
+    private Integer myWingType;
     private String uniqueString;
-    private int type1Score;
-    private int type2Score;
-    private int type3Score;
-    private int type4Score;
-    private int type5Score;
-    private int type6Score;
-    private int type7Score;
-    private int type8Score;
-    private int type9Score;
+    private Integer type1Score;
+    private Integer type2Score;
+    private Integer type3Score;
+    private Integer type4Score;
+    private Integer type5Score;
+    private Integer type6Score;
+    private Integer type7Score;
+    private Integer type8Score;
+    private Integer type9Score;
+    private LocalDateTime insertDate;
 }

@@ -4,6 +4,9 @@ import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.enneagramTest.TestType;
 import lombok.*;
 
+import java.util.ArrayList;
+import java.util.List;
+
 /**
  * packageName : com.wai.controller.dto.enneagramTest
  * fileName : EnneagramTestRequestDto
@@ -40,7 +43,46 @@ public class EnneagramTestRequestDto {
     private int type8Score;
     private int type9Score;
 
-    public void CalculateSimpleEnneagramTest() {
+    public void calculateHardEnneagramTest() {
+
+        int maxScoreEnneagramType = 0;
+        int maxScore = 0;
+        int[] array =  {0 ,type1Score, type2Score, type3Score, type4Score, type5Score, type6Score, type7Score, type8Score, type9Score};
+
+        /* 에니어그램 유형 찾기 */
+        for (int enneagramIndex = 1; enneagramIndex <array.length; enneagramIndex++) {
+
+            if (array[enneagramIndex] == maxScore) {
+
+                if (array[getType(enneagramIndex + 1)] + array[getType(enneagramIndex - 1)] >
+                        array[getType(maxScoreEnneagramType + 1)] + array[getType(maxScoreEnneagramType - 1)]) {
+                    maxScore = array[enneagramIndex];
+                    maxScoreEnneagramType = enneagramIndex;
+                }
+
+            } else {
+
+                if (array[enneagramIndex] > maxScore ) {
+                    maxScore = array[enneagramIndex];
+                    maxScoreEnneagramType = enneagramIndex;
+                }
+            }
+        }
+        this.myEnneagramType = maxScoreEnneagramType;
+
+        /* 날개 유형 찾기 */
+        if (array[getType(maxScoreEnneagramType + 1)] > array[getType(maxScoreEnneagramType - 1)]) {
+            this.myWingType = maxScoreEnneagramType + 1;
+        } else {
+            this.myWingType = maxScoreEnneagramType - 1;
+        }
+    }
+
+    private int getType(int index) {
+        return index % 10;
+    }
+
+    public void calculateSimpleEnneagramTest() {
         switch (uniqueString) {
             case "AX" :
                 myEnneagramType = 7;
@@ -85,7 +127,7 @@ public class EnneagramTestRequestDto {
                 .type5Score(type5Score)
                 .type6Score(type6Score)
                 .type7Score(type7Score)
-                .type7Score(type8Score)
+                .type8Score(type8Score)
                 .type9Score(type9Score)
                 .build();
     }

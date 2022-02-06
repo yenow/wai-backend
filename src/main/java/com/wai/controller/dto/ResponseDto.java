@@ -2,6 +2,8 @@ package com.wai.controller.dto;
 
 import lombok.*;
 
+import java.time.LocalDateTime;
+
 /**
  * packageName : com.wai.controller.dto
  * fileName : ResponseDto
@@ -15,12 +17,12 @@ import lombok.*;
  */
 @Getter
 @Setter
-@Builder
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ResponseDto<T> {
-    boolean isSuccess;
-    String errorMessage;
-    T result;
+public class ResponseDto {
+    private boolean isSuccess;
+    private Integer errorCode;
+    private String errorMessage;
+    private LocalDateTime nowServerTime = LocalDateTime.now();
 }

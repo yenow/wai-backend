@@ -1,15 +1,21 @@
 package com.wai.controller.post;
 
+import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
 import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
+import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.post.Post;
 import com.wai.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
+import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * packageName : com.wai.web
@@ -37,44 +43,37 @@ public class PostApiController {
 
     @GetMapping(value = "/api/readPost/{postId}")
     public PostResponseDto readPost(@PathVariable("postId") Long postId) {
-        Post post = postService.readPost(postId);
-        return post.toDto()
-                .setUserDto(post.getUser().toDto());
+        PostResponseDto postResponseDto = postService.readPost(postId);
+        return postResponseDto;
     }
 
     @PostMapping(value = "/api/readInitPosts")
     public List<PostResponseDto> readInitPosts(@RequestBody PostRequestDto postRequestDto) {
-        List<PostResponseDto> posts = new ArrayList<PostResponseDto>();
 
-        List<Post> findPosts = postService.readInitPosts(postRequestDto);
-        findPosts.forEach((post) -> {
-            posts.add(post.toDto()
-                    .setUserDto(post.getUser().toDto()));
-        });
-        return posts;
+        return postService.readInitPosts(postRequestDto);
     }
 
     @PostMapping(value = "/api/readMoreNewPosts")
     public List<PostResponseDto> readMoreNewPosts(@RequestBody PostRequestDto postRequestDto) {
-        List<PostResponseDto> posts = new ArrayList<PostResponseDto>();
 
-        List<Post> findPosts = postService.readMoreNewPosts(postRequestDto);
-        findPosts.forEach((post) -> {
-            posts.add(post.toDto()
-                    .setUserDto(post.getUser().toDto()));
-        });
-        return posts;
+        return postService.readMoreNewPosts(postRequestDto);
     }
 
     @PostMapping(value = "/api/readMoreOldPosts")
     public List<PostResponseDto> readMoreOldPosts(@RequestBody PostRequestDto postRequestDto) {
-        List<PostResponseDto> posts = new ArrayList<PostResponseDto>();
 
-        List<Post> findPosts = postService.readMoreOldPosts(postRequestDto);
-        findPosts.forEach((post) -> {
-            posts.add(post.toDto()
-                    .setUserDto(post.getUser().toDto()));
-        });
-        return posts;
+        return postService.readMoreOldPosts(postRequestDto);
+    }
+
+    @GetMapping(value = "/api/addLikey/{postId}/{userId}")
+    public PostResponseDto addLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
+        postService.addLikey(postId, userId);
+        return PostResponseDto.builder().build();
+    }
+
+    @GetMapping(value = "/api/removeLikey/{postId}/{userId}")
+    public PostResponseDto removeLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
+        postService.removeLikey(postId, userId);
+        return PostResponseDto.builder().build();
     }
 }

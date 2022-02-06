@@ -24,5 +24,5 @@ public class PostRequestDto {
     private Long postId;
     private int postsCount;
     private Long startPostId;
-    private Long LastPostId;
+    private Long endPostId;
 }

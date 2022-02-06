@@ -31,12 +31,14 @@ public class QPost extends EntityPathBase<Post> {
     public final StringPath content = createString("content");
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
 
     //inherited
-    public final NumberPath<Long> insert_id = _super.insert_id;
+    public final NumberPath<Long> insertId = _super.insertId;
 
     public final BooleanPath isDelete = createBoolean("isDelete");
+
+    public final ListPath<com.wai.domain.likey.Likey, com.wai.domain.likey.QLikey> likeys = this.<com.wai.domain.likey.Likey, com.wai.domain.likey.QLikey>createList("likeys", com.wai.domain.likey.Likey.class, com.wai.domain.likey.QLikey.class, PathInits.DIRECT2);
 
     public final NumberPath<Long> postId = createNumber("postId", Long.class);
 
@@ -47,10 +49,10 @@ public class QPost extends EntityPathBase<Post> {
     public final StringPath title = createString("title");
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     //inherited
-    public final NumberPath<Long> update_id = _super.update_id;
+    public final NumberPath<Long> updateId = _super.updateId;
 
     public final com.wai.domain.user.QUser user;
 

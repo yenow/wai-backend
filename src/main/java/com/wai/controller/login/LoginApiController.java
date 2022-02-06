@@ -1,5 +1,6 @@
 package com.wai.controller.login;
 
+import com.wai.controller.dto.ResponseDto;
 import com.wai.controller.login.dto.LoginRequestDto;
 import com.wai.controller.login.dto.LoginResponseDto;
 import com.wai.controller.dto.SimpleLoginRequestDto;
@@ -37,6 +38,15 @@ public class LoginApiController {
         loginService.checkLogin(loginRequestDto, loginResponseDto, session);
         return loginResponseDto;
     }
+
+//    @PostMapping(value = "/api/registerSession")
+//    public ResponseDto registerSession(@RequestBody LoginRequestDto loginRequestDto, HttpServletRequest request) {
+//        ResponseDto responseDto = new ResponseDto();
+//        HttpSession session = request.getSession();
+//        loginService.registerSession(loginRequestDto, session);
+//
+//        return responseDto;
+//    }
 
     @PostMapping(value = "/api/saveUserKey")
     public Long saveUserKey(@RequestBody String userKey) {

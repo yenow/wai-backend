@@ -29,10 +29,12 @@ public class QUser extends EntityPathBase<User> {
     public final EnumPath<Gender> gender = createEnum("gender", Gender.class);
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
 
     //inherited
-    public final NumberPath<Long> insert_id = _super.insert_id;
+    public final NumberPath<Long> insertId = _super.insertId;
+
+    public final ListPath<com.wai.domain.likey.Likey, com.wai.domain.likey.QLikey> likeys = this.<com.wai.domain.likey.Likey, com.wai.domain.likey.QLikey>createList("likeys", com.wai.domain.likey.Likey.class, com.wai.domain.likey.QLikey.class, PathInits.DIRECT2);
 
     public final StringPath nickname = createString("nickname");
 
@@ -45,10 +47,10 @@ public class QUser extends EntityPathBase<User> {
     public final ListPath<com.wai.domain.reply.Reply, com.wai.domain.reply.QReply> replys = this.<com.wai.domain.reply.Reply, com.wai.domain.reply.QReply>createList("replys", com.wai.domain.reply.Reply.class, com.wai.domain.reply.QReply.class, PathInits.DIRECT2);
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     //inherited
-    public final NumberPath<Long> update_id = _super.update_id;
+    public final NumberPath<Long> updateId = _super.updateId;
 
     public final ListPath<com.wai.domain.userEnneagramTest.UserEnneagramTest, com.wai.domain.userEnneagramTest.QUserEnneagramTest> userEnneagramTests = this.<com.wai.domain.userEnneagramTest.UserEnneagramTest, com.wai.domain.userEnneagramTest.QUserEnneagramTest>createList("userEnneagramTests", com.wai.domain.userEnneagramTest.UserEnneagramTest.class, com.wai.domain.userEnneagramTest.QUserEnneagramTest.class, PathInits.DIRECT2);
 

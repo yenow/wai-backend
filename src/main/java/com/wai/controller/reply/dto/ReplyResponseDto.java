@@ -1,9 +1,13 @@
 package com.wai.controller.reply.dto;
 
+import com.wai.controller.dto.ResponseDto;
 import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.user.User;
 import lombok.*;
+import org.apache.tomcat.jni.Local;
+
+import java.time.LocalDateTime;
 
 /**
  * packageName : com.wai.controller.reply.dto
@@ -22,12 +26,14 @@ import lombok.*;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplyResponseDto {
+public class ReplyResponseDto extends ResponseDto {
     private Long replyId;
     private Long parentReplyId;
+    private String replyContent;
+    private LocalDateTime insertDate;
+
     private UserResponseDto user;
     private PostResponseDto post;
-    private String replyContent;
 
     public ReplyResponseDto setUserDto(UserResponseDto user) {
         this.user = user;

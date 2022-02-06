@@ -41,31 +41,32 @@ public class EnneagramTest extends BaseEntity {
     @Enumerated(value = EnumType.STRING)
     private TestType testType;
     @Column
-    private int myEnneagramType;
+    private Integer myEnneagramType;
+    @Column(nullable = true)
+    private Integer myWingType;
     @Column
-    private int myWingType;
+    private Integer type1Score;
     @Column
-    private int type1Score;
+    private Integer type2Score;
     @Column
-    private int type2Score;
+    private Integer type3Score;
     @Column
-    private int type3Score;
+    private Integer type4Score;
     @Column
-    private int type4Score;
+    private Integer type5Score;
     @Column
-    private int type5Score;
+    private Integer type6Score;
     @Column
-    private int type6Score;
+    private Integer type7Score;
     @Column
-    private int type7Score;
+    private Integer type8Score;
     @Column
-    private int type8Score;
-    @Column
-    private int type9Score;
+    private Integer type9Score;
 
     public EnneagramTestResponseDto toDto() {
         return EnneagramTestResponseDto.builder()
                 .isSuccess(true)
+                .testId(testId)
                 .testType(testType)
                 .myEnneagramType(myEnneagramType)
                 .myWingType(myWingType)
@@ -78,6 +79,7 @@ public class EnneagramTest extends BaseEntity {
                 .type7Score(type7Score)
                 .type8Score(type8Score)
                 .type9Score(type9Score)
+                .insertDate(getInsertDate())
                 .build();
     }
 }

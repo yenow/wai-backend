@@ -4,6 +4,8 @@ import com.querydsl.jpa.impl.JPAQueryFactory;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 
+import java.util.Optional;
+
 /**
  * packageName : com.wai.domain.user
  * fileName : UserCustromRepositoryImpl
@@ -46,6 +48,17 @@ public class UserCustromRepositoryImpl implements UserCustomRepository {
         return jpaQueryFactory.selectFrom(user)
                 .where(user.userKey.eq(userKey))
                 .fetchOne();
+    }
+
+    @Override
+    public Optional<User> findByNickname(String nickname) {
+        QUser user = QUser.user;
+
+        return Optional.ofNullable(
+            jpaQueryFactory.selectFrom(user)
+                .where(user.nickname.eq(nickname))
+                .fetchOne()
+        );
     }
 
     @Override

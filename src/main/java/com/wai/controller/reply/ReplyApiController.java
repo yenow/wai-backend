@@ -6,9 +6,9 @@ import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.reply.Reply;
 import com.wai.service.reply.ReplyService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 /**
  * packageName : com.wai.controller
@@ -29,10 +29,11 @@ public class ReplyApiController {
 
     @PostMapping(value = "/api/saveReply")
     public ReplyResponseDto saveReply(@RequestBody ReplyRequestDto replyRequestDto) {
-        Reply reply = replyService.saveReply(replyRequestDto);
+        return replyService.saveReply(replyRequestDto);
+    }
 
-        return reply.toDto()
-                .setUserDto(reply.getUser().toDto())
-                .setPostDto(reply.getPost().toDto());
+    @GetMapping(value = "/api/readReplysByPostId/{postId}")
+    public List<ReplyResponseDto> readReplys(@PathVariable(value = "postId") Long postId) {
+        return replyService.readReplysByPostId(postId);
     }
 }

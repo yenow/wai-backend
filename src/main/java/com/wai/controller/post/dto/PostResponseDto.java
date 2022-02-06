@@ -13,6 +13,7 @@ import javax.persistence.Column;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.OneToMany;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -33,16 +34,21 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostResponseDto {
+public class PostResponseDto extends  ResponseDto {
     private Long postId;
-    private UserResponseDto user;
-    private List<ReplyResponseDto> replys;
-    private List<Tag> tags;
     private String title;
     private String content;
     private String author;
     private int clickCount;
+    private int likeyCount;
     private boolean isDelete;
+    private LocalDateTime insertDate;
+    private Long insertId;
+
+    private UserResponseDto user;
+    private List<ReplyResponseDto> replys;
+    private List<Tag> tags;
+    private List<Long> likeys;
 
     public PostResponseDto setUserDto(UserResponseDto user) {
         this.user = user;

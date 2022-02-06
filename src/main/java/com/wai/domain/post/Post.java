@@ -4,6 +4,8 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
 import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.domain.likey.Likey;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;
 import com.wai.domain.user.User;
@@ -13,7 +15,9 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 import java.util.ArrayList;
+import java.util.Collections;
 import java.util.List;
+import java.util.stream.Collectors;
 
 /**
  * packageName : com.wai.domain.posts
@@ -49,7 +53,11 @@ public class Post extends BaseEntity {
     private List<Reply> replys = new ArrayList<Reply>();;
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
+    private List<Likey> likeys = new ArrayList<>();
+    @OneToMany(mappedBy = "post")
+    @JsonManagedReference
     private List<Tag> tags = new ArrayList<Tag>();
+
 
     @Column(length = 300, nullable = false)
     private String title;
@@ -63,13 +71,36 @@ public class Post extends BaseEntity {
     private boolean isDelete;
 
     public PostResponseDto toDto() {
+        // reverseReplys();
         return PostResponseDto.builder()
                 .postId(postId)
                 .title(title)
                 .content(content)
                 .author(author)
                 .clickCount(clickCount)
+                .likeyCount(likeys != null ? likeys.size() : 0)
+                .likeys(likeys.stream().map(likey -> likey.getUser().getUserId()).collect(Collectors.toList()))
                 .isDelete(isDelete)
+                .insertDate(getInsertDate())
+                .insertId(getInsertId())
                 .build();
+    }
+
+
+
+    public List<ReplyResponseDto> getReplyDtos() {
+        return replys.stream().map(reply ->
+                reply.toDto().setUserDto(reply.getUser().toDto())).collect(Collectors.toList());
+    }
+
+    public Post reverseReplys() {
+        if (replys != null) {
+            Collections.reverse(replys);
+        }
+        return this;
+    }
+
+    public void increaseClickCount() {
+        clickCount = clickCount + 1;
     }
 }

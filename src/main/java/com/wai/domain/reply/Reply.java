@@ -50,6 +50,7 @@ public class Reply extends BaseEntity {
                 .replyId(replyId)
                 .parentReplyId(parentReplyId)
                 .replyContent(replyContent)
+                .insertDate(getInsertDate())
                 .build();
     }
 }

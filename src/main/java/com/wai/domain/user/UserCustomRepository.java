@@ -1,6 +1,7 @@
 package com.wai.domain.user;
 
 import javax.transaction.Transactional;
+import java.util.Optional;
 
 /**
  * packageName : com.wai.domain.user
@@ -20,6 +21,8 @@ public interface UserCustomRepository {
     User findByPhoneNumber(String id);
 
     User findByUserKey(String userKey);
+
+    Optional<User> findByNickname(String nickname);
 
     @Transactional
     void deleteByUserKey(String userKey);

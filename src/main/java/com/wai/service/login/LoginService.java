@@ -23,4 +23,6 @@ public interface LoginService {
     LoginResponseDto simpleLogin(SimpleLoginRequestDto simpleLoginRequestDto, HttpSession httpSession);
 
     Long saveUserKey(String userKey);
+
+    void registerSession(LoginRequestDto loginRequestDto, HttpSession session);
 }

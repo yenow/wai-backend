@@ -25,13 +25,15 @@ import lombok.*;
 @AllArgsConstructor
 public class ReplyRequestDto {
 
+    private Long replyId;
+    private Long parentReplyId;
     private Long userId;
     private Long postId;
-    private Long parentReplyId;
     private String replyContent;
 
     public Reply toEntity() {
         return Reply.builder()
+                .replyId(replyId)
                 .user(User.builder().userId(userId).build())
                 .post(Post.builder().postId(postId).build())
                 .parentReplyId(parentReplyId)

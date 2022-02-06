@@ -31,16 +31,16 @@ public class QFollow extends EntityPathBase<Follow> {
     public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
 
     //inherited
-    public final NumberPath<Long> insert_id = _super.insert_id;
+    public final NumberPath<Long> insertId = _super.insertId;
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     //inherited
-    public final NumberPath<Long> update_id = _super.update_id;
+    public final NumberPath<Long> updateId = _super.updateId;
 
     public QFollow(String variable) {
         this(Follow.class, forVariable(variable), INITS);

@@ -7,8 +7,10 @@ import static com.querydsl.jpa.JPAExpressions.select;
 import static com.wai.domain.user.QUser.user;
 
 import com.wai.controller.post.dto.PostRequestDto;
+import com.wai.domain.enneagramTest.QEnneagramTest;
 import com.wai.domain.reply.QReply;
 import com.wai.domain.user.QUser;
+import com.wai.domain.userEnneagramTest.QUserEnneagramTest;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
@@ -71,11 +73,9 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     public List<Post> readPostsInit(PostRequestDto postRequestDto) {
         QPost post = QPost.post;
         QUser user = QUser.user;
-        QReply reply = QReply.reply;
 
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                .innerJoin(post.replys, reply)
                 .where(post.isDelete.ne(true))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
@@ -86,11 +86,9 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     public List<Post> readMoreNewPosts(PostRequestDto postRequestDto) {
         QPost post = QPost.post;
         QUser user = QUser.user;
-        QReply reply = QReply.reply;
 
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                .innerJoin(post.replys, reply)
                 .where(post.isDelete.ne(true)
                         .and(post.postId.gt(postRequestDto.getStartPostId())))
                 .orderBy(post.postId.desc())
@@ -102,13 +100,11 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     public List<Post> readMoreOldPosts(PostRequestDto postRequestDto) {
         QPost post = QPost.post;
         QUser user = QUser.user;
-        QReply reply = QReply.reply;
 
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                .innerJoin(post.replys, reply)
                 .where(post.isDelete.ne(true)
-                        .and(post.postId.lt(postRequestDto.getLastPostId())))
+                        .and(post.postId.lt(postRequestDto.getEndPostId())))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
                 .fetch();

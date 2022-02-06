@@ -3,6 +3,7 @@ package com.wai.service.reply;
 import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.controller.reply.dto.ReplyRequestDto;
+import com.wai.controller.reply.dto.ReplyResponseDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import com.wai.domain.reply.Reply;
@@ -86,8 +87,7 @@ class ReplyServiceTest {
                 .replyContent("댓글내용입니다.")
                 .build();
 
-        Reply reply = replyService.saveReply(replyRequestDto);
-        replies.add(reply);
+        ReplyResponseDto reply = replyService.saveReply(replyRequestDto);
 
         assertEquals(replyRequestDto.getReplyContent(), reply.getReplyContent());
     }

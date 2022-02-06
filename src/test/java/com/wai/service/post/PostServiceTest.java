@@ -1,6 +1,7 @@
 package com.wai.service.post;
 
 import com.wai.controller.post.dto.PostRequestDto;
+import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
@@ -91,10 +92,35 @@ class PostServiceTest {
         });
 
         PostRequestDto postRequestDto = PostRequestDto.builder().postsCount(5).build();
-        List<Post> posts = postService.readInitPosts(postRequestDto);
+        List<PostResponseDto> postDtos = postService.readInitPosts(postRequestDto);
 
         // postID : 14
-        assertEquals(postList.get(13).getPostId(), posts.get(0).getPostId());
+        assertEquals(postList.get(13).getPostId(), postDtos.get(0).getPostId());
+    }
+
+    @DisplayName("새로운 게시글 가져오기")
+    @Test
+    void readMoreNewPosts() {
+        IntStream.range(1,16).forEach(value -> {
+            Post post = Post.builder()
+                    .user(user)
+                    .title("제목" + value + "입니다. 유저 : " + user.getUserId())
+                    .content("내용" + value + "입니다.")
+                    .isDelete(value == 15 ? true : false)
+                    .build();
+
+            postRepository.save(post);
+        });
+
+        PostRequestDto postRequestDto = PostRequestDto.builder()
+                .postsCount(10)
+                .startPostId(14L)
+                .endPostId(5L)
+                .build();
+
+        List<PostResponseDto> postDtos = postService.readMoreNewPosts(postRequestDto);
+        postDtos.stream().forEach(post -> System.out.println(post));
+
     }
 
     @AfterEach

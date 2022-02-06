@@ -40,7 +40,7 @@ public class EnneagramTestService {
     }
 
     public EnneagramTest saveSimpleEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
-        enneagramTestRequestDto.CalculateSimpleEnneagramTest();
+        enneagramTestRequestDto.calculateSimpleEnneagramTest();
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
 
         UserEnneagramTest userEnneagramTest = UserEnneagramTest.builder()
@@ -53,7 +53,7 @@ public class EnneagramTestService {
     }
 
     public EnneagramTest saveHardEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
-        // 타입을 결정하는 로직필요
+        enneagramTestRequestDto.calculateHardEnneagramTest();
         
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
 

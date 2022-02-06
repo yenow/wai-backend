@@ -25,10 +25,10 @@ public class QTag extends EntityPathBase<Tag> {
     public final com.wai.common.QBaseEntity _super = new com.wai.common.QBaseEntity(this);
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> insert_date = _super.insert_date;
+    public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
 
     //inherited
-    public final NumberPath<Long> insert_id = _super.insert_id;
+    public final NumberPath<Long> insertId = _super.insertId;
 
     public final com.wai.domain.post.QPost post;
 
@@ -37,10 +37,10 @@ public class QTag extends EntityPathBase<Tag> {
     public final StringPath tagName = createString("tagName");
 
     //inherited
-    public final DateTimePath<java.time.LocalDateTime> update_date = _super.update_date;
+    public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
 
     //inherited
-    public final NumberPath<Long> update_id = _super.update_id;
+    public final NumberPath<Long> updateId = _super.updateId;
 
     public QTag(String variable) {
         this(Tag.class, forVariable(variable), INITS);

@@ -35,14 +35,14 @@ public abstract class BaseEntity {
 
     @CreatedBy
     @Column(updatable = false)
-    private Long insert_id;
+    private Long insertId;
 
     @CreatedDate
-    private LocalDateTime insert_date;
+    private LocalDateTime insertDate;
 
     @LastModifiedBy
-    private Long update_id;
+    private Long updateId;
 
     @LastModifiedDate
-    private LocalDateTime update_date;
+    private LocalDateTime updateDate;
 }
