@@ -1,14 +1,19 @@
 create table reply
 (
-    reply_id        bigint not null auto_increment,
-    parent_reply_id bigint,
-    post_id         bigint,
-    user_id         bigint,
-    reply_content   varchar(255),
-    insert_date     datetime(6),
-    insert_id       bigint,
-    update_date     datetime(6),
-    update_id       bigint,
+    reply_id                bigint not null auto_increment,
+    parent_reply_id         bigint,
+    post_id                 bigint,
+    user_id                 bigint,
+    author                  varchar(200),
+    parent_author           varchar(200),
+    author_enneagram_type   int,
+    reply_content           varchar(300),
+    is_deleted              bit default 0,
+    is_reported             bit default 0,
+    insert_date             datetime(6),
+    insert_id               bigint,
+    update_date             datetime(6),
+    update_id               bigint,
     primary key (reply_id)
 ) engine = InnoDB;
 

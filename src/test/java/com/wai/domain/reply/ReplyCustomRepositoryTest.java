@@ -27,7 +27,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class ReplyCustomRepositoryTest {
+public class ReplyCustomRepositoryTest {
 
     @Autowired
     ReplyRepository replyRepository;

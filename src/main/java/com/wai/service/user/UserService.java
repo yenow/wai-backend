@@ -36,7 +36,7 @@ public class UserService {
         UserResponseDto userDto = UserResponseDto.builder().build();
 
         if (isNicknameDupicated(userRequestDto)) {
-            userDto.setSuccess(false);
+            userDto.setIsSuccess(false);
             userDto.setErrorCode(1);
             userDto.setErrorMessage("이미 사용중인 별명입니다.");
         } else {

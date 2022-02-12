@@ -27,13 +27,23 @@ public class ReplyApiController {
 
     final ReplyService replyService;
 
+    @GetMapping(value = "/api/readReplysByPostId/{postId}")
+    public List<ReplyResponseDto> readReplys(@PathVariable(value = "postId") Long postId) {
+        return replyService.readReplysByPostId(postId);
+    }
+
     @PostMapping(value = "/api/saveReply")
     public ReplyResponseDto saveReply(@RequestBody ReplyRequestDto replyRequestDto) {
         return replyService.saveReply(replyRequestDto);
     }
 
-    @GetMapping(value = "/api/readReplysByPostId/{postId}")
-    public List<ReplyResponseDto> readReplys(@PathVariable(value = "postId") Long postId) {
-        return replyService.readReplysByPostId(postId);
+    @PostMapping(value = "/api/deleteReply")
+    public ReplyResponseDto deleteReply(@RequestBody ReplyRequestDto replyRequestDto) {
+        return replyService.deleteReply(replyRequestDto);
+    }
+
+    @PostMapping(value = "/api/reportReply")
+    public ReplyResponseDto reportReply(@RequestBody ReplyRequestDto replyRequestDto) {
+        return replyService.reportReply(replyRequestDto);
     }
 }

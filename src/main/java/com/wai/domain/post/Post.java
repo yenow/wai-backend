@@ -3,7 +3,9 @@ package com.wai.domain.post;
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.controller.reply.dto.ReplyResponseDto;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.reply.Reply;
@@ -48,12 +50,15 @@ public class Post extends BaseEntity {
     @JsonBackReference
     private User user;
 
+    @Builder.Default
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
     private List<Reply> replys = new ArrayList<Reply>();;
+    @Builder.Default
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
     private List<Likey> likeys = new ArrayList<>();
+    @Builder.Default
     @OneToMany(mappedBy = "post")
     @JsonManagedReference
     private List<Tag> tags = new ArrayList<Tag>();
@@ -65,28 +70,30 @@ public class Post extends BaseEntity {
     private String content;
     @Column(length = 200)
     private String author;
+    @Column
+    private Integer authorEnneagramType;
     @Column(columnDefinition = "int default 0")
     private int clickCount;
+    @Builder.Default
     @Column
-    private boolean isDelete;
+    private Boolean isDelete = false;
 
     public PostResponseDto toDto() {
-        // reverseReplys();
         return PostResponseDto.builder()
                 .postId(postId)
                 .title(title)
                 .content(content)
                 .author(author)
+                .authorEnneagramType(authorEnneagramType)
                 .clickCount(clickCount)
                 .likeyCount(likeys != null ? likeys.size() : 0)
-                .likeys(likeys.stream().map(likey -> likey.getUser().getUserId()).collect(Collectors.toList()))
+                .likeys(likeys != null ? likeys.stream().map(likey -> likey.getUser().getUserId()).collect(Collectors.toList()) : null)
                 .isDelete(isDelete)
                 .insertDate(getInsertDate())
+                .updateDate(getUpdateDate())
                 .insertId(getInsertId())
                 .build();
     }
-
-
 
     public List<ReplyResponseDto> getReplyDtos() {
         return replys.stream().map(reply ->
@@ -102,5 +109,12 @@ public class Post extends BaseEntity {
 
     public void increaseClickCount() {
         clickCount = clickCount + 1;
+    }
+
+    public void deletePost() { isDelete = true; }
+
+    public void updatePost(PostSaveRequestDto postSaveRequestDto) {
+        title = postSaveRequestDto.getTitle();
+        content = postSaveRequestDto.getContent();
     }
 }

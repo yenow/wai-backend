@@ -30,6 +30,8 @@ public class QEnneagram extends EntityPathBase<Enneagram> {
 
     public final StringPath simpleExplain2 = createString("simpleExplain2");
 
+    public final StringPath simpleExplain3 = createString("simpleExplain3");
+
     public final StringPath subName = createString("subName");
 
     public final ListPath<com.wai.domain.wiseSaying.WiseSaying, com.wai.domain.wiseSaying.QWiseSaying> wiseSayings = this.<com.wai.domain.wiseSaying.WiseSaying, com.wai.domain.wiseSaying.QWiseSaying>createList("wiseSayings", com.wai.domain.wiseSaying.WiseSaying.class, com.wai.domain.wiseSaying.QWiseSaying.class, PathInits.DIRECT2);

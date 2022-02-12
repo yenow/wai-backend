@@ -30,7 +30,7 @@ import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class PostApiControllerTest {
+public class PostApiControllerTest {
 
     @LocalServerPort
     private int port;
@@ -47,7 +47,7 @@ class PostApiControllerTest {
     }
 
     @Test
-    public void Posts_등록된다() throws Exception {
+    public void savePost() throws Exception {
         //given
         String content = "content";
         PostSaveRequestDto requestDto = PostSaveRequestDto.builder()

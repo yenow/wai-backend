@@ -15,7 +15,7 @@ import static org.junit.jupiter.api.Assertions.*;
  * -----------------------------------------------------------
  * 2022-02-01   윤신영     최초 생성
  */
-class EnneagramTestRequestDtoTest {
+public class EnneagramTestRequestDtoTest {
 
     @Test
     void calculateHardEnneagramTest() {

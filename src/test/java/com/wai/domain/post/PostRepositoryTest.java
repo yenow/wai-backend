@@ -26,13 +26,13 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class PostRepositoryTest {
+public class PostRepositoryTest {
 
     @Autowired
     PostRepository postRepository;
 
     @Test
-    public void 게시글저장_불러오기() {
+    public void loadPost() {
         //given (테스트 상황 설정)
         String title = "테스트 게시글";
         String content = "테스트 본문";
@@ -66,24 +66,5 @@ class PostRepositoryTest {
         System.out.println(post.getPostId());
         System.out.println(post.getContent());
         assertThat(post.getContent()).isEqualTo(content);
-    }
-
-    @DisplayName("QueryDsl을 통해 Post를 조회한다.")
-    @Test
-    public void search() {
-        String content = "name";
-
-        postRepository.save(Post.builder()
-                .content(content)
-                .build());
-
-        //when
-        List<Post> posts = postRepository.search();
-
-        //then (결과 검증)
-        Post post = posts.get(0);
-        System.out.println("size = " + posts.size());
-        System.out.println(post.getPostId());
-        System.out.println(post.getContent());
     }
 }

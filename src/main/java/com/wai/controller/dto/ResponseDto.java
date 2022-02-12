@@ -21,7 +21,7 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDto {
-    private boolean isSuccess;
+    private Boolean isSuccess;
     private Integer errorCode;
     private String errorMessage;
     private LocalDateTime nowServerTime = LocalDateTime.now();

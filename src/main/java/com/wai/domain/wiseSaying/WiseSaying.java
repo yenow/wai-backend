@@ -39,6 +39,10 @@ public class WiseSaying extends BaseEntity {
     @JsonBackReference
     private User user;
 
+    @Column
+    @Enumerated(EnumType.STRING)
+    private WiseSayingCategory wiseSayingCategory;
+
     @ManyToOne
     @JoinColumn(name = "enneagram_type")
     @JsonBackReference

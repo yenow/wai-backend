@@ -33,9 +33,9 @@ public class EnneagramTestApiController {
 
     private final EnneagramQuestionService enneagramQuestionService;
 
-    @PostMapping(value = "/api/saveSelectEnneagramTestResult")
-    public EnneagramTestResponseDto saveSelectEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
-        return enneagramTestService.saveSelectEnneagramTestResult(enneagramTestRequestDto).toDto();
+    @PostMapping(value = "/api/saveSelectedEnneagramTestResult")
+    public EnneagramTestResponseDto saveSelectedEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+        return enneagramTestService.saveSelectedEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
     @PostMapping(value = "/api/saveSimpleEnneagramTestResult")

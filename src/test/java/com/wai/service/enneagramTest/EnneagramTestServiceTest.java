@@ -28,7 +28,7 @@ import java.util.UUID;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= WaiSpringApplication.class)
-class EnneagramTestServiceTest {
+public class EnneagramTestServiceTest {
 
     @Autowired
     EnneagramTestService enneagramTestService;
@@ -58,7 +58,7 @@ class EnneagramTestServiceTest {
                 .userId(user.getUserId())
                 .build();
 
-        enneagramTestService.saveSelectEnneagramTestResult(enneagramTestRequestDto);
+        enneagramTestService.saveSelectedEnneagramTestResult(enneagramTestRequestDto);
     }
 
     @Test

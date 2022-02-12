@@ -39,10 +39,12 @@ public class PostResponseDto extends  ResponseDto {
     private String title;
     private String content;
     private String author;
+    private Integer authorEnneagramType;
     private int clickCount;
     private int likeyCount;
-    private boolean isDelete;
+    private Boolean isDelete;
     private LocalDateTime insertDate;
+    private LocalDateTime updateDate;
     private Long insertId;
 
     private UserResponseDto user;

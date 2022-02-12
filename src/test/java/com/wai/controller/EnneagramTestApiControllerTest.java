@@ -3,8 +3,8 @@ package com.wai.controller;
 import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.EnneagramTestRepository;
 import com.wai.domain.enneagramTest.TestType;
+import org.junit.Test;
 import org.junit.jupiter.api.DisplayName;
-import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,7 +25,7 @@ import org.springframework.test.context.junit4.SpringRunner;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
-class EnneagramTestApiControllerTest {
+public class EnneagramTestApiControllerTest {
 
     @LocalServerPort
     private int port;
@@ -38,7 +38,7 @@ class EnneagramTestApiControllerTest {
 
     @DisplayName("")
     @Test
-    void saveEnneagramTest () {
+    public void saveEnneagramTest () {
         EnneagramTestRequestDto enneagramTestRequestDto = EnneagramTestRequestDto.builder()
                 .testType(TestType.select)
                 .myEnneagramType(1)

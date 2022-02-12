@@ -6,5 +6,6 @@ create table enneagram
     sub_name                 varchar(1000),
     simple_explain           varchar(1000),
     simple_explain2          varchar(1000),
+    simple_explain3          varchar(1000),
     primary key (enneagram_type)
 ) engine = InnoDB;

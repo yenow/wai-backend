@@ -24,7 +24,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= WaiSpringApplication.class)
-class WiseSayingRepositoryTest {
+public class WiseSayingRepositoryTest {
 
     @Autowired
     private WiseSayingRepository wiseSayingRepository;

@@ -35,16 +35,19 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @OneToMany(mappedBy = "user"/*, fetch = FetchType.EAGER*/)
-    /*@JsonIgnoreProperties({"user"})*/
-    @JsonManagedReference
-    private List<Post> posts = new ArrayList<Post>();;
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
-    private List<Reply> replys = new ArrayList<Reply>();;
+    private List<Post> posts = new ArrayList<Post>();
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    @JsonManagedReference
+    private List<Reply> replys = new ArrayList<Reply>();
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
+    @Builder.Default
     @OneToMany(mappedBy = "user")
     @JsonManagedReference
     private List<Likey> likeys = new ArrayList<>();

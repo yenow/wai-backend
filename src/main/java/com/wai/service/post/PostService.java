@@ -43,15 +43,23 @@ public class PostService {
     private final LikeyRepository likeyRepository;
 
     @Transactional
-    public Post save(PostSaveRequestDto requestDto) {
-        return postRepository.save(requestDto.toEntity());
+    public PostResponseDto save(PostSaveRequestDto postSaveRequestDto) {
+        if (postSaveRequestDto.getPostId() != null) {
+            Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
+            post.updatePost(postSaveRequestDto);
+            return convertPostResponseDto(post);
+        }
+
+        return convertPostResponseDto(postRepository.save(postSaveRequestDto.toEntity()));
     }
 
     @Transactional
-    public PostResponseDto readPost(Long postId) {
-        // todo. 게시글 조회수 추가, 특정시간 이후 조회수 추가
-        Post post = postRepository.findById(postId).get();
-        post.increaseClickCount();
+    public PostResponseDto readPost(PostRequestDto postRequestDto) {
+        Post post = postRepository.findById(postRequestDto.getPostId()).get();
+
+        if (postRequestDto.getCanUpdateCount()) {
+            post.increaseClickCount();
+        }
 
         return post.toDto()
                 .setUserDto(post.getUser().toDto())
@@ -64,23 +72,23 @@ public class PostService {
     }
 
     public List<PostResponseDto> readMoreNewPosts(PostRequestDto postRequestDto) {
-        List<Post> posts =  postRepository.readMoreNewPosts(postRequestDto);
+        List<Post> posts;
+        if (postRequestDto.getEndPostId() == null && postRequestDto.getStartPostId() == null) {
+            posts = postRepository.readPostsInit(postRequestDto);
+        } else {
+            posts = postRepository.readMoreNewPosts(postRequestDto);
+        }
         return convertPostResponseDtos(posts);
     }
 
     public List<PostResponseDto> readMoreOldPosts(PostRequestDto postRequestDto) {
-        List<Post> posts =  postRepository.readMoreOldPosts(postRequestDto);
+        List<Post> posts;
+        if (postRequestDto.getEndPostId() == null && postRequestDto.getStartPostId() == null) {
+            posts =  postRepository.readPostsInit(postRequestDto);
+        } else {
+            posts =  postRepository.readMoreOldPosts(postRequestDto);
+        }
         return convertPostResponseDtos(posts);
-    }
-
-    private List<PostResponseDto> convertPostResponseDtos(List<Post> posts) {
-        List<PostResponseDto> postDtos = new ArrayList<>();
-        posts.forEach((post) -> {
-            postDtos.add(post.toDto()
-                    .setUserDto(post.getUser().toDto())
-                    .setReplyDtos(post.getReplyDtos()));
-        });
-        return postDtos;
     }
 
     @Transactional
@@ -101,5 +109,33 @@ public class PostService {
         Optional<Likey> likey = likeyRepository.findByUserIdAndPostId(userId,postId);
 
         likey.ifPresent(likeyRepository::delete);
+    }
+
+    @Transactional
+    public PostResponseDto deletePost(PostRequestDto postRequestDto) {
+        Post post = postRepository.findById(postRequestDto.getPostId()).get();
+        post.deletePost();
+        return convertPostResponseDto(post);
+    }
+
+    @Transactional
+    public PostResponseDto updatePost(PostSaveRequestDto postSaveRequestDto) {
+        Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
+        post.updatePost(postSaveRequestDto);
+        return convertPostResponseDto(post);
+    }
+
+    private List<PostResponseDto> convertPostResponseDtos(List<Post> posts) {
+        List<PostResponseDto> postDtos = new ArrayList<>();
+        posts.forEach((post) -> {
+            postDtos.add(convertPostResponseDto(post));
+        });
+        return postDtos;
+    }
+
+    private PostResponseDto convertPostResponseDto(Post post) {
+        return post.toDto()
+                .setUserDto(post.getUser().toDto())
+                .setReplyDtos(post.getReplyDtos());
     }
 }

@@ -33,6 +33,7 @@ public class Enneagram {
     @Id
     private Integer enneagramType;
 
+    @Builder.Default
     @OneToMany(mappedBy = "enneagram")
     @JsonManagedReference
     private List<WiseSaying> wiseSayings = new ArrayList<>();
@@ -47,6 +48,8 @@ public class Enneagram {
     private String simpleExplain;
     @Column
     private String simpleExplain2;
+    @Column
+    private String simpleExplain3;
 
     public EnneagramResponseDto toDto() {
         return EnneagramResponseDto.builder()
@@ -56,6 +59,7 @@ public class Enneagram {
                 .imagePath(imagePath)
                 .simpleExplain(simpleExplain)
                 .simpleExplain2(simpleExplain2)
+                .simpleExplain3(simpleExplain3)
                 .subName(subName)
                 .build();
     }

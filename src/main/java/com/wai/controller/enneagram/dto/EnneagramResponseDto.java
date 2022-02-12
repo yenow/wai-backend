@@ -27,6 +27,7 @@ import java.util.List;
 @AllArgsConstructor
 public class EnneagramResponseDto {
     private boolean isSuccess;
+    @Builder.Default
     private List<WiseSaying> wiseSayings =  new ArrayList<>();
     private Integer enneagramType;
     private String animalName;
@@ -34,4 +35,5 @@ public class EnneagramResponseDto {
     private String subName;
     private String simpleExplain;
     private String simpleExplain2;
+    private String simpleExplain3;
 }

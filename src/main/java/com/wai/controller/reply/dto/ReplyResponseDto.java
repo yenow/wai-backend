@@ -7,6 +7,7 @@ import com.wai.domain.user.User;
 import lombok.*;
 import org.apache.tomcat.jni.Local;
 
+import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 /**
@@ -29,8 +30,14 @@ import java.time.LocalDateTime;
 public class ReplyResponseDto extends ResponseDto {
     private Long replyId;
     private Long parentReplyId;
+    private String author;
+    private String parentAuthor;
+    private Integer authorEnneagramType;
     private String replyContent;
+    private Boolean isDeleted;
+    private Boolean isReported;
     private LocalDateTime insertDate;
+    private LocalDateTime updateDate;
 
     private UserResponseDto user;
     private PostResponseDto post;

@@ -35,7 +35,7 @@ import java.util.stream.IntStream;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class PostServiceTest {
+public class PostServiceTest {
 
     @Autowired
     private PostService postService;
@@ -57,22 +57,6 @@ class PostServiceTest {
         user = User.builder().userKey(userKey).build();
         userRepository.save(user);
         System.out.println("==== end before ====");
-    }
-
-    @DisplayName("post 저장 테스트")
-    @Test
-    void savePost() {
-        PostSaveRequestDto postSaveRequestDto = PostSaveRequestDto.builder()
-                .title("title")
-                .content("content")
-                .userId(user.getUserId())
-                .userKey(userKey)
-                .build();
-
-        Post post = postService.save(postSaveRequestDto);
-
-        assertEquals(postSaveRequestDto.getTitle(), post.getTitle());
-        assertEquals(postSaveRequestDto.getContent(), post.getContent());
     }
 
     @DisplayName("read posts")

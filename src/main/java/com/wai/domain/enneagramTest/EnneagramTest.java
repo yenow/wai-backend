@@ -33,6 +33,7 @@ public class EnneagramTest extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long testId;
 
+    @Builder.Default
     @OneToMany(mappedBy = "enneagramTest")
     @JsonManagedReference
     private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
@@ -42,7 +43,7 @@ public class EnneagramTest extends BaseEntity {
     private TestType testType;
     @Column
     private Integer myEnneagramType;
-    @Column(nullable = true)
+    @Column
     private Integer myWingType;
     @Column
     private Integer type1Score;

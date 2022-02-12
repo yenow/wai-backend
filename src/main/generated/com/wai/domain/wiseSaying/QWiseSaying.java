@@ -46,6 +46,8 @@ public class QWiseSaying extends EntityPathBase<WiseSaying> {
 
     public final StringPath wiseSaying = createString("wiseSaying");
 
+    public final EnumPath<WiseSayingCategory> wiseSayingCategory = createEnum("wiseSayingCategory", WiseSayingCategory.class);
+
     public QWiseSaying(String variable) {
         this(WiseSaying.class, forVariable(variable), INITS);
     }

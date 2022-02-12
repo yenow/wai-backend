@@ -40,7 +40,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class ReplyServiceTest {
+public class ReplyServiceTest {
 
     @Autowired
     private ReplyService replyService;

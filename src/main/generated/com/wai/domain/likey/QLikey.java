@@ -1,4 +1,4 @@
-package com.wai.domain.reply;
+package com.wai.domain.likey;
 
 import static com.querydsl.core.types.PathMetadataFactory.*;
 
@@ -11,22 +11,20 @@ import com.querydsl.core.types.dsl.PathInits;
 
 
 /**
- * QReply is a Querydsl query type for Reply
+ * QLikey is a Querydsl query type for Likey
  */
 @Generated("com.querydsl.codegen.EntitySerializer")
-public class QReply extends EntityPathBase<Reply> {
+public class QLikey extends EntityPathBase<Likey> {
 
-    private static final long serialVersionUID = -41649384L;
+    private static final long serialVersionUID = -1803756856L;
 
     private static final PathInits INITS = PathInits.DIRECT2;
 
-    public static final QReply reply = new QReply("reply");
+    public static final QLikey likey = new QLikey("likey");
 
     public final com.wai.common.QBaseEntity _super = new com.wai.common.QBaseEntity(this);
 
-    public final StringPath author = createString("author");
-
-    public final NumberPath<Integer> authorEnneagramType = createNumber("authorEnneagramType", Integer.class);
+    public final NumberPath<Long> id = createNumber("id", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> insertDate = _super.insertDate;
@@ -34,19 +32,7 @@ public class QReply extends EntityPathBase<Reply> {
     //inherited
     public final NumberPath<Long> insertId = _super.insertId;
 
-    public final BooleanPath isDeleted = createBoolean("isDeleted");
-
-    public final BooleanPath isReported = createBoolean("isReported");
-
-    public final StringPath parentAuthor = createString("parentAuthor");
-
-    public final NumberPath<Long> parentReplyId = createNumber("parentReplyId", Long.class);
-
     public final com.wai.domain.post.QPost post;
-
-    public final StringPath replyContent = createString("replyContent");
-
-    public final NumberPath<Long> replyId = createNumber("replyId", Long.class);
 
     //inherited
     public final DateTimePath<java.time.LocalDateTime> updateDate = _super.updateDate;
@@ -56,23 +42,23 @@ public class QReply extends EntityPathBase<Reply> {
 
     public final com.wai.domain.user.QUser user;
 
-    public QReply(String variable) {
-        this(Reply.class, forVariable(variable), INITS);
+    public QLikey(String variable) {
+        this(Likey.class, forVariable(variable), INITS);
     }
 
-    public QReply(Path<? extends Reply> path) {
+    public QLikey(Path<? extends Likey> path) {
         this(path.getType(), path.getMetadata(), PathInits.getFor(path.getMetadata(), INITS));
     }
 
-    public QReply(PathMetadata metadata) {
+    public QLikey(PathMetadata metadata) {
         this(metadata, PathInits.getFor(metadata, INITS));
     }
 
-    public QReply(PathMetadata metadata, PathInits inits) {
-        this(Reply.class, metadata, inits);
+    public QLikey(PathMetadata metadata, PathInits inits) {
+        this(Likey.class, metadata, inits);
     }
 
-    public QReply(Class<? extends Reply> type, PathMetadata metadata, PathInits inits) {
+    public QLikey(Class<? extends Likey> type, PathMetadata metadata, PathInits inits) {
         super(type, metadata, inits);
         this.post = inits.isInitialized("post") ? new com.wai.domain.post.QPost(forProperty("post"), inits.get("post")) : null;
         this.user = inits.isInitialized("user") ? new com.wai.domain.user.QUser(forProperty("user")) : null;

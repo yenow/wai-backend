@@ -27,7 +27,7 @@ public class EnneagramTestService {
     private final EnneagramTestRepository enneagramTestRepository;
     private final UserEnneagramTestRepository userEnneagramTestRepository;
 
-    public EnneagramTest saveSelectEnneagramTestResult (EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTest saveSelectedEnneagramTestResult (EnneagramTestRequestDto enneagramTestRequestDto) {
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
 
         UserEnneagramTest userEnneagramTest = UserEnneagramTest.builder()

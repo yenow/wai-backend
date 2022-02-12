@@ -25,7 +25,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc
-class HelloControllerTest2 {
+public class HelloControllerTest2 {
 
     @Autowired
     TestRestTemplate testRestTemplate;

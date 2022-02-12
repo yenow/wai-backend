@@ -43,14 +43,38 @@ public class Reply extends BaseEntity {
     private Post post;
 
     @Column
+    private String author;
+    @Column
+    private String parentAuthor;
+    @Column
+    private Integer authorEnneagramType;
+    @Column
     private String replyContent;
+    @Builder.Default
+    @Column
+    private Boolean isDeleted = false;
+    @Builder.Default
+    @Column
+    private Boolean isReported = false;
 
     public ReplyResponseDto toDto() {
         return ReplyResponseDto.builder()
                 .replyId(replyId)
                 .parentReplyId(parentReplyId)
+                .author(author)
+                .parentAuthor(parentAuthor)
+                .authorEnneagramType(authorEnneagramType)
                 .replyContent(replyContent)
+                .isReported(isDeleted)
+                .isReported(isReported)
                 .insertDate(getInsertDate())
+                .updateDate(getUpdateDate())
                 .build();
     }
+
+    public void reportReply() {
+        this.isReported = true;
+    }
+
+    public void deleteReply() { this.isDeleted = true; }
 }

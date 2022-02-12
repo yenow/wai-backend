@@ -22,7 +22,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest
-class EnneagramExplainRepositoryTest {
+public class EnneagramExplainRepositoryTest {
 
     @Autowired
     private EnneagramExplainRepository enneagramExplainRepository;

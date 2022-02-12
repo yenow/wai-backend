@@ -1,8 +1,7 @@
 package com.wai.domain.reply;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.wai.controller.reply.dto.ReplyRequestDto;
 import com.wai.domain.enneagramTest.QEnneagramTest;
+import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.wai.domain.user.QUser;
 import com.wai.domain.userEnneagramTest.QUserEnneagramTest;
 import org.springframework.stereotype.Repository;

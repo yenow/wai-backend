@@ -1,14 +1,15 @@
 create table wise_saying
 (
-    id                  bigint not null auto_increment,
-    user_id             bigint null,
-    enneagram_type      int null,
-    wise_saying         varchar(4000) not null,
-    author              varchar(100),
-    insert_date         datetime(6),
-    insert_id           bigint,
-    update_date         datetime(6),
-    update_id           bigint,
+    id                      bigint not null auto_increment,
+    user_id                 bigint null,
+    wise_saying_category    varchar(100),
+    enneagram_type          int null,
+    wise_saying             varchar(4000) not null,
+    author                  varchar(100),
+    insert_date             datetime(6),
+    insert_id               bigint,
+    update_date             datetime(6),
+    update_id               bigint,
     primary key (id)
 ) engine = InnoDB;
 

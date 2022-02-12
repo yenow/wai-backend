@@ -32,7 +32,7 @@ import static org.springframework.test.web.servlet.request.MockMvcRequestBuilder
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= WaiSpringApplication.class)
-class LoginServiceImplTest {
+public class LoginServiceImplTest {
 
     @Autowired
     LoginService loginService;

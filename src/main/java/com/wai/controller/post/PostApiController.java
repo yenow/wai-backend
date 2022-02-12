@@ -36,14 +36,12 @@ public class PostApiController {
 
     @PostMapping(value = "/api/savePost")
     public PostResponseDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
-        Post post = postService.save(postSaveRequestDto);
-        return post.toDto()
-                .setUserDto(post.getUser().toDto());
+        return postService.save(postSaveRequestDto);
     }
 
-    @GetMapping(value = "/api/readPost/{postId}")
-    public PostResponseDto readPost(@PathVariable("postId") Long postId) {
-        PostResponseDto postResponseDto = postService.readPost(postId);
+    @PostMapping(value = "/api/readPost")
+    public PostResponseDto readPost(@RequestBody PostRequestDto postRequestDto) {
+        PostResponseDto postResponseDto = postService.readPost(postRequestDto);
         return postResponseDto;
     }
 
@@ -75,5 +73,15 @@ public class PostApiController {
     public PostResponseDto removeLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
         postService.removeLikey(postId, userId);
         return PostResponseDto.builder().build();
+    }
+
+    @PostMapping(value = "/api/deletePost")
+    public PostResponseDto deletePost(@RequestBody PostRequestDto postRequestDto) {
+        return postService.deletePost(postRequestDto);
+    }
+
+    @PostMapping(value = "/api/updatePost")
+    public PostResponseDto updatePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
+        return postService.updatePost(postSaveRequestDto);
     }
 }

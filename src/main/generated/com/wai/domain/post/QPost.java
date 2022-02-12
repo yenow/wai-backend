@@ -26,6 +26,8 @@ public class QPost extends EntityPathBase<Post> {
 
     public final StringPath author = createString("author");
 
+    public final NumberPath<Integer> authorEnneagramType = createNumber("authorEnneagramType", Integer.class);
+
     public final NumberPath<Integer> clickCount = createNumber("clickCount", Integer.class);
 
     public final StringPath content = createString("content");

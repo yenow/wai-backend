@@ -28,7 +28,7 @@ import static org.springframework.test.web.servlet.result.MockMvcResultMatchers.
  */
 @RunWith(SpringRunner.class)
 @WebMvcTest(controllers = HelloController.class)
-class HelloControllerTest {
+public class HelloControllerTest {
 
     @Autowired
     private MockMvc mvc;
@@ -41,7 +41,7 @@ class HelloControllerTest {
     }
 
     @Test
-    public void hello가_리턴된다() throws Exception {
+    public void helloReturn() throws Exception {
         String hello = "hello";
 
         mvc.perform(get("/hello"))
@@ -50,7 +50,7 @@ class HelloControllerTest {
     }
 
     @Test
-    public void helloDto가_리턴된다() throws Exception {
+    public void helloReturn2() throws Exception {
         String name = "hello";
         int amount = 1000;
 
