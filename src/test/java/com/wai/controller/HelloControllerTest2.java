@@ -11,17 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-/**
- * packageName : com.wai.home.controller
- * fileName : HelloControllerTest
- * author : 윤신영
- * date : 2021-12-02
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-02   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 @AutoConfigureMockMvc

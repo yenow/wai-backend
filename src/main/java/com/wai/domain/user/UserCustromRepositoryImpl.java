@@ -6,17 +6,7 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-/**
- * packageName : com.wai.domain.user
- * fileName : UserCustromRepositoryImpl
- * author : 윤신영
- * date : 2021-12-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-22   윤신영     최초 생성
- */
+
 @RequiredArgsConstructor
 @Repository
 public class UserCustromRepositoryImpl implements UserCustomRepository {

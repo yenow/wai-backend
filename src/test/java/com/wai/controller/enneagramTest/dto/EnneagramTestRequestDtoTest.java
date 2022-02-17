@@ -4,17 +4,7 @@ import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.controller.enneagramTest.dto
- * fileName : EnneagramTestRequestDtoTest
- * author : 윤신영
- * date : 2022-02-01
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-02-01   윤신영     최초 생성
- */
+
 public class EnneagramTestRequestDtoTest {
 
     @Test

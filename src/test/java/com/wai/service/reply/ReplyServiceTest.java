@@ -27,17 +27,6 @@ import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.service.reply
- * fileName : ReplyServiceTest
- * author : 윤신영
- * date : 2022-01-24
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-24   윤신영     최초 생성
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ReplyServiceTest {

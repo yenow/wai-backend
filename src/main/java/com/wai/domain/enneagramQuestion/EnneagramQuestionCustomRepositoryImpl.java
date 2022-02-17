@@ -9,17 +9,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
-/**
- * packageName : com.wai.domain.enneagramQuestion
- * fileName : EnneagramQuestionCustomRepositoryImpl
- * author : 윤신영
- * date : 2022-01-31
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-31   윤신영     최초 생성
- */
 @Repository
 @RequiredArgsConstructor
 public class EnneagramQuestionCustomRepositoryImpl implements EnneagramQuestionCustomRepository {

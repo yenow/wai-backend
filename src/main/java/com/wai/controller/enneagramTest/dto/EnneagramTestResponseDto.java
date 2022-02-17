@@ -7,17 +7,6 @@ import lombok.*;
 
 import java.time.LocalDateTime;
 
-/**
- * packageName : com.wai.controller.dto.enneagramTest
- * fileName : EnneagramTestResponseDto
- * author : 윤신영
- * date : 2022-01-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-22   윤신영     최초 생성
- */
 @Getter
 @Setter
 @Builder

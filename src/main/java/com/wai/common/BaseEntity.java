@@ -15,17 +15,6 @@ import javax.persistence.EntityListeners;
 import javax.persistence.MappedSuperclass;
 import java.time.LocalDateTime;
 
-/**
- * packageName : com.wai.common
- * fileName : BaseEntity
- * author : 윤신영
- * date : 2021-12-23
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-23   윤신영     최초 생성
- */
 @Getter
 @Setter
 @NoArgsConstructor

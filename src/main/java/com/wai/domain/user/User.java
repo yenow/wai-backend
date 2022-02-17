@@ -2,6 +2,8 @@ package com.wai.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
+import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.reply.dto.ReplyResponseDto;
 import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.post.Post;
@@ -12,18 +14,9 @@ import lombok.*;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
-/**
- * packageName : com.wai.domain.user
- * fileName : User
- * author : 윤신영
- * date : 2021-12-20
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-20   윤신영     최초 생성
- */
+
 @Getter
 @Builder
 @NoArgsConstructor
@@ -92,5 +85,21 @@ public class User extends BaseEntity {
 
     public void saveNickname(String nickname) {
         this.nickname = nickname;
+    }
+
+    public List<PostResponseDto> getPostDtos() {
+        return posts.stream()
+                .map(post -> post.toDto())
+                .filter(postResponseDto -> !postResponseDto.getIsDelete())
+                .collect(Collectors.toList());
+    }
+
+    public List<ReplyResponseDto> getReplyDtos() {
+        return replys.stream()
+                .map(reply ->
+                        reply.toDto()
+                                .setPostDto(reply.getPost().toDto()))
+                .filter(replyResponseDto -> !replyResponseDto.getIsDeleted())
+                .collect(Collectors.toList());
     }
 }

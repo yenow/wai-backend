@@ -13,17 +13,6 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.domain.post
- * fileName : PostRepositoryTest
- * author : 윤신영
- * date : 2021-12-02
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-02   윤신영     최초 생성
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PostRepositoryTest {

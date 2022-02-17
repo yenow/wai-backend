@@ -19,17 +19,6 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.springframework.test.web.servlet.request.MockMvcRequestBuilders.get;
 
-/**
- * packageName : com.wai.service.login
- * fileName : LoginServiceImplTest
- * author : 윤신영
- * date : 2021-12-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-22   윤신영     최초 생성
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= WaiSpringApplication.class)
 public class LoginServiceImplTest {

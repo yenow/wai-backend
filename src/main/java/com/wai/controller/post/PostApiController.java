@@ -17,17 +17,7 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * packageName : com.wai.web
- * fileName : PostApiController
- * author : 윤신영
- * date : 2021-12-03
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-03   윤신영     최초 생성
- */
+
 @RequiredArgsConstructor
 @RestController
 public class PostApiController {
@@ -61,6 +51,12 @@ public class PostApiController {
     public List<PostResponseDto> readMoreOldPosts(@RequestBody PostRequestDto postRequestDto) {
 
         return postService.readMoreOldPosts(postRequestDto);
+    }
+
+
+    @PostMapping(value = "/api/initPopularPosts")
+    public List<PostResponseDto> initPopularPosts(@RequestBody PostRequestDto postRequestDto) {
+        return postService.initPopularPosts(postRequestDto);
     }
 
     @GetMapping(value = "/api/addLikey/{postId}/{userId}")

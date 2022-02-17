@@ -9,17 +9,6 @@ import lombok.*;
 
 import javax.persistence.*;
 
-/**
- * packageName : com.wai.domain.reply
- * fileName : Reply
- * author : 윤신영
- * date : 2022-01-20
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-20   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor
@@ -65,7 +54,7 @@ public class Reply extends BaseEntity {
                 .parentAuthor(parentAuthor)
                 .authorEnneagramType(authorEnneagramType)
                 .replyContent(replyContent)
-                .isReported(isDeleted)
+                .isDeleted(isDeleted)
                 .isReported(isReported)
                 .insertDate(getInsertDate())
                 .updateDate(getUpdateDate())

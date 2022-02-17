@@ -8,17 +8,7 @@ import org.springframework.stereotype.Service;
 
 import java.util.List;
 
-/**
- * packageName : com.wai.service.enneagramTest
- * fileName : EnneagramQuestionService
- * author : 윤신영
- * date : 2022-01-31
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-31   윤신영     최초 생성
- */
+
 @Service
 @RequiredArgsConstructor
 public class EnneagramQuestionService {

@@ -19,17 +19,6 @@ import javax.persistence.OneToMany;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * packageName : com.wai.controller.user.dto
- * fileName : UserResponseDto
- * author : 윤신영
- * date : 2022-01-24
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-24   윤신영     최초 생성
- */
 @Getter
 @Setter
 @Builder

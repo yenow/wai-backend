@@ -18,17 +18,6 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-/**
- * packageName : com.wai.controller
- * fileName : EnneagramTestApiController
- * author : 윤신영
- * date : 2022-01-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-22   윤신영     최초 생성
- */
 @RequiredArgsConstructor
 @RestController
 public class EnneagramApiController {

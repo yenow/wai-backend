@@ -15,17 +15,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.stream.IntStream;
 
-/**
- * packageName : com.wai.sampleData
- * fileName : DummyData
- * author : 윤신영
- * date : 2022-01-20
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-20   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= WaiSpringApplication.class)
 public class DummyData {

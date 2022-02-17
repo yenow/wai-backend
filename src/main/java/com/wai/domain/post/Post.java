@@ -21,17 +21,6 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * packageName : com.wai.domain.posts
- * fileName : Post
- * author : 윤신영
- * date : 2021-12-02
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-02   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor

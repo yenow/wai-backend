@@ -12,17 +12,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.assertj.core.api.AssertionsForClassTypes.assertThat;
 
-/**
- * packageName : com.wai.controller
- * fileName : LogoutApiControllerTest
- * author : 윤신영
- * date : 2021-12-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-22   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class LogoutApiControllerTest {

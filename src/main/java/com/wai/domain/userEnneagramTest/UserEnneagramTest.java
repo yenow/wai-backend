@@ -11,17 +11,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-/**
- * packageName : com.wai.domain.userEnneagramTest
- * fileName : UserEnneagramTest
- * author : 윤신영
- * date : 2022-01-21
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-21   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor

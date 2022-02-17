@@ -11,17 +11,6 @@ import javax.persistence.Entity;
 import javax.persistence.Id;
 import java.util.Arrays;
 
-/**
- * packageName : com.wai.domain.enneagramExplain
- * fileName : enneagramExplain
- * author : 윤신영
- * date : 2022-01-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-22   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor

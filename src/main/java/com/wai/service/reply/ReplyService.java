@@ -16,17 +16,7 @@ import javax.transaction.Transactional;
 import java.util.List;
 import java.util.stream.Collectors;
 
-/**
- * packageName : com.wai.service.reply
- * fileName : ReplyService
- * author : 윤신영
- * date : 2022-01-24
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-24   윤신영     최초 생성
- */
+
 @RequiredArgsConstructor
 @Service
 public class ReplyService {
@@ -64,6 +54,7 @@ public class ReplyService {
         return ReplyResponseDto.builder().build();
     }
 
+    @Transactional
     public ReplyResponseDto reportReply(ReplyRequestDto replyRequestDto) {
         Reply reply = replyRepository.findById(replyRequestDto.getReplyId()).get();
         reply.reportReply();

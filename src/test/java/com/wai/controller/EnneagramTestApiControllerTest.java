@@ -12,17 +12,7 @@ import org.springframework.boot.test.web.client.TestRestTemplate;
 import org.springframework.boot.web.server.LocalServerPort;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * packageName : com.wai.controller
- * fileName : EnneagramTestApiControllerTest
- * author : 윤신영
- * date : 2022-01-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-22   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(webEnvironment = SpringBootTest.WebEnvironment.RANDOM_PORT)
 public class EnneagramTestApiControllerTest {

@@ -13,17 +13,6 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpSession;
 
-/**
- * packageName : com.wai.web
- * fileName : LoginController
- * author : 윤신영
- * date : 2021-12-22
- * description : 로그인 컨트롤러
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-22   윤신영     최초 생성
- */
 @RequiredArgsConstructor
 @RestController
 public class LoginApiController {

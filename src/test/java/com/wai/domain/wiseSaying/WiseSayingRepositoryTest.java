@@ -11,17 +11,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.domain.wiseSaying
- * fileName : WiseSayingRepositoryTest
- * author : 윤신영
- * date : 2022-01-26
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-26   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest(classes= WaiSpringApplication.class)
 public class WiseSayingRepositoryTest {

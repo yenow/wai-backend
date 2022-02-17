@@ -7,17 +7,6 @@ import lombok.*;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * packageName : com.wai.controller.dto.enneagramTest
- * fileName : EnneagramTestRequestDto
- * author : 윤신영
- * date : 2022-01-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-22   윤신영     최초 생성
- */
 @Getter
 @Setter
 @Data

@@ -9,17 +9,6 @@ import java.util.stream.Stream;
 
 import static java.util.stream.Collectors.toMap;
 
-/**
- * packageName : com.wai.controller.dto
- * fileName : HelloEnum
- * author : 윤신영
- * date : 2021-12-28
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-28   윤신영     최초 생성
- */
 public enum HelloEnum {
     hello, hi;
 

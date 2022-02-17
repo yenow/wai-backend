@@ -8,17 +8,6 @@ import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
 
-/**
- * packageName : com.wai.domain.enneagramQuestion
- * fileName : EnneagramQuestion
- * author : 윤신영
- * date : 2022-01-24
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-24   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor

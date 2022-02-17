@@ -11,17 +11,6 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-/**
- * packageName : com.wai.domain.enneagramTest
- * fileName : EnneagramTest
- * author : 윤신영
- * date : 2021-12-23
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-23   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor

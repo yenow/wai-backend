@@ -14,17 +14,7 @@ import java.util.List;
 import static org.assertj.core.api.Assertions.assertThat;
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.domain.reply
- * fileName : ReplyCustomRepositoryTest
- * author : 윤신영
- * date : 2022-02-03
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-02-03   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class ReplyCustomRepositoryTest {

@@ -12,17 +12,6 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
-/**
- * packageName : com.wai.domain.like
- * fileName : Like
- * author : 윤신영
- * date : 2022-02-04
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-02-04   윤신영     최초 생성
- */
 @Getter
 @Builder
 @NoArgsConstructor

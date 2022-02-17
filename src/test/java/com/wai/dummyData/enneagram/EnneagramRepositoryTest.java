@@ -1,5 +1,7 @@
-package com.wai.domain.enneagram;
+package com.wai.dummyData.enneagram;
 
+import com.wai.domain.enneagram.Enneagram;
+import com.wai.domain.enneagram.EnneagramRepository;
 import com.wai.domain.wiseSaying.WiseSaying;
 import com.wai.domain.wiseSaying.WiseSayingRepository;
 import org.junit.jupiter.api.BeforeEach;
@@ -14,17 +16,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.domain.enneagram
- * fileName : EnneagramRepositoryTest
- * author : 윤신영
- * date : 2022-01-28
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-28   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EnneagramRepositoryTest {

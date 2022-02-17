@@ -1,6 +1,7 @@
 package com.wai.service.user;
 
 import com.wai.controller.user.dto.UserRequestDto;
+import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
 import org.junit.jupiter.api.AfterEach;
@@ -15,17 +16,7 @@ import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.service.user
- * fileName : UserServiceTest
- * author : 윤신영
- * date : 2022-01-30
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-30   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserServiceTest {
@@ -63,7 +54,7 @@ public class UserServiceTest {
                 .userKey(userKey)
                 .build();
 
-        User actualUser = userService.getUserInfomation(userRequestDto);
+        UserResponseDto actualUser = userService.getUserInformation(userRequestDto);
 
         System.out.println(actualUser.getUserId());
         assertEquals(user.getUserId(), actualUser.getUserId());

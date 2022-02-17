@@ -22,17 +22,7 @@ import java.util.List;
 import java.util.UUID;
 import java.util.stream.IntStream;
 
-/**
- * packageName : com.wai.service.post
- * fileName : PostServiceTest
- * author : 윤신영
- * date : 2022-01-20
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-20   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class PostServiceTest {

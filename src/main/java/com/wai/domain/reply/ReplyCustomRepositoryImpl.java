@@ -9,17 +9,6 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
-/**
- * packageName : com.wai.domain.reply
- * fileName : ReplyCustomRepositoryImpl
- * author : 윤신영
- * date : 2022-02-03
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-02-03   윤신영     최초 생성
- */
 @Repository
 public class ReplyCustomRepositoryImpl implements ReplyCustomRepository {
 

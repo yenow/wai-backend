@@ -5,17 +5,6 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
-/**
- * packageName : com.wai.domain.likey
- * fileName : LikeyCustomRepositoryImpl
- * author : 윤신영
- * date : 2022-02-04
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-02-04   윤신영     최초 생성
- */
 @Repository
 public class LikeyCustomRepositoryImpl implements LikeyCustomRepository {
 

@@ -13,17 +13,7 @@ import static org.hamcrest.MatcherAssert.assertThat;
 import static org.hamcrest.Matchers.is;
 import static org.junit.Assert.assertNotNull;
 
-/**
- * packageName : com.wai.domain.user
- * fileName : UserRepositoryTest
- * author : 윤신영
- * date : 2021-12-21
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-21   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class UserRepositoryTest {

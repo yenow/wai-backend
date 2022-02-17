@@ -4,6 +4,7 @@ import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
 import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
+import com.wai.controller.post.dto.PostSearchType;
 import com.wai.controller.reply.dto.ReplyResponseDto;
 import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.likey.Likey;
@@ -23,17 +24,6 @@ import java.util.List;
 import java.util.Optional;
 import java.util.stream.Collectors;
 
-/**
- * packageName : com.wai.service.post
- * fileName : PostService
- * author : 윤신영
- * date : 2021-12-03
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-03   윤신영     최초 생성
- */
 @RequiredArgsConstructor
 @Service
 public class PostService {
@@ -63,18 +53,28 @@ public class PostService {
 
         return post.toDto()
                 .setUserDto(post.getUser().toDto())
-                .setReplyDtos(post.getReplyDtos());
+                .setReplyDtos(post.getReplyDtos().stream().map(replyResponseDto ->
+                        replyResponseDto.setPostDto(post.toDto())).collect(Collectors.toList()));
     }
 
     public List<PostResponseDto> readInitPosts(PostRequestDto postRequestDto) {
-        List<Post> posts =  postRepository.readPostsInit(postRequestDto);
+        List<Post> posts;
+        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
+            posts =  postRepository.initPopularPosts(postRequestDto);
+        } else {
+            posts =  postRepository.readInitPosts(postRequestDto);
+        }
         return convertPostResponseDtos(posts);
     }
 
     public List<PostResponseDto> readMoreNewPosts(PostRequestDto postRequestDto) {
         List<Post> posts;
+        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
+            return new ArrayList<>();
+        }
+
         if (postRequestDto.getEndPostId() == null && postRequestDto.getStartPostId() == null) {
-            posts = postRepository.readPostsInit(postRequestDto);
+            posts = postRepository.readInitPosts(postRequestDto);
         } else {
             posts = postRepository.readMoreNewPosts(postRequestDto);
         }
@@ -83,11 +83,21 @@ public class PostService {
 
     public List<PostResponseDto> readMoreOldPosts(PostRequestDto postRequestDto) {
         List<Post> posts;
+        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
+            return new ArrayList<>();
+        }
+
         if (postRequestDto.getEndPostId() == null && postRequestDto.getStartPostId() == null) {
-            posts =  postRepository.readPostsInit(postRequestDto);
+            posts =  postRepository.readInitPosts(postRequestDto);
         } else {
             posts =  postRepository.readMoreOldPosts(postRequestDto);
         }
+        return convertPostResponseDtos(posts);
+    }
+
+    public List<PostResponseDto> initPopularPosts(PostRequestDto postRequestDto) {
+        List<Post> posts =  postRepository.initPopularPosts(postRequestDto);
+
         return convertPostResponseDtos(posts);
     }
 
@@ -124,6 +134,7 @@ public class PostService {
         post.updatePost(postSaveRequestDto);
         return convertPostResponseDto(post);
     }
+
 
     private List<PostResponseDto> convertPostResponseDtos(List<Post> posts) {
         List<PostResponseDto> postDtos = new ArrayList<>();

@@ -1,5 +1,7 @@
-package com.wai.domain.enneagramQuestion;
+package com.wai.dummyData.enneagramQuestion;
 
+import com.wai.domain.enneagramQuestion.EnneagramQuestion;
+import com.wai.domain.enneagramQuestion.EnneagramQuestionRepository;
 import com.wai.domain.enneagramTest.TestType;
 import org.junit.After;
 import org.junit.jupiter.api.BeforeEach;
@@ -15,17 +17,7 @@ import java.util.List;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-/**
- * packageName : com.wai.domain.enneagramQuestion
- * fileName : EnneagramQuestionRepositoryTest
- * author : 윤신영
- * date : 2022-01-24
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-24   윤신영     최초 생성
- */
+
 @RunWith(SpringRunner.class)
 @SpringBootTest
 public class EnneagramQuestionRepositoryTest {
@@ -58,28 +50,28 @@ public class EnneagramQuestionRepositoryTest {
         enneagramQuestions.add(EnneagramQuestion.builder()
                 .testType(TestType.simple)
                 .questionNumber(1)
-                .question("나는 독립적인 편이고 자기주장을 잘 한다. 나는 상황에 정면으로 맞설 때 삶이 잘 풀리다고 느낀다. " +
-                        "나는 목표를 설정하고 그 일을 추진해 나간다. 그리고 그것이 성취되기를 원한다. 나는 가만히 않아 있는 것을 좋아" +
-                        "하지 않는다. 나는 큰일을 성취하고 영향력을 행사하기를 원한다. 나는 정면 대결을 원하지는 않지만 사람들이 나를 통제하는" +
-                        " 것도 좋아하지 않는다. 대개의 경우 나는 내가 원하는 것을 잘 알고 있다. 나는 일도 노는것도 열심히 한다.")
+                .question("나는 독립적인 편이고 자기주장을 잘 한다.\n나는 상황에 정면으로 맞설 때 삶이 잘 풀리다고 느낀다.\n" +
+                        "나는 목표를 설정하고 그 일을 추진해 나간다.\n그리고 그것이 성취되기를 원한다.\n나는 가만히 않아 있는 것을 좋아" +
+                        "하지 않는다.\n나는 큰일을 성취하고 영향력을 행사하기를 원한다.\n나는 정면 대결을 원하지는 않지만 사람들이 나를 통제하는" +
+                        " 것도 좋아하지 않는다.\n대개의 경우 나는 내가 원하는 것을 잘 알고 있다.\n나는 일도 노는것도 열심히 한다.")
                 .uniqueString("A")
                 .build());
 
         enneagramQuestions.add(EnneagramQuestion.builder()
                 .testType(TestType.simple)
                 .questionNumber(1)
-                .question("나는 조용하게 혼자 있는 것을 좋아한다. 나는 사회적인 활동에 주의를 쏟지 않으며 대체로 내 의견을 강하게 주장하지 않" +
-                        "는다. 나는 앞에 나서거나 다른 사람과 경졍하는 것을 그리 좋아하지 않는다. 사람들은 나를 몽상가라고 말한다. 내 상상의 세계 " +
-                        "안에서는 많은 흥미로운 일들이 벌어진다. 나는 적걱적이고 활동적이라기보다는 조용한 성격이다.")
+                .question("나는 조용하게 혼자 있는 것을 좋아한다.\n나는 사회적인 활동에 주의를 쏟지 않으며 대체로 내 의견을 강하게 주장하지 않" +
+                        "는다.\n나는 앞에 나서거나 다른 사람과 경졍하는 것을 그리 좋아하지 않는다.\n사람들은 나를 몽상가라고 말한다.\n내 상상의 세계 " +
+                        "안에서는 많은 흥미로운 일들이 벌어진다.\n나는 적걱적이고 활동적이라기보다는 조용한 성격이다.")
                 .uniqueString("B")
                 .build());
 
         enneagramQuestions.add(EnneagramQuestion.builder()
                 .testType(TestType.simple)
                 .questionNumber(1)
-                .question("나는 아주 책임감이 강하고 헌신적이다. 나는 내 의무를 다하지 못할 때 아주 기분이 나쁘다. 나는 사람들이" +
-                        " 필요할 때 그들을 위해 내가 그 자리에 있다는 것을 알아주었으면 좋겠다. 나는 그들을 위해 최선을 다할 것이다. " +
-                        "이따금씩 나는 사람들이 나를 알아주든 알아주지 않든 그들을 위해 큰 희생을 한다. 나는 내 자신을 제대로 돌보지 않는다." +
+                .question("나는 아주 책임감이 강하고 헌신적이다.\n나는 내 의무를 다하지 못할 때 아주 기분이 나쁘다.\n나는 사람들이" +
+                        " 필요할 때 그들을 위해 내가 그 자리에 있다는 것을 알아주었으면 좋겠다.\n나는 그들을 위해 최선을 다할 것이다.\n" +
+                        "이따금씩 나는 사람들이 나를 알아주든 알아주지 않든 그들을 위해 큰 희생을 한다.\n나는 내 자신을 제대로 돌보지 않는다.\n" +
                         " 나는 해야 할 일을 한 다음에 시간이 나면 휴식을 취하거나 원하는 일을 한다.")
                 .uniqueString("C")
                 .build());
@@ -87,10 +79,10 @@ public class EnneagramQuestionRepositoryTest {
         enneagramQuestions.add(EnneagramQuestion.builder()
                 .testType(TestType.simple)
                 .questionNumber(2)
-                .question("나는 대개 긍정적인 자세로 생활하며, 모든 일이 나에게 유리한 쪽으로 풀린다고 느낀다. 나는 나의 열정을 " +
-                        "쏟을 수 있는 여러가지 방법들을 찾는다. 나는 사람들과 함께 하고 사람들이 행복해지도록 돕는 것을 좋아한다. " +
-                        "나는 나와 마찬가지로 다른 사람들도 잘 지내기를 바란다.(항상 기분이 좋은 것은 아니다. 그러나 나는 다른 사람에게 " +
-                        "그렇게 보이기를 원한다.) 나는 다른 사람들에게 항상 긍정적으로 보이고자 노력하기 때문에 때로는 내 자신의 문제를 " +
+                .question("나는 대개 긍정적인 자세로 생활하며, 모든 일이 나에게 유리한 쪽으로 풀린다고 느낀다.\n나는 나의 열정을 " +
+                        "쏟을 수 있는 여러가지 방법들을 찾는다.\n나는 사람들과 함께 하고 사람들이 행복해지도록 돕는 것을 좋아한다.\n" +
+                        "나는 나와 마찬가지로 다른 사람들도 잘 지내기를 바란다.\n(항상 기분이 좋은 것은 아니다.\n그러나 나는 다른 사람에게 " +
+                        "그렇게 보이기를 원한다.\n) 나는 다른 사람들에게 항상 긍정적으로 보이고자 노력하기 때문에 때로는 내 자신의 문제를 " +
                         "다루는 것을 미루기도 한다.")
                 .uniqueString("X")
                 .build());
@@ -98,20 +90,20 @@ public class EnneagramQuestionRepositoryTest {
         enneagramQuestions.add(EnneagramQuestion.builder()
                 .testType(TestType.simple)
                 .questionNumber(2)
-                .question("나는 대부분의 상황에 대해 강한 감정을 갖는다. 대부분의 사람들은 내가 모든 것에 대해 불만을 " +
-                        "갖고 있다고 생각한다. 나는 사람들 앞에서 내 감정을 억제하지만 남들이 생각하는 것보다 더 민감하다. " +
-                        "나는 사람들과 함께 있을 때 그들이 어떤 사람인지, 무엇을 기대할 수 있는지 알기 원한다. 어떤 일에 내가 화가" +
-                        " 났을 때 나는 사람들이 그것에 대해 반응하고 나만큼 그 일을 해결하려고 노력해 주기를 원한다. 나는 규칙을 알고 있다." +
-                        "하지만 사람들이 내게 무엇을 하라고 지시하는 것을 좋아하지 않는다. 나는 내 스스로 결정하기를 원한다.")
+                .question("나는 대부분의 상황에 대해 강한 감정을 갖는다.\n대부분의 사람들은 내가 모든 것에 대해 불만을 " +
+                        "갖고 있다고 생각한다.\n나는 사람들 앞에서 내 감정을 억제하지만 남들이 생각하는 것보다 더 민감하다.\n" +
+                        "나는 사람들과 함께 있을 때 그들이 어떤 사람인지, 무엇을 기대할 수 있는지 알기 원한다.\n어떤 일에 내가 화가" +
+                        " 났을 때 나는 사람들이 그것에 대해 반응하고 나만큼 그 일을 해결하려고 노력해 주기를 원한다.\n나는 규칙을 알고 있다.\n" +
+                        "하지만 사람들이 내게 무엇을 하라고 지시하는 것을 좋아하지 않는다.\n나는 내 스스로 결정하기를 원한다.")
                 .uniqueString("Y")
                 .build());
 
         enneagramQuestions.add(EnneagramQuestion.builder()
                 .testType(TestType.simple)
                 .questionNumber(2)
-                .question("나는 스스로를 잘 통제하고 논리적이다. 나는 느낌을 다루는 것을 편안해하지 않는다. 나는 효율적이고 완벽하게 일을" +
-                        " 처리하며 혼자 일하는 것을 좋아한다. 문제나 개인적인 갈등이 있을 때 나는 그 상황에 감정이 끼어들지 않도록 한다. " +
-                        "어떤 사람들은 내가 너무 차고 초연하다고 말하지만 나는 감정 때문에 중요한 일을 그르치고 싶지 않다. 나는 사람들이 나를" +
+                .question("나는 스스로를 잘 통제하고 논리적이다.\n나는 느낌을 다루는 것을 편안해하지 않는다.\n나는 효율적이고 완벽하게 일을" +
+                        " 처리하며 혼자 일하는 것을 좋아한다.\n문제나 개인적인 갈등이 있을 때 나는 그 상황에 감정이 끼어들지 않도록 한다.\n" +
+                        "어떤 사람들은 내가 너무 차고 초연하다고 말하지만 나는 감정 때문에 중요한 일을 그르치고 싶지 않다.\n나는 사람들이 나를" +
                         " 화나게 할 때 대부분의 경우 반응을 보이지 않는다.")
                 .uniqueString("Z")
                 .build());
@@ -814,7 +806,7 @@ public class EnneagramQuestionRepositoryTest {
                 .enneagramType(9)
                 .build());
 
-        enneagramQuestions.forEach(enneagramQuestion -> {
+        enneagramQuestions.forEach(enneagramQuestion-> {
             enneagramQuestionRepository.save(enneagramQuestion);
         });
     }

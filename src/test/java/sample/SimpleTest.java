@@ -5,17 +5,6 @@ import org.junit.runner.RunWith;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.junit4.SpringRunner;
 
-/**
- * packageName : sample
- * fileName : SimpleTest
- * author : 윤신영
- * date : 2022-01-28
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-28   윤신영     최초 생성
- */
 @RunWith(SpringRunner.class)
 @SpringBootTest()
 public class SimpleTest {

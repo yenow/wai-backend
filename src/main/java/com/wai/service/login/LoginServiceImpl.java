@@ -12,17 +12,7 @@ import org.springframework.stereotype.Service;
 import javax.servlet.http.HttpSession;
 import javax.transaction.Transactional;
 
-/**
- * packageName : com.wai.service.login
- * fileName : LoginService
- * author : 윤신영
- * date : 2021-12-22
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2021-12-22   윤신영     최초 생성
- */
+
 @RequiredArgsConstructor
 @Service
 public class LoginServiceImpl implements LoginService {

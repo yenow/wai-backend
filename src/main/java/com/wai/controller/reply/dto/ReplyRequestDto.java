@@ -8,17 +8,7 @@ import lombok.*;
 import javax.persistence.Column;
 
 
-/**
- * packageName : com.wai.controller.reply.dto
- * fileName : ReplyRequestDto
- * author : 윤신영
- * date : 2022-01-24
- * description :
- * ===========================================================
- * DATE      AUTHOR      NOTE
- * -----------------------------------------------------------
- * 2022-01-24   윤신영     최초 생성
- */
+
 @Getter
 @Setter
 @Builder
