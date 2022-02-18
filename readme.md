@@ -1,11 +1,19 @@
-# zootopia (가제)
+# 🌈 wai-spring 
+`WAI` 앱의 백엔드 코드입니다.
 
-## 프로젝트 개요
-
-▪️익명 SNS 사이트
-▪️다른사람과의 비교가 아닌, 삶의 이야기에 좀 더 집중하면서 위로가 되는 어플
-▪️성격테스트까지 제공을 하여 나와 비슷한 사람이면 공감, 나와 다른 사람이면 더 넓은 시야를 얻을 수 있음
-
+## 📄 WAI 앱이란?
+`WHO AM I`의 약자로 이름을 지었습니다. 에니어그램 커뮤니티로,  에니어그램이라는 성격유형테스트로 내가 어떤 사람인지 알고, 
+다른사람과 소통하면서 타인의 성향도 이해하면 좋겠다는 취지로 만들었습니다.
 
 
+
+## ⚙️ tech stack
+- `Java`
+- `Spring-boot`
+- `JPA`
+- `QueryDsl`
+
+
+[comment]: <> (<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>)
+[comment]: <> (<img src="https://img.shields.io/static/v1?label=&message=Java&color=blue"/>)
 
