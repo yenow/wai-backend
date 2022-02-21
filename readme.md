@@ -11,7 +11,7 @@
 - `Spring-boot`
 - `JPA`
 - `QueryDsl`
-
+- `mysql`
 
 [comment]: <> (<img src="https://img.shields.io/badge/HTML5-E34F26?style=flat-square&logo=HTML5&logoColor=white"/>)
 [comment]: <> (<img src="https://img.shields.io/static/v1?label=&message=Java&color=blue"/>)
