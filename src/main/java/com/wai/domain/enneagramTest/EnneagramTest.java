@@ -11,10 +11,7 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor @ToString(exclude = "userEnneagramTests")
 @Entity
 public class EnneagramTest extends BaseEntity {
 

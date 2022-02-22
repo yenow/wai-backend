@@ -9,7 +9,7 @@ import java.util.Optional;
 
 @RequiredArgsConstructor
 @Repository
-public class UserCustromRepositoryImpl implements UserCustomRepository {
+public class UserCustomRepositoryImpl implements UserCustomRepository {
 
     private final JPAQueryFactory jpaQueryFactory;
 
@@ -23,21 +23,12 @@ public class UserCustromRepositoryImpl implements UserCustomRepository {
     }
 
     @Override
-    public User findByPhoneNumber(String id) {
+    public Optional<User> findByUserKey(String userKey) {
         QUser user = new QUser("u");
 
-        return jpaQueryFactory.selectFrom(user)
-                .where(user.phoneNumber.eq(id))
-                .fetchOne();
-    }
-
-    @Override
-    public User findByUserKey(String userKey) {
-        QUser user = new QUser("u");
-
-        return jpaQueryFactory.selectFrom(user)
+        return Optional.ofNullable(jpaQueryFactory.selectFrom(user)
                 .where(user.userKey.eq(userKey))
-                .fetchOne();
+                .fetchOne());
     }
 
     @Override

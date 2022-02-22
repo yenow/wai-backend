@@ -32,7 +32,8 @@ public class PostResponseDto extends  ResponseDto {
     private Integer authorEnneagramType;
     private int clickCount;
     private int likeyCount;
-    private Boolean isDelete;
+    private Boolean isDeleted;
+    private Boolean isReported;
     private LocalDateTime insertDate;
     private LocalDateTime updateDate;
     private Long insertId;

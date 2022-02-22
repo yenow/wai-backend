@@ -39,17 +39,14 @@ public class Post extends BaseEntity {
     @JsonBackReference
     private User user;
 
-    @Builder.Default
+    @Builder.Default @JsonManagedReference
     @OneToMany(mappedBy = "post")
-    @JsonManagedReference
     private List<Reply> replys = new ArrayList<Reply>();;
-    @Builder.Default
+    @Builder.Default @JsonManagedReference
     @OneToMany(mappedBy = "post")
-    @JsonManagedReference
     private List<Likey> likeys = new ArrayList<>();
-    @Builder.Default
+    @Builder.Default @JsonManagedReference
     @OneToMany(mappedBy = "post")
-    @JsonManagedReference
     private List<Tag> tags = new ArrayList<Tag>();
 
 
@@ -65,7 +62,10 @@ public class Post extends BaseEntity {
     private int clickCount;
     @Builder.Default
     @Column
-    private Boolean isDelete = false;
+    private Boolean isDeleted = false;
+    @Builder.Default
+    @Column
+    private Boolean isReported = false;
 
     public PostResponseDto toDto() {
         return PostResponseDto.builder()
@@ -77,7 +77,8 @@ public class Post extends BaseEntity {
                 .clickCount(clickCount)
                 .likeyCount(likeys != null ? likeys.size() : 0)
                 .likeys(likeys != null ? likeys.stream().map(likey -> likey.getUser().getUserId()).collect(Collectors.toList()) : null)
-                .isDelete(isDelete)
+                .isDeleted(isDeleted)
+                .isReported(isReported)
                 .insertDate(getInsertDate())
                 .updateDate(getUpdateDate())
                 .insertId(getInsertId())
@@ -100,7 +101,7 @@ public class Post extends BaseEntity {
         clickCount = clickCount + 1;
     }
 
-    public void deletePost() { isDelete = true; }
+    public void deletePost() { isDeleted = true; }
 
     public void updatePost(PostSaveRequestDto postSaveRequestDto) {
         title = postSaveRequestDto.getTitle();

@@ -58,7 +58,7 @@ public class PostServiceTest {
                     .user(user)
                     .title("제목" + value + "입니다.")
                     .content("내용" + value + "입니다.")
-                    .isDelete(value == 15 ? true : false)
+                    .isDeleted(value == 15 ? true : false)
                     .build();
 
             postList.add(post);
@@ -80,7 +80,7 @@ public class PostServiceTest {
                     .user(user)
                     .title("제목" + value + "입니다. 유저 : " + user.getUserId())
                     .content("내용" + value + "입니다.")
-                    .isDelete(value == 15 ? true : false)
+                    .isDeleted(value == 15 ? true : false)
                     .build();
 
             postRepository.save(post);

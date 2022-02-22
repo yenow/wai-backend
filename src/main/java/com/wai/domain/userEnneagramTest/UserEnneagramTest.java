@@ -27,7 +27,7 @@ public class UserEnneagramTest extends BaseEntity {
     @JsonBackReference
     private User user;
 
-    @ManyToOne
+    @ManyToOne(cascade = CascadeType.ALL)
     @JoinColumn(name = "test_id")
     @JsonBackReference
     private EnneagramTest enneagramTest;

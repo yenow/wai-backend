@@ -64,12 +64,10 @@ public class LoginApiControllerTest {
         // SimpleLoginRequestDto responseEntity = restTemplate.getForObject(baseUrl,loginRequestDto,SimpleLoginRequestDto.class);
         ResponseEntity<SimpleLoginRequestDto> responseEntity = restTemplate.postForEntity(baseUrl, simpleLoginRequestDto, SimpleLoginRequestDto.class);
 
-        User user = userRepository.findByUserKey(simpleLoginRequestDto.getUserKey());
+        User user = userRepository.findByUserKey(simpleLoginRequestDto.getUserKey()).get();
 
         //then
         assertThat(responseEntity.getStatusCode()).isEqualTo(HttpStatus.OK);
         assertThat(user.getNickname()).isEqualTo(simpleLoginRequestDto.getNickname());
-        assertThat(user.getGender()).isEqualTo(simpleLoginRequestDto.getGender());
-        assertThat(user.getBirthDay()).isEqualTo(simpleLoginRequestDto.getBirthday());
     }
 }

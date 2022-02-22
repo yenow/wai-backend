@@ -1,112 +1,86 @@
 package com.wai.domain.user;
 
 import com.wai.controller.login.dto.LoginRequestDto;
+import com.wai.dummyData.DummyData;
+import com.wai.testConfig.TestConfig;
+import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
+import org.springframework.context.annotation.Import;
+import org.springframework.test.context.ActiveProfiles;
 
 import java.util.UUID;
 
-import static org.hamcrest.MatcherAssert.assertThat;
-import static org.hamcrest.Matchers.is;
-import static org.junit.Assert.assertNotNull;
+import static org.assertj.core.api.Assertions.*;
 
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@ActiveProfiles("test")
 public class UserRepositoryTest {
 
-    @Autowired
-    UserRepository userRepository;
+    @Autowired UserRepository userRepository;
+    @Autowired DummyData dummyData;
+
+    User user;
 
     @BeforeEach
-    public void setUp() throws Exception{
-        userRepository.deleteAll();
+    public void beforeEach() {
+        dummyData.initUsers();
     }
 
     @AfterEach
-    public void cleanup() {
-        userRepository.deleteAll();
+    public void afterEach() {
+        if (user != null) {
+            userRepository.delete(user);
+        }
     }
 
-    @DisplayName("findAllByPhoneNumber() 테스트")
+    @DisplayName("findByEmail() 테스트")
     @Test
-    public void findAllByPhoneNumber() {
+    public void findByEmail() {
         // given
-        UUID uuid = UUID.randomUUID();
-        System.out.println("uuid : " + uuid);
-
-        User user = User.builder()
-                .nickname("nickname")
-                .userKey(UUID.randomUUID().toString())
-                .password("password")
-                .phoneNumber("01021245690")
-                .birthDay("birthDay")
-                .gender(Gender.man)
+        user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname").password("password").email("email")
                 .build();
 
-        LoginRequestDto loginRequestDto = LoginRequestDto.builder()
-                .id("01021245690")
-                .password("password")
-                .build();
-
-        // when
-        userRepository.save(user);
-        User findUser = userRepository.findByPhoneNumber(loginRequestDto.getId());
-
-        // then
-        assertNotNull(findUser);
-        assertThat(findUser.getPhoneNumber(), is(loginRequestDto.getId()));
-        assertThat(findUser.getGender(), is(user.getGender()));
-        System.out.println("uuid : " + uuid);
-    }
-
-    @DisplayName("findAllByEmail() 테스트")
-    @Test
-    public void findAllByEmail() {
-        // given
-        User user = User.builder()
-                .userKey(UUID.randomUUID().toString())
-                .nickname("nickname")
-                .password("password")
-                .email("email")
-                .birthDay("birthDay")
-                .build();
-
-        LoginRequestDto loginRequestDto = LoginRequestDto.builder()
-                .id("email")
-                .password("password")
-                .build();
+        LoginRequestDto loginRequestDto = LoginRequestDto.builder().id("email").password("password").build();
 
         // when
         userRepository.save(user);
         User findUser = userRepository.findByEmail(loginRequestDto.getId());
 
         // then
-        assertNotNull(findUser);
-        assertThat(findUser.getEmail(), is(loginRequestDto.getId()));
+        assertThat(findUser.getEmail()).isEqualTo(loginRequestDto.getId());
     }
 
-    @DisplayName("findAllByLoginKey() 테스트")
+    @DisplayName("findByUserKey() 테스트")
     @Test
-    public void findAllByLoginKey() {
+    public void findByUserKey() {
         // given
-        User user = User.builder()
-                .nickname("nickname")
-                .userKey(UUID.randomUUID().toString())
-                .password("password")
-                .email("email")
-                .birthDay("birthDay")
-                .build();
+        String userKey = UUID.randomUUID().toString();
+        user = User.builder().nickname("nickname").userKey(userKey).password("password").email("email").build();
 
         // when
         userRepository.save(user);
-        User findUser = userRepository.findByEmail(user.getEmail());
+        User findUser = userRepository.findByUserKey(userKey).get();
 
         // then
-        assertNotNull(findUser);
-        assertThat(findUser.getUserKey(), is(user.getUserKey()));
+        assertThat(findUser.getUserKey()).isEqualTo(user.getUserKey());
+    }
+
+    @Test
+    void testFindByNickname() {
+        // given
+        String userKey = UUID.randomUUID().toString();
+        user = User.builder().nickname("nickname").userKey(userKey).build();
+
+        // when
+        userRepository.save(user);
+        User findUser = userRepository.findByNickname(user.getNickname())
+                .orElse(User.builder().build());
+
+        // then
+        Assertions.assertThat(findUser.getNickname()).isEqualTo(user.getNickname());
     }
 }

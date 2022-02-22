@@ -5,6 +5,7 @@ import com.wai.common.BaseEntity;
 import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.reply.dto.ReplyResponseDto;
 import com.wai.controller.user.dto.UserResponseDto;
+import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
@@ -17,10 +18,7 @@ import java.util.List;
 import java.util.stream.Collectors;
 
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor @ToString(exclude = {"posts", "replys", "userEnneagramTests", "likeys"})
 @Entity
 public class User extends BaseEntity {
 
@@ -28,21 +26,17 @@ public class User extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long userId;
 
-    @Builder.Default
+    @Builder.Default @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
     private List<Post> posts = new ArrayList<Post>();
-    @Builder.Default
+    @Builder.Default @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
     private List<Reply> replys = new ArrayList<Reply>();
-    @Builder.Default
-    @OneToMany(mappedBy = "user")
-    @JsonManagedReference
+    @Builder.Default @JsonManagedReference
+    @OneToMany(mappedBy = "user", cascade = CascadeType.ALL)
     private List<UserEnneagramTest> userEnneagramTests = new ArrayList<UserEnneagramTest>();;
-    @Builder.Default
+    @Builder.Default @JsonManagedReference
     @OneToMany(mappedBy = "user")
-    @JsonManagedReference
     private List<Likey> likeys = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 200)
@@ -51,15 +45,8 @@ public class User extends BaseEntity {
     private String password;
     @Column(length = 200)
     private String email;
-    @Column(length = 13)
-    private String phoneNumber;
     @Column(length = 50)
     private String nickname;
-    @Column(length = 50)
-    private String birthDay;
-    @Column(length = 10)
-    @Enumerated(EnumType.STRING)
-    private Gender gender;
 
     public UserResponseDto toDto() {
         return UserResponseDto.builder()
@@ -67,10 +54,7 @@ public class User extends BaseEntity {
                 .userKey(userKey)
                 .password(password)
                 .email(email)
-                .phoneNumber(phoneNumber)
                 .nickname(nickname)
-                .birthDay(birthDay)
-                .gender(gender)
                 .myEnneagramType(findLastMyEnneagramType())
                 .build();
     }
@@ -87,10 +71,14 @@ public class User extends BaseEntity {
         this.nickname = nickname;
     }
 
+    public void doEnneagramTest(EnneagramTest enneagramTest) {
+        userEnneagramTests.add(UserEnneagramTest.builder().enneagramTest(enneagramTest).user(this).build());
+    }
+
     public List<PostResponseDto> getPostDtos() {
         return posts.stream()
                 .map(post -> post.toDto())
-                .filter(postResponseDto -> !postResponseDto.getIsDelete())
+                .filter(postResponseDto -> !postResponseDto.getIsDeleted())
                 .collect(Collectors.toList());
     }
 

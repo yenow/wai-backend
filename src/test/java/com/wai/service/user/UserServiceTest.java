@@ -7,18 +7,15 @@ import com.wai.domain.user.UserRepository;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.UUID;
 
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@RunWith(SpringRunner.class)
-@SpringBootTest
+@SpringBootTest(properties = "spring.config.location=classpath:application-test.properties")
 public class UserServiceTest {
 
     @Autowired
@@ -48,7 +45,7 @@ public class UserServiceTest {
     }
 
     @Test
-    void getUserInfomation () {
+    void getUserInformation () {
         UserRequestDto userRequestDto = UserRequestDto.builder()
                 .userId(user.getUserId())
                 .userKey(userKey)

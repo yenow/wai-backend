@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 import java.util.List;
 import java.util.Optional;
 
+import static com.wai.domain.wiseSaying.QWiseSaying.wiseSaying1;
+
 @Repository
 public class WiseSayingCustomRepositoryImpl implements WiseSayingCustomRepository {
 
@@ -20,21 +22,20 @@ public class WiseSayingCustomRepositoryImpl implements WiseSayingCustomRepositor
 
     @Override
     public Optional<WiseSaying> getWiseSayings(WiseSayingRequestDto wiseSayingRequestDto) {
-        QWiseSaying qWiseSaying = QWiseSaying.wiseSaying1;
+
         return Optional.ofNullable(
-            jpaQueryFactory.selectFrom(qWiseSaying)
+            jpaQueryFactory.selectFrom(wiseSaying1)
             .where(idLessThanLastId(wiseSayingRequestDto))
-            .orderBy(qWiseSaying.id.desc())
+            .orderBy(wiseSaying1.id.desc())
             .limit(1)
             .fetchOne()
         );
     }
 
     BooleanExpression idLessThanLastId(WiseSayingRequestDto wiseSayingRequestDto) {
-        QWiseSaying qWiseSaying = QWiseSaying.wiseSaying1;
         if (wiseSayingRequestDto.getLastId() == null) {
             return null;
         }
-        return qWiseSaying.id.lt(wiseSayingRequestDto.getLastId());
+        return wiseSaying1.id.lt(wiseSayingRequestDto.getLastId());
     }
 }

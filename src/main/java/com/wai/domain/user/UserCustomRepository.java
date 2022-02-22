@@ -8,9 +8,7 @@ public interface UserCustomRepository {
 
     User findByEmail(String id);
 
-    User findByPhoneNumber(String id);
-
-    User findByUserKey(String userKey);
+    Optional<User> findByUserKey(String userKey);
 
     Optional<User> findByNickname(String nickname);
 

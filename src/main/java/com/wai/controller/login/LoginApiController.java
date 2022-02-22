@@ -40,7 +40,6 @@ public class LoginApiController {
     @PostMapping(value = "/api/saveUserKey")
     public Long saveUserKey(@RequestBody String userKey) {
         Long userId = loginService.saveUserKey(userKey);
-        System.out.println(userId);
         return userId;
     }
 

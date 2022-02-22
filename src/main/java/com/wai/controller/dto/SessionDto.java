@@ -21,8 +21,6 @@ public class SessionDto {
         this.userId = user.getUserId();
         this.password = user.getPassword();
         this.email = user.getEmail();
-        this.phoneNumber = user.getPhoneNumber();
         this.nickname = user.getNickname();
-        this.birthDay = user.getBirthDay();
     }
 }

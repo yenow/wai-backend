@@ -5,6 +5,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.Optional;
 
+import static com.wai.domain.likey.QLikey.likey;
+
 @Repository
 public class LikeyCustomRepositoryImpl implements LikeyCustomRepository {
 
@@ -16,8 +18,6 @@ public class LikeyCustomRepositoryImpl implements LikeyCustomRepository {
 
     @Override
     public Optional<Likey> findByUserIdAndPostId(Long userId, Long postId) {
-        QLikey likey = QLikey.likey;
-
         return Optional.ofNullable(jpaQueryFactory.selectFrom(likey)
                 .where(likey.user.userId.eq(userId).and(likey.post.postId.eq(postId)))
                 .fetchOne());

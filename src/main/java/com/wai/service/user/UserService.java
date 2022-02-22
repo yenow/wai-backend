@@ -22,7 +22,7 @@ public class UserService {
 
     @Transactional
     public UserResponseDto getUserInformation(UserRequestDto userRequestDto) {
-        User user = userRepository.findById(userRequestDto.getUserId()).orElse(User.builder().build());
+        User user = userRepository.findByUserKey(userRequestDto.getUserKey()).orElse(User.builder().build());
 
         List<EnneagramTestResponseDto> enneagramTests = user.getUserEnneagramTests().stream()
                 .map(userEnneagramTest -> userEnneagramTest.getEnneagramTest().toDto())

@@ -9,6 +9,8 @@ import org.springframework.stereotype.Repository;
 
 import java.util.List;
 
+import static com.wai.domain.enneagramQuestion.QEnneagramQuestion.enneagramQuestion;
+
 @Repository
 @RequiredArgsConstructor
 public class EnneagramQuestionCustomRepositoryImpl implements EnneagramQuestionCustomRepository {
@@ -17,7 +19,6 @@ public class EnneagramQuestionCustomRepositoryImpl implements EnneagramQuestionC
 
     @Override
     public List<EnneagramQuestion> findByTestType(TestType testType) {
-        QEnneagramQuestion enneagramQuestion = QEnneagramQuestion.enneagramQuestion;
 
         return jpaQueryFactory
                 .selectFrom(enneagramQuestion)

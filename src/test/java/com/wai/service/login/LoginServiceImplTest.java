@@ -37,7 +37,6 @@ public class LoginServiceImplTest {
         User user = User.builder()
                 .nickname("nickname")
                 .password("password")
-                .phoneNumber("01021245690")
                 .build();
 
         userRepository.save(user);

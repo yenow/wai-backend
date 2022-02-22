@@ -14,6 +14,9 @@ import java.time.LocalDateTime;
 import java.util.List;
 
 import static com.querydsl.jpa.JPAExpressions.select;
+import static com.wai.domain.post.QPost.post;
+import static com.wai.domain.reply.QReply.reply;
+import static com.wai.domain.user.QUser.user;
 
 @Repository
 public class PostCustomRepositoryImpl implements PostCustomRepository {
@@ -26,13 +29,10 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> readInitPosts(PostRequestDto postRequestDto) {
-        QPost post = QPost.post;
-        QUser user = QUser.user;
-
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                .leftJoin(post.replys, QReply.reply)
-                .where(post.isDelete.ne(true)
+                .leftJoin(post.replys, reply)
+                .where(post.isDeleted.ne(true)
                     ,searchTypeEq(postRequestDto))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
@@ -41,13 +41,10 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> readMoreNewPosts(PostRequestDto postRequestDto) {
-        QPost post = QPost.post;
-        QUser user = QUser.user;
-
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                .leftJoin(post.replys, QReply.reply)
-                .where(post.isDelete.ne(true).and(post.postId.gt(postRequestDto.getStartPostId()))
+                .leftJoin(post.replys, reply)
+                .where(post.isDeleted.ne(true).and(post.postId.gt(postRequestDto.getStartPostId()))
                     ,searchTypeEq(postRequestDto))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
@@ -56,13 +53,10 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> readMoreOldPosts(PostRequestDto postRequestDto) {
-        QPost post = QPost.post;
-        QUser user = QUser.user;
-
         return jpaQueryFactory.selectFrom(post)
                 .innerJoin(post.user, user)
-                .leftJoin(post.replys, QReply.reply)
-                .where(post.isDelete.ne(true).and(post.postId.lt(postRequestDto.getEndPostId()))
+                .leftJoin(post.replys, reply)
+                .where(post.isDeleted.ne(true).and(post.postId.lt(postRequestDto.getEndPostId()))
                     ,searchTypeEq(postRequestDto))
                 .orderBy(post.postId.desc())
                 .limit(postRequestDto.getPostsCount())
@@ -71,28 +65,25 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     @Override
     public List<Post> initPopularPosts(PostRequestDto postRequestDto) {
-        return jpaQueryFactory.selectFrom(QPost.post)
-                .innerJoin(QPost.post.user, QUser.user)
-                .leftJoin(QPost.post.replys, QReply.reply)
-                .leftJoin(QPost.post.likeys, QLikey.likey)
-                .where(QPost.post.isDelete.ne(true)
-                        .and(QPost.post.insertDate.gt(LocalDateTime.now().minusDays(7))))
-                .orderBy(QPost.post.clickCount.desc())
+        return jpaQueryFactory.selectFrom(post)
+                .innerJoin(post.user, user)
+                .leftJoin(post.replys, reply)
+                .leftJoin(post.likeys, QLikey.likey)
+                .where(post.isDeleted.ne(true)
+                        .and(post.insertDate.gt(LocalDateTime.now().minusDays(7))))
+                .orderBy(post.clickCount.desc())
                 .limit(postRequestDto.getPostsCount())
                 .fetch();
     }
 
     private OrderSpecifier<Integer> orderPopluar(PostRequestDto postRequestDto) {
         if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
-            return QPost.post.clickCount.desc();
+            return post.clickCount.desc();
         }
         return null;
     }
 
     private BooleanExpression searchTypeEq(PostRequestDto postRequestDto) {
-        QPost post = QPost.post;
-        QReply reply = QReply.reply;
-
         PostSearchType postSearchType = postRequestDto.getPostSearchType();
         String searchText = postRequestDto.getSearchText();
 
@@ -125,16 +116,12 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     }
 
     private BooleanExpression enneagramTypeEq(Integer enneagramType) {
-        QPost post = QPost.post;
-
         return enneagramType != null ? post.authorEnneagramType.eq(enneagramType) : null;
     }
 
     @Override
     public void deleteAllByUserKey(String userKey) {
-        QPost post = new QPost("p");
         QUser subUser = new QUser("u");
-
         jpaQueryFactory.delete(post)
                 .where(post.user.userId.in(select(subUser.userId)
                                             .from(subUser)

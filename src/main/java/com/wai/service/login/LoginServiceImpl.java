@@ -34,10 +34,9 @@ public class LoginServiceImpl implements LoginService {
 
         User user = new User();
         User userByEmail = userRepository.findByEmail(loginRequestDto.getId());
-        User userByPhoneNumber = userRepository.findByPhoneNumber(loginRequestDto.getId());
 
         // 해당하는 아이디가 없을 경우
-        if (userByEmail == null && userByPhoneNumber == null) {
+        if (userByEmail == null) {
             loginResponseDto.setIsLoginSuccess(false);
             loginResponseDto.setIsErrorMessage(true);
             loginResponseDto.setErrorMessage("존재하지 않는 아이디입니다.");
@@ -45,8 +44,6 @@ public class LoginServiceImpl implements LoginService {
             return ;
         } else if (userByEmail != null) {
             user = userByEmail;
-        } else if (userByPhoneNumber != null) {
-            user = userByPhoneNumber;
         }
 
         /* 비밀번호 암호화 필요 */
@@ -76,8 +73,6 @@ public class LoginServiceImpl implements LoginService {
         User user = User.builder()
                 .userKey(simpleLoginRequestDto.getUserKey())
                 .nickname(simpleLoginRequestDto.getNickname())
-                .birthDay(simpleLoginRequestDto.getBirthday())
-                .gender(simpleLoginRequestDto.getGender())
                 .build();
 
         try {
