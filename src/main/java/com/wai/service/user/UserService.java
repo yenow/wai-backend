@@ -1,14 +1,13 @@
 package com.wai.service.user;
 
-import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
 import com.wai.controller.user.dto.UserRequestDto;
-import com.wai.controller.user.dto.UserResponseDto;
+import com.wai.controller.user.dto.UserDto;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
-import javax.persistence.Id;
 import javax.transaction.Transactional;
 import java.util.Collections;
 import java.util.List;
@@ -21,10 +20,10 @@ public class UserService {
     final UserRepository userRepository;
 
     @Transactional
-    public UserResponseDto getUserInformation(UserRequestDto userRequestDto) {
+    public UserDto getUserInformation(UserRequestDto userRequestDto) {
         User user = userRepository.findByUserKey(userRequestDto.getUserKey()).orElse(User.builder().build());
 
-        List<EnneagramTestResponseDto> enneagramTests = user.getUserEnneagramTests().stream()
+        List<EnneagramTestDto> enneagramTests = user.getUserEnneagramTests().stream()
                 .map(userEnneagramTest -> userEnneagramTest.getEnneagramTest().toDto())
                 .collect(Collectors.toList());
 
@@ -36,15 +35,15 @@ public class UserService {
                 .setEnneagramTestDtos(enneagramTests);
     }
 
-    private UserResponseDto convertUserToUserResponseDto(User user) {
-        UserResponseDto userResponseDto = user.toDto();
-        userResponseDto.setPosts(user.getPostDtos());
-        return UserResponseDto.builder().build();
+    private UserDto convertUserToUserResponseDto(User user) {
+        UserDto userDto = user.toDto();
+        userDto.setPosts(user.getPostDtos());
+        return UserDto.builder().build();
     }
 
     @Transactional
-    public UserResponseDto saveNickname(UserRequestDto userRequestDto) {
-        UserResponseDto userDto = UserResponseDto.builder().build();
+    public UserDto saveNickname(UserRequestDto userRequestDto) {
+        UserDto userDto = UserDto.builder().build();
 
         if (isNicknameDupicated(userRequestDto)) {
             userDto.setIsSuccess(false);

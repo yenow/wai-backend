@@ -1,12 +1,9 @@
 package com.wai.domain.post;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
-import com.wai.controller.post.dto.PostRequestDto;
-import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.post.dto.PostDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
-import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.controller.reply.dto.ReplyDto;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;
@@ -21,12 +18,8 @@ import java.util.Collections;
 import java.util.List;
 import java.util.stream.Collectors;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
-@DynamicInsert
-@DynamicUpdate
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor @ToString(exclude = {"user", "replys", "likeys", "tags"})
+@DynamicInsert @DynamicUpdate
 @Entity
 public class Post extends BaseEntity {
 
@@ -34,18 +27,16 @@ public class Post extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long postId;
 
-    @ManyToOne
-    @JoinColumn(name = "user_id")
-    @JsonBackReference
+    @ManyToOne(fetch = FetchType.LAZY) @JoinColumn(name = "user_id")
     private User user;
 
-    @Builder.Default @JsonManagedReference
+    @Builder.Default
     @OneToMany(mappedBy = "post")
     private List<Reply> replys = new ArrayList<Reply>();;
-    @Builder.Default @JsonManagedReference
+    @Builder.Default
     @OneToMany(mappedBy = "post")
     private List<Likey> likeys = new ArrayList<>();
-    @Builder.Default @JsonManagedReference
+    @Builder.Default
     @OneToMany(mappedBy = "post")
     private List<Tag> tags = new ArrayList<Tag>();
 
@@ -67,8 +58,8 @@ public class Post extends BaseEntity {
     @Column
     private Boolean isReported = false;
 
-    public PostResponseDto toDto() {
-        return PostResponseDto.builder()
+    public PostDto toDto() {
+        return PostDto.builder()
                 .postId(postId)
                 .title(title)
                 .content(content)
@@ -85,7 +76,7 @@ public class Post extends BaseEntity {
                 .build();
     }
 
-    public List<ReplyResponseDto> getReplyDtos() {
+    public List<ReplyDto> getReplyDtos() {
         return replys.stream().map(reply ->
                 reply.toDto().setUserDto(reply.getUser().toDto())).collect(Collectors.toList());
     }

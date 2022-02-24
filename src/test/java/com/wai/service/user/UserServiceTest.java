@@ -1,60 +1,64 @@
 package com.wai.service.user;
 
 import com.wai.controller.user.dto.UserRequestDto;
-import com.wai.controller.user.dto.UserResponseDto;
+import com.wai.controller.user.dto.UserDto;
 import com.wai.domain.user.User;
-import com.wai.domain.user.UserRepository;
-import org.junit.jupiter.api.AfterEach;
-import org.junit.jupiter.api.BeforeEach;
-import org.junit.jupiter.api.Test;
+import com.wai.dummyData.DummyData;
+import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
-
-import java.util.UUID;
+import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
 import static org.junit.jupiter.api.Assertions.*;
 
-
-@SpringBootTest(properties = "spring.config.location=classpath:application-test.properties")
+@SpringBootTest
+@ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserServiceTest {
 
     @Autowired
     private UserService userService;
-    @Autowired
-    private UserRepository userRepository;
 
-    String userKey;
-    User user;
+    @Autowired
+    DummyData dummyData;
+
+    @BeforeAll
+    void beforeAll() {
+        dummyData.initUsers();
+        dummyData.initUserEnneagramTests();
+        dummyData.initPosts();
+    }
 
     @BeforeEach
-    void before() {
-
-        userKey = UUID.randomUUID().toString();
-        System.out.println(userKey);
-        userRepository.deleteByUserKey(userKey);
-
-        user = User.builder().userKey(userKey).build();
-        userRepository.save(user);
-        System.out.println("==== end before() method ====");
+    void beforeEach() {
+        System.out.println("==== start Test ====");
     }
 
     @AfterEach
-    void after () {
-        System.out.println("==== start after() method ====");
-        userRepository.deleteByUserKey(userKey);
+    void afterEach () {
+        System.out.println("==== End Test ====");
     }
 
+    @Transactional
     @Test
     void getUserInformation () {
+        // given
+        User user = dummyData.getUsers().get(0);
         UserRequestDto userRequestDto = UserRequestDto.builder()
-                .userId(user.getUserId())
-                .userKey(userKey)
+                .userKey(user.getUserKey())
                 .build();
 
-        UserResponseDto actualUser = userService.getUserInformation(userRequestDto);
+        // when
+        UserDto findUser = userService.getUserInformation(userRequestDto);
 
-        System.out.println(actualUser.getUserId());
-        assertEquals(user.getUserId(), actualUser.getUserId());
+        // then
+        System.out.println(findUser);
+        System.out.println("==========");
+        System.out.println(findUser.getPosts());
+        System.out.println("==========");
+        System.out.println(findUser.getEnneagramTests());
+        assertEquals(user.getUserId(), findUser.getUserId());
 
     }
 }

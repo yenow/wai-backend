@@ -1,8 +1,7 @@
 package com.wai.service.post;
 
 import com.wai.controller.post.dto.PostRequestDto;
-import com.wai.controller.post.dto.PostResponseDto;
-import com.wai.controller.post.dto.PostSaveRequestDto;
+import com.wai.controller.post.dto.PostDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import com.wai.domain.user.User;
@@ -66,7 +65,7 @@ public class PostServiceTest {
         });
 
         PostRequestDto postRequestDto = PostRequestDto.builder().postsCount(5).build();
-        List<PostResponseDto> postDtos = postService.readInitPosts(postRequestDto);
+        List<PostDto> postDtos = postService.readInitPosts(postRequestDto);
 
         // postID : 14
         assertEquals(postList.get(13).getPostId(), postDtos.get(0).getPostId());
@@ -92,7 +91,7 @@ public class PostServiceTest {
                 .endPostId(5L)
                 .build();
 
-        List<PostResponseDto> postDtos = postService.readMoreNewPosts(postRequestDto);
+        List<PostDto> postDtos = postService.readMoreNewPosts(postRequestDto);
         postDtos.stream().forEach(post -> System.out.println(post));
 
     }

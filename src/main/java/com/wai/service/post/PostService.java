@@ -1,20 +1,15 @@
 package com.wai.service.post;
 
-import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
 import com.wai.controller.post.dto.PostRequestDto;
-import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.post.dto.PostDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.controller.post.dto.PostSearchType;
-import com.wai.controller.reply.dto.ReplyResponseDto;
-import com.wai.controller.user.dto.UserResponseDto;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.likey.LikeyRepository;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
-import com.wai.domain.reply.Reply;
 import com.wai.domain.reply.ReplyRepository;
 import com.wai.domain.user.User;
-import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Service;
 
@@ -33,7 +28,7 @@ public class PostService {
     private final LikeyRepository likeyRepository;
 
     @Transactional
-    public PostResponseDto save(PostSaveRequestDto postSaveRequestDto) {
+    public PostDto save(PostSaveRequestDto postSaveRequestDto) {
         if (postSaveRequestDto.getPostId() != null) {
             Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
             post.updatePost(postSaveRequestDto);
@@ -44,7 +39,7 @@ public class PostService {
     }
 
     @Transactional
-    public PostResponseDto readPost(PostRequestDto postRequestDto) {
+    public PostDto readPost(PostRequestDto postRequestDto) {
         Post post = postRepository.findById(postRequestDto.getPostId()).get();
 
         if (postRequestDto.getCanUpdateCount()) {
@@ -57,7 +52,7 @@ public class PostService {
                         replyResponseDto.setPostDto(post.toDto())).collect(Collectors.toList()));
     }
 
-    public List<PostResponseDto> readInitPosts(PostRequestDto postRequestDto) {
+    public List<PostDto> readInitPosts(PostRequestDto postRequestDto) {
         List<Post> posts;
         if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
             posts =  postRepository.initPopularPosts(postRequestDto);
@@ -67,7 +62,7 @@ public class PostService {
         return convertPostResponseDtos(posts);
     }
 
-    public List<PostResponseDto> readMoreNewPosts(PostRequestDto postRequestDto) {
+    public List<PostDto> readMoreNewPosts(PostRequestDto postRequestDto) {
         List<Post> posts;
         if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
             return new ArrayList<>();
@@ -81,7 +76,7 @@ public class PostService {
         return convertPostResponseDtos(posts);
     }
 
-    public List<PostResponseDto> readMoreOldPosts(PostRequestDto postRequestDto) {
+    public List<PostDto> readMoreOldPosts(PostRequestDto postRequestDto) {
         List<Post> posts;
         if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
             return new ArrayList<>();
@@ -95,7 +90,7 @@ public class PostService {
         return convertPostResponseDtos(posts);
     }
 
-    public List<PostResponseDto> initPopularPosts(PostRequestDto postRequestDto) {
+    public List<PostDto> initPopularPosts(PostRequestDto postRequestDto) {
         List<Post> posts =  postRepository.initPopularPosts(postRequestDto);
 
         return convertPostResponseDtos(posts);
@@ -122,29 +117,29 @@ public class PostService {
     }
 
     @Transactional
-    public PostResponseDto deletePost(PostRequestDto postRequestDto) {
+    public PostDto deletePost(PostRequestDto postRequestDto) {
         Post post = postRepository.findById(postRequestDto.getPostId()).get();
         post.deletePost();
         return convertPostResponseDto(post);
     }
 
     @Transactional
-    public PostResponseDto updatePost(PostSaveRequestDto postSaveRequestDto) {
+    public PostDto updatePost(PostSaveRequestDto postSaveRequestDto) {
         Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
         post.updatePost(postSaveRequestDto);
         return convertPostResponseDto(post);
     }
 
 
-    private List<PostResponseDto> convertPostResponseDtos(List<Post> posts) {
-        List<PostResponseDto> postDtos = new ArrayList<>();
+    private List<PostDto> convertPostResponseDtos(List<Post> posts) {
+        List<PostDto> postDtos = new ArrayList<>();
         posts.forEach((post) -> {
             postDtos.add(convertPostResponseDto(post));
         });
         return postDtos;
     }
 
-    private PostResponseDto convertPostResponseDto(Post post) {
+    private PostDto convertPostResponseDto(Post post) {
         return post.toDto()
                 .setUserDto(post.getUser().toDto())
                 .setReplyDtos(post.getReplyDtos());

@@ -1,8 +1,7 @@
 package com.wai.service.reply;
 
-import com.wai.controller.post.dto.PostResponseDto;
 import com.wai.controller.reply.dto.ReplyRequestDto;
-import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.controller.reply.dto.ReplyDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import com.wai.domain.reply.Reply;
@@ -25,7 +24,7 @@ public class ReplyService {
     final UserRepository userRepository;
     final PostRepository postRepository;
 
-    public List<ReplyResponseDto> readReplysByPostId(Long postId) {
+    public List<ReplyDto> readReplysByPostId(Long postId) {
         List<Reply> replys = replyRepository.findAllReplyByPostId(postId).get();
 
         return replys.stream().map(reply ->
@@ -35,7 +34,7 @@ public class ReplyService {
     }
 
     @Transactional
-    public ReplyResponseDto saveReply(ReplyRequestDto replyRequestDto) {
+    public ReplyDto saveReply(ReplyRequestDto replyRequestDto) {
         Reply reply = replyRepository.save(replyRequestDto.toEntity());
         User user = userRepository.findById(reply.getUser().getUserId()).get();
         Post post = postRepository.findById(reply.getPost().getPostId()) .get();
@@ -47,17 +46,17 @@ public class ReplyService {
 
 
     @Transactional
-    public ReplyResponseDto deleteReply(ReplyRequestDto replyRequestDto) {
+    public ReplyDto deleteReply(ReplyRequestDto replyRequestDto) {
 //        replyRepository.deleteById(replyRequestDto.getReplyId());
         Reply reply = replyRepository.findById(replyRequestDto.getReplyId()).get();
         reply.deleteReply();
-        return ReplyResponseDto.builder().build();
+        return ReplyDto.builder().build();
     }
 
     @Transactional
-    public ReplyResponseDto reportReply(ReplyRequestDto replyRequestDto) {
+    public ReplyDto reportReply(ReplyRequestDto replyRequestDto) {
         Reply reply = replyRepository.findById(replyRequestDto.getReplyId()).get();
         reply.reportReply();
-        return ReplyResponseDto.builder().build();
+        return ReplyDto.builder().build();
     }
 }

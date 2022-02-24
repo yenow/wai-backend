@@ -124,8 +124,8 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
         QUser subUser = new QUser("u");
         jpaQueryFactory.delete(post)
                 .where(post.user.userId.in(select(subUser.userId)
-                                            .from(subUser)
-                                            .where(subUser.userKey.eq(userKey))))
+                        .from(subUser)
+                        .where(subUser.userKey.eq(userKey))))
                 .execute();
     }
 

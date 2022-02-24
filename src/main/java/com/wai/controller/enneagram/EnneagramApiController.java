@@ -1,22 +1,15 @@
 package com.wai.controller.enneagram;
 
-import com.wai.controller.dto.ResponseDto;
 import com.wai.controller.enneagram.dto.EnneagramExplainResponseDto;
-import com.wai.controller.enneagram.dto.EnneagramResponseDto;
-import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
+import com.wai.controller.enneagram.dto.EnneagramDto;
 import com.wai.domain.enneagram.EnneagramRepository;
 import com.wai.domain.enneagramExplain.EnneagramExplainRepository;
-import com.wai.service.enneagramTest.EnneagramTestService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RestController;
 
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 @RequiredArgsConstructor
 @RestController
@@ -26,8 +19,8 @@ public class EnneagramApiController {
     final EnneagramExplainRepository enneagramExplainRepository;
 
     @GetMapping(value = "/api/getEnneagramInfomation")
-    public List<EnneagramResponseDto> getEnneagramInfomation() {
-        List<EnneagramResponseDto> list = new ArrayList<>();
+    public List<EnneagramDto> getEnneagramInfomation() {
+        List<EnneagramDto> list = new ArrayList<>();
         enneagramRepository.findAll().forEach(enneagram ->
                 list.add(enneagram.toDto())
         );

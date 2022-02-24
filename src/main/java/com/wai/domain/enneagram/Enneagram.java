@@ -1,7 +1,7 @@
 package com.wai.domain.enneagram;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.wai.controller.enneagram.dto.EnneagramResponseDto;
+import com.wai.controller.enneagram.dto.EnneagramDto;
 import com.wai.domain.wiseSaying.WiseSaying;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -40,8 +40,8 @@ public class Enneagram {
     @Column
     private String simpleExplain3;
 
-    public EnneagramResponseDto toDto() {
-        return EnneagramResponseDto.builder()
+    public EnneagramDto toDto() {
+        return EnneagramDto.builder()
                 .enneagramType(enneagramType)
                 .wiseSayings(wiseSayings)
                 .animalName(animalName)

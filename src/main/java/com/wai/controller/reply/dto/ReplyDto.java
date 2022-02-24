@@ -1,13 +1,10 @@
 package com.wai.controller.reply.dto;
 
 import com.wai.controller.dto.ResponseDto;
-import com.wai.controller.post.dto.PostResponseDto;
-import com.wai.controller.user.dto.UserResponseDto;
-import com.wai.domain.user.User;
+import com.wai.controller.post.dto.PostDto;
+import com.wai.controller.user.dto.UserDto;
 import lombok.*;
-import org.apache.tomcat.jni.Local;
 
-import javax.persistence.Column;
 import java.time.LocalDateTime;
 
 
@@ -17,7 +14,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplyResponseDto extends ResponseDto {
+public class ReplyDto extends ResponseDto {
     private Long replyId;
     private Long parentReplyId;
     private String author;
@@ -29,15 +26,15 @@ public class ReplyResponseDto extends ResponseDto {
     private LocalDateTime insertDate;
     private LocalDateTime updateDate;
 
-    private UserResponseDto user;
-    private PostResponseDto post;
+    private UserDto user;
+    private PostDto post;
 
-    public ReplyResponseDto setUserDto(UserResponseDto user) {
+    public ReplyDto setUserDto(UserDto user) {
         this.user = user;
         return this;
     }
 
-    public ReplyResponseDto setPostDto(PostResponseDto post) {
+    public ReplyDto setPostDto(PostDto post) {
         this.post = post;
         return this;
     }

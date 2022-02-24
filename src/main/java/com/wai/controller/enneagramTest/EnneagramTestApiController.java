@@ -1,8 +1,7 @@
 package com.wai.controller.enneagramTest;
 
-import com.wai.controller.dto.ResponseDto;
 import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
-import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
 import com.wai.domain.enneagramQuestion.EnneagramQuestion;
 import com.wai.service.enneagramTest.EnneagramQuestionService;
 import com.wai.service.enneagramTest.EnneagramTestService;
@@ -23,17 +22,17 @@ public class EnneagramTestApiController {
     private final EnneagramQuestionService enneagramQuestionService;
 
     @PostMapping(value = "/api/saveSelectedEnneagramTestResult")
-    public EnneagramTestResponseDto saveSelectedEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTestDto saveSelectedEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
         return enneagramTestService.saveSelectedEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
     @PostMapping(value = "/api/saveSimpleEnneagramTestResult")
-    public EnneagramTestResponseDto saveSimpleEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTestDto saveSimpleEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
         return enneagramTestService.saveSimpleEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
     @PostMapping(value = "/api/saveHardEnneagramTestResult")
-    public EnneagramTestResponseDto saveHardEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTestDto saveHardEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
         return enneagramTestService.saveHardEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 

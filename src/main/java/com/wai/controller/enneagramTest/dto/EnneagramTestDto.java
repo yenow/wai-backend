@@ -13,7 +13,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnneagramTestResponseDto {
+public class EnneagramTestDto {
     private boolean isSuccess;
     private Long testId;
     private Long userId;

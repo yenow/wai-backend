@@ -1,21 +1,13 @@
 package com.wai.controller.post;
 
-import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
 import com.wai.controller.post.dto.PostRequestDto;
-import com.wai.controller.post.dto.PostResponseDto;
+import com.wai.controller.post.dto.PostDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
-import com.wai.controller.reply.dto.ReplyResponseDto;
-import com.wai.controller.user.dto.UserResponseDto;
-import com.wai.domain.post.Post;
 import com.wai.service.post.PostService;
 import lombok.RequiredArgsConstructor;
 import org.springframework.web.bind.annotation.*;
 
-import javax.servlet.http.HttpServletRequest;
-import javax.servlet.http.HttpSession;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @RequiredArgsConstructor
@@ -25,59 +17,59 @@ public class PostApiController {
     private final PostService postService;
 
     @PostMapping(value = "/api/savePost")
-    public PostResponseDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
+    public PostDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
         return postService.save(postSaveRequestDto);
     }
 
     @PostMapping(value = "/api/readPost")
-    public PostResponseDto readPost(@RequestBody PostRequestDto postRequestDto) {
-        PostResponseDto postResponseDto = postService.readPost(postRequestDto);
-        return postResponseDto;
+    public PostDto readPost(@RequestBody PostRequestDto postRequestDto) {
+        PostDto postDto = postService.readPost(postRequestDto);
+        return postDto;
     }
 
     @PostMapping(value = "/api/readInitPosts")
-    public List<PostResponseDto> readInitPosts(@RequestBody PostRequestDto postRequestDto) {
+    public List<PostDto> readInitPosts(@RequestBody PostRequestDto postRequestDto) {
 
         return postService.readInitPosts(postRequestDto);
     }
 
     @PostMapping(value = "/api/readMoreNewPosts")
-    public List<PostResponseDto> readMoreNewPosts(@RequestBody PostRequestDto postRequestDto) {
+    public List<PostDto> readMoreNewPosts(@RequestBody PostRequestDto postRequestDto) {
 
         return postService.readMoreNewPosts(postRequestDto);
     }
 
     @PostMapping(value = "/api/readMoreOldPosts")
-    public List<PostResponseDto> readMoreOldPosts(@RequestBody PostRequestDto postRequestDto) {
+    public List<PostDto> readMoreOldPosts(@RequestBody PostRequestDto postRequestDto) {
 
         return postService.readMoreOldPosts(postRequestDto);
     }
 
 
     @PostMapping(value = "/api/initPopularPosts")
-    public List<PostResponseDto> initPopularPosts(@RequestBody PostRequestDto postRequestDto) {
+    public List<PostDto> initPopularPosts(@RequestBody PostRequestDto postRequestDto) {
         return postService.initPopularPosts(postRequestDto);
     }
 
     @GetMapping(value = "/api/addLikey/{postId}/{userId}")
-    public PostResponseDto addLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
+    public PostDto addLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
         postService.addLikey(postId, userId);
-        return PostResponseDto.builder().build();
+        return PostDto.builder().build();
     }
 
     @GetMapping(value = "/api/removeLikey/{postId}/{userId}")
-    public PostResponseDto removeLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
+    public PostDto removeLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
         postService.removeLikey(postId, userId);
-        return PostResponseDto.builder().build();
+        return PostDto.builder().build();
     }
 
     @PostMapping(value = "/api/deletePost")
-    public PostResponseDto deletePost(@RequestBody PostRequestDto postRequestDto) {
+    public PostDto deletePost(@RequestBody PostRequestDto postRequestDto) {
         return postService.deletePost(postRequestDto);
     }
 
     @PostMapping(value = "/api/updatePost")
-    public PostResponseDto updatePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
+    public PostDto updatePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
         return postService.updatePost(postSaveRequestDto);
     }
 }

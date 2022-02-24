@@ -67,6 +67,9 @@ public class DummyData {
             enneagramTests.add(enneagramTest);
         });
 
+        EnneagramTest enneagramTest = EnneagramTest.builder().testType(TestType.select).myEnneagramType(2).build();
+        users.get(0).doEnneagramTest(enneagramTest);
+
         users.forEach(user -> {
             int index = users.indexOf(user);
             user.doEnneagramTest(enneagramTests.get(index));

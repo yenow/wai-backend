@@ -2,9 +2,9 @@ package com.wai.domain.user;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
-import com.wai.controller.post.dto.PostResponseDto;
-import com.wai.controller.reply.dto.ReplyResponseDto;
-import com.wai.controller.user.dto.UserResponseDto;
+import com.wai.controller.post.dto.PostDto;
+import com.wai.controller.reply.dto.ReplyDto;
+import com.wai.controller.user.dto.UserDto;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.post.Post;
@@ -48,8 +48,8 @@ public class User extends BaseEntity {
     @Column(length = 50)
     private String nickname;
 
-    public UserResponseDto toDto() {
-        return UserResponseDto.builder()
+    public UserDto toDto() {
+        return UserDto.builder()
                 .userId(userId)
                 .userKey(userKey)
                 .password(password)
@@ -75,14 +75,14 @@ public class User extends BaseEntity {
         userEnneagramTests.add(UserEnneagramTest.builder().enneagramTest(enneagramTest).user(this).build());
     }
 
-    public List<PostResponseDto> getPostDtos() {
+    public List<PostDto> getPostDtos() {
         return posts.stream()
                 .map(post -> post.toDto())
                 .filter(postResponseDto -> !postResponseDto.getIsDeleted())
                 .collect(Collectors.toList());
     }
 
-    public List<ReplyResponseDto> getReplyDtos() {
+    public List<ReplyDto> getReplyDtos() {
         return replys.stream()
                 .map(reply ->
                         reply.toDto()

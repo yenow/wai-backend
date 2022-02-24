@@ -1,16 +1,14 @@
 package com.wai.service.reply;
 
-import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.controller.reply.dto.ReplyRequestDto;
-import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.controller.reply.dto.ReplyDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.reply.ReplyRepository;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
-import com.wai.service.post.PostService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.DisplayName;
@@ -23,7 +21,6 @@ import org.springframework.test.context.junit4.SpringRunner;
 import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
-import java.util.stream.IntStream;
 
 import static org.junit.jupiter.api.Assertions.*;
 
@@ -76,7 +73,7 @@ public class ReplyServiceTest {
                 .replyContent("댓글내용입니다.")
                 .build();
 
-        ReplyResponseDto reply = replyService.saveReply(replyRequestDto);
+        ReplyDto reply = replyService.saveReply(replyRequestDto);
 
         assertEquals(replyRequestDto.getReplyContent(), reply.getReplyContent());
     }

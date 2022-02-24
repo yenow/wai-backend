@@ -1,86 +1,89 @@
 package com.wai.domain.user;
 
-import com.wai.controller.login.dto.LoginRequestDto;
+import com.wai.controller.user.dto.UserRequestDto;
+import com.wai.controller.user.dto.UserDto;
 import com.wai.dummyData.DummyData;
-import com.wai.testConfig.TestConfig;
-import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.*;
+import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
+import org.springframework.transaction.annotation.Transactional;
 
-import java.util.UUID;
+import javax.persistence.EntityManagerFactory;
+import javax.persistence.PersistenceUnit;
 
-import static org.assertj.core.api.Assertions.*;
+import static org.assertj.core.api.Assertions.assertThat;
 
 
 @SpringBootTest
 @ActiveProfiles("test")
+@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserRepositoryTest {
 
     @Autowired UserRepository userRepository;
     @Autowired DummyData dummyData;
+    @Autowired ModelMapper modelMapper;
+    @PersistenceUnit EntityManagerFactory entityManagerFactory;
 
     User user;
 
-    @BeforeEach
-    public void beforeEach() {
+    @BeforeAll
+    void beforeAll() {
         dummyData.initUsers();
+        dummyData.initUserEnneagramTests();
+        dummyData.initPosts();
+    }
+
+    @BeforeEach
+    void beforeEach() {
+        dummyData.initUsers();
+        System.out.println("=== start test ===");
     }
 
     @AfterEach
-    public void afterEach() {
+    void afterEach() {
         if (user != null) {
             userRepository.delete(user);
         }
+
+        System.out.println("=== end test ===");
     }
 
-    @DisplayName("findByEmail() 테스트")
+    @Transactional
     @Test
-    public void findByEmail() {
+    void getUserInformation() {
         // given
-        user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname").password("password").email("email")
-                .build();
-
-        LoginRequestDto loginRequestDto = LoginRequestDto.builder().id("email").password("password").build();
+        User user = dummyData.getUsers().get(0);
 
         // when
-        userRepository.save(user);
-        User findUser = userRepository.findByEmail(loginRequestDto.getId());
+        User findUser = userRepository.getUserInformation(
+                UserRequestDto.builder().userKey(user.getUserKey()).build()
+        ).orElse(User.builder().build());
 
         // then
-        assertThat(findUser.getEmail()).isEqualTo(loginRequestDto.getId());
+        UserDto userDto = modelMapper.map(findUser, UserDto.class);
+
+        System.out.println("userDto = " + userDto);
+        assertThat(findUser.getUserEnneagramTests()).isNotNull();
+        assertThat(findUser.getUserEnneagramTests().size()).isNotEqualTo(0);
+        assertThat(findUser.getUserId()).isEqualTo(userDto.getUserId());
+        assertThat(findUser.getUserEnneagramTests().get(0).getId()).isGreaterThan(findUser.getUserEnneagramTests().get(1).getId());
+
     }
 
-    @DisplayName("findByUserKey() 테스트")
+    @Transactional
     @Test
-    public void findByUserKey() {
+    void getUserDtoInformation() {
         // given
-        String userKey = UUID.randomUUID().toString();
-        user = User.builder().nickname("nickname").userKey(userKey).password("password").email("email").build();
+        User user = dummyData.getUsers().get(0);
 
         // when
-        userRepository.save(user);
-        User findUser = userRepository.findByUserKey(userKey).get();
+        UserDto findUserDto = userRepository.getUserDtoInformation(
+                UserRequestDto.builder().userKey(user.getUserKey()).build()
+        ).orElse(UserDto.builder().build());
 
         // then
-        assertThat(findUser.getUserKey()).isEqualTo(user.getUserKey());
-    }
-
-    @Test
-    void testFindByNickname() {
-        // given
-        String userKey = UUID.randomUUID().toString();
-        user = User.builder().nickname("nickname").userKey(userKey).build();
-
-        // when
-        userRepository.save(user);
-        User findUser = userRepository.findByNickname(user.getNickname())
-                .orElse(User.builder().build());
-
-        // then
-        Assertions.assertThat(findUser.getNickname()).isEqualTo(user.getNickname());
+        System.out.println("userResponseDto = " + findUserDto);
     }
 }

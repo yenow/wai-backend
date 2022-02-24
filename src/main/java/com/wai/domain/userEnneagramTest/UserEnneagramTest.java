@@ -4,17 +4,11 @@ import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.common.BaseEntity;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.user.User;
-import lombok.AllArgsConstructor;
-import lombok.Builder;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
+import lombok.*;
 
 import javax.persistence.*;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor @ToString(exclude = {"user", "enneagramTest"})
 @Entity
 public class UserEnneagramTest extends BaseEntity {
 
@@ -22,12 +16,12 @@ public class UserEnneagramTest extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
     @JsonBackReference
     private User user;
 
-    @ManyToOne(cascade = CascadeType.ALL)
+    @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "test_id")
     @JsonBackReference
     private EnneagramTest enneagramTest;

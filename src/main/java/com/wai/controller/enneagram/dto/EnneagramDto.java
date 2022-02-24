@@ -14,7 +14,7 @@ import java.util.List;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class EnneagramResponseDto {
+public class EnneagramDto {
     private boolean isSuccess;
     @Builder.Default
     private List<WiseSaying> wiseSayings =  new ArrayList<>();

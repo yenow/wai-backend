@@ -2,12 +2,11 @@ package com.wai.domain.enneagramTest;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.common.BaseEntity;
-import com.wai.controller.enneagramTest.dto.EnneagramTestResponseDto;
+import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import lombok.*;
 
 import javax.persistence.*;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -50,8 +49,8 @@ public class EnneagramTest extends BaseEntity {
     @Column
     private Integer type9Score;
 
-    public EnneagramTestResponseDto toDto() {
-        return EnneagramTestResponseDto.builder()
+    public EnneagramTestDto toDto() {
+        return EnneagramTestDto.builder()
                 .isSuccess(true)
                 .testId(testId)
                 .testType(testType)

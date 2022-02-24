@@ -2,17 +2,17 @@ package com.wai.domain.reply;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.common.BaseEntity;
-import com.wai.controller.reply.dto.ReplyResponseDto;
+import com.wai.controller.reply.dto.ReplyDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
 import lombok.*;
+import org.hibernate.annotations.DynamicInsert;
+import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
-@Getter
-@Builder
-@NoArgsConstructor
-@AllArgsConstructor
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor
+@DynamicInsert @DynamicUpdate
 @Entity
 public class Reply extends BaseEntity {
 
@@ -46,8 +46,8 @@ public class Reply extends BaseEntity {
     @Column
     private Boolean isReported = false;
 
-    public ReplyResponseDto toDto() {
-        return ReplyResponseDto.builder()
+    public ReplyDto toDto() {
+        return ReplyDto.builder()
                 .replyId(replyId)
                 .parentReplyId(parentReplyId)
                 .author(author)
