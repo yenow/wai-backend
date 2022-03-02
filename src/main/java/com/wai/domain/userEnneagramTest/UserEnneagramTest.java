@@ -1,7 +1,7 @@
 package com.wai.domain.userEnneagramTest;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.user.User;
 import lombok.*;

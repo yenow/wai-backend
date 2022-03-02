@@ -33,7 +33,7 @@ public class LoginServiceImpl implements LoginService {
         }
 
         User user = new User();
-        User userByEmail = userRepository.findByEmail(loginRequestDto.getId());
+        User userByEmail = userRepository.findByEmail(loginRequestDto.getId()).get();
 
         // 해당하는 아이디가 없을 경우
         if (userByEmail == null) {

@@ -1,7 +1,6 @@
 package com.wai.domain.reply;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.controller.reply.dto.ReplyDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
@@ -11,7 +10,7 @@ import org.hibernate.annotations.DynamicUpdate;
 
 import javax.persistence.*;
 
-@Getter @Builder @NoArgsConstructor @AllArgsConstructor
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor @ToString(exclude = {"user", "post"})
 @DynamicInsert @DynamicUpdate
 @Entity
 public class Reply extends BaseEntity {
@@ -22,13 +21,11 @@ public class Reply extends BaseEntity {
     @Column
     private Long parentReplyId;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private User user;
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "post_id")
-    @JsonBackReference
     private Post post;
 
     @Column

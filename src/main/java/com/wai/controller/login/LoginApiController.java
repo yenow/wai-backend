@@ -37,12 +37,6 @@ public class LoginApiController {
 //        return responseDto;
 //    }
 
-    @PostMapping(value = "/api/saveUserKey")
-    public Long saveUserKey(@RequestBody String userKey) {
-        Long userId = loginService.saveUserKey(userKey);
-        return userId;
-    }
-
     @PostMapping(value = "/api/simpleLogin")
     public LoginResponseDto simpleLogin(@RequestBody SimpleLoginRequestDto SimpleLoginRequestDto, HttpServletRequest request) {
         HttpSession httpSession = request.getSession();

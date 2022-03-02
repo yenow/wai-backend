@@ -1,4 +1,4 @@
-package com.wai;
+package com.wai.config;
 
 import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
 import com.wai.controller.post.dto.PostDto;

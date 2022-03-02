@@ -4,6 +4,7 @@ import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.wai.controller.user.dto.UserDto;
 import com.wai.controller.user.dto.UserRequestDto;
+import com.wai.domain.userRole.QUserRole;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
 import java.util.Optional;
@@ -11,6 +12,7 @@ import static com.wai.domain.enneagramTest.QEnneagramTest.enneagramTest;
 import static com.wai.domain.post.QPost.post;
 import static com.wai.domain.user.QUser.user;
 import static com.wai.domain.userEnneagramTest.QUserEnneagramTest.userEnneagramTest;
+import static com.wai.domain.userRole.QUserRole.*;
 
 
 @RequiredArgsConstructor
@@ -20,15 +22,20 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
-    public User findByEmail(String id) {
-        return jpaQueryFactory.selectFrom(user)
-                .where(user.email.eq(id))
-                .fetchOne();
+    public Optional<User> findByEmail(String email) {
+        return Optional.ofNullable(jpaQueryFactory
+                .selectFrom(user)
+                .join(user.userRoles, userRole).fetchJoin()
+                .where(user.email.eq(email))
+                .fetchOne()
+        );
     }
 
     @Override
     public Optional<User> findByUserKey(String userKey) {
-        return Optional.ofNullable(jpaQueryFactory.selectFrom(user)
+        return Optional.ofNullable(jpaQueryFactory
+                .selectFrom(user)
+                .join(user.userRoles, userRole).fetchJoin()
                 .where(user.userKey.eq(userKey))
                 .fetchOne());
     }
@@ -55,6 +62,17 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
                     .where(user.userKey.eq(userRequestDto.getUserKey()))
                     .orderBy(enneagramTest.testId.desc())
                     .fetchOne()
+        );
+    }
+
+    @Override
+    public Optional<User> findOneWithAuthoritiesByUsername(String username) {
+        return Optional.ofNullable(jpaQueryFactory
+                .selectFrom(user)
+                .join(user.userRoles, userRole).fetchJoin()
+                .where(user.userKey.eq(username)
+                        .or(user.email.eq(username)))
+                .fetchOne()
         );
     }
 

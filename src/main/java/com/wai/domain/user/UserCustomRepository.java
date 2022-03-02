@@ -9,13 +9,15 @@ import java.util.Optional;
 
 public interface UserCustomRepository {
 
-    User findByEmail(String id);
+    Optional<User> findByEmail(String email);
 
     Optional<User> findByUserKey(String userKey);
 
     Optional<User> findByNickname(String nickname);
 
     Optional<User> getUserInformation(UserRequestDto userRequestDto);
+
+    Optional<User> findOneWithAuthoritiesByUsername(String username);
 
     Optional<UserDto> getUserDtoInformation(UserRequestDto userRequestDto);
 

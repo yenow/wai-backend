@@ -22,7 +22,6 @@ public class BeanUtilTest {
         BeanUtils.copyProperties(user, userDto, "posts", "userId");
         System.out.println("userDto = " + userDto);
         System.out.println("user = " + user);
-        System.out.println(user.getPostDtos());
 
         Child child = new Child(1L, "child");
         List<Child> children = new ArrayList<>();

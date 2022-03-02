@@ -36,7 +36,9 @@ public class DummyData {
     final private UserEnneagramTestRepository userEnneagramTestRepository;
 
     public void initUsers() {
-        IntStream.rangeClosed(1, 9).forEach(value -> {
+        // User user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname").build();
+
+        IntStream.rangeClosed(0, 9).forEach(value -> {
             User user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname"+value).build();
             userRepository.save(user);
             users.add(user);
@@ -44,26 +46,34 @@ public class DummyData {
     }
 
     public void initPosts() {
-        IntStream.rangeClosed(1, 100).forEach(value -> {
+        IntStream.rangeClosed(0, 100).forEach(value -> {
             User user = users.get(value % users.size());
             Post post = Post.builder().user(user).title("title"+value).content("content"+value).author(user.getNickname()).build();
             postRepository.save(post);
+
+            user.getPosts().add(post);
+            posts.add(post);
         });
     }
 
     public void initReply() {
-        IntStream.rangeClosed(1, 100).forEach(value -> {
+        IntStream.rangeClosed(0, 100).forEach(value -> {
             User user = users.get(value % users.size());
             Post post = posts.get(value % posts.size());
             Reply reply = Reply.builder().user(user).post(post).replyContent("replyContent"+value).author(user.getNickname()).build();
             replyRepository.save(reply);
+
+            replys.add(reply);
+            user.getReplys().add(reply);
+            post.getReplys().add(reply);
         });
     }
 
     public void initUserEnneagramTests() {
         List<EnneagramTest> enneagramTests = new ArrayList<>();
-        IntStream.rangeClosed(1, 9).forEach(value -> {
-            EnneagramTest enneagramTest = EnneagramTest.builder().testType(TestType.select).myEnneagramType(value).build();
+        IntStream.rangeClosed(0, 9).forEach(value -> {
+            int enneagramType = value % 9 + 1;
+            EnneagramTest enneagramTest = EnneagramTest.builder().testType(TestType.select).myEnneagramType(enneagramType).build();
             enneagramTests.add(enneagramTest);
         });
 

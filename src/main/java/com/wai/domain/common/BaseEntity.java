@@ -1,4 +1,4 @@
-package com.wai.common;
+package com.wai.domain.common;
 
 import lombok.Builder;
 import lombok.Getter;

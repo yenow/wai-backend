@@ -12,6 +12,7 @@ import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;
 import java.util.List;
+import java.util.Optional;
 
 import static com.querydsl.jpa.JPAExpressions.select;
 import static com.wai.domain.post.QPost.post;
@@ -25,6 +26,18 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
 
     public PostCustomRepositoryImpl(JPAQueryFactory jpaQueryFactory) {
         this.jpaQueryFactory = jpaQueryFactory;
+    }
+
+    public Optional<Post> readPost(PostRequestDto postRequestDto) {
+        return Optional.ofNullable(
+            jpaQueryFactory
+            .selectFrom(post)
+                .leftJoin(post.user, user).fetchJoin()
+                .leftJoin(post.replys, reply).fetchJoin()
+                .leftJoin(reply.user, user).fetchJoin()
+                .where(post.postId.eq(postRequestDto.getPostId()))
+                .fetchOne()
+        );
     }
 
     @Override

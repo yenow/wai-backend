@@ -28,14 +28,16 @@ public class PostService {
     private final LikeyRepository likeyRepository;
 
     @Transactional
-    public PostDto save(PostSaveRequestDto postSaveRequestDto) {
+    public PostDto registerPost(PostSaveRequestDto postSaveRequestDto) {
+        Post post;
         if (postSaveRequestDto.getPostId() != null) {
-            Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
+            post = postRepository.findById(postSaveRequestDto.getPostId()).get();
             post.updatePost(postSaveRequestDto);
-            return convertPostResponseDto(post);
+        } else {
+            post = postRepository.save(postSaveRequestDto.toEntity());
         }
 
-        return convertPostResponseDto(postRepository.save(postSaveRequestDto.toEntity()));
+        return convertPostDto(post);
     }
 
     @Transactional
@@ -46,10 +48,7 @@ public class PostService {
             post.increaseClickCount();
         }
 
-        return post.toDto()
-                .setUserDto(post.getUser().toDto())
-                .setReplyDtos(post.getReplyDtos().stream().map(replyResponseDto ->
-                        replyResponseDto.setPostDto(post.toDto())).collect(Collectors.toList()));
+        return convertPostDto(post);
     }
 
     public List<PostDto> readInitPosts(PostRequestDto postRequestDto) {
@@ -59,7 +58,7 @@ public class PostService {
         } else {
             posts =  postRepository.readInitPosts(postRequestDto);
         }
-        return convertPostResponseDtos(posts);
+        return convertPostDtos(posts);
     }
 
     public List<PostDto> readMoreNewPosts(PostRequestDto postRequestDto) {
@@ -73,7 +72,7 @@ public class PostService {
         } else {
             posts = postRepository.readMoreNewPosts(postRequestDto);
         }
-        return convertPostResponseDtos(posts);
+        return convertPostDtos(posts);
     }
 
     public List<PostDto> readMoreOldPosts(PostRequestDto postRequestDto) {
@@ -87,13 +86,13 @@ public class PostService {
         } else {
             posts =  postRepository.readMoreOldPosts(postRequestDto);
         }
-        return convertPostResponseDtos(posts);
+        return convertPostDtos(posts);
     }
 
     public List<PostDto> initPopularPosts(PostRequestDto postRequestDto) {
         List<Post> posts =  postRepository.initPopularPosts(postRequestDto);
 
-        return convertPostResponseDtos(posts);
+        return convertPostDtos(posts);
     }
 
     @Transactional
@@ -120,28 +119,30 @@ public class PostService {
     public PostDto deletePost(PostRequestDto postRequestDto) {
         Post post = postRepository.findById(postRequestDto.getPostId()).get();
         post.deletePost();
-        return convertPostResponseDto(post);
+        return convertPostDto(post);
     }
 
     @Transactional
     public PostDto updatePost(PostSaveRequestDto postSaveRequestDto) {
         Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
         post.updatePost(postSaveRequestDto);
-        return convertPostResponseDto(post);
+        return convertPostDto(post);
     }
 
 
-    private List<PostDto> convertPostResponseDtos(List<Post> posts) {
+
+
+    private List<PostDto> convertPostDtos(List<Post> posts) {
         List<PostDto> postDtos = new ArrayList<>();
         posts.forEach((post) -> {
-            postDtos.add(convertPostResponseDto(post));
+            postDtos.add(convertPostDto(post));
         });
         return postDtos;
     }
 
-    private PostDto convertPostResponseDto(Post post) {
+    private PostDto convertPostDto(Post post) {
         return post.toDto()
                 .setUserDto(post.getUser().toDto())
-                .setReplyDtos(post.getReplyDtos());
+                .setReplyDtos(post.getReplys());
     }
 }

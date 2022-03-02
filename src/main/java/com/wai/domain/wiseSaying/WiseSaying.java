@@ -1,7 +1,7 @@
 package com.wai.domain.wiseSaying;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.controller.wiseSaying.dto.WiseSayingResponseDto;
 import com.wai.domain.enneagram.Enneagram;
 import com.wai.domain.user.User;
@@ -10,7 +10,6 @@ import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
-import javax.annotation.Nullable;
 import javax.persistence.*;
 
 

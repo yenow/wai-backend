@@ -2,39 +2,79 @@ package com.wai.domain.post;
 
 import com.wai.controller.post.dto.PostRequestDto;
 import com.wai.controller.post.dto.PostSearchType;
+import com.wai.domain.reply.Reply;
 import com.wai.domain.user.User;
 import com.wai.dummyData.DummyData;
-import com.wai.testConfig.TestConfig;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.boot.test.autoconfigure.orm.jpa.DataJpaTest;
 import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.context.annotation.Import;
 import org.springframework.test.context.ActiveProfiles;
 import org.springframework.transaction.annotation.Transactional;
 
 import java.util.*;
-import java.util.stream.IntStream;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.assertj.core.api.Assertions.*;
 
 
 @Transactional
 @SpringBootTest
 @ActiveProfiles("test")
-@TestInstance(TestInstance.Lifecycle.PER_CLASS)
+//@TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class PostRepositoryTest {
 
     @Autowired
     PostRepository postRepository;
     @Autowired
-    DummyData dummyData;
+    static DummyData dummyData;
 
     @BeforeAll
-    void beforeAll() {
+     static void beforeAll() {
         dummyData.initUsers();
         dummyData.initUserEnneagramTests();
         dummyData.initPosts();
+        dummyData.initReply();
+    }
+    
+    @AfterAll
+    static  void AfterAll() {
+        // dummyData 삭제
+    }
+
+    @BeforeEach
+    void beforeEach() {
+        System.out.println("==== start Test ====");
+    }
+
+    @AfterEach
+    void afterEach () {
+        System.out.println("==== End Test ====");
+    }
+
+    @Test
+    void readPost() {
+        // given
+        Post post = dummyData.getPosts().get(0);
+        User user = post.getUser();
+        PostRequestDto postRequestDto = PostRequestDto.builder().postId(post.getPostId()).build();
+
+        // when
+        Post findPost = postRepository.readPost(postRequestDto).orElse(Post.builder().build());
+
+        // then
+        System.out.println("findPost = " + findPost);
+        findPost.getReplys().forEach(reply -> System.out.println("reply = " + reply + "user = " + reply.getUser()));
+
+        assertThat(findPost.getPostId()).isEqualTo(post.getPostId());
+        assertThat(findPost.getTitle()).isEqualTo(post.getTitle());
+        for(Reply reply : findPost.getReplys()) {
+            int index = findPost.getReplys().indexOf(reply);
+            assertThat(reply.getReplyId()).isEqualTo(post.getReplys().get(index).getReplyId());
+            assertThat(reply.getUser().getUserId()).isEqualTo(post.getReplys().get(index).getUser().getUserId());
+        }
+        assertThat(findPost.getReplys().size()).isGreaterThan(0);
+        assertThat(findPost.getReplys().get(0)).isNotNull();
+        assertThat(findPost.getReplys().get(0).getUser().getUserKey()).isNotNull();
+        assertThat(findPost.getReplys().get(0).getUser().getUserId()).isNotNull();
     }
 
     @Test
@@ -60,47 +100,11 @@ public class PostRepositoryTest {
 
 
         // then
-        assertEquals(testCase.get(PostSearchType.all).getPostsCount(), findAllPosts.size());
-        assertEquals(testCase.get(PostSearchType.myPosts).getPostsCount(), findMyPosts.size());
-        assertEquals(testCase.get(PostSearchType.content).getPostsCount(), findSearchContentPosts.size());
-        assertEquals(testCase.get(PostSearchType.title).getPostsCount(), findSearchTitlePosts.size());
-        assertEquals(testCase.get(PostSearchType.author).getPostsCount(), findSearchAuthorPosts.size());
+//        assertEquals(testCase.get(PostSearchType.all).getPostsCount(), findAllPosts.size());
+//        assertEquals(testCase.get(PostSearchType.myPosts).getPostsCount(), findMyPosts.size());
+//        assertEquals(testCase.get(PostSearchType.content).getPostsCount(), findSearchContentPosts.size());
+//        assertEquals(testCase.get(PostSearchType.title).getPostsCount(), findSearchTitlePosts.size());
+//        assertEquals(testCase.get(PostSearchType.author).getPostsCount(), findSearchAuthorPosts.size());
     }
 
-    @Test
-    public void loadPost() {
-        //given (테스트 상황 설정)
-        String title = "테스트 게시글";
-        String content = "테스트 본문";
-
-        postRepository.save(Post.builder()
-                .content(content)
-                .build());
-
-        //when (테스트 대상 실행)
-        List<Post> posts = postRepository.findAll();
-
-        //then (결과 검증)
-        Post post = posts.get(0);
-        System.out.println(post.getPostId());
-        System.out.println(post.getContent());
-//        assertThat(post.getContent()).isEqualTo(content);
-    }
-
-    @DisplayName("QueryDsl을 통해 Post 조회시 Comment를 Fetch Join한다.")
-    @Test
-    public void findByContent() {
-
-        String content = "name";
-
-        postRepository.save(Post.builder()
-                .content(content)
-                .build());
-
-        //when
-        Post post = postRepository.findByContent("name");
-        System.out.println(post.getPostId());
-        System.out.println(post.getContent());
-//        assertThat(post.getContent()).isEqualTo(content);
-    }
 }

@@ -1,7 +1,7 @@
 package com.wai.domain.tag;
 
 import com.fasterxml.jackson.annotation.JsonBackReference;
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.domain.post.Post;
 import lombok.*;
 

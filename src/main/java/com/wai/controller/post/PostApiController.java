@@ -18,7 +18,7 @@ public class PostApiController {
 
     @PostMapping(value = "/api/savePost")
     public PostDto savePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
-        return postService.save(postSaveRequestDto);
+        return postService.registerPost(postSaveRequestDto);
     }
 
     @PostMapping(value = "/api/readPost")

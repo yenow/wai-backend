@@ -1,6 +1,6 @@
 package com.wai.domain.post;
 
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.controller.post.dto.PostDto;
 import com.wai.controller.post.dto.PostSaveRequestDto;
 import com.wai.controller.reply.dto.ReplyDto;

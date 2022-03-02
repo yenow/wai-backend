@@ -4,8 +4,11 @@ import com.wai.controller.post.dto.PostRequestDto;
 
 import javax.transaction.Transactional;
 import java.util.List;
+import java.util.Optional;
 
 public interface PostCustomRepository {
+
+    Optional<Post> readPost(PostRequestDto postRequestDto);
 
     List<Post> readInitPosts(PostRequestDto postRequestDto);
 

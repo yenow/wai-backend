@@ -1,21 +1,14 @@
 package com.wai.testConfig;
 
-import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.wai.dummyData.DummyData;
+import com.wai.common.util.Utility;
 import org.springframework.boot.test.context.TestConfiguration;
 import org.springframework.context.annotation.Bean;
-
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 
 @TestConfiguration
 public class TestConfig {
 
-    @PersistenceContext
-    private EntityManager entityManager;
-
     @Bean
-    public JPAQueryFactory jpaQueryFactory() {
-        return new JPAQueryFactory(entityManager);
+    public Utility utility() {
+        return new Utility();
     }
 }

@@ -1,6 +1,6 @@
 package com.wai.domain.likey;
 
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
 import lombok.AllArgsConstructor;
@@ -25,11 +25,11 @@ public class Likey extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "user_id")
     private User user;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY, optional = false)
     @JoinColumn(name = "post_id")
     private Post post;
 }

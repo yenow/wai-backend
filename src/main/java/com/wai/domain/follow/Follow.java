@@ -1,9 +1,8 @@
 package com.wai.domain.follow;
 
-import com.wai.common.BaseEntity;
+import com.wai.domain.common.BaseEntity;
 import com.wai.domain.user.User;
 import lombok.*;
-import lombok.extern.apachecommons.CommonsLog;
 
 import javax.persistence.*;
 
