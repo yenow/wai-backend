@@ -18,6 +18,6 @@ create table reply
 ) engine = InnoDB;
 
 alter table reply
-    add constraint fk_Reply_Post_postId foreign key (post_id) references post (post_id);
+    add constraint fk_REPLY_POST_postId foreign key (post_id) references post (post_id);
 alter table reply
-    add constraint fk_Reply_User_userId foreign key (user_id) references user (user_id);
+    add constraint fk_REPLY_POST_userId foreign key (user_id) references user (user_id);

@@ -6,42 +6,40 @@ import com.wai.domain.enneagramQuestion.EnneagramQuestion;
 import com.wai.service.enneagramTest.EnneagramQuestionService;
 import com.wai.service.enneagramTest.EnneagramTestService;
 import lombok.RequiredArgsConstructor;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api/enneagramTest")
 public class EnneagramTestApiController {
 
     private final EnneagramTestService enneagramTestService;
 
     private final EnneagramQuestionService enneagramQuestionService;
 
-    @PostMapping(value = "/api/saveSelectedEnneagramTestResult")
+    @PostMapping(value = "/saveSelectedEnneagramTestResult")
     public EnneagramTestDto saveSelectedEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
         return enneagramTestService.saveSelectedEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
-    @PostMapping(value = "/api/saveSimpleEnneagramTestResult")
+    @PostMapping(value = "/saveSimpleEnneagramTestResult")
     public EnneagramTestDto saveSimpleEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
         return enneagramTestService.saveSimpleEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
-    @PostMapping(value = "/api/saveHardEnneagramTestResult")
+    @PostMapping(value = "/saveHardEnneagramTestResult")
     public EnneagramTestDto saveHardEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
         return enneagramTestService.saveHardEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
-    @GetMapping(value = "/api/getHardEnneagramQuestion")
+    @GetMapping(value = "/getHardEnneagramQuestion")
     public List<EnneagramQuestion> getHardEnneagramQuestion() {
         return enneagramQuestionService.getHardEnneagramQuestion();
     }
 
-    @GetMapping(value = "/api/getSimpleEnneagramQuestion")
+    @GetMapping(value = "/getSimpleEnneagramQuestion")
     public List<EnneagramQuestion> getSimpleEnneagramQuestion() {
         return enneagramQuestionService.getSimpleEnneagramQuestion();
     }

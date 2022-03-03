@@ -24,19 +24,12 @@ public class WiseSaying extends BaseEntity {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Long id;
 
-    @ManyToOne
+    @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private User user;
 
     @Column
     private String wiseSayingCategory;
-
-    @Deprecated
-    @ManyToOne
-    @JoinColumn(name = "enneagram_type")
-    @JsonBackReference
-    private Enneagram enneagram;
 
     @Column(length = 4000)
     private String wiseSaying;

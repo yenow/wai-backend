@@ -9,14 +9,13 @@ import org.apache.commons.lang3.StringUtils;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class SignRequestDto {
+public class SignUpRequestDto {
     private String token;
     private String username;
     private String password;
 
     private String userKey;
     private String email;
-    private String nickname;
 
     public void setUsername() {
         if (!StringUtils.isEmpty(email)) {

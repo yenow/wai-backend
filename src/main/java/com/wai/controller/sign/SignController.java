@@ -1,9 +1,10 @@
 package com.wai.controller.sign;
 
-import com.wai.controller.sign.dto.TokenDto;
+import com.wai.common.exception.sign.PasswordNotExistException;
+import com.wai.common.exception.sign.UserNicknameNotExistException;
+import com.wai.common.exception.user.UserKeyNotExistException;
 import com.wai.controller.sign.dto.SignDto;
 import com.wai.controller.sign.dto.SignRequestDto;
-import com.wai.controller.user.dto.UserDto;
 import com.wai.controller.user.dto.UserRequestDto;
 import com.wai.jwt.JwtFilter;
 import com.wai.jwt.TokenProvider;
@@ -19,10 +20,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 import org.thymeleaf.util.StringUtils;
 
-import javax.validation.Valid;
-import java.util.List;
-import java.util.stream.Collectors;
-
 @RestController
 @RequiredArgsConstructor
 @RequestMapping(value = "/api/sign")
@@ -33,7 +30,10 @@ public class SignController {
 
     @PostMapping("/signIn")
     public ResponseEntity<SignDto> signIn(@RequestBody SignRequestDto signRequestDto) {
+        if(StringUtils.isEmpty(signRequestDto.getPassword())) throw new PasswordNotExistException();
         signRequestDto.setUsername();
+
+        signService.signIn(signRequestDto);
 
         String jwt = getJwtToken(signRequestDto);
 
@@ -49,11 +49,10 @@ public class SignController {
 
     @PostMapping("/signUpAsNonMember")
     public ResponseEntity<SignDto> signUpAsNonMember(@RequestBody SignRequestDto signRequestDto) {
-        if (StringUtils.isEmpty(signRequestDto.getUserKey())) {
-            throw new RuntimeException();       // todo 예외처리 세분화
-        } else if(StringUtils.isEmpty(signRequestDto.getPassword())) {
-            throw new RuntimeException();       // todo 예외처리 세분화
-        }
+        if (StringUtils.isEmpty(signRequestDto.getUserKey())) throw new UserKeyNotExistException();
+        else if(StringUtils.isEmpty(signRequestDto.getPassword())) throw new PasswordNotExistException();
+        else if(StringUtils.isEmpty(signRequestDto.getNickname())) throw new UserNicknameNotExistException();
+
         signRequestDto.setUsername();
 
         signService.signUpAsNonMember(signRequestDto);

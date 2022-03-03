@@ -16,8 +16,6 @@ import java.util.List;
 @AllArgsConstructor
 public class EnneagramDto {
     private boolean isSuccess;
-    @Builder.Default
-    private List<WiseSaying> wiseSayings =  new ArrayList<>();
     private Integer enneagramType;
     private String animalName;
     private String imagePath;

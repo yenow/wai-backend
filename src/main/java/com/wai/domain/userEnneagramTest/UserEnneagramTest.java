@@ -18,11 +18,9 @@ public class UserEnneagramTest extends BaseEntity {
 
     @ManyToOne(fetch = FetchType.LAZY)
     @JoinColumn(name = "user_id")
-    @JsonBackReference
     private User user;
 
     @ManyToOne(fetch = FetchType.LAZY, cascade = CascadeType.ALL)
     @JoinColumn(name = "test_id")
-    @JsonBackReference
     private EnneagramTest enneagramTest;
 }

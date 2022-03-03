@@ -9,6 +9,7 @@ import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.test.context.ActiveProfiles;
 import org.springframework.test.context.junit4.SpringRunner;
 
 import java.util.ArrayList;
@@ -17,8 +18,8 @@ import java.util.List;
 import static org.junit.jupiter.api.Assertions.*;
 
 
-@RunWith(SpringRunner.class)
 @SpringBootTest
+@ActiveProfiles("local")
 public class EnneagramRepositoryTest {
 
     @Autowired
@@ -48,12 +49,10 @@ public class EnneagramRepositoryTest {
         type1_list.add(WiseSaying.builder()
                 .author("간디")
                 .wiseSaying("나는 고통스러운 경험을 통해서 한가지 교훈을 얻었다. 즉 분노를 억제하면 그것은 에너지로 바뀌고, 그 에너지는 힘으로 변환되어서 세상을 움직일 수 있다는 것이다.")
-                .enneagram(type1)
                 .build());
         type1_list.add(WiseSaying.builder()
                 .author("잭 콘필드")
                 .wiseSaying("깨어나지 않은 마음은 만물을 그대로 내버려 두지 않고 사사건건 저항한다.")
-                .enneagram(type1)
                 .build());
 
         type1_list.forEach((wiseSaying) -> {

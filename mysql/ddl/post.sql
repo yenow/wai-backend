@@ -6,8 +6,9 @@ create table post
     author                      varchar(200),
     author_enneagram_type       int,
     content                     varchar(4000) not null,
-    click_count                 int default 0,
-    is_delete                   bit,
+    click_count                 int default 0 not null,
+    is_deleted                  bit default 0 not null,
+    is_reported                 bit default 0 not null,
     insert_date                 datetime(6),
     insert_id                   bigint,
     update_date                 datetime(6),
@@ -16,4 +17,4 @@ create table post
 ) engine = InnoDB;
 
 alter table post
-    add constraint fk_Post_User_userId foreign key (user_id) references user (user_id);
+    add constraint fk_POST_USER_userId foreign key (user_id) references user (user_id);

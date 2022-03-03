@@ -6,30 +6,37 @@ import com.wai.controller.user.dto.UserRequestDto;
 import com.wai.controller.user.dto.UserDto;
 import com.wai.service.user.UserService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
 import java.time.LocalDateTime;
 
-@RequiredArgsConstructor
 @RestController
+@RequiredArgsConstructor
+@RequestMapping("/api/user")
 public class UserApiController {
 
     final UserService userService;
 
-    @PostMapping(value = "/api/saveUserKey")
+    @PostMapping(value = "/saveUserKey")
     public ResponseEntity<Long> saveUserKey(@RequestBody UserRequestDto userRequestDto) {
         Long userId = userService.saveUserKey(userRequestDto.getUserKey());
         return new ResponseEntity<>(userId, HttpStatus.OK);
     }
 
-    @PostMapping(value = "/api/getUserInformation")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PostMapping(value = "/getUserInformation")
     public UserDto getUserInformation(@RequestBody UserRequestDto userRequestDto) {
+        if (StringUtils.isEmpty(userRequestDto.getUserKey())) throw new UserKeyNotExistException();
+
         return userService.getUserInformation(userRequestDto);
     }
 
-    @PostMapping(value = "/api/saveNickname")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    @PostMapping(value = "/saveNickname")
     public UserDto saveNickname(@RequestBody UserRequestDto userRequestDto) {
         UserDto userDto = userService.saveNickname(userRequestDto);
         return userDto;

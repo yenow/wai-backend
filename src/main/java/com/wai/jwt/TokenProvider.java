@@ -1,5 +1,6 @@
 package com.wai.jwt;
 
+import com.wai.common.util.ErrorCode;
 import io.jsonwebtoken.*;
 import io.jsonwebtoken.io.Decoders;
 import io.jsonwebtoken.security.Keys;
@@ -14,6 +15,7 @@ import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.userdetails.User;
 import org.springframework.stereotype.Component;
 
+import javax.servlet.http.HttpServletRequest;
 import java.security.Key;
 import java.util.Arrays;
 import java.util.Collection;
@@ -79,17 +81,19 @@ public class TokenProvider implements InitializingBean {
         return new UsernamePasswordAuthenticationToken(principal, token, authorities);
     }
 
-    public boolean validateToken(String token) {
+    public boolean validateToken(String token, HttpServletRequest httpServletRequest) {
         try {
             Jwts.parserBuilder().setSigningKey(key).build().parseClaimsJws(token);
             return true;
         } catch (io.jsonwebtoken.security.SecurityException | MalformedJwtException e) {
             logger.info("잘못된 JWT 서명입니다.");
         } catch (ExpiredJwtException e) {
+            httpServletRequest.setAttribute("exception", ErrorCode.EXPIRED_TOKEN.getErrorCode());
             logger.info("만료된 JWT 토큰입니다.");
         } catch (UnsupportedJwtException e) {
             logger.info("지원되지 않는 JWT 토큰입니다.");
         } catch (IllegalArgumentException e) {
+            httpServletRequest.setAttribute("exception", ErrorCode.INVALID_TOKEN.getErrorCode());
             logger.info("JWT 토큰이 잘못되었습니다.");
         }
         return false;

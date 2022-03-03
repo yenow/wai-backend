@@ -49,7 +49,7 @@ public class Post extends BaseEntity {
     private String author;
     @Column
     private Integer authorEnneagramType;
-    @Column(columnDefinition = "int default 0")
+    @Column(nullable = false, columnDefinition = "int default 0")
     private int clickCount;
     @Builder.Default
     @Column

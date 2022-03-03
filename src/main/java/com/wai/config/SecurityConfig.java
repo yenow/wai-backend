@@ -66,6 +66,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .authorizeRequests()
                 .antMatchers("/hello/**").permitAll()
                 .antMatchers("/api/sign/**").permitAll()
+                .antMatchers("/api/user/**").permitAll()
+                .antMatchers("/api/enneagram/**").permitAll()
+                .antMatchers("/api/enneagramTest/**").permitAll()
+                .antMatchers("/api/getServerTime").permitAll()
                 .anyRequest().authenticated()
 
                 .and()

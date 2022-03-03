@@ -1,6 +1,7 @@
 package com.wai.controller.dto;
 
 import lombok.*;
+import org.springframework.http.HttpStatus;
 
 import java.time.LocalDateTime;
 
@@ -10,8 +11,5 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDto {
-    private Boolean isSuccess;
-    private Integer errorCode;
-    private String errorMessage;
     private LocalDateTime nowServerTime = LocalDateTime.now();
 }

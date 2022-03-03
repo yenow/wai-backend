@@ -11,6 +11,7 @@ import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import com.wai.domain.userRole.UserRole;
+import com.wai.domain.wiseSaying.WiseSaying;
 import com.wai.vo.UserVo;
 import lombok.*;
 import org.hibernate.annotations.ColumnDefault;
@@ -47,6 +48,9 @@ public class User extends BaseEntity {
     @Builder.Default
     @OneToMany(mappedBy = "user")
     private List<Likey> likeys = new ArrayList<>();
+    @Builder.Default
+    @OneToMany(mappedBy = "user")
+    private List<WiseSaying> wiseSayings = new ArrayList<>();
 
     @Column(unique = true, nullable = false, length = 200)
     private String userKey;
@@ -56,10 +60,10 @@ public class User extends BaseEntity {
     private String password;
     @Column(length = 50)
     private String nickname;
-    @Column(columnDefinition = "boolean default false")
-    private Boolean isMember;
-    @Column(columnDefinition = "boolean default true")
-    private Boolean isActivated;
+    @Column(nullable = false)
+    private Boolean isMember = false;
+    @Column(nullable = false)
+    private Boolean isActivated = true;
 
     public UserDto toDto() {
         return UserDto.builder()

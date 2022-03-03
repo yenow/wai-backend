@@ -2,6 +2,7 @@ package com.wai.service.user;
 
 import com.wai.common.exception.user.UserKeyNotExistException;
 import com.wai.common.exception.user.UserKeyTooLongException;
+import com.wai.common.exception.user.UserNicknameDuplicationException;
 import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
 import com.wai.controller.user.dto.UserRequestDto;
 import com.wai.controller.user.dto.UserDto;
@@ -46,21 +47,15 @@ public class UserService {
 
     @Transactional
     public UserDto saveNickname(UserRequestDto userRequestDto) {
-        UserDto userDto = UserDto.builder().build();
+        if (isNicknameDuplicated(userRequestDto)) throw new UserNicknameDuplicationException();
 
-        if (isNicknameDupicated(userRequestDto)) {
-            userDto.setErrorCode(1);
-            userDto.setErrorMessage("이미 사용중인 별명입니다.");
-        } else {
-            User user = userRepository.findById(userRequestDto.getUserId()).get();
-            user.saveNickname(userRequestDto.getNickname());
-            userDto = user.toDto();
-        }
+        User user = userRepository.findById(userRequestDto.getUserId()).get();
+        user.saveNickname(userRequestDto.getNickname());
 
-        return userDto;
+        return user.toDto();
     }
 
-    private boolean isNicknameDupicated(UserRequestDto userRequestDto) {
+    private boolean isNicknameDuplicated(UserRequestDto userRequestDto) {
         return userRepository.findByNickname(userRequestDto.getNickname()).isPresent();
     }
 
