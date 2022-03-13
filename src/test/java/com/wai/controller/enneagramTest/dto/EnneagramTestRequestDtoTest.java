@@ -1,5 +1,6 @@
 package com.wai.controller.enneagramTest.dto;
 
+import com.wai.dto.enneagramTest.EnneagramTestRequestDto;
 import org.junit.jupiter.api.Test;
 
 import static org.junit.jupiter.api.Assertions.*;

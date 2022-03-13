@@ -1,6 +1,6 @@
 package com.wai.controller;
 
-import com.wai.controller.dto.ResponseDto;
+import com.wai.dto.ResponseDto;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RestController;
 

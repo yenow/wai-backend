@@ -1,10 +1,8 @@
 package com.wai.config;
 
-import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
-import com.wai.controller.post.dto.PostDto;
-import com.wai.controller.reply.dto.ReplyDto;
-import com.wai.controller.user.dto.UserDto;
-import com.wai.domain.enneagramTest.EnneagramTest;
+import com.wai.dto.post.PostDto;
+import com.wai.dto.reply.ReplyDto;
+import com.wai.dto.user.UserDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.user.User;

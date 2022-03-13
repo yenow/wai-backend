@@ -1,9 +1,9 @@
 package com.wai.domain.post;
 
 import com.wai.domain.common.BaseEntity;
-import com.wai.controller.post.dto.PostDto;
-import com.wai.controller.post.dto.PostSaveRequestDto;
-import com.wai.controller.reply.dto.ReplyDto;
+import com.wai.dto.post.PostDto;
+import com.wai.dto.post.PostSaveRequestDto;
+import com.wai.dto.reply.ReplyDto;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.tag.Tag;

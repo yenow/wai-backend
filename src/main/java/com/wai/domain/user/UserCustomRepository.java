@@ -1,9 +1,11 @@
 package com.wai.domain.user;
 
-import com.wai.controller.user.dto.UserDto;
-import com.wai.controller.user.dto.UserRequestDto;
+import com.wai.domain.enneagramTest.EnneagramTest;
+import com.wai.dto.user.UserDto;
+import com.wai.dto.user.UserRequestDto;
 
 import javax.transaction.Transactional;
+import java.util.List;
 import java.util.Optional;
 
 
@@ -21,6 +23,9 @@ public interface UserCustomRepository {
 
     Optional<UserDto> getUserDtoInformation(UserRequestDto userRequestDto);
 
+    Optional<List<EnneagramTest>> getUserEnneagramTests(String userKey);
+
     @Transactional
     void deleteByUserKey(String userKey);
+
 }

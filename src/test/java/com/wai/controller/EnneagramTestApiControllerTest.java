@@ -1,6 +1,6 @@
 package com.wai.controller;
 
-import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
+import com.wai.dto.enneagramTest.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.EnneagramTestRepository;
 import com.wai.domain.enneagramTest.TestType;
 import org.junit.Test;

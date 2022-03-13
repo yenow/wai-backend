@@ -1,13 +1,11 @@
 package com.wai.config;
 
-import com.wai.jwt.JwtAccessDeniedHandler;
-import com.wai.jwt.JwtAuthenticationEntryPoint;
-import com.wai.jwt.JwtSecurityConfig;
-import com.wai.jwt.TokenProvider;
+import com.wai.config.jwt.JwtAccessDeniedHandler;
+import com.wai.config.jwt.JwtAuthenticationEntryPoint;
+import com.wai.config.jwt.JwtSecurityConfig;
+import com.wai.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
-import org.springframework.context.annotation.Configuration;
-import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -16,7 +14,6 @@ import org.springframework.security.config.annotation.web.configuration.WebSecur
 import org.springframework.security.config.http.SessionCreationPolicy;
 import org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder;
 import org.springframework.security.crypto.password.PasswordEncoder;
-import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
 
 @RequiredArgsConstructor
 @EnableWebSecurity

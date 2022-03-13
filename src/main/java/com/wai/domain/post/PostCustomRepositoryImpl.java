@@ -6,8 +6,8 @@ import com.wai.domain.reply.QReply;
 import com.wai.domain.user.QUser;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.wai.controller.post.dto.PostRequestDto;
-import com.wai.controller.post.dto.PostSearchType;
+import com.wai.dto.post.PostRequestDto;
+import com.wai.dto.post.PostSearchType;
 import org.springframework.stereotype.Repository;
 
 import java.time.LocalDateTime;

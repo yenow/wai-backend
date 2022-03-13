@@ -1,18 +1,14 @@
 package com.wai.common;
 
-import com.wai.controller.user.dto.UserDto;
+import com.wai.dto.user.UserDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
 import lombok.*;
-import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
 import org.modelmapper.ModelMapper;
-import org.modelmapper.PropertyMap;
 import org.modelmapper.TypeMap;
 import org.modelmapper.convention.MatchingStrategies;
-import org.springframework.beans.BeanUtils;
 
-import javax.print.attribute.standard.Destination;
 import java.util.ArrayList;
 import java.util.List;
 

@@ -1,7 +1,6 @@
 package com.wai.domain.userRole;
 
-import com.wai.controller.user.dto.UserRoleDto;
-import com.wai.domain.common.BaseEntity;
+import com.wai.dto.user.UserRoleDto;
 import com.wai.domain.user.User;
 import lombok.*;
 

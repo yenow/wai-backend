@@ -44,18 +44,4 @@ public class ApiExceptionHandler {
         return new ResponseEntity<>(apiException, httpStatus);
     }
 
-    @ExceptionHandler(value = {UserKeyDuplicationException.class})
-    public ResponseEntity<Object> handleUserKeyDuplicationException(UserKeyDuplicationException e){
-
-        HttpStatus httpStatus = HttpStatus.BAD_REQUEST;
-
-        ApiException apiException = ApiException.builder()
-                .error(httpStatus.getReasonPhrase())
-                .message("userKey duplicate")
-                .status(httpStatus.value())
-                .timestamp(LocalDateTime.now())
-                .build();
-
-        return new ResponseEntity<>(apiException, httpStatus);
-    }
 }

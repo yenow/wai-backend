@@ -1,7 +1,5 @@
 package com.wai.domain.reply;
 
-import com.wai.controller.reply.dto.ReplyRequestDto;
-
 import java.util.List;
 import java.util.Optional;
 

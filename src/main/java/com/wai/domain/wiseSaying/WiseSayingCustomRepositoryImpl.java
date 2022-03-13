@@ -1,12 +1,10 @@
 package com.wai.domain.wiseSaying;
 
 import com.querydsl.core.types.dsl.BooleanExpression;
-import com.querydsl.core.types.dsl.NumberExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.wai.controller.wiseSaying.dto.WiseSayingRequestDto;
+import com.wai.dto.wiseSaying.WiseSayingRequestDto;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 import java.util.Optional;
 
 import static com.wai.domain.wiseSaying.QWiseSaying.wiseSaying1;

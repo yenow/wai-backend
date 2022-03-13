@@ -1,8 +1,7 @@
 package com.wai.controller;
 
-import com.wai.controller.HelloController;
-import com.wai.controller.dto.HelloEnum;
-import com.wai.controller.dto.HelloRequestDto;
+import com.wai.dto.hello.HelloEnum;
+import com.wai.dto.hello.HelloRequestDto;
 import org.junit.jupiter.api.DisplayName;
 import org.junit.jupiter.api.Test;
 import org.junit.runner.RunWith;

@@ -1,10 +1,11 @@
 package com.wai.service.enneagramTest;
 
 import com.wai.WaiSpringApplication;
-import com.wai.controller.enneagramTest.dto.EnneagramTestRequestDto;
+import com.wai.dto.enneagramTest.EnneagramTestRequestDto;
 import com.wai.domain.enneagramTest.TestType;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
+import com.wai.service.EnneagramTestService;
 import org.junit.jupiter.api.AfterEach;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;

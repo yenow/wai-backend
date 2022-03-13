@@ -3,10 +3,11 @@ package com.wai.service.user;
 import com.wai.common.util.Utility;
 import com.wai.common.exception.user.UserKeyNotExistException;
 import com.wai.common.exception.user.UserKeyTooLongException;
-import com.wai.controller.user.dto.UserRequestDto;
-import com.wai.controller.user.dto.UserDto;
+import com.wai.dto.user.UserRequestDto;
+import com.wai.dto.user.UserDto;
 import com.wai.domain.user.User;
 import com.wai.dummyData.DummyData;
+import com.wai.service.UserService;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -128,7 +129,6 @@ public class UserServiceTest {
         UserDto userDto2 = userService.saveNickname(non_duplicateUser);
 
         // then
-        assertThat(userDto.getErrorCode()).isEqualTo(1);
         assertThat(userDto2.getNickname()).isEqualTo(non_duplicateUser.getNickname());
 
     }

@@ -1,10 +1,9 @@
 package com.wai.domain.user;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.domain.common.BaseEntity;
-import com.wai.controller.post.dto.PostDto;
-import com.wai.controller.reply.dto.ReplyDto;
-import com.wai.controller.user.dto.UserDto;
+import com.wai.dto.post.PostDto;
+import com.wai.dto.reply.ReplyDto;
+import com.wai.dto.user.UserDto;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.likey.Likey;
 import com.wai.domain.post.Post;
@@ -12,9 +11,7 @@ import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import com.wai.domain.userRole.UserRole;
 import com.wai.domain.wiseSaying.WiseSaying;
-import com.wai.vo.UserVo;
 import lombok.*;
-import org.hibernate.annotations.ColumnDefault;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
 

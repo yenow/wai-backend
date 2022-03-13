@@ -1,7 +1,7 @@
 package com.wai.domain.reply;
 
 import com.wai.domain.common.BaseEntity;
-import com.wai.controller.reply.dto.ReplyDto;
+import com.wai.dto.reply.ReplyDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
 import lombok.*;

@@ -1,6 +1,6 @@
 package com.wai.controller;
 
-import com.wai.controller.post.dto.PostSaveRequestDto;
+import com.wai.dto.post.PostSaveRequestDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
 import org.junit.After;

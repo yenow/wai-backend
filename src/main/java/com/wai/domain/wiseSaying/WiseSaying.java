@@ -1,9 +1,7 @@
 package com.wai.domain.wiseSaying;
 
-import com.fasterxml.jackson.annotation.JsonBackReference;
 import com.wai.domain.common.BaseEntity;
-import com.wai.controller.wiseSaying.dto.WiseSayingResponseDto;
-import com.wai.domain.enneagram.Enneagram;
+import com.wai.dto.wiseSaying.WiseSayingResponseDto;
 import com.wai.domain.user.User;
 import lombok.AllArgsConstructor;
 import lombok.Builder;

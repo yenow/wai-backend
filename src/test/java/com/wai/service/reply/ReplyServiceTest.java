@@ -1,27 +1,12 @@
 package com.wai.service.reply;
 
-import com.wai.controller.post.dto.PostSaveRequestDto;
-import com.wai.controller.reply.dto.ReplyRequestDto;
-import com.wai.controller.reply.dto.ReplyDto;
-import com.wai.domain.post.Post;
-import com.wai.domain.post.PostRepository;
-import com.wai.domain.reply.Reply;
-import com.wai.domain.reply.ReplyRepository;
-import com.wai.domain.user.User;
-import com.wai.domain.user.UserRepository;
+import com.wai.dto.reply.ReplyRequestDto;
 import com.wai.dummyData.DummyData;
+import com.wai.service.ReplyService;
 import org.junit.jupiter.api.*;
-import org.junit.runner.RunWith;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.test.context.ActiveProfiles;
-import org.springframework.test.context.junit4.SpringRunner;
-
-import java.util.ArrayList;
-import java.util.List;
-import java.util.UUID;
-
-import static org.junit.jupiter.api.Assertions.*;
 
 @SpringBootTest
 @ActiveProfiles("test")

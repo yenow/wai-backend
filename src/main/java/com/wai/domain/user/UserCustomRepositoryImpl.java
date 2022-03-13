@@ -2,11 +2,13 @@ package com.wai.domain.user;
 
 import com.querydsl.core.types.Projections;
 import com.querydsl.jpa.impl.JPAQueryFactory;
-import com.wai.controller.user.dto.UserDto;
-import com.wai.controller.user.dto.UserRequestDto;
-import com.wai.domain.userRole.QUserRole;
+import com.wai.domain.enneagramTest.EnneagramTest;
+import com.wai.dto.user.UserDto;
+import com.wai.dto.user.UserRequestDto;
 import lombok.RequiredArgsConstructor;
 import org.springframework.stereotype.Repository;
+
+import java.util.List;
 import java.util.Optional;
 import static com.wai.domain.enneagramTest.QEnneagramTest.enneagramTest;
 import static com.wai.domain.post.QPost.post;
@@ -93,6 +95,18 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
             .leftJoin(userEnneagramTest.enneagramTest, enneagramTest)
             .where(user.userKey.eq(userRequestDto.getUserKey()))
             .fetchOne()
+        );
+    }
+
+    @Override
+    public Optional<List<EnneagramTest>> getUserEnneagramTests(String userKey) {
+        return Optional.ofNullable(jpaQueryFactory
+            .select(enneagramTest)
+            .from(user)
+            .leftJoin(user.userEnneagramTests, userEnneagramTest)
+            .leftJoin(userEnneagramTest.enneagramTest, enneagramTest)
+            .where(user.userKey.eq(userKey))
+            .fetch()
         );
     }
 

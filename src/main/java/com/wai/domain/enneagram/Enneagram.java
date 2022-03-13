@@ -1,16 +1,12 @@
 package com.wai.domain.enneagram;
 
-import com.fasterxml.jackson.annotation.JsonManagedReference;
-import com.wai.controller.enneagram.dto.EnneagramDto;
-import com.wai.domain.wiseSaying.WiseSaying;
+import com.wai.dto.enneagram.EnneagramDto;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Getter
 @Builder

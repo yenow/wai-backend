@@ -2,7 +2,7 @@ package com.wai.domain.enneagramTest;
 
 import com.fasterxml.jackson.annotation.JsonManagedReference;
 import com.wai.domain.common.BaseEntity;
-import com.wai.controller.enneagramTest.dto.EnneagramTestDto;
+import com.wai.dto.enneagramTest.EnneagramTestDto;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import lombok.*;
 

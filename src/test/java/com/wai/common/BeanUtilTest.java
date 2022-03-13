@@ -1,6 +1,6 @@
 package com.wai.common;
 
-import com.wai.controller.user.dto.UserDto;
+import com.wai.dto.user.UserDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
 import lombok.*;

@@ -1,8 +1,7 @@
 package com.wai.domain.wiseSaying;
 
-import com.wai.controller.wiseSaying.dto.WiseSayingRequestDto;
+import com.wai.dto.wiseSaying.WiseSayingRequestDto;
 
-import java.util.List;
 import java.util.Optional;
 
 public interface WiseSayingCustomRepository {

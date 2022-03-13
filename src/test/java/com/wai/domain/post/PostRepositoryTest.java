@@ -1,7 +1,7 @@
 package com.wai.domain.post;
 
-import com.wai.controller.post.dto.PostRequestDto;
-import com.wai.controller.post.dto.PostSearchType;
+import com.wai.dto.post.PostRequestDto;
+import com.wai.dto.post.PostSearchType;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.user.User;
 import com.wai.dummyData.DummyData;

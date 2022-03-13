@@ -1,7 +1,7 @@
 package com.wai.domain.user;
 
-import com.wai.controller.user.dto.UserRequestDto;
-import com.wai.controller.user.dto.UserDto;
+import com.wai.dto.user.UserRequestDto;
+import com.wai.dto.user.UserDto;
 import com.wai.dummyData.DummyData;
 import org.junit.jupiter.api.*;
 import org.modelmapper.ModelMapper;
