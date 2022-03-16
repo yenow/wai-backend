@@ -6,6 +6,7 @@ import com.wai.config.jwt.JwtSecurityConfig;
 import com.wai.config.jwt.TokenProvider;
 import lombok.RequiredArgsConstructor;
 import org.springframework.context.annotation.Bean;
+import org.springframework.http.HttpMethod;
 import org.springframework.security.config.annotation.method.configuration.EnableGlobalMethodSecurity;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
 import org.springframework.security.config.annotation.web.builders.WebSecurity;
@@ -45,31 +46,36 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .csrf().disable()
 
                 .exceptionHandling()
-                    .authenticationEntryPoint(jwtAuthenticationEntryPoint)
-                    .accessDeniedHandler(jwtAccessDeniedHandler)
+                .authenticationEntryPoint(jwtAuthenticationEntryPoint)
+                .accessDeniedHandler(jwtAccessDeniedHandler)
 
                 // enable h2-console
                 .and()
-                .headers()
-                .frameOptions()
-                .sameOrigin()
+                    .headers()
+                    .frameOptions()
+                    .sameOrigin()
 
                 // 세션을 사용하지 않기 때문에 STATELESS로 설정
                 .and()
-                .sessionManagement()
-                .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
+                    .sessionManagement()
+                    .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
 
                 .and()
-                .authorizeRequests()
-                .antMatchers("/hello/**").permitAll()
-                .antMatchers("/api/sign/**").permitAll()
-                .antMatchers("/api/user/**").permitAll()
-                .antMatchers("/api/enneagram/**").permitAll()
-                .antMatchers("/api/enneagramTest/**").permitAll()
-                .antMatchers("/api/getServerTime").permitAll()
-                .anyRequest().authenticated()
+                    .authorizeRequests()
+                    .antMatchers(HttpMethod.GET).permitAll()
+                    .antMatchers("/hello/**").permitAll()
+                    .antMatchers("/api/sign/**").permitAll()
+                    .antMatchers("/api/user/**").permitAll()
+                    .antMatchers("/api/enneagram/**").permitAll()
+                    .antMatchers("/api/enneagramTest/**").permitAll()
+                    .antMatchers("/api/getServerTime").permitAll()
+
+                    .antMatchers(HttpMethod.POST).authenticated()
+                    .antMatchers(HttpMethod.PUT).authenticated()
+                    .antMatchers(HttpMethod.DELETE).authenticated()
+                    .anyRequest().authenticated()
 
                 .and()
-                .apply(new JwtSecurityConfig(tokenProvider));
+                    .apply(new JwtSecurityConfig(tokenProvider));
     }
 }

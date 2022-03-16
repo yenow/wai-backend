@@ -39,7 +39,7 @@ public class DummyData {
         // User user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname").build();
 
         IntStream.rangeClosed(0, 9).forEach(value -> {
-            User user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname"+value).build();
+            User user = User.builder().userKey(UUID.randomUUID().toString()).nickname("nickname"+value).password("passwrod"+value).build();
             userRepository.save(user);
             users.add(user);
         });

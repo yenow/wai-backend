@@ -48,6 +48,8 @@ public class SignService {
                 .userKey(signRequestDto.getUserKey())
                 .password(passwordEncoder.encode(signRequestDto.getPassword()))
                 .nickname(signRequestDto.getNickname())
+                .isActivated(true)
+                .isMember(false)
                 .build();
         UserRole userRole = UserRole.builder()
                 .user(user)

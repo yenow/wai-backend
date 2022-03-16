@@ -57,10 +57,10 @@ public class User extends BaseEntity {
     private String password;
     @Column(length = 50)
     private String nickname;
-    @Column(nullable = false)
-    private Boolean isMember = false;
-    @Column(nullable = false)
-    private Boolean isActivated = true;
+    @Column(nullable = false, columnDefinition = "bit(1) default 0")
+    private Boolean isMember;
+    @Column(nullable = false, columnDefinition = "bit(1) default 1")
+    private Boolean isActivated;
 
     public UserDto toDto() {
         return UserDto.builder()

@@ -37,8 +37,8 @@ public class Post extends BaseEntity {
     @OneToMany(mappedBy = "post")
     private List<Likey> likeys = new ArrayList<>();
     @Builder.Default
-    @OneToMany(mappedBy = "post")
-    private List<Tag> tags = new ArrayList<Tag>();
+    @OneToMany(mappedBy = "post", cascade = CascadeType.ALL)
+    private List<Tag> tags = new ArrayList<>();
 
 
     @Column(length = 300, nullable = false)
@@ -50,13 +50,27 @@ public class Post extends BaseEntity {
     @Column
     private Integer authorEnneagramType;
     @Column(nullable = false, columnDefinition = "int default 0")
-    private int clickCount;
-    @Builder.Default
-    @Column
-    private Boolean isDeleted = false;
-    @Builder.Default
-    @Column
-    private Boolean isReported = false;
+    private Integer clickCount;
+    @Column(nullable = false, columnDefinition = "bit(1) default 0")
+    private Boolean isDeleted;
+    @Column(nullable = false, columnDefinition = "bit(1) default 0")
+    private Boolean isReported;
+
+    public void increaseClickCount() {
+        clickCount = clickCount + 1;
+    }
+
+    public void deletePost() { isDeleted = true; }
+
+    public void updatePost(PostSaveRequestDto postSaveRequestDto) {
+        title = postSaveRequestDto.getTitle();
+        content = postSaveRequestDto.getContent();
+    }
+
+    public void updateTags(List<Tag> tags) {
+        this.tags = tags;
+    }
+
 
     public PostDto toDto() {
         return PostDto.builder()
@@ -86,16 +100,5 @@ public class Post extends BaseEntity {
             Collections.reverse(replys);
         }
         return this;
-    }
-
-    public void increaseClickCount() {
-        clickCount = clickCount + 1;
-    }
-
-    public void deletePost() { isDeleted = true; }
-
-    public void updatePost(PostSaveRequestDto postSaveRequestDto) {
-        title = postSaveRequestDto.getTitle();
-        content = postSaveRequestDto.getContent();
     }
 }

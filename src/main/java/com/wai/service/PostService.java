@@ -1,5 +1,6 @@
 package com.wai.service;
 
+import com.wai.domain.tag.Tag;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.post.PostSaveRequestDto;
@@ -11,12 +12,15 @@ import com.wai.domain.post.PostRepository;
 import com.wai.domain.reply.ReplyRepository;
 import com.wai.domain.user.User;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.stereotype.Service;
 
 import javax.transaction.Transactional;
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 import java.util.Optional;
+import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 @Service
@@ -26,17 +30,34 @@ public class PostService {
     private final ReplyRepository replyRepository;
     private final LikeyRepository likeyRepository;
 
-    @Transactional
-    public PostDto registerPost(PostSaveRequestDto postSaveRequestDto) {
-        Post post;
-        if (postSaveRequestDto.getPostId() != null) {
-            post = postRepository.findById(postSaveRequestDto.getPostId()).get();
-            post.updatePost(postSaveRequestDto);
-        } else {
-            post = postRepository.save(postSaveRequestDto.toEntity());
-        }
+    public List<Tag> getTags(String tagString) {
+        return Arrays.stream(tagString.split("#"))
+                .map(String::trim)
+                .filter(StringUtils::isNotEmpty)
+                .map(str -> Tag.builder().tagName(str.trim()).build())
+                .collect(Collectors.toList());
+    }
 
-        return convertPostDto(post);
+    @Transactional
+    public PostDto createPost(PostSaveRequestDto postSaveRequestDto) {
+        List<Tag> tags = getTags(postSaveRequestDto.getTag());
+
+        Post post = postSaveRequestDto.toEntity();
+        post.updateTags(tags);
+        postRepository.save(post);
+
+        return new PostDto(post);
+    }
+
+    @Transactional
+    public PostDto updatePost(PostSaveRequestDto postSaveRequestDto) {
+        List<Tag> tags = getTags(postSaveRequestDto.getTag());
+
+        Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
+        post.updatePost(postSaveRequestDto);
+        post.updateTags(tags);
+
+        return new PostDto(post);
     }
 
     @Transactional
@@ -120,16 +141,6 @@ public class PostService {
         post.deletePost();
         return convertPostDto(post);
     }
-
-    @Transactional
-    public PostDto updatePost(PostSaveRequestDto postSaveRequestDto) {
-        Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
-        post.updatePost(postSaveRequestDto);
-        return convertPostDto(post);
-    }
-
-
-
 
     private List<PostDto> convertPostDtos(List<Post> posts) {
         List<PostDto> postDtos = new ArrayList<>();

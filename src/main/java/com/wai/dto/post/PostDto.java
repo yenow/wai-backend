@@ -1,5 +1,6 @@
 package com.wai.dto.post;
 
+import com.wai.domain.post.Post;
 import com.wai.dto.ResponseDto;
 import com.wai.dto.reply.ReplyDto;
 import com.wai.dto.user.UserDto;
@@ -18,7 +19,7 @@ import java.util.stream.Collectors;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class PostDto extends ResponseDto {
+public class PostDto {
     private Long postId;
     private String title;
     private String content;
@@ -36,6 +37,21 @@ public class PostDto extends ResponseDto {
     private List<ReplyDto> replys;
     private List<Tag> tags;
     private List<Long> likeys;
+
+    public PostDto(Post post) {
+        this.postId = post.getPostId();
+        this.title = post.getTitle();
+        this.content = post.getContent();
+        this.author = post.getAuthor();
+        this.authorEnneagramType = post.getAuthorEnneagramType();
+        this.clickCount = post.getClickCount();
+        this.likeyCount = post.getLikeys().size();
+        this.isDeleted = post.getIsDeleted();
+        this.isReported = post.getIsReported();
+        this.insertDate = post.getInsertDate();
+        this.updateDate = post.getUpdateDate();
+        this.insertId = post.getInsertId();
+    }
 
     public PostDto setUserDto(UserDto user) {
         this.user = user;

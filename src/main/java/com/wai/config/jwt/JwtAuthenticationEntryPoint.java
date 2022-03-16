@@ -1,6 +1,7 @@
 package com.wai.config.jwt;
 
 import com.wai.common.util.ErrorCode;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.core.AuthenticationException;
 import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.stereotype.Component;
@@ -21,6 +22,9 @@ public class JwtAuthenticationEntryPoint implements AuthenticationEntryPoint {
         String exception = (String)request.getAttribute("exception");
         ErrorCode errorCode;
 
+        if (StringUtils.isEmpty(exception)) {
+            return;
+        }
         /*
           토큰 만료된 경우
          */

@@ -27,6 +27,7 @@ public class Report extends BaseEntity {
     @JoinColumn(name = "reply_id")
     private Reply reply;
 
+    @Enumerated(EnumType.STRING)
     @Column(length = 100)
     private ReportStatus reportStatus;
     @Column(length = 4000)
