@@ -4,8 +4,10 @@ import java.io.File;
 import java.io.IOException;
 import java.time.LocalDateTime;
 import java.time.format.DateTimeFormatter;
+import java.util.UUID;
 
 import com.wai.config.PhotoAppProperties;
+import com.wai.domain.fileUpload.FileUpload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.io.FilenameUtils;
@@ -18,6 +20,24 @@ import org.springframework.web.multipart.MultipartFile;
 public class FileWriter {
 
     private final PhotoAppProperties photoAppProperties;
+
+    public FileUpload getFileUpload(MultipartFile sourceFile) {
+        String uploadFileName = UUID.randomUUID().toString();
+        String filePath = getFilePath(uploadFileName, sourceFile);
+        log.info("uploadFileName:: {}", uploadFileName);
+        log.info("filePath:: {}", filePath);
+
+        writeFile(sourceFile, filePath);
+
+        FileUpload fileUpload = FileUpload.builder()
+                .mimeType(sourceFile.getContentType())
+                .uploadFileName(uploadFileName)
+                .originalFileName(sourceFile.getOriginalFilename())
+                .filePath(filePath)
+                .fileSize(sourceFile.getSize())
+                .build();
+        return fileUpload;
+    }
 
     public Long writeFile( MultipartFile multipartFile, String filePath ) {
         try {

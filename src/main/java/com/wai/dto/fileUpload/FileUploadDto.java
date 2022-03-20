@@ -1,5 +1,6 @@
 package com.wai.dto.fileUpload;
 
+import com.wai.domain.fileUpload.FileType;
 import com.wai.domain.fileUpload.FileUpload;
 import lombok.AllArgsConstructor;
 import lombok.Builder;
@@ -13,7 +14,7 @@ import lombok.NoArgsConstructor;
 public class FileUploadDto {
 
     private Long fileId;
-    private String fileType;
+    private FileType fileType;
     private String mimeType;
     private String uploadFileName;
     private String originalFileName;

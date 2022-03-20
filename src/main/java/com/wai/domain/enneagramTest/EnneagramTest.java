@@ -51,7 +51,6 @@ public class EnneagramTest extends BaseEntity {
 
     public EnneagramTestDto toDto() {
         return EnneagramTestDto.builder()
-                .isSuccess(true)
                 .testId(testId)
                 .testType(testType)
                 .myEnneagramType(myEnneagramType)

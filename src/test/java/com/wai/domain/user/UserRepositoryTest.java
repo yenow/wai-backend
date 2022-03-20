@@ -1,8 +1,11 @@
 package com.wai.domain.user;
 
+import com.wai.domain.enneagramTest.EnneagramTest;
+import com.wai.dto.enneagramTest.EnneagramTestDto;
 import com.wai.dto.user.UserRequestDto;
 import com.wai.dto.user.UserDto;
 import com.wai.dummyData.DummyData;
+import com.wai.dummyData.DummyUser;
 import org.junit.jupiter.api.*;
 import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -13,6 +16,8 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManagerFactory;
 import javax.persistence.PersistenceUnit;
 
+import java.util.List;
+
 import static org.assertj.core.api.Assertions.assertThat;
 
 
@@ -21,23 +26,22 @@ import static org.assertj.core.api.Assertions.assertThat;
 @TestInstance(TestInstance.Lifecycle.PER_CLASS)
 public class UserRepositoryTest {
 
-    @Autowired UserRepository userRepository;
-    @Autowired DummyData dummyData;
+    @Autowired
+    private UserRepository userRepository;
+    @Autowired
+    private DummyUser dummyUser;
     @Autowired ModelMapper modelMapper;
-    @PersistenceUnit EntityManagerFactory entityManagerFactory;
 
+    List<User> users;
     User user;
 
     @BeforeAll
     void beforeAll() {
-        dummyData.initUsers();
-        dummyData.initUserEnneagramTests();
-        dummyData.initPosts();
     }
 
     @BeforeEach
     void beforeEach() {
-        dummyData.initUsers();
+        users = dummyUser.createDummyUsers();
         System.out.println("=== start test ===");
     }
 
@@ -46,7 +50,6 @@ public class UserRepositoryTest {
         if (user != null) {
             userRepository.delete(user);
         }
-
         System.out.println("=== end test ===");
     }
 
@@ -54,7 +57,7 @@ public class UserRepositoryTest {
     @Test
     void getUserInformation() {
         // given
-        User user = dummyData.getUsers().get(0);
+        User user = users.get(0);
 
         // when
         User findUser = userRepository.getUserInformation(
@@ -76,7 +79,7 @@ public class UserRepositoryTest {
     @Test
     void getUserDtoInformation() {
         // given
-        User user = dummyData.getUsers().get(0);
+        User user = users.get(0);
 
         // when
         UserDto findUserDto = userRepository.getUserDtoInformation(
@@ -85,5 +88,21 @@ public class UserRepositoryTest {
 
         // then
         System.out.println("userResponseDto = " + findUserDto);
+    }
+    
+    @DisplayName("유저의 에니어그램테스트 리스트 가져오기")
+    @Test
+    void getUserEnneagramTests() {
+        // given
+        UserRequestDto userRequestDto = UserRequestDto.builder()
+                .userId(users.get(3).getUserId())
+                .userKey(users.get(3).getUserKey())
+                .build();
+
+        // when
+        List<EnneagramTest> enneagramTests = userRepository.getUserEnneagramTests(userRequestDto.getUserKey());
+        
+        // then
+        assertThat(enneagramTests.size()).isEqualTo(0);
     }
 }

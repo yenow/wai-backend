@@ -17,7 +17,7 @@ public class EnneagramTestService {
     private final EnneagramTestRepository enneagramTestRepository;
     private final UserEnneagramTestRepository userEnneagramTestRepository;
 
-    public EnneagramTest saveSelectedEnneagramTestResult (EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTest doSelectedEnneagramTestResult (EnneagramTestRequestDto enneagramTestRequestDto) {
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
 
         UserEnneagramTest userEnneagramTest = UserEnneagramTest.builder()
@@ -29,7 +29,7 @@ public class EnneagramTestService {
         return enneagramTest;
     }
 
-    public EnneagramTest saveSimpleEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTest doSimpleEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
         enneagramTestRequestDto.calculateSimpleEnneagramTest();
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());
 
@@ -42,7 +42,7 @@ public class EnneagramTestService {
         return enneagramTest;
     }
 
-    public EnneagramTest saveHardEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
+    public EnneagramTest doHardEnneagramTestResult(EnneagramTestRequestDto enneagramTestRequestDto) {
         enneagramTestRequestDto.calculateHardEnneagramTest();
         
         EnneagramTest enneagramTest = enneagramTestRepository.save(enneagramTestRequestDto.toEntity());

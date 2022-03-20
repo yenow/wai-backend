@@ -8,6 +8,7 @@ import com.wai.dto.fileUpload.FileUploadDto;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.stereotype.Service;
+import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 
 @Slf4j
@@ -17,26 +18,14 @@ public class FileUploadService {
     private final FileWriter fileWriter;
     private final FileUploadRepository fileUploadRepository;
 
+    @Transactional
     public FileUploadDto upload(MultipartFile sourceFile) {
-        String uploadFileName = UUID.randomUUID().toString();
-        String filePath = fileWriter.getFilePath(uploadFileName, sourceFile);
-        log.info("uploadFileName:: {}", uploadFileName);
-        log.info("filePath:: {}", filePath);
-
-        fileWriter.writeFile(sourceFile, filePath);
-
-        FileUpload fileUpload = FileUpload.builder()
-                .mimeType(sourceFile.getContentType())
-                .uploadFileName(uploadFileName)
-                .originalFileName(sourceFile.getOriginalFilename())
-                .filePath(filePath)
-                .fileSize(sourceFile.getSize())
-                .build();
-
+        FileUpload fileUpload = fileWriter.getFileUpload(sourceFile);
         fileUploadRepository.save(fileUpload);
-
         return new FileUploadDto(fileUpload);
     }
+
+
 
     public FileUploadDto getImageFile(Long fileId) {
         FileUpload imageFile = fileUploadRepository.findById(fileId).get();

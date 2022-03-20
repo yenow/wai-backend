@@ -4,6 +4,7 @@ import com.wai.common.exception.sign.PasswordNotEqualException;
 import com.wai.common.exception.sign.UserNotExistException;
 import com.wai.common.exception.user.UserKeyDuplicationException;
 import com.wai.common.exception.user.UserNicknameDuplicationException;
+import com.wai.config.jwt.TokenProvider;
 import com.wai.dto.sign.SignDto;
 import com.wai.dto.sign.SignRequestDto;
 import com.wai.dto.user.UserDto;
@@ -13,9 +14,16 @@ import com.wai.domain.userRole.Role;
 import com.wai.domain.userRole.UserRole;
 import com.wai.domain.userRole.UserRoleRepository;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
+import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
+import org.springframework.security.core.Authentication;
+import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
+import org.springframework.web.bind.annotation.RequestBody;
+
+import java.util.UUID;
 
 
 @Service
@@ -25,46 +33,61 @@ public class SignService {
     final private UserRepository userRepository;
     final private UserRoleRepository userRoleRepository;
     private final PasswordEncoder passwordEncoder;
+    private final TokenProvider tokenProvider;
+    private final AuthenticationManagerBuilder authenticationManagerBuilder;
 
 
-    public void signIn(SignRequestDto signRequestDto) {
+    public SignDto signIn(SignRequestDto signRequestDto) {
         User user = userRepository.findOneWithAuthoritiesByUsername(signRequestDto.getUsername())
                 .orElseThrow(() -> { throw new UserNotExistException(); });
-
-        System.out.println(passwordEncoder.encode(signRequestDto.getPassword()));
-        System.out.println(user.getPassword());
 
         if (!passwordEncoder.matches(signRequestDto.getPassword(),user.getPassword())) {
             throw new PasswordNotEqualException();
         }
-    }
 
-    @Transactional
-    public SignDto signUpAsNonMember(SignRequestDto signRequestDto) {
-        if(isUserKeyDuplicated(signRequestDto)) throw new UserKeyDuplicationException();
-        if(isNicknameDuplicated(signRequestDto)) throw new UserNicknameDuplicationException();
-
-        User user = User.builder()
-                .userKey(signRequestDto.getUserKey())
-                .password(passwordEncoder.encode(signRequestDto.getPassword()))
-                .nickname(signRequestDto.getNickname())
-                .isActivated(true)
-                .isMember(false)
-                .build();
-        UserRole userRole = UserRole.builder()
-                .user(user)
-                .role(Role.ROLE_USER)
-                .build();
-        user.getUserRoles().add(userRole);
-
-        userRepository.save(user);
-        userRoleRepository.save(userRole);
+        String jwt = getJwtToken(signRequestDto.getUsername(), signRequestDto.getPassword());
 
         return SignDto.builder()
                 .userId(user.getUserId())
                 .userKey(user.getUserKey())
                 .password(signRequestDto.getPassword())
+                .email(user.getEmail())
                 .nickname(user.getNickname())
+                .token(jwt)
+                .build();
+    }
+
+    @Transactional
+    public SignDto signUpAsNonMember(SignRequestDto signRequestDto) {
+        if(isNicknameDuplicated(signRequestDto)) throw new UserNicknameDuplicationException();
+
+        String createUserKey = UUID.randomUUID().toString();
+        String createPassword = UUID.randomUUID().toString();
+
+        User user = User.builder()
+                .userKey(createUserKey)       // signRequestDto.getUserKey()
+                .password(passwordEncoder.encode(createPassword))     // signRequestDto.getPassword()
+                .nickname(signRequestDto.getNickname())
+                .isActivated(true)
+                .isMember(false)
+                .build();
+        userRepository.save(user);
+
+        UserRole userRole = UserRole.builder()
+                .user(user)
+                .role(Role.ROLE_USER)
+                .build();
+        user.getUserRoles().add(userRole);
+        userRoleRepository.save(userRole);
+
+        String jwt = getJwtToken(createUserKey,createPassword);
+
+        return SignDto.builder()
+                .userId(user.getUserId())
+                .userKey(createUserKey)
+                .password(createPassword)
+                .nickname(user.getNickname())
+                .token(jwt)
                 .build();
     }
 
@@ -82,5 +105,15 @@ public class SignService {
 
     private boolean isNicknameDuplicated(SignRequestDto signRequestDto) {
         return userRepository.findByNickname(signRequestDto.getNickname()).isPresent();
+    }
+
+    private String getJwtToken(String username, String password) {
+        UsernamePasswordAuthenticationToken authenticationToken =
+                new UsernamePasswordAuthenticationToken(username, password);
+
+        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);     // loadUserByUsername()
+        SecurityContextHolder.getContext().setAuthentication(authentication);
+
+        return tokenProvider.createToken(authentication);
     }
 }

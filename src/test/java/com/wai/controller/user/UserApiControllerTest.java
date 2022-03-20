@@ -2,7 +2,8 @@ package com.wai.controller.user;
 
 import com.wai.common.exception.user.UserKeyNotExistException;
 import com.wai.controller.UserApiController;
-import com.wai.service.UserService;
+import com.wai.service.user.UserService;
+import com.wai.service.user.UserServiceUtil;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 import org.junit.jupiter.api.extension.ExtendWith;
@@ -33,6 +34,8 @@ class UserApiControllerTest {
 
     @MockBean
     private UserService userService;
+    @Autowired
+    private UserServiceUtil userServiceUtil;
 
     @Autowired
     private MockMvc mvc;
@@ -40,7 +43,7 @@ class UserApiControllerTest {
     @BeforeEach
     public void setUp() {
         mvc = MockMvcBuilders
-                .standaloneSetup(new UserApiController(userService))
+                .standaloneSetup(new UserApiController(userService, userServiceUtil))
                 .addFilters(new CharacterEncodingFilter("UTF-8", true)) // utf-8 필터 추가
                 .build();
     }

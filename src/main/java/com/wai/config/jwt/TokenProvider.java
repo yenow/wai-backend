@@ -60,6 +60,7 @@ public class TokenProvider implements InitializingBean {
                 .claim(AUTHORITIES_KEY, authorities)
                 .signWith(key, SignatureAlgorithm.HS512)
                 .setExpiration(validity)
+                .setIssuedAt(new Date())
                 .compact();
     }
 

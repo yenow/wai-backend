@@ -7,7 +7,7 @@ import lombok.*;
 import javax.persistence.*;
 
 
-@Getter @Builder @NoArgsConstructor @AllArgsConstructor
+@Getter @Builder @NoArgsConstructor @AllArgsConstructor @ToString(exclude = "user")
 @Entity
 public class UserRole{
 

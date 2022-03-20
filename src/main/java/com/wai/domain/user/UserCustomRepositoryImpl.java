@@ -24,6 +24,17 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     private final JPAQueryFactory jpaQueryFactory;
 
     @Override
+    public Optional<User> findByUserId(Long userId) {
+        return Optional.ofNullable(jpaQueryFactory
+                .selectFrom(user)
+                .leftJoin(user.userRoles, userRole)
+                .leftJoin(user.userEnneagramTests, userEnneagramTest).fetchJoin()
+                .leftJoin(userEnneagramTest.enneagramTest, enneagramTest).fetchJoin()
+                .where(user.userId.eq(userId))
+                .fetchOne());
+    }
+
+    @Override
     public Optional<User> findByEmail(String email) {
         return Optional.ofNullable(jpaQueryFactory
                 .selectFrom(user)
@@ -47,6 +58,16 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
         return Optional.ofNullable(
             jpaQueryFactory.selectFrom(user)
                 .where(user.nickname.eq(nickname))
+                .fetchOne()
+        );
+    }
+
+    @Override
+    public Optional<User> findByNicknameAndNotUserId(UserRequestDto userRequestDto) {
+        return Optional.ofNullable(jpaQueryFactory
+                .selectFrom(user)
+                .where(user.nickname.eq(userRequestDto.getNickname())
+                        .and(user.userId.ne(userRequestDto.getUserId())))
                 .fetchOne()
         );
     }
@@ -99,15 +120,14 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
     }
 
     @Override
-    public Optional<List<EnneagramTest>> getUserEnneagramTests(String userKey) {
-        return Optional.ofNullable(jpaQueryFactory
-            .select(enneagramTest)
-            .from(user)
-            .leftJoin(user.userEnneagramTests, userEnneagramTest)
-            .leftJoin(userEnneagramTest.enneagramTest, enneagramTest)
-            .where(user.userKey.eq(userKey))
-            .fetch()
-        );
+    public List<EnneagramTest> getUserEnneagramTests(String userKey) {
+        return jpaQueryFactory
+                .select(enneagramTest)
+                .from(user)
+                .join(user.userEnneagramTests, userEnneagramTest)
+                .join(userEnneagramTest.enneagramTest, enneagramTest)
+                .where(user.userKey.eq(userKey))
+                .fetch();
     }
 
     @Override

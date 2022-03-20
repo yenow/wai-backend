@@ -24,6 +24,7 @@ public enum ErrorCode {
     NOT_EXISTED_PASSWORD("err-201","not existed password", HttpStatus.BAD_REQUEST),
 
     NOT_EXISTED_USER_ID("err-202","not existed userId", HttpStatus.BAD_REQUEST),
+    NOT_EXISTED_USER("err-203","not existed user", HttpStatus.BAD_REQUEST),
     NOT_EXISTED_POST_TITLE("err-210","not existed title", HttpStatus.BAD_REQUEST),
     NOT_EXISTED_POST_CONTENT("err-211","not existed content", HttpStatus.BAD_REQUEST),
     NOT_EXISTED_POST_AUTHOR_ENNEAGRAM_TYPE("err-212","not existed author_enneagram_type", HttpStatus.BAD_REQUEST),

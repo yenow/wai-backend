@@ -18,12 +18,11 @@ public class EnneagramApiController {
     final EnneagramRepository enneagramRepository;
 
     @GetMapping(value = "/getEnneagramInformation")
-    public List<EnneagramDto> getEnneagramInfomation() {
+    public List<EnneagramDto> getEnneagramInformation() {
         List<EnneagramDto> list = new ArrayList<>();
         enneagramRepository.findAll().forEach(enneagram ->
                 list.add(enneagram.toDto())
         );
-
         return list;
     }
 }

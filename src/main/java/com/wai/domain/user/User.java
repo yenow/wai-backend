@@ -1,6 +1,7 @@
 package com.wai.domain.user;
 
 import com.wai.domain.common.BaseEntity;
+import com.wai.domain.fileUpload.FileUpload;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.reply.ReplyDto;
 import com.wai.dto.user.UserDto;
@@ -11,6 +12,7 @@ import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import com.wai.domain.userRole.UserRole;
 import com.wai.domain.wiseSaying.WiseSaying;
+import com.wai.dto.user.UserRequestDto;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -49,6 +51,10 @@ public class User extends BaseEntity {
     @OneToMany(mappedBy = "user")
     private List<WiseSaying> wiseSayings = new ArrayList<>();
 
+    @OneToOne
+    @JoinColumn(name = "profile_image_file_id")
+    private FileUpload profileImageFile;
+
     @Column(unique = true, nullable = false, length = 200)
     private String userKey;
     @Column(unique = true, length = 200)
@@ -67,7 +73,7 @@ public class User extends BaseEntity {
                 .userId(userId)
                 .userKey(userKey)
                 .email(email)
-                .password(password)
+//                .password(password)
                 .nickname(nickname)
                 .isMember(isMember)
                 .isActivated(isActivated)
@@ -105,5 +111,13 @@ public class User extends BaseEntity {
                                 .setPostDto(reply.getPost().toDto()))
                 .filter(replyResponseDto -> !replyResponseDto.getIsDeleted())
                 .collect(Collectors.toList());
+    }
+
+    public void updateUser(UserRequestDto userRequestDto) {
+        nickname = userRequestDto.getNickname();
+    }
+
+    public void updateProfileImage(FileUpload profileImageFile) {
+        this.profileImageFile = profileImageFile;
     }
 }

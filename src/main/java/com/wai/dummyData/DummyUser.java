@@ -26,9 +26,10 @@ public class DummyUser {
     @Transactional
     public List<User> createDummyUsers() {
         List<User> dummyUsers = new ArrayList<>(Arrays.asList(
-                User.builder().userKey(getUUID()).nickname("닉네임").password(getUUID()).isMember(true).isActivated(false).build()
-                ,User.builder().userKey(getUUID()).nickname("닉네임2").password(getUUID()).isMember(true).isActivated(false).build()
-                ,User.builder().userKey(getUUID()).nickname("비활성유저").password(getUUID()).isMember(true).isActivated(false).build()
+                User.builder().userKey(getUUID()).nickname("닉네임").password(getUUID()).isMember(false).isActivated(true).build()
+                ,User.builder().userKey(getUUID()).nickname("닉네임2").password(getUUID()).isMember(false).isActivated(true).build()
+                ,User.builder().userKey(getUUID()).nickname("비활성유저").password(getUUID()).isMember(false).isActivated(true).build()
+                ,User.builder().userKey(getUUID()).nickname("테스트없는유저").password(getUUID()).isMember(false).isActivated(true).build()
         ));
         dummyUsers.forEach(userRepository::save);
         addUserEnneagramTest(dummyUsers);
@@ -40,9 +41,12 @@ public class DummyUser {
         AtomicInteger index = new AtomicInteger(0);
 
         users.forEach(user -> {
-            int enneagramType = index.getAndIncrement() % 9 + 1;
-            EnneagramTest enneagramTest = EnneagramTest.builder().myEnneagramType(enneagramType).testType(TestType.select).build();
-            user.doEnneagramTest(enneagramTest);
+
+            if (index.intValue() != 3) {
+                int enneagramType = index.getAndIncrement() % 9 + 1;
+                EnneagramTest enneagramTest = EnneagramTest.builder().myEnneagramType(enneagramType).testType(TestType.select).build();
+                user.doEnneagramTest(enneagramTest);
+            }
         });
     }
 

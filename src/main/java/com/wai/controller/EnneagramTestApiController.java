@@ -19,19 +19,19 @@ public class EnneagramTestApiController {
 
     private final EnneagramQuestionService enneagramQuestionService;
 
-    @PostMapping(value = "/saveSelectedEnneagramTestResult")
-    public EnneagramTestDto saveSelectedEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
-        return enneagramTestService.saveSelectedEnneagramTestResult(enneagramTestRequestDto).toDto();
+    @PostMapping(value = "/doSelectedEnneagramTestResult")
+    public EnneagramTestDto doSelectedEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+        return enneagramTestService.doSelectedEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
-    @PostMapping(value = "/saveSimpleEnneagramTest")
-    public EnneagramTestDto saveSimpleEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
-        return enneagramTestService.saveSimpleEnneagramTestResult(enneagramTestRequestDto).toDto();
+    @PostMapping(value = "/doSimpleEnneagramTest")
+    public EnneagramTestDto doSimpleEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+        return enneagramTestService.doSimpleEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
-    @PostMapping(value = "/saveHardEnneagramTest")
-    public EnneagramTestDto saveHardEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
-        return enneagramTestService.saveHardEnneagramTestResult(enneagramTestRequestDto).toDto();
+    @PostMapping(value = "/doHardEnneagramTest")
+    public EnneagramTestDto doHardEnneagramTestResult(@RequestBody EnneagramTestRequestDto enneagramTestRequestDto) {
+        return enneagramTestService.doHardEnneagramTestResult(enneagramTestRequestDto).toDto();
     }
 
     @GetMapping(value = "/getHardEnneagramQuestion")

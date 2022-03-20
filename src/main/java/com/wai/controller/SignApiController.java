@@ -33,35 +33,9 @@ public class SignApiController {
         if(StringUtils.isEmpty(signRequestDto.getPassword())) throw new PasswordNotExistException();
         signRequestDto.setUsername();
 
-        signService.signIn(signRequestDto);
-
-        String jwt = getJwtToken(signRequestDto);
+        SignDto signDto = signService.signIn(signRequestDto);
 
         HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-
-        return new ResponseEntity<>(
-                SignDto.builder().token(jwt).build(),
-                httpHeaders,
-                HttpStatus.OK
-        );
-    }
-
-    @PostMapping("/signUpAsNonMember")
-    public ResponseEntity<SignDto> signUpAsNonMember(@RequestBody SignRequestDto signRequestDto) {
-        if (StringUtils.isEmpty(signRequestDto.getUserKey())) throw new UserKeyNotExistException();
-        else if(StringUtils.isEmpty(signRequestDto.getPassword())) throw new PasswordNotExistException();
-        else if(StringUtils.isEmpty(signRequestDto.getNickname())) throw new UserNicknameNotExistException();
-
-        signRequestDto.setUsername();
-
-        SignDto signDto = signService.signUpAsNonMember(signRequestDto);
-
-        String jwt = getJwtToken(signRequestDto);
-        HttpHeaders httpHeaders = new HttpHeaders();
-        httpHeaders.add(JwtFilter.AUTHORIZATION_HEADER, "Bearer " + jwt);
-
-        signDto.setToken(jwt);
 
         return new ResponseEntity<>(
                 signDto,
@@ -70,18 +44,16 @@ public class SignApiController {
         );
     }
 
+    @PostMapping("/signUpAsNonMember")
+    public SignDto signUpAsNonMember(@RequestBody SignRequestDto signRequestDto) {
+        if(StringUtils.isEmpty(signRequestDto.getNickname())) throw new UserNicknameNotExistException();
+
+        return signService.signUpAsNonMember(signRequestDto);
+    }
+
     @PostMapping(value ="/signUpByNaver")
     public SignDto signUpByNaver(@RequestBody UserRequestDto userRequestDto) {
         return SignDto.builder().build();
     }
 
-    private String getJwtToken(@RequestBody SignRequestDto signRequestDto) {
-        UsernamePasswordAuthenticationToken authenticationToken =
-                new UsernamePasswordAuthenticationToken(signRequestDto.getUsername(), signRequestDto.getPassword());
-
-        Authentication authentication = authenticationManagerBuilder.getObject().authenticate(authenticationToken);     // loadUserByUsername()
-        SecurityContextHolder.getContext().setAuthentication(authentication);
-
-        return tokenProvider.createToken(authentication);
-    }
 }

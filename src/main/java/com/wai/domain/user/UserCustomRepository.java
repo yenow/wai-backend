@@ -11,11 +11,15 @@ import java.util.Optional;
 
 public interface UserCustomRepository {
 
+    Optional<User> findByUserId(Long userId);
+
     Optional<User> findByEmail(String email);
 
     Optional<User> findByUserKey(String userKey);
 
     Optional<User> findByNickname(String nickname);
+
+    Optional<User> findByNicknameAndNotUserId(UserRequestDto userRequestDto);
 
     Optional<User> getUserInformation(UserRequestDto userRequestDto);
 
@@ -23,7 +27,7 @@ public interface UserCustomRepository {
 
     Optional<UserDto> getUserDtoInformation(UserRequestDto userRequestDto);
 
-    Optional<List<EnneagramTest>> getUserEnneagramTests(String userKey);
+    List<EnneagramTest> getUserEnneagramTests(String userKey);
 
     @Transactional
     void deleteByUserKey(String userKey);
