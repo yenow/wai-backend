@@ -11,26 +11,27 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
+@RequestMapping("/api")
 public class ReplyApiController {
 
     final ReplyService replyService;
 
-    @GetMapping(value = "/api/readReplysByPostId/{postId}")
-    public List<ReplyDto> readReplys(@PathVariable(value = "postId") Long postId) {
+    @GetMapping(value = "/replies/{postId}")
+    public List<ReplyDto> getReplies(@PathVariable(value = "postId") Long postId) {
         return replyService.readReplysByPostId(postId);
     }
 
-    @PostMapping(value = "/api/saveReply")
-    public ReplyDto saveReply(@RequestBody ReplyRequestDto replyRequestDto) {
-        return replyService.saveReply(replyRequestDto);
+    @PostMapping(value = "/reply/create")
+    public ReplyDto createReply(@RequestBody ReplyRequestDto replyRequestDto) {
+        return replyService.createReply(replyRequestDto);
     }
 
-    @PostMapping(value = "/api/deleteReply")
-    public ReplyDto deleteReply(@RequestBody ReplyRequestDto replyRequestDto) {
-        return replyService.deleteReply(replyRequestDto);
+    @DeleteMapping(value = "/reply/{replyId}/delete")
+    public ReplyDto deleteReply(@PathVariable(value = "replyId") Long replyId) {
+        return replyService.deleteReply(replyId);
     }
 
-    @PostMapping(value = "/api/reportReply")
+    @PostMapping(value = "/reply/report")
     public ReplyDto reportReply(@RequestBody ReplyRequestDto replyRequestDto) {
         return replyService.reportReply(replyRequestDto);
     }

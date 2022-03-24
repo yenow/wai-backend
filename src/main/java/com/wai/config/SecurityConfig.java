@@ -66,6 +66,7 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                     .antMatchers("/hello/**").permitAll()
                     .antMatchers("/api/sign/**").permitAll()
                     .antMatchers("/api/user/**").permitAll()
+                    .antMatchers("/api/posts").permitAll()
                     .antMatchers("/api/enneagram/**").permitAll()
                     .antMatchers("/api/enneagramTest/**").permitAll()
                     .antMatchers("/api/getServerTime").permitAll()

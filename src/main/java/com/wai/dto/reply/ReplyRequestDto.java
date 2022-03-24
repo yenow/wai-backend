@@ -32,10 +32,10 @@ public class ReplyRequestDto {
                 .user(User.builder().userId(userId).build())
                 .post(Post.builder().postId(postId).build())
                 .author(author)
-                .parentAuthor(parentAuthor)
+                .replyContent(replyContent)
                 .authorEnneagramType(authorEnneagramType)
                 .parentReplyId(parentReplyId)
-                .replyContent(replyContent)
+                .parentAuthor(parentAuthor)
                 .build();
     }
 }

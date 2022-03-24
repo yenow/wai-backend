@@ -24,4 +24,8 @@ public class Tag extends BaseEntity {
 
     @Column
     private String tagName;
+
+    public void setPost(Post post) {
+        this.post = post;
+    }
 }

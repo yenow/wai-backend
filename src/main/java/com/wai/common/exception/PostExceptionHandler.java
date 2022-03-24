@@ -2,6 +2,7 @@ package com.wai.common.exception;
 
 import com.wai.common.exception.post.PostAuthorEnneagramTypeNotExistException;
 import com.wai.common.exception.post.PostContentNotExistException;
+import com.wai.common.exception.post.PostIdNotExistException;
 import com.wai.common.util.ErrorCode;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.ExceptionHandler;
@@ -19,6 +20,12 @@ public class PostExceptionHandler {
     @ExceptionHandler(value = {PostAuthorEnneagramTypeNotExistException.class})
     public ResponseEntity<Object> handlePostAuthorEnneagramNotExistException(PostAuthorEnneagramTypeNotExistException e){
         ApiException apiException = new ApiException(ErrorCode.NOT_EXISTED_POST_AUTHOR_ENNEAGRAM_TYPE);
+        return new ResponseEntity<>(apiException, apiException.getHttpStatus());
+    }
+
+    @ExceptionHandler(value = {PostIdNotExistException.class})
+    public ResponseEntity<Object> handlePostAuthorEnneagramNotExistException(PostIdNotExistException e){
+        ApiException apiException = new ApiException(ErrorCode.NOT_EXISTED_POST_ID);
         return new ResponseEntity<>(apiException, apiException.getHttpStatus());
     }
 }

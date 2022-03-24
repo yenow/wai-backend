@@ -1,5 +1,6 @@
 package com.wai.dto.post;
 
+import com.querydsl.core.annotations.QueryProjection;
 import com.wai.domain.post.Post;
 import com.wai.dto.ResponseDto;
 import com.wai.dto.reply.ReplyDto;
@@ -18,25 +19,42 @@ import java.util.stream.Collectors;
 @Builder
 @ToString
 @NoArgsConstructor
-@AllArgsConstructor
 public class PostDto {
     private Long postId;
     private String title;
     private String content;
     private String author;
     private Integer authorEnneagramType;
-    private int clickCount;
-    private int likeyCount;
+    private Integer clickCount;
     private Boolean isDeleted;
     private Boolean isReported;
     private LocalDateTime insertDate;
     private LocalDateTime updateDate;
-    private Long insertId;
 
-    private UserDto user;
-    private List<ReplyDto> replys;
-    private List<Tag> tags;
-    private List<Long> likeys;
+    private Long userId;
+    private Long replyCount;
+    private Long likeyCount;
+    private Boolean isLikey;
+    private String tagString;
+
+    @QueryProjection
+    public PostDto(Long postId, String title, String content, String author, Integer authorEnneagramType, Integer clickCount, Boolean isDeleted, Boolean isReported, LocalDateTime insertDate, LocalDateTime updateDate, Long userId, Long replyCount, Long likeyCount, Boolean isLikey, String tagString) {
+        this.postId = postId;
+        this.title = title;
+        this.content = content;
+        this.author = author;
+        this.authorEnneagramType = authorEnneagramType;
+        this.clickCount = clickCount;
+        this.isDeleted = isDeleted;
+        this.isReported = isReported;
+        this.insertDate = insertDate;
+        this.updateDate = updateDate;
+        this.userId = userId;
+        this.replyCount = replyCount;
+        this.likeyCount = likeyCount;
+        this.isLikey = isLikey;
+        this.tagString = tagString;
+    }
 
     public PostDto(Post post) {
         this.postId = post.getPostId();
@@ -45,15 +63,18 @@ public class PostDto {
         this.author = post.getAuthor();
         this.authorEnneagramType = post.getAuthorEnneagramType();
         this.clickCount = post.getClickCount();
-        this.likeyCount = post.getLikeys().size();
         this.isDeleted = post.getIsDeleted();
         this.isReported = post.getIsReported();
         this.insertDate = post.getInsertDate();
         this.updateDate = post.getUpdateDate();
-        this.insertId = post.getInsertId();
+
+        this.userId = post.getUser().getUserId();
+        this.replyCount = (long) post.getReplys().size();
+        this.likeyCount = (long) post.getLikeys().size();
+        this.tagString = post.getTags().stream().map(tag ->  "#"+tag.getTagName()).collect(Collectors.joining(" "));
     }
 
-    public PostDto setUserDto(UserDto user) {
+/*    public PostDto setUserDto(UserDto user) {
         this.user = user;
         return this;
     }
@@ -64,5 +85,5 @@ public class PostDto {
                         .setUserDto(reply.getUser().toDto())
         ).collect(Collectors.toList());
         return this;
-    }
+    }*/
 }

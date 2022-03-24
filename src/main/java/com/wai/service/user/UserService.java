@@ -37,7 +37,6 @@ public class UserService {
     final UserRepository userRepository;
     final FileUploadRepository fileUploadRepository;
     final UserServiceUtil userServiceUtil;
-    final ModelMapper modelMapper;
     final FileWriter fileWriter;
 
     public UserDto getUserInformation(UserRequestDto userRequestDto) {
@@ -99,12 +98,4 @@ public class UserService {
 
         return userRepository.save(User.builder().userKey(userKey).build()).getUserId();
     }
-
-
-    private UserDto convertUserToUserResponseDto(User user) {
-        UserDto userDto = user.toDto();
-        userDto.setPosts(user.getPostDtos());
-        return UserDto.builder().build();
-    }
-
 }

@@ -7,6 +7,7 @@ import java.time.format.DateTimeFormatter;
 import java.util.UUID;
 
 import com.wai.config.PhotoAppProperties;
+import com.wai.domain.fileUpload.FileType;
 import com.wai.domain.fileUpload.FileUpload;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
@@ -21,6 +22,23 @@ public class FileWriter {
 
     private final PhotoAppProperties photoAppProperties;
 
+    public FileUpload getFileUpload(MultipartFile sourceFile, FileType fileType) {
+        String uploadFileName = UUID.randomUUID().toString();
+        String filePath = getFilePath(uploadFileName, sourceFile);
+        log.info("uploadFileName:: {}", uploadFileName);
+        log.info("filePath:: {}", filePath);
+
+        writeFile(sourceFile, filePath);
+
+        return FileUpload.builder()
+                .mimeType(sourceFile.getContentType())
+                .uploadFileName(uploadFileName)
+                .originalFileName(sourceFile.getOriginalFilename())
+                .filePath(filePath)
+                .fileType(fileType)
+                .fileSize(sourceFile.getSize())
+                .build();
+    }
     public FileUpload getFileUpload(MultipartFile sourceFile) {
         String uploadFileName = UUID.randomUUID().toString();
         String filePath = getFilePath(uploadFileName, sourceFile);
@@ -29,17 +47,16 @@ public class FileWriter {
 
         writeFile(sourceFile, filePath);
 
-        FileUpload fileUpload = FileUpload.builder()
+        return FileUpload.builder()
                 .mimeType(sourceFile.getContentType())
                 .uploadFileName(uploadFileName)
                 .originalFileName(sourceFile.getOriginalFilename())
                 .filePath(filePath)
                 .fileSize(sourceFile.getSize())
                 .build();
-        return fileUpload;
     }
 
-    public Long writeFile( MultipartFile multipartFile, String filePath ) {
+    public Long writeFile( MultipartFile multipartFile, String filePath) {
         try {
             File dir = new File(filePath);
             if (!dir.exists()) {

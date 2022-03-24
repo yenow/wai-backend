@@ -1,6 +1,7 @@
 package com.wai.service;
 
 import com.wai.domain.tag.Tag;
+import com.wai.domain.tag.TagRepository;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.post.PostSaveRequestDto;
@@ -27,8 +28,41 @@ import java.util.stream.Collectors;
 public class PostService {
 
     private final PostRepository postRepository;
+    private final TagRepository tagRepository;
     private final ReplyRepository replyRepository;
     private final LikeyRepository likeyRepository;
+
+    @Transactional
+    public PostDto getPost(PostRequestDto postRequestDto) {
+        PostDto postDto = postRepository.getPostDto(postRequestDto).orElseThrow();
+        // 조회수
+//        if (postRequestDto.getCanUpdateCount()) {
+//            post.increaseClickCount();
+//        }
+        return postDto;
+    }
+
+    public List<PostDto> posts(PostRequestDto postRequestDto) {
+        return postRepository.getPostDtos(postRequestDto);
+    }
+
+    @Transactional
+    public PostDto createPost(PostSaveRequestDto postSaveRequestDto) {
+        List<Tag> tags = getTags(postSaveRequestDto.getTag());
+        Post post = postSaveRequestDto.toEntity();
+        post.updateTags(tags);
+        postRepository.save(post);
+        return new PostDto(post);
+    }
+
+    @Transactional
+    public PostDto updatePost(PostSaveRequestDto postSaveRequestDto) {
+        List<Tag> tags = getTags(postSaveRequestDto.getTag());
+        Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
+        post.updatePost(postSaveRequestDto);
+        post.updateTags(tags);
+        return new PostDto(post);
+    }
 
     public List<Tag> getTags(String tagString) {
         return Arrays.stream(tagString.split("#"))
@@ -39,80 +73,17 @@ public class PostService {
     }
 
     @Transactional
-    public PostDto createPost(PostSaveRequestDto postSaveRequestDto) {
-        List<Tag> tags = getTags(postSaveRequestDto.getTag());
-
-        Post post = postSaveRequestDto.toEntity();
-        post.updateTags(tags);
-        postRepository.save(post);
-
-        return new PostDto(post);
-    }
-
-    @Transactional
-    public PostDto updatePost(PostSaveRequestDto postSaveRequestDto) {
-        List<Tag> tags = getTags(postSaveRequestDto.getTag());
-
-        Post post = postRepository.findById(postSaveRequestDto.getPostId()).get();
-        post.updatePost(postSaveRequestDto);
-        post.updateTags(tags);
-
-        return new PostDto(post);
-    }
-
-    @Transactional
-    public PostDto readPost(PostRequestDto postRequestDto) {
+    public PostDto deletePost(PostRequestDto postRequestDto) {
         Post post = postRepository.findById(postRequestDto.getPostId()).get();
-
-        if (postRequestDto.getCanUpdateCount()) {
-            post.increaseClickCount();
-        }
-
-        return convertPostDto(post);
+        post.deletePost();
+        return new PostDto(post);
     }
 
-    public List<PostDto> readInitPosts(PostRequestDto postRequestDto) {
-        List<Post> posts;
-        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
-            posts =  postRepository.initPopularPosts(postRequestDto);
-        } else {
-            posts =  postRepository.readInitPosts(postRequestDto);
-        }
-        return convertPostDtos(posts);
-    }
-
-    public List<PostDto> readMoreNewPosts(PostRequestDto postRequestDto) {
-        List<Post> posts;
-        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
-            return new ArrayList<>();
-        }
-
-        if (postRequestDto.getEndPostId() == null && postRequestDto.getStartPostId() == null) {
-            posts = postRepository.readInitPosts(postRequestDto);
-        } else {
-            posts = postRepository.readMoreNewPosts(postRequestDto);
-        }
-        return convertPostDtos(posts);
-    }
-
-    public List<PostDto> readMoreOldPosts(PostRequestDto postRequestDto) {
-        List<Post> posts;
-        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
-            return new ArrayList<>();
-        }
-
-        if (postRequestDto.getEndPostId() == null && postRequestDto.getStartPostId() == null) {
-            posts =  postRepository.readInitPosts(postRequestDto);
-        } else {
-            posts =  postRepository.readMoreOldPosts(postRequestDto);
-        }
-        return convertPostDtos(posts);
-    }
-
-    public List<PostDto> initPopularPosts(PostRequestDto postRequestDto) {
-        List<Post> posts =  postRepository.initPopularPosts(postRequestDto);
-
-        return convertPostDtos(posts);
+    @Transactional
+    public PostDto reportPost(PostRequestDto postRequestDto) {
+        Post post = postRepository.findById(postRequestDto.getPostId()).get();
+        post.reportPost();
+        return new PostDto(post);
     }
 
     @Transactional
@@ -133,26 +104,5 @@ public class PostService {
         Optional<Likey> likey = likeyRepository.findByUserIdAndPostId(userId,postId);
 
         likey.ifPresent(likeyRepository::delete);
-    }
-
-    @Transactional
-    public PostDto deletePost(PostRequestDto postRequestDto) {
-        Post post = postRepository.findById(postRequestDto.getPostId()).get();
-        post.deletePost();
-        return convertPostDto(post);
-    }
-
-    private List<PostDto> convertPostDtos(List<Post> posts) {
-        List<PostDto> postDtos = new ArrayList<>();
-        posts.forEach((post) -> {
-            postDtos.add(convertPostDto(post));
-        });
-        return postDtos;
-    }
-
-    private PostDto convertPostDto(Post post) {
-        return post.toDto()
-                .setUserDto(post.getUser().toDto())
-                .setReplyDtos(post.getReplys());
     }
 }

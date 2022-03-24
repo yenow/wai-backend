@@ -13,7 +13,7 @@ public class PostRequestDto {
 
     private Long postId;
     private Long userId;
-    private int postsCount;
+    private Integer maxPostsSize = 10;
     private Long startPostId;
     private Long endPostId;
     private Integer myEnneagramType;

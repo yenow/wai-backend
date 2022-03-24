@@ -63,10 +63,12 @@ public class User extends BaseEntity {
     private String password;
     @Column(length = 50)
     private String nickname;
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "bit(1) default 0")
-    private Boolean isMember;
+    private Boolean isMember = false;
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "bit(1) default 1")
-    private Boolean isActivated;
+    private Boolean isActivated = true;
 
     public UserDto toDto() {
         return UserDto.builder()
@@ -95,22 +97,6 @@ public class User extends BaseEntity {
 
     public void doEnneagramTest(EnneagramTest enneagramTest) {
         userEnneagramTests.add(UserEnneagramTest.builder().enneagramTest(enneagramTest).user(this).build());
-    }
-
-    public List<PostDto> getPostDtos() {
-        return posts.stream()
-                .map(post -> post.toDto())
-                .filter(postResponseDto -> !postResponseDto.getIsDeleted())
-                .collect(Collectors.toList());
-    }
-
-    public List<ReplyDto> getReplyDtos() {
-        return replys.stream()
-                .map(reply ->
-                        reply.toDto()
-                                .setPostDto(reply.getPost().toDto()))
-                .filter(replyResponseDto -> !replyResponseDto.getIsDeleted())
-                .collect(Collectors.toList());
     }
 
     public void updateUser(UserRequestDto userRequestDto) {

@@ -1,5 +1,6 @@
 package com.wai.dto.reply;
 
+import com.wai.domain.reply.Reply;
 import com.wai.dto.ResponseDto;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.user.UserDto;
@@ -14,7 +15,7 @@ import java.time.LocalDateTime;
 @ToString
 @NoArgsConstructor
 @AllArgsConstructor
-public class ReplyDto extends ResponseDto {
+public class ReplyDto {
     private Long replyId;
     private Long parentReplyId;
     private String author;
@@ -26,16 +27,21 @@ public class ReplyDto extends ResponseDto {
     private LocalDateTime insertDate;
     private LocalDateTime updateDate;
 
-    private UserDto user;
-    private PostDto post;
+    private Long userId;
+    private Long postId;
 
-    public ReplyDto setUserDto(UserDto user) {
-        this.user = user;
-        return this;
-    }
-
-    public ReplyDto setPostDto(PostDto post) {
-        this.post = post;
-        return this;
+    public ReplyDto(Reply reply) {
+        this.replyId = reply.getReplyId();
+        this.parentReplyId = reply.getParentReplyId();
+        this.author = reply.getAuthor();
+        this.parentAuthor = reply.getParentAuthor();
+        this.authorEnneagramType = reply.getAuthorEnneagramType();
+        this.replyContent = reply.getReplyContent();
+        this.isDeleted = reply.getIsDeleted();
+        this.isReported = reply.getIsReported();
+        this.insertDate = reply.getInsertDate();
+        this.updateDate = reply.getUpdateDate();
+        this.userId = reply.getUser().getUserId();
+        this.postId = reply.getPost().getPostId();
     }
 }

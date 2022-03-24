@@ -26,15 +26,27 @@ public class DummyUser {
     @Transactional
     public List<User> createDummyUsers() {
         List<User> dummyUsers = new ArrayList<>(Arrays.asList(
-                User.builder().userKey(getUUID()).nickname("닉네임").password(getUUID()).isMember(false).isActivated(true).build()
-                ,User.builder().userKey(getUUID()).nickname("닉네임2").password(getUUID()).isMember(false).isActivated(true).build()
-                ,User.builder().userKey(getUUID()).nickname("비활성유저").password(getUUID()).isMember(false).isActivated(true).build()
-                ,User.builder().userKey(getUUID()).nickname("테스트없는유저").password(getUUID()).isMember(false).isActivated(true).build()
+                buildUser(getUUID(),getUUID(),"일반유저", null, false,true),
+                buildUser(getUUID(),getUUID(),"일반유저2",null,false,true),
+                buildUser(getUUID(),getUUID(),"비활성유저",null,false,false),
+                buildUser(getUUID(),getUUID(),"테스트없는유저","",false,true),
+                buildUser(getUUID(),getUUID(),"일반유저3","email@naver.com",true,true)
         ));
         dummyUsers.forEach(userRepository::save);
         addUserEnneagramTest(dummyUsers);
 
         return dummyUsers;
+    }
+
+    User buildUser(String userKey, String password, String nickname, String email, boolean isMember, boolean isActivated) {
+        return User.builder()
+                .userKey(userKey)
+                .nickname(nickname)
+                .password(password)
+                .email(email)
+                .isMember(isMember)
+                .isActivated(isActivated)
+                .build();
     }
 
     public void addUserEnneagramTest(List<User> users) {

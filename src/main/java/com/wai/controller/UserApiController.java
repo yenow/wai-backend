@@ -51,7 +51,6 @@ public class UserApiController {
     @PatchMapping("/update")
     public UserDto updateUser(@RequestParam("userId") String userId,@RequestParam("userKey") String userKey,@RequestParam("nickname") String nickname
         ,@RequestPart("imageFile") MultipartFile multipartFile) {
-
         if (StringUtils.isEmpty(userId)) throw new UserIdNotExistException();
         if (StringUtils.isEmpty(userKey)) throw new UserKeyNotExistException();
         if (StringUtils.isEmpty(nickname)) throw new UserNicknameNotExistException();

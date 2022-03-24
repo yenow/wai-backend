@@ -1,7 +1,10 @@
 package com.wai.service;
 
+import java.util.List;
 import java.util.UUID;
+import java.util.stream.Collectors;
 
+import com.wai.domain.fileUpload.FileType;
 import com.wai.domain.fileUpload.FileUpload;
 import com.wai.domain.fileUpload.FileUploadRepository;
 import com.wai.dto.fileUpload.FileUploadDto;
@@ -19,8 +22,8 @@ public class FileUploadService {
     private final FileUploadRepository fileUploadRepository;
 
     @Transactional
-    public FileUploadDto upload(MultipartFile sourceFile) {
-        FileUpload fileUpload = fileWriter.getFileUpload(sourceFile);
+    public FileUploadDto upload(MultipartFile sourceFile, FileType fileType) {
+        FileUpload fileUpload = fileType != null ? fileWriter.getFileUpload(sourceFile, fileType) : fileWriter.getFileUpload(sourceFile);
         fileUploadRepository.save(fileUpload);
         return new FileUploadDto(fileUpload);
     }
@@ -30,5 +33,9 @@ public class FileUploadService {
     public FileUploadDto getImageFile(Long fileId) {
         FileUpload imageFile = fileUploadRepository.findById(fileId).get();
         return new FileUploadDto(imageFile);
+    }
+
+    public List<FileUploadDto> getThemes() {
+        return fileUploadRepository.findByFileType().stream().map(FileUploadDto::new).collect(Collectors.toList());
     }
 }

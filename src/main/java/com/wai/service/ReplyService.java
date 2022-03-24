@@ -25,30 +25,22 @@ public class ReplyService {
     final PostRepository postRepository;
 
     public List<ReplyDto> readReplysByPostId(Long postId) {
-        List<Reply> replys = replyRepository.findAllReplyByPostId(postId).get();
+        List<Reply> replies = replyRepository.findAllReplyByPostId(postId);
 
-        return replys.stream().map(reply ->
-            reply.toDto()
-                .setUserDto(reply.getUser().toDto())
-        ).collect(Collectors.toList());
+        return replies.stream().map(ReplyDto::new).collect(Collectors.toList());
     }
 
     @Transactional
-    public ReplyDto saveReply(ReplyRequestDto replyRequestDto) {
-        Reply reply = replyRepository.save(replyRequestDto.toEntity());
-        User user = userRepository.findById(reply.getUser().getUserId()).get();
-        Post post = postRepository.findById(reply.getPost().getPostId()) .get();
+    public ReplyDto createReply(ReplyRequestDto replyRequestDto) {
+        Reply reply = replyRequestDto.toEntity();
+        replyRepository.save(reply);
 
-        return reply.toDto()
-                .setUserDto(user.toDto())
-                .setPostDto(post.toDto());
+        return new ReplyDto(reply);
     }
 
-
     @Transactional
-    public ReplyDto deleteReply(ReplyRequestDto replyRequestDto) {
-//        replyRepository.deleteById(replyRequestDto.getReplyId());
-        Reply reply = replyRepository.findById(replyRequestDto.getReplyId()).get();
+    public ReplyDto deleteReply(Long replyId) {
+        Reply reply = replyRepository.findById(replyId).get();
         reply.deleteReply();
         return ReplyDto.builder().build();
     }

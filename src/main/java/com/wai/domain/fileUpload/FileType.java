@@ -6,5 +6,5 @@ import lombok.Getter;
 @Getter
 @JsonFormat(shape = JsonFormat.Shape.STRING)
 public enum FileType {
-    imageTheme, image,
+    theme, image,
 }

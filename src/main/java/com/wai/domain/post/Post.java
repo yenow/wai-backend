@@ -49,12 +49,15 @@ public class Post extends BaseEntity {
     private String author;
     @Column
     private Integer authorEnneagramType;
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "int default 0")
-    private Integer clickCount;
+    private Integer clickCount = 0;
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "bit(1) default 0")
-    private Boolean isDeleted;
+    private Boolean isDeleted = false;
+    @Builder.Default
     @Column(nullable = false, columnDefinition = "bit(1) default 0")
-    private Boolean isReported;
+    private Boolean isReported = false;
 
     public void increaseClickCount() {
         clickCount = clickCount + 1;
@@ -68,37 +71,9 @@ public class Post extends BaseEntity {
     }
 
     public void updateTags(List<Tag> tags) {
+        tags.forEach(tag -> tag.setPost(this));
         this.tags = tags;
     }
 
-
-    public PostDto toDto() {
-        return PostDto.builder()
-                .postId(postId)
-                .title(title)
-                .content(content)
-                .author(author)
-                .authorEnneagramType(authorEnneagramType)
-                .clickCount(clickCount)
-                .likeyCount(likeys != null ? likeys.size() : 0)
-                .likeys(likeys != null ? likeys.stream().map(likey -> likey.getUser().getUserId()).collect(Collectors.toList()) : null)
-                .isDeleted(isDeleted)
-                .isReported(isReported)
-                .insertDate(getInsertDate())
-                .updateDate(getUpdateDate())
-                .insertId(getInsertId())
-                .build();
-    }
-
-    public List<ReplyDto> getReplyDtos() {
-        return replys.stream().map(reply ->
-                reply.toDto().setUserDto(reply.getUser().toDto())).collect(Collectors.toList());
-    }
-
-    public Post reverseReplys() {
-        if (replys != null) {
-            Collections.reverse(replys);
-        }
-        return this;
-    }
+    public void reportPost() { isReported = true; }
 }

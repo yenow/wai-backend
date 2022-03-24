@@ -1,10 +1,13 @@
 package com.wai.domain.post;
 
+import com.wai.dto.post.PostDto;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostSearchType;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.user.User;
 import com.wai.dummyData.DummyData;
+import com.wai.dummyData.DummyPost;
+import com.wai.dummyData.DummyUser;
 import org.junit.jupiter.api.*;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
@@ -25,23 +28,25 @@ public class PostRepositoryTest {
     @Autowired
     PostRepository postRepository;
     @Autowired
-    static DummyData dummyData;
+    DummyUser dummyUser;
+
+    List<User> users;
+    List<Post> posts;
 
     @BeforeAll
-     static void beforeAll() {
-        dummyData.initUsers();
-        dummyData.initUserEnneagramTests();
-        dummyData.initPosts();
-        dummyData.initReply();
+    static void beforeAll() {
     }
-    
+
     @AfterAll
-    static  void AfterAll() {
-        // dummyData 삭제
+    static void AfterAll() {
     }
 
     @BeforeEach
     void beforeEach() {
+        users = dummyUser.createDummyUsers();
+        posts = DummyPost.createDummyPosts(users.get(0));
+        posts.forEach(post -> postRepository.save(post));
+
         System.out.println("==== start Test ====");
     }
 
@@ -51,6 +56,40 @@ public class PostRepositoryTest {
     }
 
     @Test
+    void testGetPost() {
+        // given
+        PostRequestDto postRequestDto = PostRequestDto.builder().maxPostsSize(10).postSearchType(PostSearchType.all).build();
+        // when
+        Post post = postRepository.getPost(posts.get(0).getPostId()).orElseThrow();
+
+        // then
+        assertThat(post.getPostId()).isEqualTo(posts.get(0).getPostId());
+    }
+
+    @Test
+    void testGetPostDto() {
+        // given
+        PostRequestDto postRequestDto = PostRequestDto.builder().maxPostsSize(10).postSearchType(PostSearchType.all).postId(1L).build();
+        // when
+        PostDto postDto = postRepository.getPostDto(postRequestDto).orElseThrow();
+
+        // then
+        System.out.println("postDto = " + postDto);
+        assertThat(postDto.getPostId()).isEqualTo(posts.get(0).getPostId());
+    }
+
+    @Test
+    void testGetPostDtos() {
+        // given
+        PostRequestDto postRequestDto = PostRequestDto.builder().maxPostsSize(10).postSearchType(PostSearchType.all).build();
+        // when
+        List<PostDto> postDtos = postRepository.getPostDtos(postRequestDto);
+        // then
+        System.out.println("postDto = " + postDtos);
+        System.out.println("postDto.size() = " + postDtos.size());
+    }
+
+   /* @Test
     void readPost() {
         // given
         Post post = dummyData.getPosts().get(0);
@@ -84,11 +123,11 @@ public class PostRepositoryTest {
         // todo, 내가 댓글단 게시글
         // todo, 내 에니어그램 타입 게시글
         Map<PostSearchType,PostRequestDto> testCase = new HashMap<>() {{
-            put(PostSearchType.all,PostRequestDto.builder().postSearchType(PostSearchType.all).postsCount(2).build());
-            put(PostSearchType.myPosts,PostRequestDto.builder().postSearchType(PostSearchType.myPosts).postsCount(2).userId(user.getUserId()).build());
-            put(PostSearchType.content,PostRequestDto.builder().postSearchType(PostSearchType.content).postsCount(2).searchText("content").build());
-            put(PostSearchType.title,PostRequestDto.builder().postSearchType(PostSearchType.title).postsCount(2).searchText("title").build());
-            put(PostSearchType.author,PostRequestDto.builder().postSearchType(PostSearchType.author).postsCount(2).searchText("nickname").build());
+            put(PostSearchType.all,PostRequestDto.builder().postSearchType(PostSearchType.all).maxPostsSize(2).build());
+            put(PostSearchType.myPosts,PostRequestDto.builder().postSearchType(PostSearchType.myPosts).maxPostsSize(2).userId(user.getUserId()).build());
+            put(PostSearchType.content,PostRequestDto.builder().postSearchType(PostSearchType.content).maxPostsSize(2).searchText("content").build());
+            put(PostSearchType.title,PostRequestDto.builder().postSearchType(PostSearchType.title).maxPostsSize(2).searchText("title").build());
+            put(PostSearchType.author,PostRequestDto.builder().postSearchType(PostSearchType.author).maxPostsSize(2).searchText("nickname").build());
         }};
 
         // when
@@ -105,6 +144,6 @@ public class PostRepositoryTest {
 //        assertEquals(testCase.get(PostSearchType.content).getPostsCount(), findSearchContentPosts.size());
 //        assertEquals(testCase.get(PostSearchType.title).getPostsCount(), findSearchTitlePosts.size());
 //        assertEquals(testCase.get(PostSearchType.author).getPostsCount(), findSearchAuthorPosts.size());
-    }
+    }*/
 
 }

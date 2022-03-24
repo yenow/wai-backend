@@ -1,9 +1,11 @@
-    package com.wai.controller;
+package com.wai.controller;
 
+import com.wai.domain.fileUpload.FileType;
 import com.wai.dto.fileUpload.FileUploadDto;
 import com.wai.service.FileUploadService;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -22,16 +24,15 @@ public class FileUploadApiController {
 
     private final FileUploadService fileUploadService;
 
-    @PostMapping ("/image")
-    public List<FileUploadDto> createImage(@RequestPart("imageFile") MultipartFile[] multipartFiles
-        ,@RequestParam("userKey") String userKey, @RequestParam("userId") String userId) {
+    @PostMapping("/images")
+    public List<FileUploadDto> uploadImage(@RequestPart("imageFile") MultipartFile[] multipartFiles, @RequestParam("fileType") String fileType) {
+        // todo fileType 값에 대한 검증 필요 (없는 값이면 IllegalArgumentException 발생)
+        FileType fileTypeTemp = StringUtils.isEmpty(fileType) ? null : FileType.valueOf(fileType);
 
-        log.info("userKey:: {}", userKey);
-        log.info("userId:: {}", userId);
         List<FileUploadDto> fileUploadDtos = new ArrayList<>();
 
         for (MultipartFile multipartFile : multipartFiles) {
-            FileUploadDto fileUploadDto = fileUploadService.upload(multipartFile);
+            FileUploadDto fileUploadDto = fileUploadService.upload(multipartFile, fileTypeTemp);
             fileUploadDtos.add(fileUploadDto);
         }
 
@@ -56,4 +57,8 @@ public class FileUploadApiController {
         return new ResponseEntity<>(imageByte, headers, HttpStatus.OK);
     }
 
+    @GetMapping("/themes")
+    public List<FileUploadDto> getThemes() throws IOException {
+        return fileUploadService.getThemes();
+    }
 }

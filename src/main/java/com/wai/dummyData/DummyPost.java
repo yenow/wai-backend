@@ -14,25 +14,17 @@ import java.util.Arrays;
 import java.util.List;
 
 @Getter
-@Component
 @RequiredArgsConstructor
 public class DummyPost {
 
-    private final DummyUser dummyUser;
-    private final PostRepository postRepository;
-
-    @Transactional
-    public List<Post> createDummyPosts() {
-        List<User> dummyUsers = dummyUser.createDummyUsers();
-        List<Post> dummyPosts = new ArrayList<>(Arrays.asList(
-            buildPost(dummyUsers.get(0),"제목입니다.","내용입니다.",false,false)
-            ,buildPost(dummyUsers.get(1),"제목입니다2.","내용입니다2.",false,false)
+    static public List<Post> createDummyPosts(User user) {
+        return new ArrayList<>(Arrays.asList(
+            buildPost(user,"제목입니다.","내용입니다.",false,false)
+            ,buildPost(user,"삭제된 글입니다.","삭제된 글입니다.",true,false)
+            ,buildPost(user,"신고된 글입니다.","신고된 글입니다.",false,true)
         ));
-
-        return dummyPosts;
     }
-
-    private Post buildPost(User user, String title, String content, Boolean isDelete, Boolean isReported) {
+    static private Post buildPost(User user, String title, String content, Boolean isDelete, Boolean isReported) {
         return Post.builder()
                 .title(title)
                 .content(content)

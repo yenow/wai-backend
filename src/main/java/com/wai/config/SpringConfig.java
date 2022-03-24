@@ -17,7 +17,7 @@ import org.springframework.context.annotation.Configuration;
 @Configuration
 public class SpringConfig {
 
-    @Bean
+    /*@Bean
     public ModelMapper modelMapper() {
         ModelMapper modelMapper = new ModelMapper();
         modelMapper.getConfiguration().setMatchingStrategy(MatchingStrategies.STRICT);
@@ -43,5 +43,5 @@ public class SpringConfig {
         replyPropertyMapper.addMappings(mapping -> mapping.skip(ReplyDto::setPostDto));
 
         return modelMapper;
-    }
+    }*/
 }

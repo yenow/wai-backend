@@ -95,14 +95,6 @@ public class SignService {
         return userRepository.findByUserKey(signRequestDto.getUserKey()).isPresent();
     }
 
-    public UserDto signInByUserKey(SignRequestDto signRequestDto) {
-        User user = userRepository.findByUserKey(signRequestDto.getUserKey())
-                .orElse(User.builder().build());
-
-        return user.toDto()
-                .setUserRoleDtos(user.getUserRoles());
-    }
-
     private boolean isNicknameDuplicated(SignRequestDto signRequestDto) {
         return userRepository.findByNickname(signRequestDto.getNickname()).isPresent();
     }

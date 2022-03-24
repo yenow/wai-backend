@@ -30,7 +30,6 @@ public class UserRepositoryTest {
     private UserRepository userRepository;
     @Autowired
     private DummyUser dummyUser;
-    @Autowired ModelMapper modelMapper;
 
     List<User> users;
     User user;
@@ -65,7 +64,8 @@ public class UserRepositoryTest {
         ).orElse(User.builder().build());
 
         // then
-        UserDto userDto = modelMapper.map(findUser, UserDto.class);
+        /*UserDto userDto = modelMapper.map(findUser, UserDto.class);*/
+        UserDto userDto = new UserDto(findUser);
 
         System.out.println("userDto = " + userDto);
         assertThat(findUser.getUserEnneagramTests()).isNotNull();

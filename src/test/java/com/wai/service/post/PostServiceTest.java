@@ -4,9 +4,8 @@ import com.wai.domain.tag.Tag;
 import com.wai.domain.user.User;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostDto;
-import com.wai.domain.post.Post;
 import com.wai.dto.post.PostSaveRequestDto;
-import com.wai.dummyData.DummyData;
+import com.wai.dto.post.PostSearchType;
 import com.wai.dummyData.DummyUser;
 import com.wai.service.PostService;
 import org.junit.jupiter.api.*;
@@ -29,7 +28,7 @@ public class PostServiceTest {
     @Autowired
     DummyUser dummyUser;
 
-    List<User> users;
+    static List<User> users;
 
     @BeforeAll
     void beforeAll() {
@@ -73,6 +72,22 @@ public class PostServiceTest {
         // then
         assertThat(result.getTitle()).isEqualTo(postSaveRequestDto.getTitle());
         assertThat(result.getContent()).isEqualTo(postSaveRequestDto.getContent());
+    }
+
+    @Test
+    void testGetPosts() {
+        // given
+        PostRequestDto postRequestDtos = buildPostRequestDto(10, PostSearchType.all);
+        // when
+
+        // then
+    }
+
+    PostRequestDto buildPostRequestDto(int maxPostSize, PostSearchType postSearchType) {
+        return PostRequestDto.builder()
+                .maxPostsSize(maxPostSize)
+                .postSearchType(postSearchType)
+                .build();
     }
 
 //    @Test

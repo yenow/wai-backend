@@ -1,10 +1,15 @@
 package com.wai.controller;
 
+import com.wai.common.exception.post.PostAuthorEnneagramTypeNotExistException;
+import com.wai.common.exception.post.PostIdNotExistException;
+import com.wai.common.exception.user.UserIdNotExistException;
+import com.wai.common.exception.user.UserKeyNotExistException;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.post.PostSaveRequestDto;
 import com.wai.service.PostService;
 import lombok.RequiredArgsConstructor;
+import org.apache.commons.lang3.StringUtils;
 import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.web.bind.annotation.*;
 
@@ -12,69 +17,70 @@ import java.util.List;
 
 @RequiredArgsConstructor
 @RestController
-@RequestMapping("/api/post/")
+@RequestMapping("/api")
 public class PostApiController {
 
     private final PostService postService;
 
+    @PostMapping(value = "/post")
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PostMapping(value = "/createPost")
+    public PostDto getPost(@RequestBody PostRequestDto postRequestDto) {
+        if (postRequestDto.getPostId() == null) throw new PostIdNotExistException();
+
+        return postService.getPost(postRequestDto);
+    }
+
+    @PostMapping(value = "/posts")
+    public List<PostDto> posts(@RequestBody PostRequestDto postRequestDto) {
+        return postService.posts(postRequestDto);
+    }
+
+    @PostMapping(value = "/post/create")
+    @PreAuthorize("hasRole('ROLE_USER')")
     public PostDto createPost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
-        postSaveRequestDto.checkValue();
+        if (postSaveRequestDto.getUserId() == null) throw new UserIdNotExistException();
+        if (StringUtils.isEmpty(postSaveRequestDto.getUserKey())) throw new UserKeyNotExistException();
+        if (postSaveRequestDto.getAuthorEnneagramType() == null) throw new PostAuthorEnneagramTypeNotExistException();
+
         return postService.createPost(postSaveRequestDto);
     }
 
+    @PatchMapping(value = "/post/update")
     @PreAuthorize("hasRole('ROLE_USER')")
-    @PutMapping(value = "/updatePost")
     public PostDto updatePost(@RequestBody PostSaveRequestDto postSaveRequestDto) {
+        if (postSaveRequestDto.getUserId() == null) throw new UserIdNotExistException();
+        if (StringUtils.isEmpty(postSaveRequestDto.getUserKey())) throw new UserKeyNotExistException();
+        if (postSaveRequestDto.getPostId() == null) throw new PostIdNotExistException();
+
         return postService.updatePost(postSaveRequestDto);
     }
 
-    @PostMapping(value = "/readPost")
-    public PostDto readPost(@RequestBody PostRequestDto postRequestDto) {
-        PostDto postDto = postService.readPost(postRequestDto);
-        return postDto;
+    @DeleteMapping(value = "/post/delete")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public PostDto deletePost(@RequestBody PostRequestDto postRequestDto) {
+        if (postRequestDto.getPostId() == null) throw new PostIdNotExistException();
+
+        return postService.deletePost(postRequestDto);
     }
 
-    @PostMapping(value = "/readInitPosts")
-    public List<PostDto> readInitPosts(@RequestBody PostRequestDto postRequestDto) {
+    @PostMapping(value = "/post/report")
+    @PreAuthorize("hasRole('ROLE_USER')")
+    public PostDto reportPost(@RequestBody PostRequestDto postRequestDto) {
+        if (postRequestDto.getPostId() == null) throw new PostIdNotExistException();
 
-        return postService.readInitPosts(postRequestDto);
-    }
-
-    @PostMapping(value = "/readMoreNewPosts")
-    public List<PostDto> readMoreNewPosts(@RequestBody PostRequestDto postRequestDto) {
-
-        return postService.readMoreNewPosts(postRequestDto);
-    }
-
-    @PostMapping(value = "/readMoreOldPosts")
-    public List<PostDto> readMoreOldPosts(@RequestBody PostRequestDto postRequestDto) {
-
-        return postService.readMoreOldPosts(postRequestDto);
+        return postService.reportPost(postRequestDto);
     }
 
 
-    @PostMapping(value = "/initPopularPosts")
-    public List<PostDto> initPopularPosts(@RequestBody PostRequestDto postRequestDto) {
-        return postService.initPopularPosts(postRequestDto);
-    }
-
-    @GetMapping(value = "/addLikey/{postId}/{userId}")
+    @PostMapping(value = "/addLikey/{postId}/{userId}")
     public PostDto addLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
         postService.addLikey(postId, userId);
         return PostDto.builder().build();
     }
 
-    @GetMapping(value = "/removeLikey/{postId}/{userId}")
+    @PostMapping(value = "/removeLikey/{postId}/{userId}")
     public PostDto removeLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {
         postService.removeLikey(postId, userId);
         return PostDto.builder().build();
     }
-
-    @PostMapping(value = "/deletePost")
-    public PostDto deletePost(@RequestBody PostRequestDto postRequestDto) {
-        return postService.deletePost(postRequestDto);
-    }
-
 }

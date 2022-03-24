@@ -7,5 +7,5 @@ public interface ReplyCustomRepository {
 
     Optional<Reply> findReplyById(Long replyId);
 
-    Optional<List<Reply>> findAllReplyByPostId(Long postId);
+    List<Reply> findAllReplyByPostId(Long postId);
 }

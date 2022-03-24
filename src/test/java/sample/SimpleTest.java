@@ -1,12 +1,9 @@
 package sample;
 
+import com.wai.domain.fileUpload.FileType;
 import org.junit.jupiter.api.Test;
-import org.junit.runner.RunWith;
-import org.springframework.boot.test.context.SpringBootTest;
-import org.springframework.test.context.junit4.SpringRunner;
 
-@RunWith(SpringRunner.class)
-@SpringBootTest()
+
 public class SimpleTest {
 
     @Test
@@ -24,6 +21,17 @@ public class SimpleTest {
 //        System.out.println(globalPropertySource.getDriverClassName());
 //        System.out.println(globalPropertySource.getPassword());
 //        System.out.println(globalPropertySource.getUsername());
+
+    }
+
+    @Test
+    void enumTest() {
+        FileType t1 = FileType.valueOf("image");
+//        FileType t2 = FileType.valueOf("image1");
+        FileType t3 = FileType.valueOf("");
+        System.out.println(t1);
+//        System.out.println(t2);
+        System.out.println(t3);
 
     }
 }
