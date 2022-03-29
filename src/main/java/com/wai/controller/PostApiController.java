@@ -25,9 +25,7 @@ public class PostApiController {
     @PostMapping(value = "/post")
     @PreAuthorize("hasRole('ROLE_USER')")
     public PostDto getPost(@RequestBody PostRequestDto postRequestDto) {
-        if (postRequestDto.getPostId() == null) throw new PostIdNotExistException();
-
-        return postService.getPost(postRequestDto);
+        return postService.getPostDto(postRequestDto);
     }
 
     @PostMapping(value = "/posts")
@@ -67,10 +65,8 @@ public class PostApiController {
     @PreAuthorize("hasRole('ROLE_USER')")
     public PostDto reportPost(@RequestBody PostRequestDto postRequestDto) {
         if (postRequestDto.getPostId() == null) throw new PostIdNotExistException();
-
         return postService.reportPost(postRequestDto);
     }
-
 
     @PostMapping(value = "/addLikey/{postId}/{userId}")
     public PostDto addLikey(@PathVariable("postId") Long postId, @PathVariable("userId") Long userId) {

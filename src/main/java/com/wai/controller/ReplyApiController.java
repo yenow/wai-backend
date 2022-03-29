@@ -26,6 +26,11 @@ public class ReplyApiController {
         return replyService.createReply(replyRequestDto);
     }
 
+    @PatchMapping(value = "/reply/update")
+    public ReplyDto updateReply(@RequestBody ReplyRequestDto replyRequestDto) {
+        return replyService.updateReply(replyRequestDto);
+    }
+
     @DeleteMapping(value = "/reply/{replyId}/delete")
     public ReplyDto deleteReply(@PathVariable(value = "replyId") Long replyId) {
         return replyService.deleteReply(replyId);

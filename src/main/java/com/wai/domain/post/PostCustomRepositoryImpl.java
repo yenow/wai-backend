@@ -1,13 +1,11 @@
 package com.wai.domain.post;
 
-import com.querydsl.core.annotations.QueryProjection;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
-import com.wai.domain.likey.QLikey;
 import com.wai.domain.reply.QReply;
-import com.wai.domain.user.QUser;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
 import com.wai.dto.post.PostDto;
@@ -48,34 +46,40 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     public Optional<PostDto> getPostDto(PostRequestDto postRequestDto) {
 
         return Optional.ofNullable(jpaQueryFactory
-                .select(Projections.fields(PostDto.class,
-                    post.postId
-                    ,post.title
-                    ,post.content
-                    ,post.author
-                    ,post.authorEnneagramType
-                    ,post.clickCount
-                    ,post.isDeleted
-                    ,post.isReported
-                    ,post.insertDate
-                    ,post.updateDate
-                    ,post.insertId
-                    ,user.userId
-                    ,ExpressionUtils.as(JPAExpressions
-                        .select(reply.count())
-                        .from(reply)
-                        .where(reply.post.postId.eq(postRequestDto.getPostId())), "replyCount")
-                    ,ExpressionUtils.as(JPAExpressions
-                            .select(likey.count())
-                            .from(likey)
-                            .where(likey.post.postId.eq(postRequestDto.getPostId())), "likeyCount")
-                    ,ExpressionUtils.as(JPAExpressions
-                            .select(likey.count().when(1L).then(true)
-                                    .otherwise(false))
-                            .from(likey)
-                            .where(likey.post.postId.eq(postRequestDto.getPostId())
-                                    .and(likey.user.userId.eq(postRequestDto.getUserId()))), "isLikey")
-                ))
+                .select(
+                    Projections.fields(
+                        PostDto.class,
+                        post.postId
+                        ,post.title
+                        ,post.content
+                        ,post.author
+                        ,post.authorEnneagramType
+                        ,post.clickCount
+                        ,post.isDeleted
+                        ,post.isReported
+                        ,post.insertDate
+                        ,post.updateDate
+                        ,post.insertId
+                        ,user.userId
+                        ,ExpressionUtils.as(JPAExpressions
+                            .select(reply.count())
+                            .from(reply)
+                            .where(
+                                reply.post.postId.eq(postRequestDto.getPostId())
+                            ), "replyCount")
+                        ,ExpressionUtils.as(JPAExpressions
+                                .select(likey.count())
+                                .from(likey)
+                                .where(likey.post.postId.eq(postRequestDto.getPostId())), "likeyCount")
+                        ,ExpressionUtils.as(JPAExpressions
+                                .select(likey.count().when(1L).then(true)
+                                        .otherwise(false))
+                                .from(likey)
+                                .where(likey.post.postId.eq(postRequestDto.getPostId())
+                                        .and(likey.user.userId.eq(postRequestDto.getUserId()))), "isLikey")
+                        ,ExpressionUtils.as(Expressions.stringTemplate("getTagString({0})", postRequestDto.getPostId()), "tagString")
+                    )
+                )
                 .from(post)
                 .join(post.user, user)
                 .where(post.postId.eq(postRequestDto.getPostId()))
@@ -104,7 +108,9 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
     @Override
     public List<PostDto> getPostDtos(PostRequestDto postRequestDto) {
         return jpaQueryFactory
-            .select(Projections.fields(PostDto.class,
+            .select(
+                Projections.fields(
+                    PostDto.class,
                     post.postId
                     ,post.title
                     ,post.content
@@ -120,12 +126,18 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                     ,ExpressionUtils.as(JPAExpressions
                             .select(reply.count())
                             .from(reply)
-                            .where(reply.post.postId.eq(post.postId)), "replyCount")
+                            .where(
+                                reply.post.postId.eq(post.postId)
+                            ), "replyCount")
                     ,ExpressionUtils.as(JPAExpressions
                             .select(likey.count())
                             .from(likey)
-                            .where(likey.post.postId.eq(post.postId)), "likeyCount")
-            ))
+                            .where(likey.post.postId.eq(post.postId))
+                            , "likeyCount"
+                    )
+                    ,ExpressionUtils.as(Expressions.stringTemplate("getTagString({0})", post.postId), "tagString")
+                )
+            )
             .from(post)
             .join(post.user, user)
             .where(post.isDeleted.ne(true)
@@ -137,6 +149,51 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
             .fetch();
     }
 
+    @Override
+    public List<PostDto> getPostDtosOrderByPopular(PostRequestDto postRequestDto) {
+        return jpaQueryFactory
+                .select(
+                        Projections.fields(
+                                PostDto.class,
+                                post.postId
+                                ,post.title
+                                ,post.content
+                                ,post.author
+                                ,post.authorEnneagramType
+                                ,post.clickCount
+                                ,post.isDeleted
+                                ,post.isReported
+                                ,post.insertDate
+                                ,post.updateDate
+                                ,post.insertId
+                                ,user.userId
+                                ,ExpressionUtils.as(JPAExpressions
+                                        .select(reply.count())
+                                        .from(reply)
+                                        .where(
+                                                reply.post.postId.eq(post.postId)
+                                        ), "replyCount")
+                                ,ExpressionUtils.as(JPAExpressions
+                                                .select(likey.count())
+                                                .from(likey)
+                                                .where(likey.post.postId.eq(post.postId))
+                                        , "likeyCount"
+                                )
+                                ,ExpressionUtils.as(Expressions.stringTemplate("getTagString({0})", post.postId), "tagString")
+                        )
+                )
+                .from(post)
+                .join(post.user, user)
+                .where(post.isDeleted.ne(true)
+                        .and(post.isReported.ne(true))
+                        .and(post.insertDate.gt(LocalDateTime.now().minusDays(14)))
+                        ,lessThanEndPostId(postRequestDto.getEndPostId())
+                )
+                .orderBy(post.clickCount.desc())
+                .limit(postRequestDto.getMaxPostsSize())
+                .fetch();
+    }
+
     private BooleanExpression lessThanEndPostId(Long endPostId) {
         return endPostId == null ? null : post.postId.lt(endPostId);
     }
@@ -145,8 +202,8 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
         PostSearchType postSearchType = postRequestDto.getPostSearchType();
         String searchText = postRequestDto.getSearchText();
 
-        if (postSearchType.equals(PostSearchType.content)) {
-            return searchText != null ? post.content.contains(searchText).or(post.title.contains(searchText)) : null;
+        if (postSearchType.equals(PostSearchType.tag)) {
+            return searchText != null ? Expressions.stringTemplate("getTagString({0})", post.postId).contains(searchText) : null;
         } else if (postSearchType.equals(PostSearchType.title)) {
             return searchText != null ? post.title.contains(searchText) : null;
         } else if (postSearchType.equals(PostSearchType.author)) {
@@ -155,20 +212,15 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
             return enneagramTypeEq(postRequestDto.getMyEnneagramType());
         } else if (postSearchType.equals(PostSearchType.myPosts)) {
             return (post.user.userId.eq(postRequestDto.getUserId()));
-        }  else if (postSearchType.equals(PostSearchType.myReplyPosts)) {
+        } else if (postSearchType.equals(PostSearchType.myReplyPosts)) {
             return (QReply.reply.user.userId.eq(postRequestDto.getUserId()));
+        } else if (postSearchType.equals(PostSearchType.popular)) {
+            return (post.insertDate.gt(LocalDateTime.now().minusDays(7)));
         }
         return null;
     }
 
     private BooleanExpression enneagramTypeEq(Integer enneagramType) {
         return enneagramType != null ? post.authorEnneagramType.eq(enneagramType) : null;
-    }
-
-    private OrderSpecifier<Integer> orderPopluar(PostRequestDto postRequestDto) {
-        if (postRequestDto.getPostSearchType().equals(PostSearchType.popular)) {
-            return post.clickCount.desc();
-        }
-        return null;
     }
 }

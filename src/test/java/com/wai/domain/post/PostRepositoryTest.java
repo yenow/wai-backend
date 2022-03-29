@@ -1,5 +1,6 @@
 package com.wai.domain.post;
 
+import com.wai.domain.tag.TagRepository;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostSearchType;
@@ -27,6 +28,8 @@ public class PostRepositoryTest {
 
     @Autowired
     PostRepository postRepository;
+    @Autowired
+    TagRepository tagRepository;
     @Autowired
     DummyUser dummyUser;
 

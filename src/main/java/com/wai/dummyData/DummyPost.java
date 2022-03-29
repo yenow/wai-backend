@@ -2,6 +2,7 @@ package com.wai.dummyData;
 
 import com.wai.domain.post.Post;
 import com.wai.domain.post.PostRepository;
+import com.wai.domain.tag.Tag;
 import com.wai.domain.user.User;
 import lombok.Getter;
 import lombok.RequiredArgsConstructor;

@@ -15,6 +15,6 @@ public interface PostCustomRepository {
     List<Post> getPosts(PostRequestDto postRequestDto);
     List<PostDto> getPostDtos(PostRequestDto postRequestDto);
 
-
+    List<PostDto> getPostDtosOrderByPopular(PostRequestDto postRequestDto);
 }
 

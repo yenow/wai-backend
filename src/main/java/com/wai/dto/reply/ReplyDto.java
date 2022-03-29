@@ -17,11 +17,14 @@ import java.time.LocalDateTime;
 @AllArgsConstructor
 public class ReplyDto {
     private Long replyId;
-    private Long parentReplyId;
     private String author;
-    private String parentAuthor;
     private Integer authorEnneagramType;
     private String replyContent;
+
+    private Long parentReplyId;
+    private Long parentReplyUserId;
+    private String parentAuthor;
+
     private Boolean isDeleted;
     private Boolean isReported;
     private LocalDateTime insertDate;
@@ -32,15 +35,19 @@ public class ReplyDto {
 
     public ReplyDto(Reply reply) {
         this.replyId = reply.getReplyId();
-        this.parentReplyId = reply.getParentReplyId();
         this.author = reply.getAuthor();
-        this.parentAuthor = reply.getParentAuthor();
         this.authorEnneagramType = reply.getAuthorEnneagramType();
         this.replyContent = reply.getReplyContent();
+
+        this.parentReplyId = reply.getParentReplyId();
+        this.parentAuthor = reply.getParentAuthor();
+        this.parentReplyUserId = reply.getParentReplyUserId();
+
         this.isDeleted = reply.getIsDeleted();
         this.isReported = reply.getIsReported();
         this.insertDate = reply.getInsertDate();
         this.updateDate = reply.getUpdateDate();
+
         this.userId = reply.getUser().getUserId();
         this.postId = reply.getPost().getPostId();
     }

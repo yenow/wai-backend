@@ -4,6 +4,7 @@ import com.wai.domain.common.BaseEntity;
 import com.wai.dto.reply.ReplyDto;
 import com.wai.domain.post.Post;
 import com.wai.domain.user.User;
+import com.wai.dto.reply.ReplyRequestDto;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
 import org.hibernate.annotations.DynamicUpdate;
@@ -31,6 +32,8 @@ public class Reply extends BaseEntity {
     @Column
     private String author;
     @Column
+    private Long parentReplyUserId;
+    @Column
     private String parentAuthor;
     @Column
     private Integer authorEnneagramType;
@@ -43,24 +46,10 @@ public class Reply extends BaseEntity {
     @Column
     private Boolean isReported = false;
 
-    public ReplyDto toDto() {
-        return ReplyDto.builder()
-                .replyId(replyId)
-                .parentReplyId(parentReplyId)
-                .author(author)
-                .parentAuthor(parentAuthor)
-                .authorEnneagramType(authorEnneagramType)
-                .replyContent(replyContent)
-                .isDeleted(isDeleted)
-                .isReported(isReported)
-                .insertDate(getInsertDate())
-                .updateDate(getUpdateDate())
-                .build();
+    public void updateReply(ReplyRequestDto replyRequestDto) {
+        this.replyContent = replyRequestDto.getReplyContent();
     }
-
-    public void reportReply() {
-        this.isReported = true;
-    }
-
     public void deleteReply() { this.isDeleted = true; }
+    public void reportReply() { this.isReported = true; }
+
 }
