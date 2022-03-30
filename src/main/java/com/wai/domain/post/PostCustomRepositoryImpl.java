@@ -55,6 +55,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                         ,post.author
                         ,post.authorEnneagramType
                         ,post.clickCount
+                        ,post.backgroundImageName
                         ,post.isDeleted
                         ,post.isReported
                         ,post.insertDate
@@ -117,6 +118,7 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                     ,post.author
                     ,post.authorEnneagramType
                     ,post.clickCount
+                    ,post.backgroundImageName
                     ,post.isDeleted
                     ,post.isReported
                     ,post.insertDate

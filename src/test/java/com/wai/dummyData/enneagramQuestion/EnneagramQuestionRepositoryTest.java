@@ -20,7 +20,7 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 public class EnneagramQuestionRepositoryTest {
 
     @Autowired

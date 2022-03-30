@@ -30,6 +30,7 @@ public class PostSaveRequestDto {
     private String tag;
     private String author;
     private Integer authorEnneagramType;
+    private String backgroundImageName;
 
     public Post toEntity() {
         return Post.builder()
@@ -38,6 +39,7 @@ public class PostSaveRequestDto {
                 .content(content)
                 .author(author)
                 .authorEnneagramType(authorEnneagramType)
+                .backgroundImageName(backgroundImageName)
                 .user(User.builder().userId(userId).userKey(userKey).build())
                 .build();
     }

@@ -12,5 +12,6 @@ import java.time.LocalDateTime;
 @NoArgsConstructor
 @AllArgsConstructor
 public class ResponseDto {
+    @Builder.Default
     private LocalDateTime nowServerTime = LocalDateTime.now();
 }

@@ -19,18 +19,18 @@ import static org.junit.jupiter.api.Assertions.*;
 
 
 @SpringBootTest
-@ActiveProfiles("local")
+@ActiveProfiles("test")
 public class EnneagramRepositoryTest {
 
     @Autowired
     private EnneagramRepository enneagramRepository;
-    @Autowired
-    private WiseSayingRepository wiseSayingRepository;
+//    @Autowired
+//    private WiseSayingRepository wiseSayingRepository;
 
     @BeforeEach
     void beforeEach() {
         enneagramRepository.deleteAll();
-        wiseSayingRepository.deleteAll();
+//        wiseSayingRepository.deleteAll();
     }
 
     @Test
@@ -54,10 +54,10 @@ public class EnneagramRepositoryTest {
                 .author("잭 콘필드")
                 .wiseSaying("깨어나지 않은 마음은 만물을 그대로 내버려 두지 않고 사사건건 저항한다.")
                 .build());
-
-        type1_list.forEach((wiseSaying) -> {
-            wiseSayingRepository.save(wiseSaying);
-        });
+//
+//        type1_list.forEach((wiseSaying) -> {
+//            wiseSayingRepository.save(wiseSaying);
+//        });
 
         enneagramRepository.save(Enneagram.builder()
                 .enneagramType(2)

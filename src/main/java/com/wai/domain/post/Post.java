@@ -49,6 +49,8 @@ public class Post extends BaseEntity {
     private String author;
     @Column
     private Integer authorEnneagramType;
+    @Column(length = 200)
+    private String backgroundImageName;
     @Builder.Default
     @Column(nullable = false, columnDefinition = "int default 0")
     private Integer clickCount = 0;

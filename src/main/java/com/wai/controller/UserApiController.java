@@ -48,6 +48,7 @@ public class UserApiController {
         return userService.getUserEnneagramTests(userRequestDto);
     }
 
+    @PreAuthorize("hasRole('ROLE_USER')")
     @PatchMapping("/update")
     public UserDto updateUser(@RequestParam("userId") String userId,@RequestParam("userKey") String userKey,@RequestParam("nickname") String nickname
         ,@RequestPart("imageFile") MultipartFile multipartFile) {
@@ -71,6 +72,7 @@ public class UserApiController {
 
 
 
+
     /*  deprecated */
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping(value = "/saveUserKey")
@@ -79,12 +81,11 @@ public class UserApiController {
         return new ResponseEntity<>(userId, HttpStatus.OK);
     }
 
-
+    /*  deprecated */
     @PreAuthorize("hasRole('ROLE_USER')")
     @PostMapping(value = "/saveNickname")
     public UserDto saveNickname(@RequestBody UserRequestDto userRequestDto) {
         UserDto userDto = userService.saveNickname(userRequestDto);
         return userDto;
     }
-
 }

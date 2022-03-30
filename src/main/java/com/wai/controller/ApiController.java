@@ -21,8 +21,8 @@ public class ApiController {
         return responseDto;
     }
 
-    @PostMapping("/isValidToken")
+/*    @PostMapping("/isValidToken")
     public ResponseEntity<Boolean> isValidToken() {
         return new ResponseEntity(true, HttpStatus.OK);
-    }
+    }*/
 }

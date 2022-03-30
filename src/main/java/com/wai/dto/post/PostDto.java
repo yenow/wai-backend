@@ -25,6 +25,7 @@ public class PostDto {
     private String content;
     private String author;
     private Integer authorEnneagramType;
+    private String backgroundImageName;
     private Integer clickCount;
     private Boolean isDeleted;
     private Boolean isReported;
@@ -38,12 +39,13 @@ public class PostDto {
     private String tagString;
 
     @QueryProjection
-    public PostDto(Long postId, String title, String content, String author, Integer authorEnneagramType, Integer clickCount, Boolean isDeleted, Boolean isReported, LocalDateTime insertDate, LocalDateTime updateDate, Long userId, Long replyCount, Long likeyCount, Boolean isLikey, String tagString) {
+    public PostDto(Long postId, String title, String content, String author, Integer authorEnneagramType, String backgroundImageName, Integer clickCount, Boolean isDeleted, Boolean isReported, LocalDateTime insertDate, LocalDateTime updateDate, Long userId, Long replyCount, Long likeyCount, Boolean isLikey, String tagString) {
         this.postId = postId;
         this.title = title;
         this.content = content;
         this.author = author;
         this.authorEnneagramType = authorEnneagramType;
+        this.backgroundImageName = backgroundImageName;
         this.clickCount = clickCount;
         this.isDeleted = isDeleted;
         this.isReported = isReported;
@@ -56,12 +58,14 @@ public class PostDto {
         this.tagString = tagString;
     }
 
+    
     public PostDto(Post post) {
         this.postId = post.getPostId();
         this.title = post.getTitle();
         this.content = post.getContent();
         this.author = post.getAuthor();
         this.authorEnneagramType = post.getAuthorEnneagramType();
+        this.backgroundImageName = post.getBackgroundImageName();
         this.clickCount = post.getClickCount();
         this.isDeleted = post.getIsDeleted();
         this.isReported = post.getIsReported();

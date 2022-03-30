@@ -88,7 +88,6 @@ public class UserService {
         return userRepository.findByNickname(userRequestDto.getNickname()).isPresent();
     }
 
-    @Deprecated
     public Long saveUserKey(String userKey) {
         if (StringUtils.isBlank(userKey)) {
             throw new UserKeyNotExistException();
