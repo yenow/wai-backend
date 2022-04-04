@@ -127,6 +127,7 @@ public class UserCustomRepositoryImpl implements UserCustomRepository {
                 .join(user.userEnneagramTests, userEnneagramTest)
                 .join(userEnneagramTest.enneagramTest, enneagramTest)
                 .where(user.userKey.eq(userKey))
+                .orderBy(userEnneagramTest.id.desc())
                 .fetch();
     }
 

@@ -1,12 +1,10 @@
 package com.wai.controller;
 
-import com.wai.common.exception.sign.PasswordNotExistException;
-import com.wai.common.exception.sign.UserNicknameNotExistException;
-import com.wai.common.exception.user.UserKeyNotExistException;
+import com.wai.common.exception.user.PasswordNotExistException;
+import com.wai.common.exception.user.UserNicknameNotExistException;
 import com.wai.dto.sign.SignDto;
 import com.wai.dto.sign.SignRequestDto;
 import com.wai.dto.user.UserRequestDto;
-import com.wai.config.jwt.JwtFilter;
 import com.wai.config.jwt.TokenProvider;
 import com.wai.service.SignService;
 import lombok.RequiredArgsConstructor;
@@ -14,10 +12,7 @@ import org.apache.commons.lang3.StringUtils;
 import org.springframework.http.HttpHeaders;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.config.annotation.authentication.builders.AuthenticationManagerBuilder;
-import org.springframework.security.core.Authentication;
-import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.web.bind.annotation.*;
 
 @RestController

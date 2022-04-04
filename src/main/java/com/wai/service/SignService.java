@@ -1,13 +1,11 @@
 package com.wai.service;
 
-import com.wai.common.exception.sign.PasswordNotEqualException;
-import com.wai.common.exception.sign.UserNotExistException;
-import com.wai.common.exception.user.UserKeyDuplicationException;
+import com.wai.common.exception.user.PasswordNotEqualException;
 import com.wai.common.exception.user.UserNicknameDuplicationException;
+import com.wai.common.exception.user.UserNotExistException;
 import com.wai.config.jwt.TokenProvider;
 import com.wai.dto.sign.SignDto;
 import com.wai.dto.sign.SignRequestDto;
-import com.wai.dto.user.UserDto;
 import com.wai.domain.user.User;
 import com.wai.domain.user.UserRepository;
 import com.wai.domain.userRole.Role;
@@ -21,7 +19,6 @@ import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
-import org.springframework.web.bind.annotation.RequestBody;
 
 import java.util.UUID;
 

@@ -3,11 +3,13 @@ package com.wai.domain.post;
 import com.querydsl.core.types.ExpressionUtils;
 import com.querydsl.core.types.OrderSpecifier;
 import com.querydsl.core.types.Projections;
+import com.querydsl.core.types.dsl.CaseBuilder;
 import com.querydsl.core.types.dsl.Expressions;
 import com.querydsl.jpa.JPAExpressions;
 import com.wai.domain.reply.QReply;
 import com.querydsl.core.types.dsl.BooleanExpression;
 import com.querydsl.jpa.impl.JPAQueryFactory;
+import com.wai.domain.userBan.QBanUser;
 import com.wai.dto.post.PostDto;
 import com.wai.dto.post.PostRequestDto;
 import com.wai.dto.post.PostSearchType;
@@ -23,6 +25,7 @@ import static com.wai.domain.likey.QLikey.likey;
 import static com.wai.domain.post.QPost.post;
 import static com.wai.domain.reply.QReply.reply;
 import static com.wai.domain.user.QUser.user;
+import static com.wai.domain.userBan.QBanUser.banUser1;
 
 @RequiredArgsConstructor
 @Repository
@@ -58,6 +61,17 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                         ,post.backgroundImageName
                         ,post.isDeleted
                         ,post.isReported
+                        ,ExpressionUtils.as(JPAExpressions
+                            .select(
+                                new CaseBuilder()
+                                    .when(banUser1.count().goe(1L)).then(true)
+                                    .otherwise(false)
+                            )
+                            .from(banUser1)
+                            .where(banUser1.user.userId.eq(postRequestDto.getUserId())
+                                .and(banUser1.banUser.userId.eq(post.user.userId)))
+                            , "isBanUser"
+                        )
                         ,post.insertDate
                         ,post.updateDate
                         ,post.insertId
@@ -121,6 +135,17 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                     ,post.backgroundImageName
                     ,post.isDeleted
                     ,post.isReported
+                    ,ExpressionUtils.as(JPAExpressions
+                        .select(
+                            new CaseBuilder()
+                            .when(banUser1.count().goe(1L)).then(true)
+                            .otherwise(false)
+                        )
+                        .from(banUser1)
+                        .where(banUser1.user.userId.eq(postRequestDto.getUserId())
+                                .and(banUser1.banUser.userId.eq(post.user.userId)))
+                        , "isBanUser"
+                    )
                     ,post.insertDate
                     ,post.updateDate
                     ,post.insertId
@@ -144,6 +169,11 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
             .join(post.user, user)
             .where(post.isDeleted.ne(true)
                     .and(post.isReported.ne(true))
+                    .and(post.user.userId.notIn(JPAExpressions
+                        .select(banUser1.banUser.userId)
+                        .from(banUser1)
+                        .where(banUser1.user.userId.eq(postRequestDto.getUserId())))
+                    )
                     ,lessThanEndPostId(postRequestDto.getEndPostId())
                     ,searchTypeEq(postRequestDto))
             .orderBy(post.postId.desc())
@@ -165,6 +195,17 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                                 ,post.clickCount
                                 ,post.isDeleted
                                 ,post.isReported
+                                ,ExpressionUtils.as(JPAExpressions
+                                                .select(
+                                                        new CaseBuilder()
+                                                                .when(banUser1.count().goe(1L)).then(true)
+                                                                .otherwise(false)
+                                                )
+                                                .from(banUser1)
+                                                .where(banUser1.user.userId.eq(postRequestDto.getUserId())
+                                                        .and(banUser1.banUser.userId.eq(post.user.userId)))
+                                        , "isBanUser"
+                                )
                                 ,post.insertDate
                                 ,post.updateDate
                                 ,post.insertId
@@ -187,9 +228,15 @@ public class PostCustomRepositoryImpl implements PostCustomRepository {
                 .from(post)
                 .join(post.user, user)
                 .where(post.isDeleted.ne(true)
-                        .and(post.isReported.ne(true))
-                        .and(post.insertDate.gt(LocalDateTime.now().minusDays(14)))
-                        ,lessThanEndPostId(postRequestDto.getEndPostId())
+                    .and(post.isReported.ne(true))
+                    .and(post.user.userId.notIn(JPAExpressions
+                        .select(banUser1.banUser.userId)
+                        .from(banUser1)
+                        .where(banUser1.user.userId.eq(postRequestDto.getUserId()))
+                        )
+                    )
+                    .and(post.insertDate.gt(LocalDateTime.now().minusDays(14)))
+                    ,lessThanEndPostId(postRequestDto.getEndPostId())
                 )
                 .orderBy(post.clickCount.desc())
                 .limit(postRequestDto.getMaxPostsSize())

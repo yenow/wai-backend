@@ -29,6 +29,8 @@ public class PostDto {
     private Integer clickCount;
     private Boolean isDeleted;
     private Boolean isReported;
+    @Builder.Default
+    private Boolean isBanUser = false;
     private LocalDateTime insertDate;
     private LocalDateTime updateDate;
 
@@ -38,8 +40,9 @@ public class PostDto {
     private Boolean isLikey;
     private String tagString;
 
+
     @QueryProjection
-    public PostDto(Long postId, String title, String content, String author, Integer authorEnneagramType, String backgroundImageName, Integer clickCount, Boolean isDeleted, Boolean isReported, LocalDateTime insertDate, LocalDateTime updateDate, Long userId, Long replyCount, Long likeyCount, Boolean isLikey, String tagString) {
+    public PostDto(Long postId, String title, String content, String author, Integer authorEnneagramType, String backgroundImageName, Integer clickCount, Boolean isDeleted, Boolean isReported, Boolean isBanUser, LocalDateTime insertDate, LocalDateTime updateDate, Long userId, Long replyCount, Long likeyCount, Boolean isLikey, String tagString) {
         this.postId = postId;
         this.title = title;
         this.content = content;
@@ -49,6 +52,7 @@ public class PostDto {
         this.clickCount = clickCount;
         this.isDeleted = isDeleted;
         this.isReported = isReported;
+        this.isBanUser = isBanUser;
         this.insertDate = insertDate;
         this.updateDate = updateDate;
         this.userId = userId;
@@ -58,7 +62,7 @@ public class PostDto {
         this.tagString = tagString;
     }
 
-    
+
     public PostDto(Post post) {
         this.postId = post.getPostId();
         this.title = post.getTitle();
@@ -71,7 +75,8 @@ public class PostDto {
         this.isReported = post.getIsReported();
         this.insertDate = post.getInsertDate();
         this.updateDate = post.getUpdateDate();
-
+        // todo this.isBanUser
+        this.isBanUser = false;
         this.userId = post.getUser().getUserId();
         this.replyCount = (long) post.getReplys().size();
         this.likeyCount = (long) post.getLikeys().size();

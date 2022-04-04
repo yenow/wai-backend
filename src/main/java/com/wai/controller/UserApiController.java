@@ -1,10 +1,8 @@
 package com.wai.controller;
 
-import com.wai.common.exception.sign.UserNicknameNotExistException;
+import com.wai.common.exception.user.UserNicknameNotExistException;
 import com.wai.common.exception.user.UserIdNotExistException;
 import com.wai.common.exception.user.UserKeyNotExistException;
-import com.wai.common.exception.user.UserNicknameDuplicationException;
-import com.wai.common.util.Utility;
 import com.wai.dto.enneagramTest.EnneagramTestDto;
 import com.wai.dto.user.UserRequestDto;
 import com.wai.dto.user.UserDto;

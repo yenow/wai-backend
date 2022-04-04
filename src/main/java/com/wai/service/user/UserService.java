@@ -8,7 +8,6 @@ import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.fileUpload.FileUpload;
 import com.wai.domain.fileUpload.FileUploadRepository;
 import com.wai.dto.enneagramTest.EnneagramTestDto;
-import com.wai.dto.fileUpload.FileUploadDto;
 import com.wai.dto.user.UserRequestDto;
 import com.wai.dto.user.UserDto;
 import com.wai.domain.user.User;
@@ -17,15 +16,11 @@ import com.wai.service.FileWriter;
 import lombok.RequiredArgsConstructor;
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.lang3.StringUtils;
-import org.modelmapper.ModelMapper;
 import org.springframework.stereotype.Service;
 import org.springframework.transaction.annotation.Transactional;
 import org.springframework.web.multipart.MultipartFile;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
-import java.util.UUID;
 import java.util.stream.Collectors;
 
 @Slf4j

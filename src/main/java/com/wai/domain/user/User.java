@@ -2,8 +2,7 @@ package com.wai.domain.user;
 
 import com.wai.domain.common.BaseEntity;
 import com.wai.domain.fileUpload.FileUpload;
-import com.wai.dto.post.PostDto;
-import com.wai.dto.reply.ReplyDto;
+import com.wai.domain.userBan.BanUser;
 import com.wai.dto.user.UserDto;
 import com.wai.domain.enneagramTest.EnneagramTest;
 import com.wai.domain.likey.Likey;
@@ -11,7 +10,6 @@ import com.wai.domain.post.Post;
 import com.wai.domain.reply.Reply;
 import com.wai.domain.userEnneagramTest.UserEnneagramTest;
 import com.wai.domain.userRole.UserRole;
-import com.wai.domain.wiseSaying.WiseSaying;
 import com.wai.dto.user.UserRequestDto;
 import lombok.*;
 import org.hibernate.annotations.DynamicInsert;
@@ -20,7 +18,6 @@ import org.hibernate.annotations.DynamicUpdate;
 import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.stream.Collectors;
 
 
 @Entity
@@ -49,7 +46,7 @@ public class User extends BaseEntity {
     private List<Likey> likeys = new ArrayList<>();
     @Builder.Default
     @OneToMany(mappedBy = "user")
-    private List<WiseSaying> wiseSayings = new ArrayList<>();
+    private List<BanUser> banUsers = new ArrayList<>();
 
     @OneToOne
     @JoinColumn(name = "profile_image_file_id")
